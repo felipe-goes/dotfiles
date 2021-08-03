@@ -38,3 +38,9 @@ set hlsearch
 
 " Highlight the current line
 set cursorline
+
+" Vim-Plug configuration
+call plug#begin('~/.vim/plugged')
+  Plug 'preservim/nerdtree'
+call plug#end()
+

@@ -141,5 +141,13 @@ ex ()
 alias eg=tldr
 alias config='/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
 
-## Inicialização
-neofetch
+# Powerline. Configuração do vídeo https://www.youtube.com/watch?v=zfm2E4E7Dok
+# Quando for customizar é só mater o processo do daemon e recarregar o .bashrc
+# ps -ef | grep powerline-daemon
+export PATH="$PATH:/home/felipe/.local/bin/"
+export LC_ALL=en_US.UTF-8
+powerline-daemon -q
+POWERLINE_BASH_CONTINUATION=1
+POWERLINE_BASH_SELECT=1
+source /home/felipe/.local/lib/python3.9/site-packages/powerline/bindings/bash/powerline.sh
+

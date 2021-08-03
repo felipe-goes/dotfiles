@@ -39,8 +39,16 @@ set hlsearch
 " Highlight the current line
 set cursorline
 
+" Powerline
+set rtp+=$HOME/.local/lib/python3.9/site-packages/powerline/bindings/vim/
+" Always show statusline
+set laststatus=2
+" Use 256 colors (Use this setting only if your terminal supports 256 colors)
+set t_Co=256
+
 " Vim-Plug configuration
 call plug#begin('~/.vim/plugged')
   Plug 'preservim/nerdtree'
+  Plug 'powerline/powerline'
 call plug#end()
 

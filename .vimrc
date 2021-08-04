@@ -50,5 +50,8 @@ set t_Co=256
 call plug#begin('~/.vim/plugged')
   Plug 'preservim/nerdtree'
   Plug 'powerline/powerline'
+  Plug 'tpope/vim-fugitive'
+  Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+  Plug 'junegunn/fzf.vim'
 call plug#end()
 

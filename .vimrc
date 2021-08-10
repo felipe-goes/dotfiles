@@ -39,6 +39,9 @@
   " Highlight the current line
   set cursorline
 
+  " Show at least this amount of lines around the cursor when possible
+  set scrolloff=5
+
 " Powerline
   set rtp+=$HOME/.local/lib/python3.9/site-packages/powerline/bindings/vim/
   " Always show statusline
@@ -61,6 +64,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'junegunn/fzf.vim'
   Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
   Plug 'dracula/vim'
+  Plug 'vim-syntastic/syntastic'
 call plug#end()
 
 colorscheme dracula

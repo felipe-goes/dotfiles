@@ -50,10 +50,31 @@
   set t_Co=256
 
 " Keybindings
-  nmap <C-p> :Files<enter>            " For fzf
-  nmap <C-g> :G<enter>                " For vim-fugitive
-  nmap <C-m> :MarkdownPreview<enter>  " For markdown-preview
-  nmap <F2>  :NERDTreeToggle<enter>   " For NERDTree
+  nmap <C-p> :Files<CR>            " For fzf
+  nmap <C-g> :G<CR>                " For vim-fugitive
+  nmap <C-m> :MarkdownPreview<CR>  " For markdown-preview
+  nmap <F2>  :NERDTreeToggle<CR>   " For NERDTree
+  " Make Y behave as expected
+  nnoremap Y y$
+  " Keeping it centered
+  nnoremap n nzzzv
+  nnoremap N Nzzzv
+  nnoremap J mzJ`z
+  " Undo break points
+  inoremap , ,<c-g>u
+  inoremap . .<c-g>u
+  inoremap ! !<c-g>u
+  inoremap ? ?<c-g>u
+  " Jumplist mutations
+  nnoremap <expr> k (v:count > 5 ? "m'" . v:count : "") . 'k'
+  nnoremap <expr> j (v:count > 5 ? "m'" . v:count : "") . 'j'
+  " Moving text
+  vnoremap J :m '>+1<CR>gv=gv
+  vnoremap K :m '<-2<CR>gv=gv
+  inoremap <C-j> <esc>:m .+1<CR>==i
+  inoremap <C-k> <esc>:m .-2<CR>==i
+  nnoremap <leader>j :m .+1<CR>==
+  nnoremap <leader>k :m .-2<CR>==
 
 " Vim-Plug configuration
 call plug#begin('~/.vim/plugged')

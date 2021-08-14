@@ -50,10 +50,26 @@
   set t_Co=256
 
 " Keybindings
-  nmap <C-p> :Files<CR>            " For fzf
-  nmap <C-g> :G<CR>                " For vim-fugitive
-  nmap <C-m> :MarkdownPreview<CR>  " For markdown-preview
-  nmap <F2>  :NERDTreeToggle<CR>   " For NERDTree
+  " Puglins
+    " For fzf
+    nnoremap <C-p>      :Files<CR>
+    " For vim-fugitive
+    nnoremap <C-g>      :G<CR>
+    " For markdown-preview
+    nnoremap <C-m>      :MarkdownPreview<CR>
+    " For NERDTree
+    nnoremap <F2>       :NERDTreeToggle<CR>
+    nnoremap <leader>h  :wincmd h<CR>
+    nnoremap <leader>j  :wincmd j<CR>
+    nnoremap <leader>k  :wincmd k<CR>
+    nnoremap <leader>l  :wincmd l<CR>
+    " You Complete Me
+    nnoremap <silent> <leader>gd :YcmCompleter GoTo<CR>
+    nnoremap <silent> <leader>gf :YcmCompleter FixIt<CR>
+  " For working with tabs
+  nnoremap <C-t>      :tabe 
+  nnoremap <leader>,  :tabp<CR>
+  nnoremap <leader>;  :tabn<CR>
   " Make Y behave as expected
   nnoremap Y y$
   " Keeping it centered
@@ -86,6 +102,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
   Plug 'dracula/vim'
   Plug 'vim-syntastic/syntastic'
+  Plug 'ycm-core/YouCompleteMe'
 call plug#end()
 
 colorscheme dracula

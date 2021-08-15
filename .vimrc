@@ -42,6 +42,12 @@
   " Show at least this amount of lines around the cursor when possible
   set scrolloff=5
 
+  " Configure folding behavior
+  set foldmethod=syntax
+  set foldnestmax=10
+  set nofoldenable
+  set foldlevel=2
+
 " Powerline
   set rtp+=$HOME/.local/lib/python3.9/site-packages/powerline/bindings/vim/
   " Always show statusline
@@ -103,6 +109,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'dracula/vim'
   Plug 'vim-syntastic/syntastic'
   Plug 'ycm-core/YouCompleteMe'
+  Plug 'tpope/vim-surround'
 call plug#end()
 
 colorscheme dracula

@@ -108,7 +108,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
   Plug 'dracula/vim'
   Plug 'vim-syntastic/syntastic'
-  Plug 'ycm-core/YouCompleteMe'
+  Plug 'ycm-core/YouCompleteMe', { 'do': 'python3 install.py --clang-completer --rust-completer' }
   Plug 'tpope/vim-surround'
 call plug#end()
 

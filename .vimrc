@@ -40,7 +40,7 @@
   set cursorline
 
   " Show at least this amount of lines around the cursor when possible
-  set scrolloff=5
+  set scrolloff=8
 
   " Configure folding behavior
   set foldmethod=syntax
@@ -72,10 +72,12 @@
     " You Complete Me
     nnoremap <silent> <leader>gd :YcmCompleter GoTo<CR>
     nnoremap <silent> <leader>gf :YcmCompleter FixIt<CR>
+  " Go to normal mode
+  :inoremap <C-l>       <esc>
   " For working with tabs
-  nnoremap <C-t>      :tabe 
-  nnoremap <leader>,  :tabp<CR>
-  nnoremap <leader>;  :tabn<CR>
+  nnoremap <C-t>        :tabe 
+  nnoremap <leader>,    :tabp<CR>
+  nnoremap <leader>;    :tabn<CR>
   " Make Y behave as expected
   nnoremap Y y$
   " Keeping it centered

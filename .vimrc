@@ -55,8 +55,22 @@
   " Use 256 colors (Use this setting only if your terminal supports 256 colors)
   set t_Co=256
 
+" Plugins configuration
+  " Create default mappings for NERD Commenter
+  let g:NERDCreateDefaultMappings = 1
+  " Add spaces after comment delimiters by default
+  let g:NERDSpaceDelims = 1
+  " Use compact syntax for prettified multi-line comments
+  let g:NERDCompactSexyComs = 1
+  " Align line-wise comment delimiters flush left instead of following code indentation
+  let g:NERDDefaultAlign = 'left'
+  " Enable trimming of trailing whitespace when uncommenting
+  let g:NERDTrimTrailingWhitespace = 1
+  " Enable NERDCommenterToggle to check all selected lines is commented or not 
+  let g:NERDToggleCheckAllLines = 1
+
 " Keybindings
-  " Puglins
+  " Plugins
     " For fzf
     nnoremap <C-p>      :Files<CR>
     " For vim-fugitive
@@ -72,33 +86,35 @@
     " You Complete Me
     nnoremap <silent> <leader>gd :YcmCompleter GoTo<CR>
     nnoremap <silent> <leader>gf :YcmCompleter FixIt<CR>
-  " Go to normal mode
-  :inoremap <C-l>       <esc>
-  " For working with tabs
-  nnoremap <C-t>        :tabe 
-  nnoremap <leader>,    :tabp<CR>
-  nnoremap <leader>;    :tabn<CR>
-  " Make Y behave as expected
-  nnoremap Y y$
-  " Keeping it centered
-  nnoremap n nzzzv
-  nnoremap N Nzzzv
-  nnoremap J mzJ`z
-  " Undo break points
-  inoremap , ,<c-g>u
-  inoremap . .<c-g>u
-  inoremap ! !<c-g>u
-  inoremap ? ?<c-g>u
-  " Jumplist mutations
-  nnoremap <expr> k (v:count > 5 ? "m'" . v:count : "") . 'k'
-  nnoremap <expr> j (v:count > 5 ? "m'" . v:count : "") . 'j'
-  " Moving text
-  vnoremap J :m '>+1<CR>gv=gv
-  vnoremap K :m '<-2<CR>gv=gv
-  inoremap <C-j> <esc>:m .+1<CR>==i
-  inoremap <C-k> <esc>:m .-2<CR>==i
-  nnoremap <leader>j :m .+1<CR>==
-  nnoremap <leader>k :m .-2<CR>==
+
+  " General purposes
+    " Go to normal mode
+    :inoremap <C-l>       <esc>
+    " For working with tabs
+    nnoremap <C-t>        :tabe 
+    nnoremap <leader>,    :tabp<CR>
+    nnoremap <leader>;    :tabn<CR>
+    " Make Y behave as expected
+    nnoremap Y y$
+    " Keeping it centered
+    nnoremap n nzzzv
+    nnoremap N Nzzzv
+    nnoremap J mzJ`z
+    " Undo break points
+    inoremap , ,<c-g>u
+    inoremap . .<c-g>u
+    inoremap ! !<c-g>u
+    inoremap ? ?<c-g>u
+    " Jumplist mutations
+    nnoremap <expr> k (v:count > 5 ? "m'" . v:count : "") . 'k'
+    nnoremap <expr> j (v:count > 5 ? "m'" . v:count : "") . 'j'
+    " Moving text
+    vnoremap J :m '>+1<CR>gv=gv
+    vnoremap K :m '<-2<CR>gv=gv
+    inoremap <C-j> <esc>:m .+1<CR>==i
+    inoremap <C-k> <esc>:m .-2<CR>==i
+    nnoremap <leader>j :m .+1<CR>==
+    nnoremap <leader>k :m .-2<CR>==
 
 " Vim-Plug configuration
 call plug#begin('~/.vim/plugged')
@@ -112,6 +128,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'vim-syntastic/syntastic'
   Plug 'ycm-core/YouCompleteMe', { 'do': 'python3 install.py --clang-completer --rust-completer' }
   Plug 'tpope/vim-surround'
+  Plug 'preservim/nerdcommenter'
 call plug#end()
 
 colorscheme dracula

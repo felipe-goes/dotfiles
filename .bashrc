@@ -142,6 +142,7 @@ alias eg=tldr
 alias config='/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
 alias alura='cd ~/Public/Dev/Alura'
 alias conkyconfig='conky -c ~/.config/conky/vision/Z333-vision.conkyrc'
+alias tmuxenv='~/.tmux/tmuxenv.sh'
 
 # Powerline. Configuração do vídeo https://www.youtube.com/watch?v=zfm2E4E7Dok
 # Quando for customizar é só mater o processo do daemon e recarregar o .bashrc

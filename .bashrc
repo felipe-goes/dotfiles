@@ -1,5 +1,10 @@
 #
 # ~/.bashrc
+#  _               _
+# | |__   __ _ ___| |__  _ __ ___
+# | '_ \ / _` / __| '_ \| '__/ __|
+# | |_) | (_| \__ \ | | | | | (__
+# |_.__/ \__,_|___/_| |_|_|  \___|
 #
 
 [[ $- != *i* ]] && return
@@ -145,9 +150,9 @@ alias conkyconfig='conky -c ~/.config/conky/vision/Z333-vision.conkyrc'
 alias tmuxenv='~/.tmux/tmuxenv.sh'
 
 # Powerline. Configuração do vídeo https://www.youtube.com/watch?v=zfm2E4E7Dok
-# Quando for customizar é só mater o processo do daemon e recarregar o .bashrc
+# Quando for customizar é só matar o processo do daemon e recarregar o .bashrc
 # ps -ef | grep powerline-daemon
-export PATH="$PATH:/home/felipe/.local/bin/"
+#export PATH="$PATH:/home/felipe/.local/bin/"
 export LC_ALL=en_US.UTF-8
 powerline-daemon -q
 POWERLINE_BASH_CONTINUATION=1

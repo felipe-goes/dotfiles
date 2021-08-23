@@ -8,9 +8,10 @@
 
 function tmuxenv(){
   local env=$1
+  local validSessions=("alura")
 
   # Check which session create
-  if [[ "${env^^}" == "ALURA" ]]
+  if [[ "${env^^}" == "${validSessions[0]^^}" ]]
   then
     local session="Alura"
     local window="VimMD"
@@ -33,6 +34,9 @@ function tmuxenv(){
     # Attach to default window
     tmux select-pane -t 1
     tmux a -t $session:$window
+  else
+    echo "Please choose one of the following valid session names:"
+    echo "${validSessions[@]}" | tr " " "\n"
   fi
 }
 

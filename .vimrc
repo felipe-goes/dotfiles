@@ -48,6 +48,12 @@
   set nofoldenable
   set foldlevel=2
 
+  " Do not create swapfiles
+  set noswapfile
+
+  " Set column delimiter
+  set colorcolumn=90
+
 " Powerline
   set rtp+=$HOME/.local/lib/python3.9/site-packages/powerline/bindings/vim/
   " Always show statusline

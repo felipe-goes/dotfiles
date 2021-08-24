@@ -135,6 +135,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'ycm-core/YouCompleteMe', { 'do': 'python3 install.py --clang-completer --rust-completer' }
   Plug 'tpope/vim-surround'
   Plug 'preservim/nerdcommenter'
+  Plug 'dbeniamine/cheat.sh-vim'
 call plug#end()
 
 colorscheme dracula

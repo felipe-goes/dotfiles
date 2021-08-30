@@ -61,20 +61,6 @@
   " Use 256 colors (Use this setting only if your terminal supports 256 colors)
   set t_Co=256
 
-" Plugins configuration
-  " Create default mappings for NERD Commenter
-  let g:NERDCreateDefaultMappings = 1
-  " Add spaces after comment delimiters by default
-  let g:NERDSpaceDelims = 1
-  " Use compact syntax for prettified multi-line comments
-  let g:NERDCompactSexyComs = 1
-  " Align line-wise comment delimiters flush left instead of following code indentation
-  let g:NERDDefaultAlign = 'left'
-  " Enable trimming of trailing whitespace when uncommenting
-  let g:NERDTrimTrailingWhitespace = 1
-  " Enable NERDCommenterToggle to check all selected lines is commented or not 
-  let g:NERDToggleCheckAllLines = 1
-
 " Keybindings
   " Plugins
     " For fzf
@@ -127,15 +113,16 @@ call plug#begin('~/.vim/plugged')
   Plug 'preservim/nerdtree'
   Plug 'powerline/powerline'
   Plug 'tpope/vim-fugitive' " For git integration
+  Plug 'tpope/vim-surround'
+  Plug 'tpope/vim-commentary'
   Plug 'junegunn/fzf', { 'do': { -> fzf#install() } } " Fuzzy file. Search for files.
   Plug 'junegunn/fzf.vim'
   Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
   Plug 'dracula/vim'
   Plug 'vim-syntastic/syntastic'
   Plug 'ycm-core/YouCompleteMe', { 'do': 'python3 install.py --clang-completer --rust-completer' }
-  Plug 'tpope/vim-surround'
-  Plug 'preservim/nerdcommenter'
   Plug 'dbeniamine/cheat.sh-vim'
+  Plug 'vim-scripts/ReplaceWithRegister'
 call plug#end()
 
 colorscheme dracula

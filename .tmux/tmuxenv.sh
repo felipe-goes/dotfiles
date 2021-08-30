@@ -26,7 +26,7 @@ function tmuxenv(){
       # Vim MarkDown window
       tmux rename-window -t 1 $window
       tmux send-keys -t $window 'cd ~/Public/Dev/Alura' C-m 'clear' C-m
-      tmux split-window -v -p 15 -t $sessions:$window
+      tmux split-window -v -p 25 -t $sessions:$window
       tmux select-pane -t 2
       tmux split-window -h -t $session:$window
     fi

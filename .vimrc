@@ -2,6 +2,9 @@
 "" Actual working code for the .vimrc file but still commented. 
 
 " Generally useful configuration
+  " Making the system clipboard accessible by Vim
+  set clipboard=unnamed
+
   " Set how many blank spaces one indent will have
   set tabstop=2
   set shiftwidth=2
@@ -78,6 +81,10 @@
     " You Complete Me
     nnoremap <silent> <leader>gd :YcmCompleter GoTo<CR>
     nnoremap <silent> <leader>gf :YcmCompleter FixIt<CR>
+    " asyncomplete
+    inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+    inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+    inoremap <expr> <cr>    pumvisible() ? asyncomplete#close_popup() : "\<cr>"
 
   " General purposes
     " Go to normal mode
@@ -107,6 +114,9 @@
     inoremap <C-k> <esc>:m .-2<CR>==i
     nnoremap <leader>j :m .+1<CR>==
     nnoremap <leader>k :m .-2<CR>==
+    " Quickly insert an empty new line without entering insert mode
+    nnoremap <leader>o o<esc>
+    nnoremap <leader>O O<esc>
 
 " Vim-Plug configuration
 call plug#begin('~/.vim/plugged')
@@ -123,6 +133,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'ycm-core/YouCompleteMe', { 'do': 'python3 install.py --clang-completer --rust-completer' }
   Plug 'dbeniamine/cheat.sh-vim'
   Plug 'vim-scripts/ReplaceWithRegister'
+  Plug 'prabirshrestha/asyncomplete.vim'
 call plug#end()
 
 colorscheme dracula

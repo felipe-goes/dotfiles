@@ -104,31 +104,83 @@
 
 " Keybindings
   " Plugins
-    " For fzf
-    nnoremap <C-p>      :Files<CR>
-    " For vim-fugitive
-    nnoremap <C-g>      :G<CR>
-    " For markdown-preview
+    " junegunn/fzf
+    nnoremap <C-p>          :Files<CR>
+    nnoremap <leader><C-p>  :GFiles<CR>
+    nnoremap <leader>ff     :Rg<CR>
+    inoremap <expr> <c-x><c-f> fzf#vim#complete#path(
+      \ "find . -path '*/\.*' -prune -o -print \| sed '1d;s:^..::'",
+      \ fzf#wrap({'dir': expand('%:p:h')})
+    " tpope/vim-fugitive
+    nnoremap <leader>gg     :G<CR>
+    " iamcco/markdown-preview.nvim
     nnoremap <C-m>      :MarkdownPreview<CR>
-    " For NERDTree
+    " preservim/nerdtree
     nnoremap <F2>       :NERDTreeToggle<CR>
-    nnoremap <leader>h  :wincmd h<CR>
-    nnoremap <leader>j  :wincmd j<CR>
-    nnoremap <leader>k  :wincmd k<CR>
-    nnoremap <leader>l  :wincmd l<CR>
-    " You Complete Me
-    nnoremap <silent> <leader>gd :YcmCompleter GoTo<CR>
-    nnoremap <silent> <leader>gf :YcmCompleter FixIt<CR>
-    " Hard Time
+    " takac/vim-hardtime
     nnoremap <leader>ht :HardTimeToggle<CR>
-    " Neoterm
+    " kassio/neoterm
     let g:neoterm_default_mod = 'vertical'
     let g:neoterm_size = 60
     nnoremap <c-q> :Ttoggle<CR>
     inoremap <c-q> <esc>:Ttoggle<CR>
     tnoremap <c-q> <c-\><c-n>:Ttoggle<CR>
-    " Neoformat
+    " sbdchd/neoformat
     nnoremap <leader>F :Neoformat prettier<CR>
+    " prabirshrestha/vim-lsp
+    if executable('pyls')
+      " pip install python-language-server
+      au User lsp_setup call lsp#register_server({
+          \ 'name': 'pyls',
+          \ 'cmd': {server_info->['pyls']},
+          \ 'allowlist': ['python'],
+          \ })
+    endif
+    if executable('bash-language-server')
+      au User lsp_setup call lsp#register_server({
+          \ 'name': 'bash',
+          \ 'cmd': {server_info->['bash']},
+          \ 'allowlist': ['bash'],
+          \ })
+    endif
+    if executable('html-languageserver')
+      au User lsp_setup call lsp#register_server({
+          \ 'name': 'html',
+          \ })
+    endif
+
+    function! s:on_lsp_buffer_enabled() abort
+        setlocal omnifunc=lsp#complete
+        setlocal signcolumn=yes
+        if exists('+tagfunc') | setlocal tagfunc=lsp#tagfunc | endif
+        nmap <buffer> gd <plug>(lsp-definition)
+        nmap <buffer> gs <plug>(lsp-document-symbol-search)
+        nmap <buffer> gS <plug>(lsp-workspace-symbol-search)
+        nmap <buffer> gr <plug>(lsp-references)
+        nmap <buffer> gi <plug>(lsp-implementation)
+        nmap <buffer> gt <plug>(lsp-type-definition)
+        nmap <buffer> <leader>rn <plug>(lsp-rename)
+        nmap <buffer> [g <plug>(lsp-previous-diagnostic)
+        nmap <buffer> ]g <plug>(lsp-next-diagnostic)
+        nmap <buffer> K <plug>(lsp-hover)
+        inoremap <buffer> <expr><c-f> lsp#scroll(+4)
+        inoremap <buffer> <expr><c-d> lsp#scroll(-4)
+
+        let g:lsp_format_sync_timeout = 1000
+        autocmd! BufWritePre *.rs,*.go call execute('LspDocumentFormatSync')
+
+        " refer to doc to add more commands
+    endfunction
+
+    augroup lsp_install
+        au!
+        " call s:on_lsp_buffer_enabled only for languages that has the server registered.
+        autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
+    augroup END
+    " prabirshrestha/asyncomplete.vim
+    inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+    inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+    inoremap <expr> <cr>    pumvisible() ? asyncomplete#close_popup() : "\<cr>"
 
   " General purposes
     " Go to normal mode
@@ -186,10 +238,6 @@ call plug#begin('~/.vim/plugged')
   Plug 'junegunn/fzf.vim'
   " Preview markdown files
   Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
-  " Syntax checking
-  Plug 'vim-syntastic/syntastic'
-  " Code completion
-  Plug 'ycm-core/YouCompleteMe', { 'do': 'python3 install.py --clang-completer --rust-completer' }
   " For cheat sheet integration
   Plug 'dbeniamine/cheat.sh-vim'
   " Replace with specific register content without leaving normal mode
@@ -209,6 +257,14 @@ call plug#begin('~/.vim/plugged')
   Plug 'kassio/neoterm'
   " For formatting code
   Plug 'sbdchd/neoformat'
+  " LSP configuration
+  Plug 'prabirshrestha/vim-lsp'
+  Plug 'mattn/vim-lsp-settings'
+  " Autocompletion
+  Plug 'prabirshrestha/asyncomplete.vim'
+  Plug 'prabirshrestha/asyncomplete-lsp.vim'
+  " Run your tests at the speed of thought
+  Plug 'vim-test/vim-test'
 call plug#end()
 
 colorscheme dracula

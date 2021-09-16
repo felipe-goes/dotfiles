@@ -131,23 +131,30 @@
     if executable('pyls')
       " pip install python-language-server
       au User lsp_setup call lsp#register_server({
-          \ 'name': 'pyls',
-          \ 'cmd': {server_info->['pyls']},
-          \ 'allowlist': ['python'],
-          \ })
+        \ 'name': 'pyls',
+        \ 'cmd': {server_info->['pyls']},
+        \ 'whitelist': ['python'],
+      \ })
     endif
     if executable('bash-language-server')
-      au User lsp_setup call lsp#register_server({
-          \ 'name': 'bash',
-          \ 'cmd': {server_info->['bash']},
-          \ 'allowlist': ['bash'],
-          \ })
+      augroup LspBash
+        autocmd!
+        au User lsp_setup call lsp#register_server({
+          \ 'name': 'bash-language-server',
+          \ 'cmd': {server_info->[&shell, &shellcmdflag, 'bash-language-server start']},
+          \ 'allowlist': ['sh'],
+        \ })
+      augroup END
     endif
-    if executable('html-languageserver')
+    if executable('typescript-language-server')
       au User lsp_setup call lsp#register_server({
-          \ 'name': 'html',
-          \ })
-    endif
+        \ 'name': 'javascript support using typescript-language-server',
+        \ 'cmd': { server_info->[&shell, &shellcmdflag, 'typescript-language-server --stdio']},
+        \ 'root_uri': { server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_directory(lsp#utils#get_buffer_path(), '.git/..'))},
+        \ 'whitelist': ['javascript', 'javascript.jsx', 'javascriptreact']
+      \ })
+  endif
+
 
     function! s:on_lsp_buffer_enabled() abort
         setlocal omnifunc=lsp#complete

@@ -1,0 +1,27 @@
+" junegunn/fzf
+nnoremap <C-p>          :Files<CR>
+nnoremap <leader><C-p>  :GFiles<CR>
+nnoremap <leader>ff     :Rg<CR>
+inoremap <expr> <c-x><c-f> fzf#vim#complete#path(
+    \ "find . -path '*/\.*' -prune -o -print \| sed '1d;s:^..::'",
+    \ fzf#wrap({'dir': expand('%:p:h')})
+" tpope/vim-fugitive
+nnoremap <leader>gg     :G<CR>
+" iamcco/markdown-preview.nvim
+nnoremap <C-m>      :MarkdownPreview<CR>
+" preservim/nerdtree
+nnoremap <F2>       :NERDTreeToggle<CR>
+" takac/vim-hardtime
+nnoremap <leader>ht :HardTimeToggle<CR>
+" kassio/neoterm
+let g:neoterm_default_mod = 'vertical'
+let g:neoterm_size = 60
+nnoremap <c-q> :Ttoggle<CR>
+inoremap <c-q> <esc>:Ttoggle<CR>
+tnoremap <c-q> <c-\><c-n>:Ttoggle<CR>
+" sbdchd/neoformat
+nnoremap <leader>F :Neoformat prettier<CR>
+" prabirshrestha/asyncomplete.vim
+inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <expr> <cr>    pumvisible() ? asyncomplete#close_popup() : "\<cr>"

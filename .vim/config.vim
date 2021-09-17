@@ -1,6 +1,9 @@
 " Set the completion option
 set completeopt=menuone,noinsert,noselect
 
+" Enable a menu at the bottom of the vim window
+set wildmenu
+
 " Enable mouse
 set mouse=a
 
@@ -90,3 +93,4 @@ let g:netrw_banner=0
 
 " Add syntax highlighting
 let g:markdown_fenced_languages = ['javascript', 'js=javascript', 'json=javascript']
+

@@ -1,8 +1,11 @@
 "  Comments to describe what the line of code below does
 "" Actual working code for the .vimrc file but still commented. 
 
+" Vim as IDE: Demo
+" https://www.youtube.com/watch?v=CcgO_CV3iDo
+
 " General useful configuration
-source ~/.vim/config
+source ~/.vim/config.vim
 
 " Powerline
 set rtp+=$HOME/.local/lib/python3.9/site-packages/powerline/bindings/vim/
@@ -12,13 +15,13 @@ set laststatus=2
 set t_Co=256
 
 " Plugin Keybindings
-source ~/.vim/pluginkeybindings
+source ~/.vim/pluginkeybindings.vim
 
 " General purposes
-source ~/.vim/generalkeybindings
+source ~/.vim/generalkeybindings.vim
 
 " Lsp configuration for prabirshrestha/vim-lsp
-source ~/.vim/lspconfig
+source ~/.vim/lspconfig.vim
 
 " Vim-Plug configuration
 call plug#begin('~/.vim/plugged')
@@ -69,6 +72,8 @@ call plug#begin('~/.vim/plugged')
   Plug 'prabirshrestha/asyncomplete-lsp.vim'
   " Run your tests at the speed of thought
   Plug 'vim-test/vim-test'
+  " A multi-language debugging system for Vim
+  Plug 'puremourning/vimspector'
 call plug#end()
 
 colorscheme dracula

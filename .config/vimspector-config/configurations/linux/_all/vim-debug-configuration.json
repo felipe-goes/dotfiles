@@ -1,0 +1,48 @@
+{
+  "configurations": {
+    "jest": {
+      "adapter": "vscode-node",
+      "breakpoints": {
+        "exception": {
+          "all": "N",
+          "uncaught": "N"
+        }
+      },
+      "configuration": {
+        "request": "launch",
+        "name": "Debug Jest Test",
+        "type": "node",
+        "runtimeArgs": [
+          "--inspect-brk",
+          "/usr/bin/jest",
+          "--no-coverage",
+          "-t",
+          "'${TestName}'",
+          "--",
+          "${file}"
+        ],
+        "console": "integratedTerminal",
+        "skipFiles": ["<node_internals>/**/*.js"],
+        "internalConsoleOptions": "neverOpen",
+        "port": 9229
+      }
+    },
+    "attach": {
+      "adapter": "vscode-node",
+      "default": true,
+      "breakpoints": {
+        "exception": {
+          "all": "N",
+          "uncaught": "N"
+        }
+      },
+      "configuration": {
+        "name": "Attach to Process",
+        "type": "node",
+        "request": "attach",
+        "skipFiles": ["<node_internals>/**/*.js"],
+        "processId": "${processId}"
+      }
+    }
+  }
+}

@@ -29,8 +29,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'dracula/vim'
   " File navigation
   Plug 'preservim/nerdtree'
-  " Still not working. The intent is to show icons in NERDTree
-  Plug 'ryanoasis/nerd-fonts'
+  " Add file type icons to Vim plugins
   Plug 'ryanoasis/vim-devicons'
   " Status line
   Plug 'powerline/powerline'

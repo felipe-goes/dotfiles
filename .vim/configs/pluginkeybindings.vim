@@ -25,9 +25,6 @@ nnoremap <c-q> :Ttoggle<CR>
 inoremap <c-q> <esc>:Ttoggle<CR>
 tnoremap <c-q> <c-\><c-n>:Ttoggle<CR>
 
-" sbdchd/neoformat
-nnoremap <leader>F :Neoformat prettier<CR>
-
 " prabirshrestha/asyncomplete.vim
 inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
@@ -45,6 +42,7 @@ nnoremap <leader>drc :call vimspector#RunToCursor()<CR>
 nnoremap <leader>dh :call vimspector#ToggleBreakpoint()<CR>
 nnoremap <leader>de :call vimspector#ToggleConditionalBreakpoint()<CR>
 nnoremap <leader>dX :call vimspector#ClearBreakpoints()<CR>
+nnoremap <leader>d? :call AddToWatch()<CR>
 func! AddToWatch()
   let word = expand("<cexpr>")
   call vimspector#AddWatch(word)
@@ -58,4 +56,3 @@ function! JestStrategy(cmd)
 endfunction
 let g:test#custom_strategies = {'jest': function('JestStrategy')}
 nnoremap <leader>dd :TestNearest -strategy=jest<CR>
-

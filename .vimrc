@@ -1,27 +1,30 @@
 "  Comments to describe what the line of code below does
-"" Actual working code for the .vimrc file but still commented. 
+"" Actual working code for the .vimrc file but still commented.
 
 " Vim as IDE: Demo
 " https://www.youtube.com/watch?v=CcgO_CV3iDo
 
 " General useful configuration
-source ~/.vim/config.vim
+source ~/.vim/configs/config.vim
 
 " Powerline
-set rtp+=$HOME/.local/lib/python3.9/site-packages/powerline/bindings/vim/
+set runtimepath+=$HOME/.local/lib/python3.9/site-packages/powerline/bindings/vim/
 " Always show statusline
 set laststatus=2
 " Use 256 colors (Use this setting only if your terminal supports 256 colors)
 set t_Co=256
 
 " Plugin Keybindings
-source ~/.vim/pluginkeybindings.vim
+source ~/.vim/configs/pluginkeybindings.vim
 
 " General purposes
-source ~/.vim/generalkeybindings.vim
+source ~/.vim/configs/generalkeybindings.vim
 
 " Lsp configuration for prabirshrestha/vim-lsp
-source ~/.vim/lspconfig.vim
+source ~/.vim/configs/lspconfig.vim
+
+" ALE configuration
+source ~/.vim/configs/aleconfig.vim
 
 " Vim-Plug configuration
 call plug#begin('~/.vim/plugged')
@@ -61,8 +64,10 @@ call plug#begin('~/.vim/plugged')
   Plug 'christoomey/vim-tmux-navigator'
   " Wrapper of some vim/neovim's :terminal functions
   Plug 'kassio/neoterm'
-  " For formatting code
-  Plug 'sbdchd/neoformat'
+  " Check syntax in Vim asynchronously and fix files, with LSP support
+  Plug 'dense-analysis/ale'
+  " Bridge between vim-lsp and ALE
+  Plug 'rhysd/vim-lsp-ale'
   " LSP configuration
   Plug 'prabirshrestha/vim-lsp'
   Plug 'mattn/vim-lsp-settings'

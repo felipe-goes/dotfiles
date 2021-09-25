@@ -11,6 +11,7 @@ if executable('pyls')
           \ })
   augroup END
 endif
+
 " Bash
 if executable('bash-language-server')
   augroup LspBash
@@ -22,6 +23,7 @@ if executable('bash-language-server')
           \ })
   augroup END
 endif
+
 " Vim
 if executable('vim-language-server')
   augroup LspVim
@@ -35,6 +37,40 @@ if executable('vim-language-server')
         \   'runtimepath': &rtp,
         \ }})
   augroup END
+endif
+
+" HTML
+if executable('html-languageserver')
+  augroup LspHtml
+    autocmd!
+    au User lsp_setup call lsp#register_server({
+          \ 'name': 'html-languageserver',
+          \ 'cmd': {server_info->[&shell, &shellcmdflag, 'html-languageserver --stdio']},
+          \ 'whitelist': ['html'],
+          \ })
+  augroup END
+endif
+
+" CSS
+if executable('css-languageserver')
+  augroup LspCss
+    autocmd!
+    au User lsp_setup call lsp#register_server({
+          \ 'name': 'css-languageserver',
+          \ 'cmd': {server_info->[&shell, &shellcmdflag, 'css-languageserver --stdio']},
+          \ 'whitelist': ['css', 'less', 'sass'],
+          \ })
+  augroup END
+endif
+
+" Javascript
+if executable('typescript-language-server')
+    au User lsp_setup call lsp#register_server({
+      \ 'name': 'javascript support using typescript-language-server',
+      \ 'cmd': { server_info->[&shell, &shellcmdflag, 'typescript-language-server --stdio']},
+      \ 'root_uri': { server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_directory(lsp#utils#get_buffer_path(), '.git/..'))},
+      \ 'whitelist': ['javascript', 'javascript.jsx', 'javascriptreact']
+      \ })
 endif
 
 

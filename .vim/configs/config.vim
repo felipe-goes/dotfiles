@@ -94,3 +94,8 @@ let g:netrw_banner=0
 " Add syntax highlighting
 let g:markdown_fenced_languages = ['javascript', 'js=javascript', 'json=javascript']
 
+" Shortcuts for resizing the window
+nnoremap <Up>    :resize +2<CR>
+nnoremap <Down>  :resize -2<CR>
+nnoremap <Left>  :vertical resize +2<CR>
+nnoremap <Right> :vertical resize -2<CR>

@@ -56,3 +56,8 @@ function! JestStrategy(cmd)
 endfunction
 let g:test#custom_strategies = {'jest': function('JestStrategy')}
 nnoremap <leader>dd :TestNearest -strategy=jest<CR>
+
+" mattn/emmet-vim
+" Enable just for html/css
+let g:user_emmet_install_global = 0
+autocmd FileType html,css EmmetInstall

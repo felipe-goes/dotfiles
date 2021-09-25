@@ -78,6 +78,8 @@ call plug#begin('~/.vim/plugged')
   Plug 'vim-test/vim-test'
   " A multi-language debugging system for Vim
   Plug 'puremourning/vimspector'
+  " Emmet for Vim
+  Plug 'mattn/emmet-vim'
 call plug#end()
 
 colorscheme dracula

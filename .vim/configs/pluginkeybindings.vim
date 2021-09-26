@@ -1,6 +1,7 @@
 " junegunn/fzf
-nnoremap <C-p>          :Files<CR>
-nnoremap <leader><C-p>  :GFiles<CR>
+nnoremap <leader><C-p>  :Files<CR>
+nnoremap <leader>b      :Buffers<CR>
+nnoremap <C-p>          :GFiles<CR>
 nnoremap <leader>ff     :Rg<CR>
 inoremap <expr> <c-x><c-f> fzf#vim#complete#path(
     \ "find . -path '*/\.*' -prune -o -print \| sed '1d;s:^..::'",

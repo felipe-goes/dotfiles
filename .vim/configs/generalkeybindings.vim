@@ -1,10 +1,5 @@
 " Go to normal mode
-:inoremap <C-l>       <esc>
-
-" For working with tabs
-nnoremap <C-t>        :tabe 
-nnoremap <leader>,    :tabp<CR>
-nnoremap <leader>;    :tabn<CR>
+:inoremap <C-l> <esc>
 
 " Make Y behave as expected
 nnoremap Y y$
@@ -39,3 +34,10 @@ nnoremap <leader>O O<esc>
 " Add shortcut to edit the .vimrc
 nnoremap <leader>v :e $MYVIMRC<CR>
 
+" Shortcuts for resizing the window
+" if bufwinnr(1)
+nnoremap - <C-W>-
+nnoremap + <C-W>+
+nnoremap , <C-W><
+nnoremap ; <C-W>>
+" endif

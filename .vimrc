@@ -20,9 +20,8 @@ source ~/.vim/configs/pluginkeybindings.vim
 " General purposes
 source ~/.vim/configs/generalkeybindings.vim
 
-" Lsp configuration for prabirshrestha/vim-lsp
-source ~/.vim/configs/lspconfig.vim
-
+" Coc configuration
+source ~/.vim/configs/cocconfig.vim
 " ALE configuration
 source ~/.vim/configs/aleconfig.vim
 
@@ -49,8 +48,6 @@ call plug#begin('~/.vim/plugged')
   Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
   " For cheat sheet integration
   Plug 'dbeniamine/cheat.sh-vim'
-  " Replace with specific register content without leaving normal mode
-  Plug 'vim-scripts/ReplaceWithRegister'
   " Plugin to help getting used with Vim way of doing
   Plug 'takac/vim-hardtime'
   " Show git diff markers in the sign column and stages/preview/undoes hunks
@@ -64,22 +61,19 @@ call plug#begin('~/.vim/plugged')
   Plug 'christoomey/vim-tmux-navigator'
   " Wrapper of some vim/neovim's :terminal functions
   Plug 'kassio/neoterm'
+  " Nodejs extension host for vim and neovim, load extensions like VSCode and
+  " host language servers
+  Plug 'neoclide/coc.nvim', {'branch': 'release'}
   " Check syntax in Vim asynchronously and fix files, with LSP support
   Plug 'dense-analysis/ale'
-  " Bridge between vim-lsp and ALE
-  Plug 'rhysd/vim-lsp-ale'
-  " LSP configuration
-  Plug 'prabirshrestha/vim-lsp'
-  Plug 'mattn/vim-lsp-settings'
-  " Autocompletion
-  Plug 'prabirshrestha/asyncomplete.vim'
-  Plug 'prabirshrestha/asyncomplete-lsp.vim'
   " Run your tests at the speed of thought
   Plug 'vim-test/vim-test'
   " A multi-language debugging system for Vim
   Plug 'puremourning/vimspector'
   " Emmet for Vim
   Plug 'mattn/emmet-vim'
+  " Auto close (X)HTML tags
+  Plug 'alvan/vim-closetag'
 call plug#end()
 
 colorscheme dracula

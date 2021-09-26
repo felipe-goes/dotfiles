@@ -1,13 +1,13 @@
 " dense-analysis/ale
 let g:ale_linters = {
 \   '*':          [],
-\   'python':     ['vim-lsp', 'flake9', 'pydocstyle', 'bandit', 'mypy'],
-\   'bash':       ['vim-lsp', 'shellcheck'],
-\   'vim':        ['vim-lsp', 'vint'],
-\   'html':       ['vim-lsp', 'tidy'],
-\   'css':        ['vim-lsp', 'stylelint'],
-\   'javascript': ['vim-lsp', 'eslint'],
-\   'json':       ['vim-lsp', 'eslint']
+\   'python':     ['flake8', 'pydocstyle', 'bandit', 'mypy'],
+\   'bash':       ['shellcheck'],
+\   'vim':        ['vint'],
+\   'html':       ['tidy'],
+\   'css':        ['stylelint'],
+\   'javascript': ['prettier'],
+\   'json':       ['prettier']
 \}
 let g:ale_fixers = {
 \  '*':           ['remove_trailing_lines', 'trim_whitespace'],

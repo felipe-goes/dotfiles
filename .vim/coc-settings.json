@@ -1,0 +1,21 @@
+{
+  "python.autoComplete.addBrackets": true,
+  "python.formatting.provider": "none",
+  "python.linting.enabled": true,
+  "python.linting.flake8Enabled": true,
+  "python.linting.flake8Path": "~/.local/bin/flake8",
+  "python.linting.pydocstyleEnabled": true,
+  "python.linting.pydocstylePath": "~/.local/bin/pydocstyle",
+  "python.linting.banditEnabled": true,
+  "python.linting.banditPath": "~/.local/bin/bandit",
+  "python.linting.mypyEnabled": true,
+  "python.linting.mypyPath": "~/.local/bin/mypy",
+  "sh.enable": true,
+  "vimlsp.diagnostic.enable": true,
+  "html.enable": true,
+  "html.format.enable": false,
+  "css.enable": true,
+  "javascript.format.enabled": false,
+  "typescript.format.enabled": false,
+  "json.enable": true
+}

@@ -1,3 +1,6 @@
+" Make Vim recognize a file type as you wish
+nnoremap <leader>ft :set ft=
+
 " Go to normal mode
 :inoremap <C-l> <esc>
 
@@ -41,3 +44,7 @@ nnoremap + <C-W>+
 nnoremap , <C-W><
 nnoremap ; <C-W>>
 " endif
+
+" Move between tabs
+nnoremap H gT
+nnoremap L gt

@@ -6,24 +6,17 @@
 
 " General useful configuration
 source ~/.vim/configs/config.vim
-
-" Powerline
-set runtimepath+=$HOME/.local/lib/python3.9/site-packages/powerline/bindings/vim/
-" Always show statusline
-set laststatus=2
-" Use 256 colors (Use this setting only if your terminal supports 256 colors)
-set t_Co=256
-
-" Plugin Keybindings
-source ~/.vim/configs/pluginkeybindings.vim
-
 " General purposes
-source ~/.vim/configs/generalkeybindings.vim
+source ~/.vim/configs/keybindings.vim
 
-" Coc configuration
-source ~/.vim/configs/cocconfig.vim
-" ALE configuration
-source ~/.vim/configs/aleconfig.vim
+" Plugins Keybindings
+source ~/.vim/configs/plugins.vim
+" Vim-airline
+source ~/.vim/configs/airline.vim
+" Coc
+source ~/.vim/configs/coc.vim
+" ALE
+source ~/.vim/configs/ale.vim
 
 " Vim-Plug configuration
 call plug#begin('~/.vim/plugged')
@@ -33,8 +26,9 @@ call plug#begin('~/.vim/plugged')
   Plug 'preservim/nerdtree'
   " Add file type icons to Vim plugins
   Plug 'ryanoasis/vim-devicons'
-  " Status line
-  Plug 'powerline/powerline'
+  " Lean & mean status/tabline for vim that's light as air
+  Plug 'vim-airline/vim-airline'
+  Plug 'vim-airline/vim-airline-themes'
   " For git integration
   Plug 'tpope/vim-fugitive'
   " Add, replace and remove surroundings

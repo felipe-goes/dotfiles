@@ -1,3 +1,8 @@
+" Always show statusline
+set laststatus=2
+" Use 256 colors (Use this setting only if your terminal supports 256 colors)
+set t_Co=256
+
 " Set the completion option
 set completeopt=menuone,noinsert,noselect
 

@@ -40,8 +40,6 @@ call plug#begin('~/.vim/plugged')
   Plug 'junegunn/fzf.vim'
   " Preview markdown files
   Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
-  " For cheat sheet integration
-  Plug 'dbeniamine/cheat.sh-vim'
   " Plugin to help getting used with Vim way of doing
   Plug 'takac/vim-hardtime'
   " Show git diff markers in the sign column and stages/preview/undoes hunks
@@ -68,6 +66,10 @@ call plug#begin('~/.vim/plugged')
   Plug 'mattn/emmet-vim'
   " Auto close (X)HTML tags
   Plug 'alvan/vim-closetag'
+  " Preview colours in source code while editing
+  Plug 'ap/vim-css-color'
+  " Personal Wiki for Vim
+  Plug 'vimwiki/vimwiki'
 call plug#end()
 
 colorscheme dracula

@@ -11,7 +11,7 @@ inoremap <expr> <c-x><c-f> fzf#vim#complete#path(
 nnoremap <leader>gg     :G<CR>
 
 " iamcco/markdown-preview.nvim
-nnoremap <C-m>      :MarkdownPreview<CR>
+nnoremap <leader>md :MarkdownPreview<CR>
 
 " preservim/nerdtree
 nnoremap <F2>       :NERDTreeToggle<CR>
@@ -57,7 +57,7 @@ nnoremap <leader>dd :TestNearest -strategy=jest<CR>
 " Enable just for html/css
 let g:user_emmet_install_global = 0
 autocmd FileType html,css EmmetInstall
-"
+
 " alan/vim-closetag
 " filenames like *.xml, *.html, *.xhtml, ...
 " These are the file extensions where this plugin is enabled.
@@ -86,3 +86,12 @@ let g:closetag_regions = {
 let g:closetag_shortcut = '>'
 " Add > at current position without closing the current tag, default is ''
 let g:closetag_close_shortcut = '<leader>>'
+
+" vimwiki/vimwiki
+let g:vimwiki_list = [
+      \ {
+        \ 'path': '~/.vimwiki/',
+        \ 'syntax': 'markdown',
+        \ 'ext': '.md'
+      \ }
+      \]

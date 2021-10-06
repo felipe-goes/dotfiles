@@ -46,5 +46,5 @@ nnoremap ; <C-W>>
 " endif
 
 " Move between tabs
-nnoremap H gT
-nnoremap L gt
+nnoremap <leader>[ :tabp<CR>
+nnoremap <leader>] :tabn<CR>

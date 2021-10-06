@@ -19,24 +19,24 @@ set splitbelow
 " Set diff option
 set diffopt+=vertical
 
-" Enable hidden files
-set hidden
+" Enable hidden files. Already setted for coc.nvim plugin.
+" set hidden
 
-" Disable backups
-set nobackup
-set nowritebackup
+" Disable backups. Already setted for coc.nvim plugin.
+" set nobackup
+" set nowritebackup
 
-" Set command height
-set cmdheight=1
+" Set command height. Already setted for coc.nvim plugin.
+" set cmdheight=1
 
-" Suppress some messages
-set shortmess+=c
+" Suppress some messages. Already setted for coc.nvim plugin.
+" set shortmess+=c
 
 " Enable sign column
 set signcolumn=yes
 
-" Set updatetime
-set updatetime=300
+" Set updatetime. Already setted for coc.nvim plugin.
+" set updatetime=300
 
 " Making the system clipboard accessible by Vim
 set clipboard=unnamed

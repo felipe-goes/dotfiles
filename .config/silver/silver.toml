@@ -1,0 +1,34 @@
+[[left]]
+name = "dir"
+color.background = "blue"
+color.foreground = "black"
+
+[[left]]
+name = "git"
+color.background = "green"
+color.foreground = "black"
+
+[[right]]
+name = "status"
+color.background = "white"
+color.foreground = "black"
+
+[[right]]
+name = "cmdtime"
+color.background = "magenta"
+color.foreground = "black"
+
+[[right]]
+name = "shell"
+color.background = "green"
+color.foreground = "black"
+
+[dir.aliases]
+"\ue62b" = "~/.vim"
+"\uf675" = "~/Public/Dev/"
+"\ufb37" = "~/Public/MTG"
+"\uf308" = "~/Public/Dev/Alura/Docker"
+"\ue702" = "~/Public/Dev/Alura/Git GitHub"
+"\ue76e" = "~/Public/Dev/Alura/PostgreSQL"
+"\ue235" = "~/Public/Dev/Alura/Python"
+"\ue62b" = "~/Public/Dev/Alura/Vim"

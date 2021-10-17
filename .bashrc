@@ -154,13 +154,17 @@ alias tmuxenv='~/.tmux/tmuxenv.sh'
 # Quando for customizar é só matar o processo do daemon e recarregar o .bashrc
 # ps -ef | grep powerline-daemon
 #export PATH="$PATH:/home/felipe/.local/bin/"
-export LC_ALL=en_US.UTF-8
-powerline-daemon -q
-POWERLINE_BASH_CONTINUATION=1
-POWERLINE_BASH_SELECT=1
-source /home/felipe/.local/lib/python3.9/site-packages/powerline/bindings/bash/powerline.sh
+# export LC_ALL=en_US.UTF-8
+# powerline-daemon -q
+# POWERLINE_BASH_CONTINUATION=1
+# POWERLINE_BASH_SELECT=1
+# source /home/felipe/.local/lib/python3.9/site-packages/powerline/bindings/bash/powerline.sh
 
 # Para o fzf
 # Atalhos úteis: ctrl-r, ctrl-t, alt-c
 source /usr/share/fzf/completion.bash
 source /usr/share/fzf/key-bindings.bash
+
+# Necessário para que o silver funcione
+export PATH="$PATH:/home/felipe/.cargo/bin"
+source <(silver init)

@@ -145,6 +145,9 @@ ex() {
 # Adicionado ao bashrc
 ## Alias
 alias eg=tldr
+alias ls='exa -lg --icons'
+alias la='exa -lga --icons'
+alias lt='exa --icons --tree --level=2'
 alias config='/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
 alias alura='cd ~/Public/Dev/Alura'
 alias conkyconfig='conky -c ~/.config/conky/vision/Z333-vision.conkyrc'

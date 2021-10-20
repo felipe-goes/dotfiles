@@ -8,7 +8,7 @@
 
 function tmuxenv() {
   local env=$1
-  local validSessions=("alura" "mtg")
+  local validSessions=("alura" "mtg" "fem")
   declare local existingSession
 
   # Check which session create
@@ -62,6 +62,35 @@ function tmuxenv() {
       tmux new-window -t 3
       tmux rename-window -t 3 "${windows[2]}"
       tmux send-keys -t "${windows[2]}" "cd ~/Public/MTG/mtg-postgres" C-m "clear" C-m
+    fi
+
+    # Attach to default window
+    tmux select-window -t 1
+    tmux select-pane -t 1
+    tmux a -t "${session}":"${windows[0]}"
+  elif [[ "${env^^}" == "${validSessions[2]^^}" ]]; then
+    local session="Frontend-Mentor"
+    declare -a local windows=("project" "styleguide" "bash")
+
+    existingSession=$(tmux list-sessions | grep -i frontend-mentor | sed s/:.*//)
+
+    # Check if session already exist before creating one
+    if [[ "${existingSession^^}" != "${session^^}" ]]; then
+      tmux new-session -d -s $session
+
+      # Project Script Window
+      tmux rename-window -t 1 "${windows[0]}"
+      tmux send-keys -t "${windows[0]}" "cd ~/Public/Dev/frontend-mentor" C-m "clear" C-m
+
+      # Styleguide Window
+      tmux new-window -t 2
+      tmux rename-window -t 2 "${windows[1]}"
+      tmux send-keys -t "${windows[1]}" "cd ~/Public/Dev/frontend-mentor" C-m "clear" C-m
+
+      # Bash Window
+      tmux new-window -t 3
+      tmux rename-window -t 3 "${windows[2]}"
+      tmux send-keys -t "${windows[2]}" "cd ~/Public/Dev/frontend-mentor" C-m "clear" C-m
     fi
 
     # Attach to default window

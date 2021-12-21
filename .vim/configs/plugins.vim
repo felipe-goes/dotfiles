@@ -29,9 +29,9 @@ tnoremap <c-q> <c-\><c-n>:Ttoggle<CR>
 " puremourning/vimspector
 nnoremap <leader>da :call vimspector#Launch()<CR>
 nnoremap <leader>dx :call vimspector#Reset()<CR>
-nnoremap <S-k> :call vimspector#StepOut()<CR>
-nnoremap <S-l> :call vimspector#StepInto()<CR>
-nnoremap <S-j> :call vimspector#StepOver()<CR>
+" nnoremap <S-k> :call vimspector#StepOut()<CR>
+" nnoremap <S-l> :call vimspector#StepInto()<CR>
+" nnoremap <S-j> :call vimspector#StepOver()<CR>
 nnoremap <leader>d_ :call vimspector#Restart()<CR>
 nnoremap <leader>dn :call vimspector#Continue()<CR>
 nnoremap <leader>drc :call vimspector#RunToCursor()<CR>

@@ -39,8 +39,11 @@ set splitright
 set clipboard=unnamedplus
 set confirm
 set exrc
-set backup
-set backupdir=~/.local/share/nvim/backup//
+set nobackup      "" Some servers have issues with backup files, see #649
+set nowritebackup "" Some servers have issues with backup files, see #649
+set shortmess+=c  "" don't give |ins-completion-menu| messages.
+" set backup
+" set backupdir=~/.local/share/nvim/backup//
 set updatetime=300 " Reduce time for highlighting other references
 set redrawtime=10000 " Allow more time for loading syntax on large files
 
@@ -52,8 +55,6 @@ let mapleader = "\<space>"
 
 nmap <leader>ve :edit ~/.config/nvim/init.vim<cr>
 nmap <leader>vc :edit ~/.config/nvim/coc-settings.json<cr>
-nmap <leader>wk :edit ~/.config/nvim/wiki/index.md<cr>
-nmap <leader>gr :edit ~/.config/nvim/wiki/guia-rapido.md<cr>
 nmap <leader>vr :source ~/.config/nvim/init.vim<cr>
 
 nmap <leader>s :nohlsearch<cr>
@@ -61,6 +62,9 @@ nmap <leader>Q :bufdo bdelete<cr>
 
 " Allow gf to open non-existent files
 map gf :edit <cfile><cr>
+
+" Map <leader>w to write file
+nnoremap <leader>w :w<cr>
 
 " Reselect visual selection after indenting
 vnoremap < <gv
@@ -162,7 +166,11 @@ source ~/.config/nvim/plugins/textobj-xmlattr.vim
 source ~/.config/nvim/plugins/tmux-navigator.vim
 source ~/.config/nvim/plugins/unimpaired.vim
 source ~/.config/nvim/plugins/vim-closetag.vim
+source ~/.config/nvim/plugins/vim-cmake.vim
+source ~/.config/nvim/plugins/vim-codefmt.vim
 source ~/.config/nvim/plugins/vim-csscolor.vim
+source ~/.config/nvim/plugins/vim-glaive.vim
+source ~/.config/nvim/plugins/vim-maktaba.vim
 source ~/.config/nvim/plugins/vim-test.vim
 source ~/.config/nvim/plugins/visual-multi.vim
 source ~/.config/nvim/plugins/visual-star-search.vim
@@ -174,6 +182,15 @@ doautocmd User PlugLoaded
 "--------------------------------------------------------------------------
 " Miscellaneous
 "--------------------------------------------------------------------------
+
+" Build SGDK projects with Docker and open the generated rom in BizHawk or
+" BlastEm
+nnoremap <leader>dbh :!docker run --rm -v $PWD:/m68k -t registry.gitlab.com/doragasu/docker-sgdk:v1.70 && bizhawk $PWD/out/rom.bin<cr>
+nnoremap <leader>dbl :!docker run --rm -v $PWD:/m68k -t registry.gitlab.com/doragasu/docker-sgdk:v1.70 && blastem $PWD/out/rom.bin<cr>
+
+" CPP setup done using this tutorial https://xuechendi.github.io/2019/11/11/VIM-CPP-IDE-2019-111-11-VIM_CPP_IDE
+" Code formatting
+autocmd FileType c,cpp,proto,javascript AutoFormatBuffer clang-format
 
 augroup FileTypeOverrides
     autocmd!

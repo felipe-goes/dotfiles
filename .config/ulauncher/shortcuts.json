@@ -28,5 +28,15 @@
         "is_default_search": true,
         "run_without_argument": false,
         "added": 1627783703.8954303
+    },
+    "df5b3d3f-3af1-4493-9994-a1fda1241677": {
+        "id": "df5b3d3f-3af1-4493-9994-a1fda1241677",
+        "name": "BizHawk",
+        "keyword": "bizhawk",
+        "cmd": "#!/usr/bin/bash\nbizhawk",
+        "icon": "~/Pictures/bizhawk.png",
+        "is_default_search": false,
+        "run_without_argument": true,
+        "added": 1645547349.7029927
     }
 }

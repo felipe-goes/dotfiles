@@ -156,11 +156,13 @@ alias conkyconfig='conky -c ~/.config/conky/vision/Z333-vision.conkyrc'
 alias tmuxenv='~/.tmux/tmuxenv.sh'
 alias vi=nvim
 
-## Alias para o SGDK
+## SGDK
 alias sgdk='~/.sgdk/build-sgdk.sh'
 alias sgdk-bizhawk='~/.sgdk/sgdk-bizhawk.sh'
 alias sgdk-blastem='~/.sgdk/sgdk-blastem.sh'
 alias new-sgdk-project='~/.sgdk/new-sgdk-project.sh'
+
+export GDK=/opt/SGDK
 
 # Powerline. Configuração do vídeo https://www.youtube.com/watch?v=zfm2E4E7Dok
 # Quando for customizar é só matar o processo do daemon e recarregar o .bashrc

@@ -65,6 +65,7 @@ o parágrafo adicionando espaços à esquerda do carácter `-`.
 `<leader>md` em um arquivo markdown, abre uma pré-visualização do arquivo usando
 o plugin **markdown-preview**.
 
+Substituido pelo Telescope file_browser:
 `<leader>n` abre o **NERDTree** e `<leader>N` o comando `:NERDTreeFind`.
 
 Use `<leader>q` para usar o **Sayonara** para fechar o buffer. Acostuma a usar

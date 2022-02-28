@@ -201,14 +201,14 @@ nnoremap <leader>nsg  :!/home/felipe/.sgdk/new-sgdk-project.sh<cr>
 " Miscellaneous
 "--------------------------------------------------------------------------
 
-" CPP setup done using this tutorial https://xuechendi.github.io/2019/11/11/VIM-CPP-IDE-2019-111-11-VIM_CPP_IDE
-" Code formatting
-autocmd FileType c,cpp,proto,javascript AutoFormatBuffer clang-format
 
 augroup FileTypeOverrides
     autocmd!
     " Use '//' instead of '/* */' comments
     autocmd FileType php setlocal commentstring=//%s
     autocmd TermOpen * setlocal nospell
+    " CPP setup done using this tutorial https://xuechendi.github.io/2019/11/11/VIM-CPP-IDE-2019-111-11-VIM_CPP_IDE
+    " Code formatting
+    autocmd FileType c,cpp,proto,javascript AutoFormatBuffer clang-format
 augroup END
 

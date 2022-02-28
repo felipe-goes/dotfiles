@@ -13,3 +13,6 @@ Plug 'hrsh7th/nvim-cmp'
 " Snippet
 Plug 'saadparwaiz1/cmp_luasnip'
 Plug 'L3MON4D3/LuaSnip'
+
+" null-ls
+nnoremap <leader>fmt :lua vim.lsp.buf.formatting_sync()<cr>

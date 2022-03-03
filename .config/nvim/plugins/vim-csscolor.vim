@@ -1,2 +1,0 @@
-" Preview colours in source code while editing.
-Plug 'ap/vim-css-color'

@@ -8,7 +8,7 @@
 
 function tmuxenv() {
     local env=$1
-    local validSessions=("alura" "mtg" "fem")
+    local validSessions=("alura" "mtg" "fem" "sgdk")
     declare local existingSession
 
     # Check which session create
@@ -101,6 +101,31 @@ function tmuxenv() {
         tmux select-window -t 1
         tmux select-pane -t 1
         tmux a -t "${session}":"${windows[0]}"
+    elif [[ ${env^^} == "${validSessions[3]^^}" ]]; then
+        local session="SGDK"
+        declare local windows=("Markdown" "codigo")
+
+        existingSession=$(tmux list-sessions | grep -i alura | sed s/:.*//)
+
+        # Check if session already exist before creating one
+        if [[ ${existingSession^^} != "${session^^}" ]]; then
+            tmux new-session -d -s $session
+
+            # Vim MarkDown window
+            tmux rename-window -t 1 "${windows[0]}"
+            tmux send-keys -t "${windows[0]}" "cd ~/Public/Dev/Estudos/MegaDrive/megapong_tutorial" C-m "clear" C-m
+
+            # Vim codigo window
+            tmux new-window -t 2
+            tmux rename-window -t 2 "${windows[1]}"
+            tmux send-keys -t "${windows[1]}" "cd ~/Public/Dev/Estudos/MegaDrive/megapong_tutorial/helloworld" C-m "clear" C-m
+
+            # Vim bash window
+            tmux new-window -t 3
+        fi
+
+        # Attach to default window
+        tmux a -t $session:"${windows[0]}"
     else
         echo "Please choose one of the following valid session names:"
         echo "${validSessions[@]}" | tr " " "\n"

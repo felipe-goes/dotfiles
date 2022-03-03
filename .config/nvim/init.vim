@@ -133,7 +133,6 @@ endif
 call plug#begin(data_dir . '/plugins')
 
 source ~/.config/nvim/plugins/airline.vim
-" source ~/.config/nvim/plugins/coc.vim
 source ~/.config/nvim/plugins/commentary.vim
 source ~/.config/nvim/plugins/context-commentstring.vim
 source ~/.config/nvim/plugins/devicons.vim

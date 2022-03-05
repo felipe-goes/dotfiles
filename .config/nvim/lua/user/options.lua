@@ -42,6 +42,7 @@ local options = {
   joinspaces = true,
   confirm = true,
   exrc = true,
+  shell = "/usr/bin/bash"
 }
 
 vim.cmd "set shortmess+=c"

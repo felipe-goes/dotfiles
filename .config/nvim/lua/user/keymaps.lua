@@ -110,10 +110,9 @@ vim.cmd "let g:lion_squeeze_spaces = 1" -- Remove as many spaces as possible whe
 
 -- Telescope
 keymap("n", "<leader>b", ":Telescope buffers<cr>", opts)
-keymap("n", "<leader>fb", ":Telescope file_browser<cr>", opts)
 keymap("n", "<leader>mf", ":Telescope media_files<cr>", opts)
 
-keymap("n", "<leader>ff", ":Telescope find_files<cr>", opts)
+keymap("n", "<leader>f", ":Telescope find_files<cr>", opts)
 keymap("n", "<leader>F", ":Telescope find_files no_ignore=true<cr>", opts)
 
 keymap("n", "<leader>rr", ":Telescope live_grep<cr>", opts)
@@ -122,4 +121,10 @@ keymap("n", "<leader>R", ":Telescope grep_string<cr>", opts)
 keymap("n", "<leader>gb", ":Telescope git_branches<cr>", opts)
 keymap("n", "<leader>gs", ":Telescope git_status<cr>", opts)
 keymap("n", "<leader>gc", ":Telescope git_commits<cr>", opts)
+
+-- Nvimtree
+keymap("n", "<leader>e", ":NvimTreeToggle<cr>", opts)
+
+-- Sayonara
+keymap("n", "<leader>q", ":Bdelete!<cr>", opts)
 

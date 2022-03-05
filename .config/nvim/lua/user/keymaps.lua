@@ -92,7 +92,7 @@ keymap("n", "<leader>x", ":!xdg-open %<cr><cr>", opts)
 keymap("i", ";;", "<esc>A;<esc>", opts)
 keymap("i", ",,", "<esc>A,<esc>", opts)
 
-vim.cmd "cmap w!! %!sudo tee > /dev/null %"
+vim.cmd("cmap w!! %!sudo tee > /dev/null %")
 
 -- Quickly insert an empty new line without entering insert mode
 keymap("n", "<leader>o", "o<esc>", opts)
@@ -103,20 +103,24 @@ keymap("n", "<leader>pt", ":setlocal spell spelllang=pt<cr>", opts)
 keymap("n", "<leader>en", ":setlocal spell spelllang=en_us<cr>", opts)
 keymap("n", "<leader>pe", ":setlocal spell spelllang=pt,en_us<cr>", opts)
 
+-- Formatting
+-- Clang
+keymap("n", "<leader>cl", ":!clang-format -i %<cr><cr>", opts)
+-- Null-ls
+keymap("n", "<leader>fmt", ":Format<cr>", opts)
 
 -- Plugins
 -- Lion
-vim.cmd "let g:lion_squeeze_spaces = 1" -- Remove as many spaces as possible when aligning
+vim.cmd("let g:lion_squeeze_spaces = 1") -- Remove as many spaces as possible when aligning
 
 -- Telescope
-keymap("n", "<leader>b", ":Telescope buffers<cr>", opts)
-keymap("n", "<leader>mf", ":Telescope media_files<cr>", opts)
-
-keymap("n", "<leader>f", ":Telescope find_files<cr>", opts)
+keymap("n", "<leader>ff", ":Telescope find_files<cr>", opts)
 keymap("n", "<leader>F", ":Telescope find_files no_ignore=true<cr>", opts)
-
 keymap("n", "<leader>rr", ":Telescope live_grep<cr>", opts)
 keymap("n", "<leader>R", ":Telescope grep_string<cr>", opts)
+
+keymap("n", "<leader>b", ":Telescope buffers<cr>", opts)
+keymap("n", "<leader>mf", ":Telescope media_files<cr>", opts)
 
 keymap("n", "<leader>gb", ":Telescope git_branches<cr>", opts)
 keymap("n", "<leader>gs", ":Telescope git_status<cr>", opts)
@@ -127,4 +131,3 @@ keymap("n", "<leader>e", ":NvimTreeToggle<cr>", opts)
 
 -- Sayonara
 keymap("n", "<leader>q", ":Bdelete!<cr>", opts)
-

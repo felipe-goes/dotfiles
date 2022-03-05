@@ -16,16 +16,15 @@
 -- Inspired by https://github.com/LunarVim/Neovim-from-scratch/tree/master
 -- Inspired by https://github.com/jessarcher/dotfiles
 
-require "user.options"
-require "user.keymaps"
-require "user.plugins"
-require "user.colorscheme"
-require "user.cmp"
-require "user.lsp"
-require "user.telescope"
-require "user.treesitter"
-require "user.autopairs"
-require "user.comment"
-require "user.nvim-tree" -- kind of slow. try nerdtree later
-require "user.bufferline"
-
+require("user.options")
+require("user.keymaps")
+require("user.plugins")
+require("user.colorscheme")
+require("user.cmp")
+require("user.lsp")
+require("user.telescope")
+require("user.treesitter")
+require("user.autopairs")
+require("user.comment")
+require("user.nvim-tree") -- kind of slow. try nerdtree later
+require("user.bufferline")

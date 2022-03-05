@@ -4,9 +4,9 @@ if not status_ok then
   return
 end
 
-local actions = require "telescope.actions"
+local actions = require("telescope.actions")
 
-telescope.setup {
+telescope.setup({
   defaults = {
     file_sorter = require("telescope.sorters").get_fzy_sorter,
 
@@ -98,23 +98,22 @@ telescope.setup {
   },
   extensions = {
     media_files = {
-        -- filetypes whitelist
-        -- defaults to {"png", "jpg", "mp4", "webm", "pdf"}
-        filetypes = {"png", "webp", "jpg", "jpeg"},
-        find_cmd = "rg" -- find command (defaults to `fd`)
-      },
-      fzy_native = {
-        override_generic_sorter = false,
-        override_files_sorter = true,
-      },
+      -- filetypes whitelist
+      -- defaults to {"png", "jpg", "mp4", "webm", "pdf"}
+      filetypes = { "png", "webp", "jpg", "jpeg" },
+      find_cmd = "rg", -- find command (defaults to `fd`)
+    },
+    fzy_native = {
+      override_generic_sorter = false,
+      override_files_sorter = true,
+    },
     -- Your extension configuration goes here:
     -- extension_name = {
     --   extension_config_key = value,
     -- }
     -- please take a look at the readme of the extension you want to configure
   },
-}
+})
 
 telescope.load_extension("fzy_native")
-telescope.load_extension('media_files')
-
+telescope.load_extension("media_files")

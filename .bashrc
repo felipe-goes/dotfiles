@@ -179,6 +179,4 @@ export GDK=/opt/SGDK
 source /usr/share/fzf/completion.bash
 source /usr/share/fzf/key-bindings.bash
 
-# Necessário para que o silver funcione
-export PATH="$PATH:/home/felipe/.cargo/bin"
-source <(silver init)
+eval "$(starship init bash)"

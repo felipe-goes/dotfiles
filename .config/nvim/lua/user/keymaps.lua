@@ -63,7 +63,6 @@ keymap("t", "<C-j>", "<C-\\><C-N><C-w>j", term_opts)
 keymap("t", "<C-k>", "<C-\\><C-N><C-w>k", term_opts)
 keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
 
--- Migration
 keymap("n", "<leader>nhl", ":nohlsearch<cr>", opts)
 keymap("n", "<leader>Q", ":bufdo bdelete<cr>", opts)
 
@@ -103,4 +102,24 @@ keymap("n", "<leader>O", "O<esc>", opts)
 keymap("n", "<leader>pt", ":setlocal spell spelllang=pt<cr>", opts)
 keymap("n", "<leader>en", ":setlocal spell spelllang=en_us<cr>", opts)
 keymap("n", "<leader>pe", ":setlocal spell spelllang=pt,en_us<cr>", opts)
+
+
+-- Plugins
+-- Lion
+vim.cmd "let g:lion_squeeze_spaces = 1" -- Remove as many spaces as possible when aligning
+
+-- Telescope
+keymap("n", "<leader>b", ":Telescope buffers<cr>", opts)
+keymap("n", "<leader>fb", ":Telescope file_browser<cr>", opts)
+keymap("n", "<leader>mf", ":Telescope media_files<cr>", opts)
+
+keymap("n", "<leader>ff", ":Telescope find_files<cr>", opts)
+keymap("n", "<leader>F", ":Telescope find_files no_ignore=true<cr>", opts)
+
+keymap("n", "<leader>rr", ":Telescope live_grep<cr>", opts)
+keymap("n", "<leader>R", ":Telescope grep_string<cr>", opts)
+
+keymap("n", "<leader>gb", ":Telescope git_branches<cr>", opts)
+keymap("n", "<leader>gs", ":Telescope git_status<cr>", opts)
+keymap("n", "<leader>gc", ":Telescope git_commits<cr>", opts)
 

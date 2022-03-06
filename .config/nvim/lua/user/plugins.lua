@@ -61,11 +61,26 @@ return packer.startup(function(use)
   use("goolord/alpha-nvim")
   use("antoinemadec/FixCursorHold.nvim")
   use("folke/which-key.nvim")
+  use("jessarcher/vim-heritage")
+  use("farmergreg/vim-lastplace")
+  use("unblevable/quick-scope")
+  use("tpope/vim-repeat")
+  use("ap/vim-css-color")
+  use("nelstrom/vim-visual-star-search")
 
   -- Miscellaneous
   use("tommcdo/vim-lion")
   use("kyazdani42/nvim-tree.lua")
   use("akinsho/toggleterm.nvim") -- Consider floaterm latter and bring toggleterm.lua with it
+  use("terryma/vim-smooth-scroll")
+  use("tpope/vim-surround")
+  use({
+    "iamcco/markdown-preview.nvim",
+    run = function()
+      vim.fn["mkdp#util#install"]()
+    end,
+    ft = { "markdown" },
+  })
 
   -- Completion
   use("hrsh7th/nvim-cmp") -- The completion plugin
@@ -95,9 +110,20 @@ return packer.startup(function(use)
   -- Comment
   use("JoosepAlviste/nvim-ts-context-commentstring")
   use("numToStr/Comment.nvim") -- Easily comment stuff
+  -- Save this for later if the comment plugin is getting a hard time on files with different languages
+  -- use("jessarcher/vim-context-commentstring")
 
   -- Git
   use("lewis6991/gitsigns.nvim")
+
+  -- Honorable Mention
+  -- use("tpope/vim-dispatch")
+  -- use("tpope/vim-fugitive") | use("tpope/vim-rhubarb")
+  -- use("sickill/vim-pasta")
+  -- use("airblade/vim-rooter")
+  -- use("christoomey/vim-tmux-navigator")
+  -- use("cdelledonne/vim-cmake")
+  -- Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins

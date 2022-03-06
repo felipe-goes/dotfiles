@@ -5,18 +5,19 @@ vim.cmd [[
     autocmd TextYankPost * silent!lua require('vim.highlight').on_yank({higroup = 'Visual', timeout = 200}) 
     autocmd BufWinEnter * :set formatoptions-=cro
     autocmd FileType qf set nobuflisted
+    autocmd TermOpen * setlocal nospell
   augroup end
 
   augroup _git
     autocmd!
     autocmd FileType gitcommit setlocal wrap
-    autocmd FileType gitcommit setlocal spell
+    autocmd TermOpen * setlocal nospell
   augroup end
 
   augroup _markdown
     autocmd!
     autocmd FileType markdown setlocal wrap
-    autocmd FileType markdown setlocal spell
+    autocmd TermOpen * setlocal nospell
   augroup end
 
   augroup _auto_resize

@@ -1,7 +1,5 @@
 local opts = { noremap = true, silent = true }
 
-local term_opts = { silent = true }
-
 -- Shorten function name
 local keymap = vim.api.nvim_set_keymap
 
@@ -36,7 +34,7 @@ keymap("n", "<S-l>", ":bnext<CR>", opts)
 keymap("n", "<S-h>", ":bprevious<CR>", opts)
 
 -- Insert --
--- Press jk fast to enter
+-- Press jj fast to enter
 keymap("i", "jj", "<ESC>", opts)
 
 -- Visual --
@@ -55,16 +53,6 @@ keymap("x", "J", ":move '>+1<CR>gv-gv", opts)
 keymap("x", "K", ":move '<-2<CR>gv-gv", opts)
 keymap("x", "<A-j>", ":move '>+1<CR>gv-gv", opts)
 keymap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
-
--- Terminal --
--- Better terminal navigation
-keymap("t", "<C-h>", "<C-\\><C-N><C-w>h", term_opts)
-keymap("t", "<C-j>", "<C-\\><C-N><C-w>j", term_opts)
-keymap("t", "<C-k>", "<C-\\><C-N><C-w>k", term_opts)
-keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
-
-keymap("n", "<leader>nhl", ":nohlsearch<cr>", opts)
-keymap("n", "<leader>Q", ":bufdo bdelete<cr>", opts)
 
 -- Allow gf to open non-existent files
 keymap("n", "gf", ":edit <cfile><cr>", opts)
@@ -98,36 +86,16 @@ vim.cmd("cmap w!! %!sudo tee > /dev/null %")
 keymap("n", "<leader>o", "o<esc>", opts)
 keymap("n", "<leader>O", "O<esc>", opts)
 
--- Change language spelling check
-keymap("n", "<leader>pt", ":setlocal spell spelllang=pt<cr>", opts)
-keymap("n", "<leader>en", ":setlocal spell spelllang=en_us<cr>", opts)
-keymap("n", "<leader>pe", ":setlocal spell spelllang=pt,en_us<cr>", opts)
-
 -- Formatting
 -- Clang
 keymap("n", "<leader>cl", ":!clang-format -i %<cr><cr>", opts)
--- Null-ls
-keymap("n", "<leader>fmt", ":Format<cr>", opts)
 
 -- Plugins
 -- Lion
 vim.cmd("let g:lion_squeeze_spaces = 1") -- Remove as many spaces as possible when aligning
 
 -- Telescope
-keymap("n", "<leader>ff", ":Telescope find_files<cr>", opts)
-keymap("n", "<leader>F", ":Telescope find_files no_ignore=true<cr>", opts)
-keymap("n", "<leader>rr", ":Telescope live_grep<cr>", opts)
 keymap("n", "<leader>R", ":Telescope grep_string<cr>", opts)
 
-keymap("n", "<leader>b", ":Telescope buffers<cr>", opts)
 keymap("n", "<leader>mf", ":Telescope media_files<cr>", opts)
 
-keymap("n", "<leader>gb", ":Telescope git_branches<cr>", opts)
-keymap("n", "<leader>gs", ":Telescope git_status<cr>", opts)
-keymap("n", "<leader>gc", ":Telescope git_commits<cr>", opts)
-
--- Nvimtree
-keymap("n", "<leader>e", ":NvimTreeToggle<cr>", opts)
-
--- Sayonara
-keymap("n", "<leader>q", ":Bdelete!<cr>", opts)

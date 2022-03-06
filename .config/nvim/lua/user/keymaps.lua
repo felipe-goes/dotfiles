@@ -86,16 +86,6 @@ vim.cmd("cmap w!! %!sudo tee > /dev/null %")
 keymap("n", "<leader>o", "o<esc>", opts)
 keymap("n", "<leader>O", "O<esc>", opts)
 
--- Formatting
--- Clang
-keymap("n", "<leader>cl", ":!clang-format -i %<cr><cr>", opts)
-
 -- Plugins
 -- Lion
 vim.cmd("let g:lion_squeeze_spaces = 1") -- Remove as many spaces as possible when aligning
-
--- Telescope
-keymap("n", "<leader>R", ":Telescope grep_string<cr>", opts)
-
-keymap("n", "<leader>mf", ":Telescope media_files<cr>", opts)
-

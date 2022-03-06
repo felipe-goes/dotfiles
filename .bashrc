@@ -69,9 +69,9 @@ if ${use_color}; then
     # Enable colors for ls, etc.  Prefer ~/.dir_colors #64489
     if type -P dircolors > /dev/null; then
         if [[ -f ~/.dir_colors ]]; then
-            eval $(dircolors -b ~/.dir_colors)
+            eval "$(dircolors -b ~/.dir_colors)"
         elif [[ -f /etc/DIR_COLORS ]]; then
-            eval $(dircolors -b /etc/DIR_COLORS)
+            eval "$(dircolors -b /etc/DIR_COLORS)"
         fi
     fi
 
@@ -149,34 +149,22 @@ alias ls='exa -lg --icons'
 alias la='exa -lga --icons'
 alias lt='exa --icons --tree --level=2'
 alias config='/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
+alias vi=nvim
+
 alias dev='cd ~/Public/Dev'
 alias alura='cd ~/Public/Dev/Alura'
 alias projetos='cd ~/Public/Dev/Projetos'
 alias conkyconfig='conky -c ~/.config/conky/vision/Z333-vision.conkyrc'
-alias tmuxenv='~/.tmux/tmuxenv.sh'
-alias vi=nvim
-
-## SGDK
-alias sgdk='~/.sgdk/build-sgdk.sh'
-alias sgdk-bizhawk='~/.sgdk/sgdk-bizhawk.sh'
-alias sgdk-blastem='~/.sgdk/sgdk-blastem.sh'
-alias new-sgdk-project='~/.sgdk/new-sgdk-project.sh'
-
-export GDK=/opt/SGDK
-
-# Powerline. Configuração do vídeo https://www.youtube.com/watch?v=zfm2E4E7Dok
-# Quando for customizar é só matar o processo do daemon e recarregar o .bashrc
-# ps -ef | grep powerline-daemon
-#export PATH="$PATH:/home/felipe/.local/bin/"
-# export LC_ALL=en_US.UTF-8
-# powerline-daemon -q
-# POWERLINE_BASH_CONTINUATION=1
-# POWERLINE_BASH_SELECT=1
-# source /home/felipe/.local/lib/python3.9/site-packages/powerline/bindings/bash/powerline.sh
 
 # Para o fzf
 # Atalhos úteis: ctrl-r, ctrl-t, alt-c
 source /usr/share/fzf/completion.bash
 source /usr/share/fzf/key-bindings.bash
+
+# Exports
+export GDK=/opt/SGDK
+
+export PATH="$HOME/.sgdk:$PATH"
+export PATH="$HOME/.tmux:$PATH"
 
 eval "$(starship init bash)"

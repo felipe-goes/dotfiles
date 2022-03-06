@@ -24,7 +24,7 @@ null_ls.setup({
     formatting.prettier.with({ extra_args = { "--no-semi", "--single-quote", "--jsx-single-quote" } }),
     formatting.black.with({ extra_args = { "--fast" } }),
     formatting.shfmt.with({ extra_args = { "-s", "-i", "2" } }),
-    -- formatting.clang_format is not working. look in keymaps.lua for clang-format
+    -- formatting.clang_format, -- is not working. look in keymaps.lua for clang-format
     formatting.stylua.with({ extra_args = { "--indent-type", "Spaces", "--indent-width", "2" } }),
     diagnostics.flake8,
     diagnostics.shellcheck,

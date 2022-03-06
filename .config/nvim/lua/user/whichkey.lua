@@ -183,6 +183,13 @@ local mappings = {
     h = { "<cmd>ToggleTerm size=10 direction=horizontal<cr>", "Horizontal" },
     v = { "<cmd>ToggleTerm size=80 direction=vertical<cr>", "Vertical" },
   },
+
+  c = {
+    name = "C/C++",
+    l = { "<cmd>!clang-format -i %<cr><cr>", "Clang Format" },
+    s = { "<cmd>!build-sgdk<cr>", "Build SGDK Project" },
+    e = { "<cmd>!sgdk-blastem<cr>", "Build and Run Blastem" },
+  },
 }
 
 local vopts = {

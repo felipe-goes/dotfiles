@@ -9,6 +9,8 @@ format = """
 [╰──❯ ](bold blue)
 """
 
+command_timeout = 750
+
 [fill]
 symbol = " "
 style = "bold green"

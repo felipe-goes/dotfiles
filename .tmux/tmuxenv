@@ -6,9 +6,10 @@
 #  \__|_| |_| |_|\__,_/_/\_\
 #
 
+validSessions=("alura" "mtg" "fem" "sgdk")
+
 function tmuxenv() {
     local env=$1
-    local validSessions=("alura" "mtg" "fem" "sgdk")
     declare local existingSession
 
     # Check which session create
@@ -133,7 +134,10 @@ function tmuxenv() {
 }
 
 if [[ $1 == "" ]]; then
-    echo "Please type session setup name."
+  echo "Please type session setup name."
+elif [[ $1 == "help" ]]; then
+  echo "Environments:"
+  echo "${validSessions[@]}" | sed 's/ /, /g'
 else
     tmuxenv "$1" "$2"
 fi

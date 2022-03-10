@@ -72,7 +72,7 @@ return packer.startup(function(use)
   use("tommcdo/vim-lion")
   use("kyazdani42/nvim-tree.lua")
   use("akinsho/toggleterm.nvim") -- Consider floaterm latter and bring toggleterm.lua with it
-  use("terryma/vim-smooth-scroll")
+  use("karb94/neoscroll.nvim")
   use("tpope/vim-surround")
   use({
     "iamcco/markdown-preview.nvim",

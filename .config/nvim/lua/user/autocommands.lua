@@ -1,4 +1,9 @@
 vim.cmd [[
+  augroup FileTypeOverrides
+    autocmd!
+    autocmd TermOpen * setlocal nospell
+  augroup END
+
   augroup _general_settings
     autocmd!
     autocmd FileType qf,help,man,lspinfo nnoremap <silent> <buffer> q :close<CR> 

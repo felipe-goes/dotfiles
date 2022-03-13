@@ -57,9 +57,6 @@ keymap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
 -- Allow gf to open non-existent files
 keymap("n", "gf", ":edit <cfile><cr>", opts)
 
--- Map <leader>w to write file
-keymap("n", "<leader>w", ":w<cr>", opts)
-
 -- Maintain the cursor position when yanking a visual selection
 -- http://ddrscott.github.io/blog/2016/yank-without-jank/
 keymap("v", "y", "myy`y", opts)
@@ -89,3 +86,4 @@ keymap("n", "<leader>O", "O<esc>", opts)
 -- Plugins
 -- Lion
 vim.cmd("let g:lion_squeeze_spaces = 1") -- Remove as many spaces as possible when aligning
+

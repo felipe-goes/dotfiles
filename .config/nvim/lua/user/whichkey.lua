@@ -161,7 +161,7 @@ local mappings = {
     },
   },
 
-  s = {
+  S = {
     name = "Search",
     b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
     c = { "<cmd>Telescope colorscheme<cr>", "Colorscheme" },
@@ -184,11 +184,12 @@ local mappings = {
     v = { "<cmd>ToggleTerm size=80 direction=vertical<cr>", "Vertical" },
   },
 
-  c = {
+  s = {
     name = "C/C++",
-    l = { "<cmd>!clang-format -i %<cr><cr>", "Clang Format" },
-    s = { "<cmd>!build-sgdk<cr>", "Build SGDK Project" },
-    e = { "<cmd>!sgdk-blastem<cr>", "Build and Run Blastem" },
+    b = { "<cmd>!sgdk build<cr>", "Build SGDK Project" },
+    e = { "<cmd>!sgdk blastem<cr>", "Build and Run Blastem" },
+    h = { "<cmd>!sgdk bizhawk<cr>", "Build and Run Bizhawk" },
+    f = { "<cmd>!clang-format -i %<cr><cr>", "Clang Format" },
   },
 }
 

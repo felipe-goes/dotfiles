@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 # System
 pacman -S \
   tldr \
@@ -11,7 +13,8 @@ pacman -S \
   flatpak \
   python \
   nodejs \
-  npm &&
+  npm \
+  fd
 
 # Neovim
 pacman -S \
@@ -28,7 +31,7 @@ pacman -S \
   clang \
   lazygit \
   ncdu \
-  zk &&
+  zk
 
 # Terminal customization
 pacman -S \
@@ -36,7 +39,7 @@ pacman -S \
   alacritty \
   tmux \
   ueberzug \
-  exa &&
+  exa
 
 # Development
 pacman -S \

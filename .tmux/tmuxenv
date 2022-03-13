@@ -87,12 +87,12 @@ function tmuxenv() {
 
       # Vim MarkDown window
       tmux rename-window -t 1 "${windows[0]}"
-      tmux send-keys -t "${windows[0]}" "cd ~/Public/Dev/Estudos/MegaDrive/megapong_tutorial" C-m "clear" C-m
+      tmux send-keys -t "${windows[0]}" "cd ~/Public/Dev/Estudos/MegaDrive/" C-m "clear" C-m
 
       # Vim codigo window
       tmux new-window -t 2
       tmux rename-window -t 2 "${windows[1]}"
-      tmux send-keys -t "${windows[1]}" "cd ~/Public/Dev/Estudos/MegaDrive/megapong_tutorial/helloworld" C-m "clear" C-m
+      tmux send-keys -t "${windows[1]}" "cd ~/Public/Dev/Estudos/MegaDrive/" C-m "clear" C-m
 
       # Vim bash window
       tmux new-window -t 3

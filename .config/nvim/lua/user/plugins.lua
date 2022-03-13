@@ -67,6 +67,7 @@ return packer.startup(function(use)
   use("tpope/vim-repeat")
   use("ap/vim-css-color")
   use("nelstrom/vim-visual-star-search")
+  use("chrisbra/csv.vim")
 
   -- Miscellaneous
   use("tommcdo/vim-lion")

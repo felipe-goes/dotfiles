@@ -1,0 +1,13 @@
+#!/usr/bin/bash
+
+className=$1
+
+cp "$HOME"/Templates/cpp-class-template.zip .
+unzip cpp-class-template.zip >/dev/null
+rm cpp-class-template.zip
+
+sed -i "s/RenameClass/$className/g" RenameClass.cpp
+sed -i "s/RenameClass/$className/g" RenameClass.hpp
+
+mv RenameClass.cpp "$className".cpp
+mv RenameClass.hpp "$className".hpp

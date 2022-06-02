@@ -143,11 +143,11 @@ local mappings = {
     f = { "<cmd>lua vim.lsp.buf.formatting()<cr>", "Format" },
     i = { "<cmd>LspInfo<cr>", "Info" },
     I = { "<cmd>LspInstallInfo<cr>", "Installer Info" },
-    j = {
+    k = {
       "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>",
       "Next Diagnostic",
     },
-    k = {
+    j = {
       "<cmd>lua vim.lsp.diagnostic.goto_prev()<cr>",
       "Prev Diagnostic",
     },
@@ -184,12 +184,14 @@ local mappings = {
     v = { "<cmd>ToggleTerm size=80 direction=vertical<cr>", "Vertical" },
   },
 
-  s = {
+  c = {
     name = "C/C++",
     b = { "<cmd>!sgdk build<cr>", "Build SGDK Project" },
     e = { "<cmd>!sgdk blastem<cr>", "Build and Run Blastem" },
     h = { "<cmd>!sgdk bizhawk<cr>", "Build and Run Bizhawk" },
     f = { "<cmd>!clang-format -i %<cr><cr>", "Clang Format" },
+    c = { "<cmd>!sgdk clean<cr>", "Clean SGDK Project" },
+    C = { ":!create-cpp-class ", "Create C++ Class" },
   },
 }
 

@@ -164,7 +164,8 @@ source /usr/share/fzf/key-bindings.bash
 # Exports
 export GDK=/opt/SGDK
 
-export PATH="$HOME/.sgdk:$PATH"
+export PATH="$HOME/.scripts/sgdk:$PATH"
+export PATH="$HOME/.scripts/cpp:$PATH"
 export PATH="$HOME/.tmux:$PATH"
 
 eval "$(starship init bash)"

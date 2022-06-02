@@ -1,13 +1,28 @@
 #!/usr/bin/bash
 
 className=$1
+inheritClass=$2
 
 cp "$HOME"/Templates/cpp-class-template.zip .
 unzip cpp-class-template.zip >/dev/null
 rm cpp-class-template.zip
 
-sed -i "s/RenameClass/$className/g" RenameClass.cpp
-sed -i "s/RenameClass/$className/g" RenameClass.hpp
+if [[ $inheritClass == "" ]]; then
+  sed "2,3d" RenameClass.hpp >temp.hpp
+  rm RenameClass.hpp
+  mv temp.hpp RenameClass.hpp
+
+  sed -i "s/RenameClass/$className/g" RenameClass.hpp
+  sed -i "s/RenameClass/$className/g" RenameClass.cpp
+
+else
+  sed -i "s/RenameInheritClass/$inheritClass/" RenameClass.hpp
+  sed -i "s/class RenameClass/class $className : public $inheritClass/" RenameClass.hpp
+  sed -i "s/RenameClass/$className/g" RenameClass.hpp
+
+  sed -i "s/RenameClass/$className/g" RenameClass.cpp
+
+fi
 
 mv RenameClass.cpp "$className".cpp
 mv RenameClass.hpp "$className".hpp

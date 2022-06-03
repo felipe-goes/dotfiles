@@ -5,6 +5,13 @@ if not status_ok then
 end
 
 bufferline.setup({
+  config = {
+    groups = {
+      items = {
+        require("bufferline.groups").builtin.pinned:with({ icon = "" }),
+      },
+    },
+  },
   options = {
     numbers = "none", -- | "ordinal" | "buffer_id" | "both" | function({ ordinal, id, lower, raise }): string,
     close_command = "Bdelete! %d", -- can be a string | function, see "Mouse actions"
@@ -15,11 +22,9 @@ bufferline.setup({
     -- and so changing this is NOT recommended, this is intended
     -- as an escape hatch for people who cannot bear it for whatever reason
     indicator_icon = "▎",
-    buffer_close_icon = "",
-    -- buffer_close_icon = '',
+    buffer_close_icon = "", -- buffer_close_icon = '',
     modified_icon = "●",
-    close_icon = "",
-    -- close_icon = '',
+    close_icon = "", -- close_icon = '',
     left_trunc_marker = "",
     right_trunc_marker = "",
     --- name_formatter can be used to change the buffer's label in the bufferline.
@@ -32,9 +37,9 @@ bufferline.setup({
     --     return vim.fn.fnamemodify(buf.name, ':t:r')
     --   end
     -- end,
-    max_name_length = 30,
-    max_prefix_length = 30, -- prefix used when a buffer is de-duplicated
-    tab_size = 21,
+    max_name_length = 18,
+    max_prefix_length = 15, -- prefix used when a buffer is de-duplicated
+    tab_size = 18,
     diagnostics = false, -- | "nvim_lsp" | "coc",
     diagnostics_update_in_insert = false,
     -- diagnostics_indicator = function(count, level, diagnostics_dict, context)

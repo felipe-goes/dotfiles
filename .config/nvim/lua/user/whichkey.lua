@@ -95,6 +95,7 @@ local mappings = {
   ["f"] = { "<cmd>Telescope find_files<cr>", "Find Files" },
   ["F"] = { "<cmd>Telescope live_grep<cr>", "Find Text" },
   ["P"] = { "<cmd>Telescope projects<cr>", "Projects" },
+  ["L"] = { "<cmd>BufferLineTogglePin<cr>", "Lock Buffer" },
 
   p = {
     name = "Packer",

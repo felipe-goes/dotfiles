@@ -186,14 +186,18 @@ local mappings = {
     v = { "<cmd>ToggleTerm size=80 direction=vertical<cr>", "Vertical" },
   },
 
-  c = {
-    name = "C/C++",
+  s = {
+    name = "SGDK",
     b = { "<cmd>!sgdk build<cr>", "Build SGDK Project" },
     e = { "<cmd>!sgdk blastem<cr>", "Build and Run Blastem" },
     h = { "<cmd>!sgdk bizhawk<cr>", "Build and Run Bizhawk" },
-    f = { "<cmd>!clang-format -i %<cr><cr>", "Clang Format" },
     c = { "<cmd>!sgdk clean<cr>", "Clean SGDK Project" },
-    C = { ":!create-cpp-class ", "Create C++ Class" },
+  },
+
+  c = {
+    name = "C/C++",
+    f = { "<cmd>!clang-format -i %<cr><cr>", "Clang Format" },
+    c = { ":!create-cpp-class ", "Create C++ Class" },
   },
 
   d = {

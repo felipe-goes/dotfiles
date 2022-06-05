@@ -68,6 +68,10 @@ return packer.startup(function(use)
   use("ap/vim-css-color")
   use("nelstrom/vim-visual-star-search")
   use("chrisbra/csv.vim")
+  use("mfussenegger/nvim-dap")
+  use("nvim-telescope/telescope-dap.nvim")
+  use("theHamsta/nvim-dap-virtual-text")
+  use("rcarriga/nvim-dap-ui")
 
   -- Miscellaneous
   use("tommcdo/vim-lion")

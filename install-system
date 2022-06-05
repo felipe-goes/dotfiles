@@ -31,7 +31,8 @@ pacman -S \
   clang \
   lazygit \
   ncdu \
-  zk
+  zk \
+  lldb
 
 # Terminal customization
 pacman -S \

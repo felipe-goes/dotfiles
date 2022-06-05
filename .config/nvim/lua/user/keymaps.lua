@@ -91,3 +91,12 @@ keymap("n", "<leader>O", "O<esc>", opts)
 -- Lion
 vim.cmd("let g:lion_squeeze_spaces = 1") -- Remove as many spaces as possible when aligning
 
+-- Dap Debugger
+keymap("n", "<leader>dH", ":lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>", opts)
+keymap("n", "<leader>dr", ":lua require'dap'.repl.toggle({}, 'vsplit')<CR><C-w>l", opts)
+vim.keymap.set("n", "<C-A-k>", function() require'dap'.step_out() end)
+vim.keymap.set("n", "<C-A-l>", function() require'dap'.step_into() end)
+vim.keymap.set("n", "<C-A-j>", function() require'dap'.step_over() end)
+vim.keymap.set("n", "<C-A-h>", function() require'dap'.continue() end)
+vim.keymap.set("n", "<leader>d?", function() local widgets=require'dap.ui.widgets';widgets.centered_float(widgets.scopes) end)
+

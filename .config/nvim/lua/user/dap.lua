@@ -10,7 +10,7 @@ if not dapui_status_ok then
   return
 end
 
-local dapvt_status_ok, dapvt = pcall(require, "dap-virtual-text")
+local dapvt_status_ok, dapvt = pcall(require, "nvim-dap-virtual-text")
 if not dapvt_status_ok then
   vim.notify("Missing dap-virtual-text: dap.lua")
   return

@@ -34,8 +34,8 @@ keymap("n", "<S-l>", ":BufferLineCycleNext<CR>", opts)
 keymap("n", "<S-h>", ":BufferLineCyclePrev<CR>", opts)
 
 -- Move buffers
-keymap("n", "<C-l>", ":BufferLineMoveNext<CR>", opts)
-keymap("n", "<C-h>", ":BufferLineMovePrev<CR>", opts)
+keymap("n", "<A-l>", ":BufferLineMoveNext<CR>", opts)
+keymap("n", "<A-h>", ":BufferLineMovePrev<CR>", opts)
 
 -- Insert --
 -- Press jj fast to enter

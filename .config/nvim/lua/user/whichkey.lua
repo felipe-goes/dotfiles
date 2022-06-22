@@ -202,18 +202,18 @@ local mappings = {
 
   d = {
     name = "Debugger",
-    h = { function() require"dap".toggle_breakpoint() end, "Toggle Breakpoint" },
+    b = { function() require"dap".toggle_breakpoint() end, "Toggle Breakpoint" },
     n = { function() require"dap".run_to_cursor() end, "Run to Cursor" },
     c = { function() require"dap".terminate() end, "Terminate" },
     R = { function() require"dap".clear_breakpoints() end, "Clear Breakpoints" },
     e = { function() require"dap".set_exception_breakpoints() end, "Set Exception Breakpoints" },
     i = { function() require"dap.ui.widgets".hover() end, "Hover" },
     q = { ":lua require'dapui'.toggle()<CR>", "Toggle Debugger Interface" },
-    r = { ":lua require'dap'.repl.toggle({}, 'vsplit')<CR><C-w>l", "Clear Breakpoints" },
+    r = { ":lua require'dap'.repl.toggle({}, 'vsplit')<CR><C-w>l", "Toggle Dap-Repl" },
     k = { ":lua require'dap'.up()<CR>zz", "Up the Stack" },
     j = { ":lua require'dap'.down()<CR>zz", "Down the Stack" },
     f = { ":Telescope dap frames<CR>", "Telescope frames" },
-    b = { ":Telescope dap list_breakpoint<CR>", "Telescope List Breakpoints" },
+    B = { ":Telescope dap list_breakpoint<CR>", "Telescope List Breakpoints" },
     C = { ":Telescope dap commands<CR>", "Telescope Debugger Commands" },
   },
 }

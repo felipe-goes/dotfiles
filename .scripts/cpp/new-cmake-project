@@ -1,0 +1,5 @@
+#!/usr/bin/bash
+
+cp "$HOME"/Templates/cmake-template.zip .
+unzip cmake-template.zip > /dev/null
+rm cmake-template.zip

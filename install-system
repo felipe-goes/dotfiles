@@ -45,5 +45,6 @@ pacman -S \
 # Development
 pacman -S \
   cmake \
-  docker
+  docker \
+  catch2
 

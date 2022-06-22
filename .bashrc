@@ -166,6 +166,7 @@ export GDK=/opt/SGDK
 
 export PATH="$HOME/.scripts/sgdk:$PATH"
 export PATH="$HOME/.scripts/cpp:$PATH"
+export PATH="$HOME/.scripts/autoconfig:$PATH"
 export PATH="$HOME/.tmux:$PATH"
 
 eval "$(starship init bash)"

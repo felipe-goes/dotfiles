@@ -20,12 +20,12 @@ end
 --   פּ ﯟ   some other good icons
 local kind_icons = {
   Text = "",
-  Method = "m",
+  Method = "",
   Function = "",
-  Constructor = "",
-  Field = "",
-  Variable = "",
-  Class = "",
+  Constructor = "",
+  Field = "ﰠ",
+  Variable = "",
+  Class = "ﴯ",
   Interface = "",
   Module = "",
   Property = "",
@@ -36,10 +36,10 @@ local kind_icons = {
   Snippet = "",
   Color = "",
   File = "",
-  Reference = "",
+  Reference = "",
   Folder = "",
   EnumMember = "",
-  Constant = "",
+  Constant = "",
   Struct = "",
   Event = "",
   Operator = "",
@@ -124,6 +124,9 @@ cmp.setup({
     select = false,
   },
   window = {
+    completion = {
+      border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
+    },
     documentation = {
       border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
     },

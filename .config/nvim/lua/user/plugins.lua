@@ -68,10 +68,6 @@ return packer.startup(function(use)
   use("ap/vim-css-color")
   use("nelstrom/vim-visual-star-search")
   use("chrisbra/csv.vim")
-  use("mfussenegger/nvim-dap")
-  use("nvim-telescope/telescope-dap.nvim")
-  use("theHamsta/nvim-dap-virtual-text")
-  use("rcarriga/nvim-dap-ui")
 
   -- Miscellaneous
   use("tommcdo/vim-lion")
@@ -93,6 +89,7 @@ return packer.startup(function(use)
   use("hrsh7th/cmp-path") -- path completions
   use("hrsh7th/cmp-cmdline") -- cmdline completion
   use("saadparwaiz1/cmp_luasnip") -- snippet completions
+  use("ray-x/lsp_signature.nvim") -- lsp signature hint as you type
   use("hrsh7th/cmp-nvim-lsp")
   use("hrsh7th/cmp-nvim-lua")
 
@@ -120,6 +117,12 @@ return packer.startup(function(use)
 
   -- Git
   use("lewis6991/gitsigns.nvim")
+
+  -- Debugger
+  use("mfussenegger/nvim-dap")
+  use("nvim-telescope/telescope-dap.nvim")
+  use("theHamsta/nvim-dap-virtual-text")
+  use("rcarriga/nvim-dap-ui")
 
   -- Honorable Mention
   -- use("tpope/vim-dispatch")

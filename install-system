@@ -14,7 +14,8 @@ pacman -S \
   python \
   nodejs \
   npm \
-  fd
+  fd \
+  bat
 
 # Neovim
 pacman -S \

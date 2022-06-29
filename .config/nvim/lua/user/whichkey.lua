@@ -198,6 +198,11 @@ local mappings = {
     name = "C/C++",
     f = { "<cmd>!clang-format -i %<cr><cr>", "Clang Format" },
     c = { ":!create-cpp-class ", "Create C++ Class" },
+    b = { "<cmd>CMake build<cr>", "CMake Build" },
+    r = { "<cmd>CMake build_and_run<cr>", "CMake Build & Run" },
+    d = { "<cmd>CMake build_and_debug<cr>", "CMake Build & Debug" },
+    s = { "<cmd>CMake select_target<cr>", "CMake Select Target" },
+    S = { "<cmd>CMake select_build_type<cr>", "CMake Select Build Type" },
   },
 
   d = {

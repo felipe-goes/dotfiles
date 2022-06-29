@@ -124,6 +124,9 @@ return packer.startup(function(use)
   use("theHamsta/nvim-dap-virtual-text")
   use("rcarriga/nvim-dap-ui")
 
+  -- Build
+  use("Shatur/neovim-cmake")
+
   -- Honorable Mention
   -- use("tpope/vim-dispatch")
   -- use("tpope/vim-fugitive") | use("tpope/vim-rhubarb")

@@ -8,6 +8,8 @@ end
 
 vim.cmd([[
 try
+  packadd! dracula
+  syntax enable
   colorscheme dracula
 catch /^Vim\%((\a\+)\)\=:E185/
   colorscheme default

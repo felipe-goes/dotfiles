@@ -1,3 +1,4 @@
+#!/bin/bash
 # Base16 Styling Guidelines:
 
 base00=default   # - Default

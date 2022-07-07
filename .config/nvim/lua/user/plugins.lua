@@ -53,6 +53,13 @@ return packer.startup(function(use)
     run = ":TSUpdate",
   })
   use("kyazdani42/nvim-web-devicons")
+  use("stevearc/dressing.nvim")
+  use({
+    "ziontee113/icon-picker.nvim",
+    config = function()
+      require("icon-picker")
+    end,
+  })
   use("akinsho/bufferline.nvim")
   use("moll/vim-bbye")
   use("tamton-aquib/staline.nvim")
@@ -82,6 +89,7 @@ return packer.startup(function(use)
     end,
     ft = { "markdown" },
   })
+  use {'kevinhwang91/nvim-ufo', requires = 'kevinhwang91/promise-async'}
 
   -- Completion
   use("hrsh7th/nvim-cmp") -- The completion plugin

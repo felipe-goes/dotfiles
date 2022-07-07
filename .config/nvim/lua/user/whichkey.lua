@@ -80,11 +80,7 @@ local opts = {
 }
 
 local mappings = {
-  ["a"] = { "<cmd>Alpha<cr>", "Alpha" },
-  ["b"] = {
-    "<cmd>Telescope buffers<cr>",
-    "Buffers",
-  },
+  ["b"] = { "<cmd>Telescope buffers<cr>", "Buffers" },
   ["e"] = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
   ["w"] = { "<cmd>w<CR>", "Save" },
   ["Q"] = { "<cmd>q<CR>", "Quit" },
@@ -97,15 +93,6 @@ local mappings = {
   ["F"] = { "<cmd>Telescope live_grep<cr>", "Find Text" },
   ["P"] = { "<cmd>Telescope projects<cr>", "Projects" },
   ["L"] = { "<cmd>BufferLineTogglePin<cr>", "Lock Buffer" },
-
-  p = {
-    name = "Packer",
-    c = { "<cmd>PackerCompile<cr>", "Compile" },
-    i = { "<cmd>PackerInstall<cr>", "Install" },
-    s = { "<cmd>PackerSync<cr>", "Sync" },
-    S = { "<cmd>PackerStatus<cr>", "Status" },
-    u = { "<cmd>PackerUpdate<cr>", "Update" },
-  },
 
   g = {
     name = "Git",
@@ -163,6 +150,13 @@ local mappings = {
     },
   },
 
+  p = {
+    name = "Icon Picker",
+    i = { "<cmd>PickIcons<cr>", "Pick Icons & Emoji" },
+    s = { "<cmd>PickSymbols<cr>", "Pick Symbols" },
+    a = { "<cmd>PickAltFont<cr>", "Pick Alt Font" },
+  },
+
   S = {
     name = "Search",
     b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
@@ -207,12 +201,42 @@ local mappings = {
 
   d = {
     name = "Debugger",
-    b = { function() require"dap".toggle_breakpoint() end, "Toggle Breakpoint" },
-    n = { function() require"dap".run_to_cursor() end, "Run to Cursor" },
-    c = { function() require"dap".terminate() end, "Terminate" },
-    R = { function() require"dap".clear_breakpoints() end, "Clear Breakpoints" },
-    e = { function() require"dap".set_exception_breakpoints() end, "Set Exception Breakpoints" },
-    i = { function() require"dap.ui.widgets".hover() end, "Hover" },
+    b = {
+      function()
+        require("dap").toggle_breakpoint()
+      end,
+      "Toggle Breakpoint",
+    },
+    n = {
+      function()
+        require("dap").run_to_cursor()
+      end,
+      "Run to Cursor",
+    },
+    c = {
+      function()
+        require("dap").terminate()
+      end,
+      "Terminate",
+    },
+    R = {
+      function()
+        require("dap").clear_breakpoints()
+      end,
+      "Clear Breakpoints",
+    },
+    e = {
+      function()
+        require("dap").set_exception_breakpoints()
+      end,
+      "Set Exception Breakpoints",
+    },
+    i = {
+      function()
+        require("dap.ui.widgets").hover()
+      end,
+      "Hover",
+    },
     q = { ":lua require'dapui'.toggle()<CR>", "Toggle Debugger Interface" },
     r = { ":lua require'dap'.repl.toggle({}, 'vsplit')<CR><C-w>l", "Toggle Dap-Repl" },
     k = { ":lua require'dap'.up()<CR>zz", "Up the Stack" },
@@ -231,8 +255,7 @@ local vopts = {
   noremap = true, -- use `noremap` when creating keymaps
   nowait = true, -- use `nowait` when creating keymaps
 }
-local vmappings = {
-}
+local vmappings = {}
 
 which_key.setup(setup)
 which_key.register(mappings, opts)

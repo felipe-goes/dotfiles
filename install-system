@@ -15,7 +15,8 @@ pacman -S \
   nodejs \
   npm \
   fd \
-  bat
+  bat \
+  xorg-xinput
 
 # Neovim
 pacman -S \

@@ -31,7 +31,6 @@ pacman -S \
   stylua \
   tolua++ \
   clang \
-  lazygit \
   ncdu \
   zk \
   lldb

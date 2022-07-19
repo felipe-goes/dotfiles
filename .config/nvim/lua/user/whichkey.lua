@@ -81,12 +81,12 @@ local opts = {
 
 local mappings = {
   ["b"] = { "<cmd>Telescope buffers<cr>", "Buffers" },
+  ["r"] = { "<cmd>NvimTreeRefresh<cr>", "Refresh NvimTree" },
   ["e"] = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
   ["w"] = { "<cmd>w<CR>", "Save" },
   ["Q"] = { "<cmd>q<CR>", "Quit" },
   ["q"] = { "<cmd>Bdelete!<CR>", "Close Buffer" },
   ["h"] = { "<cmd>nohlsearch<CR>", "No Highlight" },
-  ["m"] = { "<cmd>Telescope media_files<cr>", "Find Media Files" },
   ["M"] = { "<cmd>MarkdownPreviewToggle<cr>", "Markdown Preview" },
   ["H"] = { "<cmd>Telescope find_files hidden=true<cr>", "Find Files" },
   ["f"] = { "<cmd>Telescope find_files<cr>", "Find Files" },

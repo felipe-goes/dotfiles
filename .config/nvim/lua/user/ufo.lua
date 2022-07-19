@@ -61,7 +61,7 @@ ufo.setup({
   end,
 })
 
-vim.keymap.set("n", "H", function()
+vim.keymap.set("n", "U", function()
   local winid = ufo.peekFoldedLinesUnderCursor()
   if not winid then
     -- nvimlsp

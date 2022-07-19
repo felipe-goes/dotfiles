@@ -100,3 +100,5 @@ vim.keymap.set("n", "<C-A-j>", function() require'dap'.step_into() end)
 vim.keymap.set("n", "<C-A-l>", function() require'dap'.step_over() end)
 vim.keymap.set("n", "<C-A-h>", function() require'dap'.continue() end)
 
+-- follow-md-links
+vim.keymap.set("n", "<bs>", ":edit #<cr>", { silent = true })

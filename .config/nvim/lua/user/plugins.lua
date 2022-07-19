@@ -75,6 +75,7 @@ return packer.startup(function(use)
   use("norcalli/nvim-colorizer.lua")
   use("nelstrom/vim-visual-star-search")
   use("chrisbra/csv.vim")
+  use("jghauser/follow-md-links.nvim")
 
   -- Miscellaneous
   use("tommcdo/vim-lion")
@@ -113,7 +114,6 @@ return packer.startup(function(use)
 
   -- Telescope
   use("nvim-telescope/telescope.nvim")
-  use("nvim-telescope/telescope-media-files.nvim")
   use("nvim-telescope/telescope-fzy-native.nvim") -- not sure yet what it does
   use("ahmedkhalf/project.nvim")
 
@@ -141,7 +141,6 @@ return packer.startup(function(use)
   -- use("sickill/vim-pasta")
   -- use("airblade/vim-rooter")
   -- use("christoomey/vim-tmux-navigator")
-  -- use("cdelledonne/vim-cmake")
   -- Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 
   -- Automatically set up your configuration after cloning packer.nvim

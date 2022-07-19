@@ -116,6 +116,5 @@ telescope.setup({
 })
 
 telescope.load_extension("fzy_native")
-telescope.load_extension("media_files")
 telescope.load_extension("projects")
 telescope.load_extension("dap")

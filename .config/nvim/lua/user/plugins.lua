@@ -76,6 +76,7 @@ return packer.startup(function(use)
   use("nelstrom/vim-visual-star-search")
   use("chrisbra/csv.vim")
   use("jghauser/follow-md-links.nvim")
+  use("kevinhwang91/nvim-bqf")
 
   -- Miscellaneous
   use("tommcdo/vim-lion")

@@ -125,6 +125,7 @@ return packer.startup(function(use)
 
   -- Git
   use("lewis6991/gitsigns.nvim")
+  use("sindrets/diffview.nvim")
 
   -- Debugger
   use("mfussenegger/nvim-dap")

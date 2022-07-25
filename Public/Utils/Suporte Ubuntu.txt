@@ -1,0 +1,67 @@
+https://superuser.com/questions/104887/usb-joystick-with-linux-only-works-when-i-disconnected-and-reconnected-its?rq=1
+
+Fazer o Linux atualizar a versão default do python
+- Open your .bashrc file nano ~/.bashrc. Type alias python=python3 on to a new line at the top of the file then save the file with ctrl+o and close the file with ctrl+x. Then, back at your command line type source ~/.bashrc. Now your alias should be permanent.
+
+Problema com o programa do IRPF:
+- http://www.linuxmint.com.br/discussion/51959/resolvido-instalacao-do-programa-irpf-2020-em-linux-mint-19-2-x64
+- Trocar "jre1.8.0_241" pela versão que foi baixada da página da Oracle
+# sudo update-alternatives --install "/usr/bin/java" "java" "/usr/lib/jvm/jre1.8.0_241/bin/java" 1
+# sudo update-alternatives --set java /usr/lib/jvm/jre1.8.0_241/bin/java
+
+Atualizar o NodeJS:
+- sudo npm cache clean -f   [Espera! Pode parecer que o terminal travou, mas depois de alguns minutos ele termina. Só ter paciência.]
+- sudo npm install -g n
+- sudo n stable
+
+Problema de repositório:
+-Solução: https://plus.diolinux.com.br/t/problema-linux-mint-gerenciador-de-atualizacoes/2625/6
+-wget -nv https://download.opensuse.org/repositories/home:strycore/xUbuntu_18.04/Release.key -O Release.key
+-sudo apt-key add - < Release.key
+-sudo apt-get update
+
+Problema de instação quebrada do wine:
+# apt-get --fix-broken install
+# rm /var/lib/apt/lists/* -vf
+# apt-get update
+
+Nova versão do Linux Mint:
+-https://www.linuxmint.com/rel_tessa_cinnamon.php
+
+Steam erro: "erro /usr/lib/i386-linux-gnu/libxcb-dri3.so.0"
+-Solução: https://github.com/ValveSoftware/steam-for-linux/issues/5249
+
+Instalar impressora Epson L355
+-Solução: https://www.impressorajato.com.br/blog/instalar-epson-l355-linux
+-Solução: https://dicas-de-linux.blogspot.com.br/2014/05/instalando-epson-l355-no-ubuntu-1404-e.html
+-Solução: http://download.ebz.epson.net/dsc/search/01/search/searchModule
+
+Instalar antimicro:
+-Solução: https://launchpad.net/~mdeguzis/+archive/ubuntu/libregeek/+build/13585652
+-Obs: acho que precisa instalar o joy2key antes (sudo apt-get install joy2key)
+
+Erro de fontes no WPS Office:
+-Solução: https://linuxforums.org.uk/index.php?topic=11978.0
+-Obs: baixar o pacote por esse site - https://github.com/udoyen/wps-fonts
+
+Apache sem funcionar usando o AMPPS:
+-Solução: https://www.softaculous.com/board/index.php?tid=13513&tpg=1
+-Obs: Open Terminal and run following commands:
+    sudo cd /usr/local/ampps/apache/lib
+    sudo mkdir bck
+    sudo mv ./libapr* ./bck/
+    sudo apt-get -y install libaprutil1 libaprutil1-dev libapr1 libapr1-dev
+
+Scilab (primeiramente instale normalmente. quando os erros aparecerem siga esse passo a passo) [Erro: missing libjava.so]:
+-Solução: https://askubuntu.com/questions/1029163/how-to-get-scilab-6-0-1-working-on-ubuntu-18-04-lts
+-Obs: 
+      sudo apt-get install openjdk-8-jre openjdk-8-jre-headless
+      sudo update-java-alternatives --set \
+java-1.8.0-openjdk-$(dpkg --print-architecture)
+      Após esses comandos, verificar se ainda há algum warning. Caso reclame de faltar algum arquivo *.jar (nesse caso jlatexmath-fop-1.0.6.jar),
+baixe esse arquivo manualmente e cole na pasta /usr/share/java (essa operação deve ser feita como 'sudo').
+      Para fazer o scilab funcionar pela GUI, rode o comando: 
+      sudo sed -i 's/^Terminal=false$/Terminal=true/' /usr/share/applications/scilab.desktop
+
+IPEGA 9021 (configurar para a steam reconhecer como controle de xbox):
+Solução: https://askubuntu.com/questions/608386/using-ipega-bluetooth-gamepad-with-steam-linux

@@ -1,3 +1,0 @@
-# Shortcuts for vimspector
-
-- MISSING

@@ -154,7 +154,6 @@ alias vi=nvim
 alias dev='cd ~/Public/Dev'
 alias alura='cd ~/Public/Dev/Alura'
 alias projetos='cd ~/Public/Dev/Projetos'
-alias conkyconfig='conky -c ~/.config/conky/vision/Z333-vision.conkyrc'
 
 # Para o fzf
 # Atalhos úteis: ctrl-r, ctrl-t, alt-c

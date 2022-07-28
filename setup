@@ -1,0 +1,75 @@
+#!/bin/bash
+
+set -e
+
+pacman -Syu
+
+# System
+pacman -S \
+  tldr \
+  ripgrep \
+  plank \
+  ulauncher \
+  git \
+  fzf \
+  flatpak \
+  python \
+  nodejs \
+  npm \
+  fd \
+  bat \
+  xorg-xinput \
+  gtk-engine-murrine \
+  gtk-engines
+
+# Lightdm
+pacman -S \
+  light-locker \
+  lightdm \
+  lightdm-gtk-greeter \
+  lightdm-gtk-greeter-settings \
+  lightdm-webkit2-greeter
+
+# Neovim
+pacman -S \
+  neovim \
+  python-pynvim \
+  python-black \
+  flake8 \
+  pyright \
+  prettier \
+  shfmt \
+  shellcheck \
+  stylua \
+  tolua++ \
+  clang \
+  ncdu \
+  zk \
+  lldb
+
+# Terminal customization
+pacman -S \
+  starship \
+  alacritty \
+  tmux \
+  ueberzug \
+  exa
+
+# Development
+pacman -S \
+  cmake \
+  docker \
+  catch2
+
+# Install yay
+sudo pacman -S --needed --noconfirm base-devel git
+git clone https://aur.archlinux.org/yay.git
+mv yay /opt/
+cd /opt/yay
+makepkg -si
+cd "$HOME"
+
+# Install yay packages
+yay -S \
+  lightdm-webkit-theme-aether
+

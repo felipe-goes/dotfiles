@@ -161,7 +161,7 @@ source /usr/share/fzf/completion.bash
 source /usr/share/fzf/key-bindings.bash
 
 # Exports
-export GDK=/opt/SGDK
+#export GDK=/opt/SGDK
 
 export PATH="$HOME/.scripts/sgdk:$PATH"
 export PATH="$HOME/.scripts/cpp:$PATH"

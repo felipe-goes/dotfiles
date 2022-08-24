@@ -22,7 +22,13 @@
 
 - Reverte atualização de pacote:
 
-~~~
+```
 pacman -U /var/cache/pacman/pkg/<versão-do-pacote-a-regredir>.pkg.tar.zst
-~~~
+```
+
+## Resolver problema de velocidade no download
+
+```
+sudo pacman-mirrors --fasttrack && sudo pacman -Syuu
+```
 

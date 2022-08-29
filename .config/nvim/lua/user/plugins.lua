@@ -43,7 +43,8 @@ packer.init({
 return packer.startup(function(use)
   -- Run in background
   use("wbthomason/packer.nvim") -- Have packer manage itself
-  use({ "dracula/vim", as = "dracula" })
+  -- use({ "dracula/vim", as = "dracula" })
+  use("navarasu/onedark.nvim")
   use("nvim-lua/popup.nvim") -- An implementation of the Popup API from vim in Neovim
   use("nvim-lua/plenary.nvim") -- Useful lua functions used by lots of plugins
   use("ryanoasis/vim-devicons")

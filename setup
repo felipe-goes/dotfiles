@@ -12,7 +12,7 @@ pacman -Syu
 pacman -S     \
   tldr        \
   ripgrep     \
-  plank       \
+  latte-dock  \
   git         \
   fzf         \
   flatpak     \
@@ -21,7 +21,8 @@ pacman -S     \
   npm         \
   fd          \
   bat         \
-  make
+  make        \
+  kvantum
 # xorg-xinput \ Xfce
 
 # Neovim
@@ -47,6 +48,7 @@ pacman -S   \
   alacritty \
   tmux      \
   ueberzug  \
+  playerctl \
   exa
   # tmux-mem-cpu-load
   # https://github.com/thewtex/tmux-mem-cpu-load/
@@ -60,6 +62,19 @@ pacman -S \
   cmake   \
   docker  \
   catch2
+
+# Utils
+pacman -S \
+  obs-studio \
+  kdenlive \
+  discord \
+  spotify-launcher \
+  spotifyd \
+  timeshift
+
+# Games
+pacman -S \
+  steam
 
 # Install yay
 # git clone https://aur.archlinux.org/yay.git

@@ -20,7 +20,6 @@ require("user.indentline") -- always before options
 require("user.options")
 require("user.keymaps")
 require("user.plugins")
-require("user.colorscheme")
 require("user.colorizer")
 require("user.cmp")
 require("user.signature")
@@ -45,3 +44,4 @@ require("user.whichkey")
 require("user.quickscope")
 require("user.neoscroll")
 require("user.autocommands")
+require("user.colorscheme") -- always in the end

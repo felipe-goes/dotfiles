@@ -150,6 +150,7 @@ alias la='exa -lga --icons'
 alias lt='exa --icons --tree --level=2'
 alias config='/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
 alias vi=nvim
+alias df=pydf
 
 alias dev='cd ~/Public/Dev'
 alias alura='cd ~/Public/Dev/Alura'
@@ -165,6 +166,7 @@ source /usr/share/fzf/key-bindings.bash
 
 export PATH="$HOME/.scripts/sgdk:$PATH"
 export PATH="$HOME/.scripts/cpp:$PATH"
+export PATH="$HOME/.scripts/compressgames:$PATH"
 export PATH="$HOME/.scripts/autoconfig:$PATH"
 export PATH="$HOME/.tmux:$PATH"
 

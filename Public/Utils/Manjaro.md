@@ -1,83 +1,45 @@
 # Manjaro
 
-## **pacman**
-- Atualizar pacotes:
-~~~
-pacman -Sy
-~~~
-- Atualiza e dá o upgrade nos pacotes:
-~~~
-pacman -Syu
-~~~
-- Procura o pacote no repositório remoto:
-~~~
-pacman -Ss <package>
-~~~
-- Procura o pacote no sistema:
-~~~
-pacman -Qs <package>
-~~~
-- Instala pacote:
-~~~
-pacman -S <package>
-~~~
-- Remove o pacote junto com todas suas dependências:
-~~~
-pacman -Rs <package>
-~~~
+## **Informações de Hardware**
 
-## **sed**
-- Replace the first occurrence of a regular expression in each line of a file, and print the result:
-~~~
-sed 's/regular_expression/replace/' <filename>
-~~~
-- Replace all occurrences of a string in a file, overwriting the file (i.e. in-place):
-~~~
-sed -i 's/find/replace/g' <filename>
-~~~
-- Replace only on lines matching the line pattern:
-~~~
-sed '/line_pattern/s/find/replace/' <filename>
-~~~
-- Delete lines matching the line pattern:
-~~~
-sed '/line_pattern/d' <filename>
-~~~
-- A "expressão regular" `\(.*\)` dá match em qualquer coisa e pode ser usada em algumas situações particulares. No exemplo abaixo eu mostro primeiro uma string, depois o comando para ser usado para o `sed` e em seguida o resultado obtido. Nesse exemplo `\1` é o primeiro match e o `\2` é o segundo.
-~~~
-./lua/refactoring/tests/extract.simple-function.ts.commands #string pra usar de exemplo
-sed s/\(.*\)simple-function\(.*\)/\1simple-function\2 \1simple_function\2
-./lua/refactoring/tests/extract.simple-function.ts.commands  ./lua/refactoring/tests/extract.simple_function.ts.commands
-~~~
-
-## **xargs**
-- Run a command using the input data as arguments:
-~~~
-<arguments_source> | xargs <command>
-~~~
-- A flag `-n` serve para passar repetir o comando pelo número escolhido, 2 no exemplo abaixo:
-~~~
-<arguments_source> | xargs -n 2 <command>
-~~~
-
-## **awk**
-- Print the fifth column (a.k.a. field) in a space-separated file:
-~~~
-awk '{print $5}' filename
-~~~
-- Print the second column of the lines containing "foo" in a space-separated file:
-~~~
-awk '/foo/ {print $2}' filename
-~~~
-- Print the last column of each line in a file, using a comma (instead of space) as a field separator:
-~~~
-awk -F ',' '{print $NF}' filename
-~~~
-- Print different values based on conditions:
-~~~
-awk '{if ($1 == "foo") print "Exact match foo"; else if ($1 ~ "bar") print "Partial match bar"; else print "Baz"}' filename
-~~~
-
-
-
+- `lscpu`: The command reports information about the cpu and processing units.
+It does not have any further option or functionality.
+- `lshw`: **List Hardware**. A general purpose utility that reports detailed
+and brief information about multiple different hardware units such as cpu,
+memory, disk, usb controllers, network adapters etc. It extracts the information
+from different /proc files.
+- `lspci`: **List PCI**. The command lists out all the pci buses and details
+about the devices connected to them. The vga adapter, graphics card, network
+adapter, usb ports, sata controllers, etc all fall under this category.
+- `lsscsi`: **List scsi devices**. Lists out the scsi/sata devices like hard
+drives and optical drives.
+- `lsusb`: **List usb buses and devices details**. This command shows the USB
+controllers and details about devices connected to them. By default brief
+information is printed. Use the verbose option "-v" to print detailed
+information about each usb port.
+- `lsblk`: **List block devices**. List out information all block devices,
+which are the hard drive partitions and other storage devices like optical
+drives and flash drives.
+- `hwinfo`: **Hardware Information**. It is another general purpose hardware
+probing utility that can report detailed and brief information about multiple
+different hardware components, and more than `lshw` can report.
+- `inxi`: Inxi is a 10K line mega bash script that fetches hardware details
+from multiple different sources and commands on the system, and generates a
+beautiful looking report that non technical users can read easily.
+- `df`: **Disk space of file systems**. Reports various partitions, their mount
+points and the used and available space on each.
+- `pydf`: **Python df**. An improved df version written in python, that
+displays colored output that looks better than df.
+- `fdisk`: Fdisk is a utility to modify partitions on hard drives, and can be
+used to list out the partition information as well.
+- `mount`: The mount is used to mount/unmount and view mounted file systems.
+- `free`: **Check RAM**. Check the amount of used, free and total amount of RAM
+on system with the free command.
+- `dmidecode`: The dmidecode command is different from all other commands. It
+extracts hardware information by reading data from the SMBOIS data structures
+(also called DMI tables).
+- `hdparm`: The hdparm command gets information about sata devices like hard
+disks.
+- **/proc files**. Many of the virtual files in the */proc* directory contain
+information about hardware and configurations.
 

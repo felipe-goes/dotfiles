@@ -23,7 +23,6 @@ pacman -S     \
   bat         \
   make        \
   kvantum
-# xorg-xinput \ Xfce
 
 # Neovim
 pacman -S       \

@@ -1,0 +1,4 @@
+Ícones do latte
+  Dolphin         = gtk-directory
+  Alacritty       = alacritty
+  System Settings = system-settings-symbolic

@@ -3,8 +3,8 @@
 # tm_battery="#[fg=$base0F,bg=$base00] ♥ #(battery)"
 # tm_host="#[fg=$base0E,bg=$base00] #h "
 tm_mem_cpu="#[fg=$base0E,bg=$base00]#(tmux-mem-cpu-load -m 2 -i 2 |
-  awk '{print $1 $4}' | sed 's/%/% MEM /' | sed 's/ MEM/MEM/' |
-  sed 's/%$/% CPU/' | sed 's/ CPU/CPU/')"
+  awk '{print $1 $4}' | sed 's/%/% MEM /' | sed 's/ MEM//' |
+  sed 's/%$/% CPU/' | sed 's/ CPU//')"
 
 set -g status-right "$tm_mem_cpu"
 

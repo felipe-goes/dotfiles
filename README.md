@@ -38,10 +38,11 @@ Aborting
 ```
 
 Isto pode ocorrer se a sua pasta $HOME tiver arquivos de configuração que o git
-iria sobrescrever. A solução é simples: faça um back up dos arquivos que se quiser
-ou delete se não se importar.
+iria sobrescrever. A solução é simples: faça um back up dos arquivos que se
+quiser ou delete se não se importar.
 
-Uma vez que você resolver estes conflitos é só rodar `config checkout` novamente.
+Uma vez que você resolver estes conflitos é só rodar `config checkout`
+novamente.
 
 6. Defina a flag `showUntrackedFiles` para `no` neste repositório.
 
@@ -51,20 +52,15 @@ config config --local status.showUntrackedFiles no
 
 ## Instalação das dependências
 
-O arquivo *install-system* é um script que contém todas as dependências necessárias
-para o sistema. Caso você esteja instalando no *WSL*, alguns programas podem ser
-removidos antes de instalar, pois são programas de interface gráfica. São eles:
+O arquivo *setup* é um script que contém todas as dependências necessárias
+para o sistema. Caso você esteja instalando no *WSL*, alguns programas podem
+ser removidos antes de instalar, pois são programas de interface gráfica.
 
-- `plank`: simula a barra inferior do Mac.
-- `ulauncher`: lançador de aplicativos para o Linux. gosto de usar `Super+r` como
-atalho
-- `alacritty`: emulador de terminal.
-
-Uma vez que o script tenha sido revisado, instale com `sudo ./install-system`.
+Uma vez que o script tenha sido revisado, instale com `sudo ./setup`.
 
 ## Configurando o NeoVim
 
 Navegue até a pasta de configuração do NeoVim em `$HOME/.config/nvim`, abra o
-arquivo de plugins com o comando `nvim lua/user/plugins.lua` e salve-o. Isto irá
-sincronizar todos os plugins e configurar o que for necessário. Aguarde um pouco
-que esta operação pode demorar um pouco. Talvez seja necessário repeti-la.
+arquivo de plugins com o comando `nvim lua/user/plugins.lua` e salve-o. Isto
+irá sincronizar todos os plugins e configurar o que for necessário. Aguarde um
+pouco que esta operação pode demorar um pouco. Talvez seja necessário repeti-la.

@@ -156,6 +156,8 @@ alias dev='cd ~/Public/Dev'
 alias alura='cd ~/Public/Dev/Alura'
 alias projetos='cd ~/Public/Dev/Projetos'
 
+alias windows='cd /mnt/c/Users/ogoes/'
+
 # Para o fzf
 # Atalhos úteis: ctrl-r, ctrl-t, alt-c
 source /usr/share/fzf/completion.bash

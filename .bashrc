@@ -150,7 +150,8 @@ alias la='exa -lga --icons'
 alias lt='exa --icons --tree --level=2'
 alias config='/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
 alias vi=nvim
-alias df=pydf
+alias df=duf
+alias btop=bashtop
 
 alias dev='cd ~/Public/Dev'
 alias alura='cd ~/Public/Dev/Alura'

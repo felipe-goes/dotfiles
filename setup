@@ -22,7 +22,9 @@ pacman -S     \
   fd          \
   bat         \
   make        \
-  kvantum
+  kvantum     \
+  duf         \
+  bashtop
 
 # Neovim
 pacman -S       \

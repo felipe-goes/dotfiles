@@ -153,11 +153,14 @@ alias vi=nvim
 alias df=duf
 alias btop=bashtop
 
+# Folder Shortcuts
 alias dev='cd ~/Public/Dev'
 alias alura='cd ~/Public/Dev/Alura'
 alias projetos='cd ~/Public/Dev/Projetos'
-
 alias windows='cd /mnt/c/Users/ogoes/'
+
+# SGDK
+alias bizhawk='sudo sh /opt/bizhawk/EmuHawkMono.sh'
 
 # Para o fzf
 # Atalhos úteis: ctrl-r, ctrl-t, alt-c
@@ -165,7 +168,7 @@ source /usr/share/fzf/completion.bash
 source /usr/share/fzf/key-bindings.bash
 
 # Exports
-#export GDK=/opt/SGDK
+export GDK=/opt/SGDK
 
 export PATH="$HOME/.scripts/sgdk:$PATH"
 export PATH="$HOME/.scripts/cpp:$PATH"

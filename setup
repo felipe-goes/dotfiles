@@ -24,6 +24,8 @@ pacman -S     \
   make        \
   kvantum     \
   duf         \
+  zip         \
+  unzip       \
   bashtop
 
 # Neovim
@@ -62,7 +64,13 @@ pacman -S   \
 pacman -S \
   cmake   \
   docker  \
+  docker-compose \
   catch2
+
+# SGDK
+# yay -S \
+#   blastem \
+#   bizhawk-monort
 
 # Utils
 pacman -S \

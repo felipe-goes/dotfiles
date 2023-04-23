@@ -148,7 +148,7 @@ local mappings = {
     },
   },
 
-  p = {
+  i = {
     name = "Icon Picker",
     i = { "<cmd>PickIcons<cr>", "Pick Icons & Emoji" },
     s = { "<cmd>PickSymbols<cr>", "Pick Symbols" },
@@ -179,6 +179,7 @@ local mappings = {
     e = { "<cmd>!sgdk blastem<cr>", "Build and Run Blastem" },
     h = { "<cmd>!sgdk bizhawk<cr>", "Build and Run Bizhawk" },
     c = { "<cmd>!sgdk clean<cr>", "Clean SGDK Project" },
+    C = { "<cmd>!sgdk cmake<cr>", "Generate compile_commands.json" },
   },
 
   c = {

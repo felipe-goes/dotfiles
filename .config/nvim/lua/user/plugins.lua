@@ -61,7 +61,7 @@ return packer.startup(function(use)
       require("icon-picker")
     end,
   })
-  use("akinsho/bufferline.nvim")
+  use {'akinsho/bufferline.nvim', tag = "*", requires = 'nvim-tree/nvim-web-devicons'}
   use("moll/vim-bbye")
   use("tamton-aquib/staline.nvim")
   use("lewis6991/impatient.nvim")
@@ -92,7 +92,7 @@ return packer.startup(function(use)
     end,
     ft = { "markdown" },
   })
-  use {'kevinhwang91/nvim-ufo', requires = 'kevinhwang91/promise-async'}
+  use({ "kevinhwang91/nvim-ufo", requires = "kevinhwang91/promise-async" })
 
   -- Completion
   use("hrsh7th/nvim-cmp") -- The completion plugin
@@ -118,6 +118,7 @@ return packer.startup(function(use)
   use("nvim-telescope/telescope.nvim")
   use("nvim-telescope/telescope-fzy-native.nvim") -- not sure yet what it does
   use("ahmedkhalf/project.nvim")
+  use("nvim-telescope/telescope-media-files.nvim")
 
   -- Comment
   use("JoosepAlviste/nvim-ts-context-commentstring")
@@ -128,6 +129,7 @@ return packer.startup(function(use)
   -- Git
   use("lewis6991/gitsigns.nvim")
   use("sindrets/diffview.nvim")
+  use("tpope/vim-fugitive")
 
   -- Debugger
   use("mfussenegger/nvim-dap")

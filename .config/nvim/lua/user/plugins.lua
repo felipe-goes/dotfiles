@@ -81,17 +81,15 @@ return packer.startup(function(use)
 
   -- Miscellaneous
   use("tommcdo/vim-lion")
-  use("kyazdani42/nvim-tree.lua")
+  use("nvim-tree/nvim-tree.lua")
   use("akinsho/toggleterm.nvim") -- Consider floaterm latter and bring toggleterm.lua with it
   use("karb94/neoscroll.nvim")
   use("tpope/vim-surround")
-  use({
-    "iamcco/markdown-preview.nvim",
-    run = function()
-      vim.fn["mkdp#util#install"]()
-    end,
-    ft = { "markdown" },
-  })
+  -- This fixed toppair/peek.nvim issue: Module not found "file:///home/felipe/.local/share/nvim/site/pack/packer/start/peek.nvim/main.bundle.js"
+  --   deno run --allow-run --allow-net --allow-read --allow-write --allow-env --no-check scripts/build.js
+  -- Go to the directory ~/.local/share/nvim/site/pack/packer/start/peek.nvim
+  -- to run the command above 
+  use({ 'toppair/peek.nvim', run = 'deno task --quiet build:fast' })
   use({ "kevinhwang91/nvim-ufo", requires = "kevinhwang91/promise-async" })
 
   -- Completion
@@ -110,7 +108,7 @@ return packer.startup(function(use)
 
   -- LSP
   use("neovim/nvim-lspconfig") -- enable LSP
-  use("williamboman/nvim-lsp-installer") -- simple to use language server installer
+  use("williamboman/mason.nvim") -- simple to use language server installer
   use("tamago324/nlsp-settings.nvim") -- language server settings defined in json
   use("jose-elias-alvarez/null-ls.nvim") -- for formatters and linters
 

@@ -26,7 +26,9 @@ pacman -S     \
   duf         \
   zip         \
   unzip       \
-  bashtop
+  bashtop     \
+  firefox     \
+  python-pip
 
 # Neovim
 pacman -S       \
@@ -43,7 +45,11 @@ pacman -S       \
   clang         \
   ncdu          \
   zk            \
-  lldb
+  lldb          \
+  mercurial     \
+  luarocks      \
+  composer      \
+  julia
 
 # Terminal customization
 pacman -S   \

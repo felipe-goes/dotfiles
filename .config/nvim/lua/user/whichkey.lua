@@ -87,7 +87,7 @@ local mappings = {
   ["Q"] = { "<cmd>q<CR>", "Quit" },
   ["q"] = { "<cmd>Bdelete!<CR>", "Close Buffer" },
   ["h"] = { "<cmd>nohlsearch<CR>", "No Highlight" },
-  ["M"] = { "<cmd>MarkdownPreviewToggle<cr>", "Markdown Preview" },
+  ["M"] = { "<cmd>PeekOpen<cr>", "Markdown Preview" },
   ["H"] = { "<cmd>Telescope find_files hidden=true<cr>", "Find Files" },
   ["f"] = { "<cmd>Telescope find_files<cr>", "Find Files" },
   ["F"] = { "<cmd>Telescope live_grep<cr>", "Find Text" },
@@ -126,10 +126,9 @@ local mappings = {
     w = {
       "<cmd>Telescope lsp_workspace_diagnostics<cr>",
       "Workspace Diagnostics",
-    },
+      },
     f = { "<cmd>lua vim.lsp.buf.format({ async = true })<cr>", "Format" },
-    i = { "<cmd>LspInfo<cr>", "Info" },
-    I = { "<cmd>LspInstallInfo<cr>", "Installer Info" },
+    i = { "<cmd>Mason<cr>", "Info" },
     k = {
       "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>",
       "Prev Diagnostic",

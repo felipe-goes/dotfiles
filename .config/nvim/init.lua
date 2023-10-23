@@ -43,5 +43,6 @@ require("user.alpha")
 require("user.whichkey")
 require("user.quickscope")
 require("user.neoscroll")
+require("user.peek")
 require("user.autocommands")
 require("user.colorscheme") -- always in the end

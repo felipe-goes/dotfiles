@@ -5,5 +5,8 @@ if not status_ok then
 end
 
 require("user.lsp.mason")
-require("user.lsp.handlers").setup()
+require("mason-lspconfig").setup()
+require("user.lsp.handlers")
+require'lspconfig'.clangd.setup{}
+
 require("user.lsp.null-ls")

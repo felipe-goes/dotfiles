@@ -154,6 +154,8 @@ alias df=duf
 alias btop=bashtop
 alias ds='sudo systemctl start docker'
 alias pyserver='python -m http.server 8080'
+alias fcol="tr -s ' ' | cut -d ' ' -f9-"
+alias xargs='xargs -I _'
 
 # Folder Shortcuts
 alias dev='cd ~/Public/Dev'
@@ -171,9 +173,11 @@ source /usr/share/fzf/completion.bash
 source /usr/share/fzf/key-bindings.bash
 
 # Exports
+export PVSNESLIB_HOME=/mnt/c/pvsneslib/
 export GDK=/opt/SGDK
 
 export PATH="$HOME/.scripts/sgdk:$PATH"
+export PATH="$HOME/.scripts/pvsneslib:$PATH"
 export PATH="$HOME/.scripts/cpp:$PATH"
 export PATH="$HOME/.scripts/compressgames:$PATH"
 export PATH="$HOME/.scripts/autoconfig:$PATH"

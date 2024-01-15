@@ -1,6 +1,6 @@
 local status_ok, mason = pcall(require, "mason")
 if not status_ok then
-  vim.notify("Missing lsp-installer: lsp-installer.lua")
+  vim.notify("Missing mason: mason.lua")
   return
 end
 

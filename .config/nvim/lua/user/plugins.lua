@@ -61,7 +61,7 @@ return packer.startup(function(use)
       require("icon-picker")
     end,
   })
-  use {'akinsho/bufferline.nvim', tag = "*", requires = 'nvim-tree/nvim-web-devicons'}
+  use({ "akinsho/bufferline.nvim", tag = "*", requires = "nvim-tree/nvim-web-devicons" })
   use("moll/vim-bbye")
   use("tamton-aquib/staline.nvim")
   use("lewis6991/impatient.nvim")
@@ -88,8 +88,8 @@ return packer.startup(function(use)
   -- This fixed toppair/peek.nvim issue: Module not found "file:///home/felipe/.local/share/nvim/site/pack/packer/start/peek.nvim/main.bundle.js"
   --   deno run --allow-run --allow-net --allow-read --allow-write --allow-env --no-check scripts/build.js
   -- Go to the directory ~/.local/share/nvim/site/pack/packer/start/peek.nvim
-  -- to run the command above 
-  use({ 'toppair/peek.nvim', run = 'deno task --quiet build:fast' })
+  -- to run the command above
+  use({ "toppair/peek.nvim", run = "deno task --quiet build:fast" })
   use({ "kevinhwang91/nvim-ufo", requires = "kevinhwang91/promise-async" })
 
   -- Completion
@@ -107,11 +107,11 @@ return packer.startup(function(use)
   use("rafamadriz/friendly-snippets") -- a bunch of snippets to use
 
   -- LSP
-  use {
-      "neovim/nvim-lspconfig",
-      "williamboman/mason.nvim", -- simple to use language server installer
-      "williamboman/mason-lspconfig.nvim",
-  }
+  use({
+    "neovim/nvim-lspconfig",
+    "williamboman/mason.nvim", -- simple to use language server installer
+    "williamboman/mason-lspconfig.nvim",
+  })
   use("tamago324/nlsp-settings.nvim") -- language server settings defined in json
   use("jose-elias-alvarez/null-ls.nvim") -- for formatters and linters
 
@@ -141,12 +141,14 @@ return packer.startup(function(use)
   -- Build
   use("Shatur/neovim-cmake")
 
+  -- Tmux
+  use("aserowy/tmux.nvim")
+
   -- Honorable Mention
   -- use("tpope/vim-dispatch")
   -- use("tpope/vim-fugitive") | use("tpope/vim-rhubarb")
   -- use("sickill/vim-pasta")
   -- use("airblade/vim-rooter")
-  -- use("christoomey/vim-tmux-navigator")
   -- Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 
   -- Automatically set up your configuration after cloning packer.nvim

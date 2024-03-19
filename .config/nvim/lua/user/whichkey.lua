@@ -88,6 +88,7 @@ local mappings = {
   ["q"] = { "<cmd>Bdelete!<CR>", "Close Buffer" },
   ["h"] = { "<cmd>nohlsearch<CR>", "No Highlight" },
   ["M"] = { "<cmd>PeekOpen<cr>", "Markdown Preview" },
+  ["m"] = { "<cmd>Telescope media_files<cr>", "Image Preview" },
   ["H"] = { "<cmd>Telescope find_files hidden=true<cr>", "Find Hidden Files" },
   ["f"] = { "<cmd>Telescope find_files<cr>", "Find Files" },
   ["F"] = { "<cmd>Telescope live_grep<cr>", "Find Text" },
@@ -183,7 +184,7 @@ local mappings = {
 
   c = {
     name = "C/C++",
-    f = { "<cmd>!clang-format -i %<cr><cr>", "Clang Format" },
+    -- f = { "<cmd>!clang-format -i %<cr><cr>", "Clang Format" }, The LSP is working fine now
     c = { ":!create-cpp-class ", "Create C++ Class" },
     b = { "<cmd>CMake build<cr>", "CMake Build" },
     B = { "<cmd>CMake build_all<cr>", "CMake Build All" },

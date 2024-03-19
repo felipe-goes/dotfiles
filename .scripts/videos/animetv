@@ -1,0 +1,17 @@
+#!/usr/bin/bash
+# Faz todos os processos necessários para converter o episódio de anime para
+# ficar compatível com a TV.
+
+video="mkv"
+audio="flac"
+sub="ass"
+
+exdata $audio $sub || exit
+editsub || exit
+attaudio $video $audio || exit
+
+mv "*.$sub" ./out || exit
+(
+  cd ./out || exit
+  attsub "$video" "$sub"
+)

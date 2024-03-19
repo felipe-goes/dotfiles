@@ -1,0 +1,24 @@
+#!/usr/bin/bash
+# Extrai legenda e audio de um arquivo mkv.
+# Sintaxe: exdata <formato_do_audio> <formato_da_legenda>
+# audio track: 3
+# subtitle track: 4
+
+set -e
+
+audio=$1
+sub=$2
+
+# Extrai o áudio
+/usr/bin/ls -l --quoting-style=literal | tr -s ' ' | cut -d ' ' -f 9- |
+  grep -E ".mkv$" | sed '/^[[:space:]]*$/d' |
+  xargs -I _ mkvextract tracks _ 3:_."$audio"
+
+# Extrai a legenda
+/usr/bin/ls -l --quoting-style=literal | tr -s ' ' | cut -d ' ' -f 9- |
+  grep -E ".mkv$" | sed '/^[[:space:]]*$/d' |
+  xargs -I _ mkvextract tracks _ 4:_."$sub"
+
+# Renomeia os arquivos de saída
+rename ".mkv.$audio" ".$audio" *
+rename ".mkv.$sub" ".$sub" *

@@ -1,0 +1,20 @@
+#!/usr/bin/bash
+# Anexa legenda nos vídeos da pasta atual. O nome do vídeo tem que ser igual ao
+# nome da legenda.
+# Sintaxe: attsub <formato_do_video> <formato_da_legenda>
+
+video=$1
+sub=$2
+
+# Anexa legenda ao vídeo
+/usr/bin/ls -l --quoting-style=literal | tr -s ' ' | cut -d ' ' -f 9- |
+  grep "$video" | tr -s '.' | cut -d '.' -f -1 | sed '/^[[:space:]]*$/d' |
+  xargs -I _ ffmpeg -i _."$video" -vf subtitles=_."$sub" _new-."$video"
+
+# Remove os arquivos de entrada
+/usr/bin/ls -l --quoting-style=literal | tr -s ' ' | cut -d ' ' -f 9- |
+  grep -v "new-\." | sed '/^[[:space:]]*$/d' |
+  xargs -I _ rm _
+
+# Renomeia os arquivos de saída
+rename "new-.$video" ".$video" *

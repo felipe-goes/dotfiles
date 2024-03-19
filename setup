@@ -74,6 +74,12 @@ pacman -S \
   docker-compose \
   catch2
 
+# conventional-changelog/commitlint
+# clona na pasta /opt
+# dentro da pasta /opt/commitlint roda: yarn && yarn run build
+# procura alguma configuração padrão no site para adicionar ao repo e altera o
+# arquivo `commitlint.config.js` de `exports default` -> `module.exports = `
+
 # SGDK
 # yay -S \
 #   blastem \

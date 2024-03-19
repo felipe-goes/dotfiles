@@ -155,7 +155,6 @@ alias ds='sudo systemctl start docker'
 alias pyserver='python -m http.server 8080'
 alias fcol="tr -s ' ' | cut -d ' ' -f9-"
 alias xargs='xargs -I _'
-alias commitlint='/opt/commitlint/node_modules/.bin/commitlint'
 
 #Git
 alias config='/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
@@ -163,6 +162,7 @@ alias configlog='/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME log --
 alias configlogf='/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME log --graph --decorate -p --name-only'
 alias glog='git log --graph --decorate'
 alias glogf='git log --graph --decorate -p --name-only'
+alias commitlint='/opt/commitlint/node_modules/.bin/commitlint'
 
 # Folder Shortcuts
 alias dev='cd ~/Public/Dev'

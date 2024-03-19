@@ -91,6 +91,13 @@ return packer.startup(function(use)
   -- to run the command above
   use({ "toppair/peek.nvim", run = "deno task --quiet build:fast" })
   use({ "kevinhwang91/nvim-ufo", requires = "kevinhwang91/promise-async" })
+  use({
+    "princejoogie/chafa.nvim",
+    requires = {
+      "nvim-lua/plenary.nvim",
+      "m00qek/baleia.nvim",
+    },
+  })
 
   -- Completion
   use("hrsh7th/nvim-cmp") -- The completion plugin

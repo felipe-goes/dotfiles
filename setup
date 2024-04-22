@@ -30,6 +30,10 @@ pacman -S     \
   firefox     \
   python-pip
 
+# fzf shortcuts
+# junegunn/fzf-git.sh
+# clona na pasta /opt antes de dar um source no .bashrc
+
 # Neovim
 pacman -S       \
   neovim        \

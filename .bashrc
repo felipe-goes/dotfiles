@@ -174,11 +174,6 @@ export WINDOWS='/mnt/c/Users/ogoes/'
 # SGDK
 alias bizhawk='sudo sh /opt/bizhawk/EmuHawkMono.sh'
 
-# Para o fzf
-# Atalhos úteis: ctrl-r, ctrl-t, alt-c
-source /usr/share/fzf/completion.bash
-source /usr/share/fzf/key-bindings.bash
-
 # Exports
 export PVSNESLIB_HOME=/mnt/c/pvsneslib/
 export GDK=/opt/SGDK
@@ -190,5 +185,31 @@ export PATH="$HOME/.scripts/compressgames:$PATH"
 export PATH="$HOME/.scripts/autoconfig:$PATH"
 export PATH="$HOME/.scripts/videos:$PATH"
 export PATH="$HOME/.tmux:$PATH"
+
+# Para o fzf
+# Atalhos úteis: ctrl-r, ctrl-t, alt-c
+source /usr/share/fzf/completion.bash
+source /usr/share/fzf/key-bindings.bash
+
+# Use fd instead of find
+
+export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git"
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_ALT_C_COMMAND="fd --type=d --hidden --strip-cwd-prefix --exclue .git"
+
+# Use fd (https://github.com/sharkdp/fd) for listing path candidates.
+# - The first argument to the function is the base path to start traversal
+# - See the source code (completion.*) for the details
+_fzf_compgen_path() {
+  fd --hidden --exclude .git . "$1"
+}
+
+# Use fd to generate the list for directory completion
+_fzf_compgen_dir() {
+  fd --type=d --exclude .git . "$1"
+}
+
+source /opt/fzf-git.sh/fzf-git.sh
+
 
 eval "$(starship init bash)"

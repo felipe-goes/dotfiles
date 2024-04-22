@@ -181,7 +181,7 @@ export GDK=/opt/SGDK
 # Use fd instead of find
 export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-export FZF_ALT_C_COMMAND="fd --type=d --hidden --strip-cwd-prefix --exclue .git"
+export FZF_ALT_C_COMMAND="fd --type=d --hidden --strip-cwd-prefix --exclude .git"
 export BAT_THEME=tokyonight_night
 
 export PATH="$HOME/.scripts/sgdk:$PATH"

@@ -28,7 +28,8 @@ pacman -S     \
   unzip       \
   bashtop     \
   firefox     \
-  python-pip
+  python-pip  \
+  git-delta
 
 # fzf shortcuts
 # junegunn/fzf-git.sh

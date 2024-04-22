@@ -178,6 +178,7 @@ alias bizhawk='sudo sh /opt/bizhawk/EmuHawkMono.sh'
 # Exports
 export PVSNESLIB_HOME=/mnt/c/pvsneslib/
 export GDK=/opt/SGDK
+export BAT_THEME=tokyonight_night
 
 export PATH="$HOME/.scripts/sgdk:$PATH"
 export PATH="$HOME/.scripts/pvsneslib:$PATH"

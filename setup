@@ -64,7 +64,7 @@ pacman -S   \
   tmux      \
   ueberzug  \
   playerctl \
-  exa
+  eza
   # tmux-mem-cpu-load
   # https://github.com/thewtex/tmux-mem-cpu-load/
   # git clone git@github.com:thewtex/tmux-mem-cpu-load.git

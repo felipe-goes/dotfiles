@@ -145,9 +145,10 @@ ex() {
 # Adicionado ao bashrc
 ## Alias
 alias eg=tldr
-alias ls='exa -lg --icons'
-alias la='exa -lga --icons'
-alias lt='exa --icons --tree --level=2'
+alias lsc='eza --color=always --long --git --icons=always'
+alias ls='eza --color=always --long --git --icons=always --no-time --no-user --no-permissions'
+alias la='eza --color=always --long --all --git --icons=always --no-time --no-user --no-permissions'
+alias lt='eza --color=always --long --tree --level=2 --git --no-filesize --icons=always --no-time --no-user --no-permissions'
 alias vi=nvim
 alias df=duf
 alias btop=bashtop

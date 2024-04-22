@@ -29,7 +29,8 @@ pacman -S     \
   bashtop     \
   firefox     \
   python-pip  \
-  git-delta
+  git-delta   \
+  thefuck
 
 # fzf shortcuts
 # junegunn/fzf-git.sh

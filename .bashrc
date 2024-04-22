@@ -233,3 +233,4 @@ _fzf_comprun() {
 }
 
 eval "$(starship init bash)"
+eval "$(thefuck --alias)"

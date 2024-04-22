@@ -44,7 +44,12 @@ return packer.startup(function(use)
   -- Run in background
   use("wbthomason/packer.nvim") -- Have packer manage itself
   -- use({ "dracula/vim", as = "dracula" })
-  use("navarasu/onedark.nvim")
+  use({
+    "folke/tokyonight.nvim",
+    lazy = false,
+    priority = 1000,
+    opts = {},
+  })
   use("nvim-lua/popup.nvim") -- An implementation of the Popup API from vim in Neovim
   use("nvim-lua/plenary.nvim") -- Useful lua functions used by lots of plugins
   use("ryanoasis/vim-devicons")
@@ -140,13 +145,13 @@ return packer.startup(function(use)
   use("tpope/vim-fugitive")
 
   -- Debugger
-  use{
+  use({
     "rcarriga/nvim-dap-ui",
     requires = {
       "mfussenegger/nvim-dap",
-      "nvim-neotest/nvim-nio"
-    }
-  }
+      "nvim-neotest/nvim-nio",
+    },
+  })
   use("nvim-telescope/telescope-dap.nvim")
   use("theHamsta/nvim-dap-virtual-text")
 

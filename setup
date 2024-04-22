@@ -73,9 +73,9 @@ pacman -S   \
   # cmake . && make && sudo make install
 
 # Development
-pacman -S \
-  cmake   \
-  docker  \
+pacman -S        \
+  cmake          \
+  docker         \
   docker-compose \
   catch2
 
@@ -91,12 +91,12 @@ pacman -S \
 #   bizhawk-monort
 
 # Utils
-pacman -S \
-  obs-studio \
-  kdenlive \
-  discord \
+pacman -S          \
+  obs-studio       \
+  kdenlive         \
+  discord          \
   spotify-launcher \
-  spotifyd \
+  spotifyd         \
   timeshift
 
 # Games

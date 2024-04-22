@@ -50,11 +50,11 @@ sendo versionados pelo Git.
 
 - export PATH = "$HOME/.scripts/sgdk:$PATH"
 - export PATH = "$HOME/.scripts/pvsneslib:$PATH"
-- export PATH =  "$HOME/.scripts/cpp:$PATH"
-- export PATH =  "$HOME/.scripts/compressgames:$PATH"
-- export PATH =  "$HOME/.scripts/autoconfig:$PATH"
-- export PATH =  "$HOME/.scripts/videos:$PATH"
-- export PATH =  "$HOME/.tmux:$PATH"
+- export PATH = "$HOME/.scripts/cpp:$PATH"
+- export PATH = "$HOME/.scripts/compressgames:$PATH"
+- export PATH = "$HOME/.scripts/autoconfig:$PATH"
+- export PATH = "$HOME/.scripts/videos:$PATH"
+- export PATH = "$HOME/.tmux:$PATH"
 
 # Info
 

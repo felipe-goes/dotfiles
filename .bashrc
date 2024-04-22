@@ -193,7 +193,10 @@ export PATH="$HOME/.scripts/videos:$PATH"
 export PATH="$HOME/.tmux:$PATH"
 
 # Para o fzf
-# Atalhos úteis: ctrl-r, ctrl-t, alt-c
+# Atalhos úteis:
+# ctrl-r : histórico de comandos
+# ctrl-t : lista os arquivos e diretórios da pasta atual
+# alt-c  : lista os diretórios da pasta atual
 source /usr/share/fzf/completion.bash
 source /usr/share/fzf/key-bindings.bash
 

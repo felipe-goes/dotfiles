@@ -87,7 +87,6 @@ return packer.startup(function(use)
   -- Miscellaneous
   use("tommcdo/vim-lion")
   use("nvim-tree/nvim-tree.lua")
-  use("akinsho/toggleterm.nvim") -- Consider floaterm latter and bring toggleterm.lua with it
   use("karb94/neoscroll.nvim")
   use("tpope/vim-surround")
   -- This fixed toppair/peek.nvim issue: Module not found "file:///home/felipe/.local/share/nvim/site/pack/packer/start/peek.nvim/main.bundle.js"
@@ -144,6 +143,14 @@ return packer.startup(function(use)
   use("sindrets/diffview.nvim")
   use("tpope/vim-fugitive")
 
+  -- Test
+  use({
+    "vim-test/vim-test",
+    dependencies = {
+      "preservim/vimux"
+    },
+  })
+
   -- Debugger
   use({
     "rcarriga/nvim-dap-ui",
@@ -159,7 +166,7 @@ return packer.startup(function(use)
   use("Shatur/neovim-cmake")
 
   -- Tmux
-  use("aserowy/tmux.nvim")
+  use("christoomey/vim-tmux-navigator")
 
   -- Honorable Mention
   -- use("tpope/vim-dispatch")

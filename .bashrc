@@ -179,7 +179,9 @@ alias bizhawk='sudo sh /opt/bizhawk/EmuHawkMono.sh'
 # FZF Theme
 fg="#CBE0F0"
 bg="#011628"
-purple="#06BCE4"
+bg_highlight="#143652"
+purple="#B388FF"
+blue="#06BCE4"
 cyan="#2CF9ED"
 
 # Exports
@@ -198,7 +200,8 @@ export PATH="$HOME/.scripts/cpp:$PATH"
 export PATH="$HOME/.scripts/compressgames:$PATH"
 export PATH="$HOME/.scripts/autoconfig:$PATH"
 export PATH="$HOME/.scripts/videos:$PATH"
-export PATH="$HOME/.tmux:$PATH"
+export PATH="$HOME/.tmuxifier/bin:$PATH"
+# export PATH="$HOME/.tmux:$PATH"
 
 # Para o fzf
 # Atalhos úteis:
@@ -240,6 +243,7 @@ _fzf_comprun() {
   esac
 }
 
-eval "$(starship init bash)"
+eval "$(tmuxifier init -)"
 eval "$(thefuck --alias)"
 eval "$(zoxide init bash)"
+eval "$(starship init bash)"

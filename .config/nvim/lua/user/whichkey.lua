@@ -166,11 +166,11 @@ local mappings = {
     k = { "<cmd>Telescope keymaps<cr>", "Keymaps" },
   },
 
-  t = {
-    name = "Terminal",
-    f = { "<cmd>ToggleTerm direction=float<cr>", "Float" },
-    h = { "<cmd>ToggleTerm size=10 direction=horizontal<cr>", "Horizontal" },
-    v = { "<cmd>ToggleTerm size=80 direction=vertical<cr>", "Vertical" },
+  o = {
+    name = "Outros",
+    f = { "<cmd>ToggleTerm direction=float<cr>", "Terminal Float" },
+    h = { "<cmd>ToggleTerm size=10 direction=horizontal<cr>", "Terminal Horizontal" },
+    v = { "<cmd>ToggleTerm size=80 direction=vertical<cr>", " Terminal Vertical" },
   },
 
   s = {
@@ -232,6 +232,11 @@ local mappings = {
       end,
       "Hover",
     },
+    t = { "<cmd>TestNearest<cr>", "Test Nearest" },
+    T = { "<cmd>TestFile<cr>", "Test File" },
+    a = { "<cmd>TestSuite<cr>", "Test Suite" },
+    l = { "<cmd>TestLast<cr>", "Test Last" },
+    g = { "<cmd>TestVisit<cr>", "Test Visit" },
     q = { ":lua require'dapui'.toggle()<CR>", "Toggle Debugger Interface" },
     r = { ":lua require'dap'.repl.toggle({}, 'vsplit')<CR><C-w>l", "Toggle Dap-Repl" },
     k = { ":lua require'dap'.up()<CR>zz", "Up the Stack" },

@@ -145,6 +145,7 @@ ex() {
 # Adicionado ao bashrc
 ## Alias
 alias eg=tldr
+alias cd=z
 alias lsc='eza --color=always --long --git --icons=always'
 alias ls='eza --color=always --long --git --icons=always --no-time --no-user --no-permissions'
 alias la='eza --color=always --long --all --git --icons=always --no-time --no-user --no-permissions'
@@ -234,3 +235,4 @@ _fzf_comprun() {
 
 eval "$(starship init bash)"
 eval "$(thefuck --alias)"
+eval "$(zoxide init bash)"

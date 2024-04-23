@@ -30,7 +30,8 @@ pacman -S     \
   firefox     \
   python-pip  \
   git-delta   \
-  thefuck
+  thefuck     \
+  zoxide
 
 # fzf shortcuts
 # junegunn/fzf-git.sh

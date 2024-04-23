@@ -48,3 +48,16 @@ tokyonight.setup({
 })
 
 tokyonight.load()
+
+-- Color fixes for BufferLine and ColorColumn
+-- Fixes apply only for Tokyo Night Night
+vim.cmd([[
+  hi BufferLineFill guibg=#35314D
+  hi BufferLineSeparator guibg=#35314D
+  hi BufferLineSeparatorVisible guibg=#35314D
+  hi BufferLineBackground guibg=#3E3959
+  hi BufferLineCloseButton guibg=#3E3959
+  hi BufferLineDevIconLua guibg=#3E3959
+  hi ColorColumn guibg=#35314D
+  set termguicolors
+]])

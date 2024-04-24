@@ -6,4 +6,4 @@ end
 
 require("user.lsp.mason")
 require("user.lsp.handlers")
-require("user.lsp.null-ls")
+require("user.lsp.none-ls")

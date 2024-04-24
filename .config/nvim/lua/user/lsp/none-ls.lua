@@ -1,11 +1,10 @@
-local null_ls_status_ok, null_ls = pcall(require, "null-ls")
-if not null_ls_status_ok then
-  vim.notify("Missing null-ls: null-ls.lua")
+-- none-ls is a fork of null-ls that did not change the variables names
+-- therefore, in this file we will still be calling null-ls instead of none-ls
+local status_ok, null_ls = pcall(require, "null-ls")
+if not status_ok then
+  vim.notify("Missing none-ls: none-ls.lua")
   return
 end
-
--- Check for what null-ls supports in the links below
--- If you want to add other functionality, uncomment the local variable you want
 
 -- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/formatting
 local formatting = null_ls.builtins.formatting
@@ -19,14 +18,28 @@ local diagnostics = null_ls.builtins.diagnostics
 -- local hover = null_ls.builtins.hover
 
 null_ls.setup({
-  debug = false,
   sources = {
-    formatting.prettier.with({ extra_args = { "--no-semi", "--single-quote", "--jsx-single-quote" } }),
-    formatting.black.with({ extra_args = { "--fast" } }),
-    formatting.shfmt.with({ extra_args = { "-s", "-i", "2" } }),
-    -- formatting.clang_format, -- is not working. look in keymaps.lua for clang-format
+    -- lua
     formatting.stylua.with({ extra_args = { "--indent-type", "Spaces", "--indent-width", "2" } }),
-    diagnostics.flake8,
-    diagnostics.shellcheck,
+    -- angular, css, flow, graphql, html, json, jsx, javascript, less, markdown,
+    -- scss, typescript, vue, yaml
+    formatting.prettier.with({ extra_args = { "--no-semi", "--single-quote", "--jsx-single-quote" } }),
+    -- python
+    formatting.black.with({ extra_args = { "--fast" } }),
+    formatting.isort,
+    -- c, c++
+    formatting.clang_format,
+    -- bash
+    formatting.shfmt,
+    require("none-ls-shellcheck.diagnostics"),
+    -- typescript, javascript
+    require("none-ls.formatting.eslint_d"),
+    require("none-ls.diagnostics.eslint_d"),
+    -- python
+    require("none-ls.diagnostics.flake8"),
+    -- cpp
+    require("none-ls.diagnostics.cpplint"),
+    -- yaml
+    diagnostics.yamllint,
   },
 })

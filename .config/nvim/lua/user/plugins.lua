@@ -124,7 +124,9 @@ return packer.startup(function(use)
     "williamboman/mason-lspconfig.nvim",
   })
   use("tamago324/nlsp-settings.nvim") -- language server settings defined in json
-  use("jose-elias-alvarez/null-ls.nvim") -- for formatters and linters
+  use("nvimtools/none-ls.nvim") -- for formatters and linters
+  use("nvimtools/none-ls-extras.nvim")
+  use("gbprod/none-ls-shellcheck.nvim")
 
   -- Telescope
   use("nvim-telescope/telescope.nvim")

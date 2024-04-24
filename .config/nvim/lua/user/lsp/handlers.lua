@@ -1,38 +1,85 @@
 -- Setup language servers.
 local lspconfig = require("lspconfig")
+local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-lspconfig.awk_ls.setup({})
-lspconfig.ansiblels.setup({})
-lspconfig.arduino_language_server.setup({})
-lspconfig.asm_lsp.setup({})
-lspconfig.bashls.setup({})
-lspconfig.clangd.setup({})
-lspconfig.omnisharp.setup({})
-lspconfig.cmake.setup({})
-lspconfig.cssls.setup({})
-lspconfig.dockerls.setup({})
-lspconfig.docker_compose_language_service.setup({})
-lspconfig.gopls.setup({})
-lspconfig.jsonls.setup({})
-lspconfig.jdtls.setup({})
-lspconfig.tsserver.setup({})
-lspconfig.kotlin_language_server.setup({})
-lspconfig.lua_ls.setup({})
-lspconfig.autotools_ls.setup({})
-lspconfig.markdown_oxide.setup({})
-lspconfig.matlab_ls.setup({})
-lspconfig.intelephense.setup({})
-lspconfig.powershell_es.setup({})
-lspconfig.pylsp.setup({})
-lspconfig.sqls.setup({})
-lspconfig.lemminx.setup({})
-lspconfig.gitlab_ci_ls.setup({})
--- lspconfig.rust_analyzer.setup {
---   Server-specific settings. See `:help lspconfig-setup`
---   settings = {
---     ['rust-analyzer'] = {},
---   },
--- }
+lspconfig.awk_ls.setup({
+  capabilities = capabilities
+})
+lspconfig.ansiblels.setup({
+  capabilities = capabilities
+})
+lspconfig.arduino_language_server.setup({
+  capabilities = capabilities
+})
+lspconfig.asm_lsp.setup({
+  capabilities = capabilities
+})
+lspconfig.bashls.setup({
+  capabilities = capabilities
+})
+lspconfig.clangd.setup({
+  capabilities = capabilities
+})
+lspconfig.omnisharp.setup({
+  capabilities = capabilities
+})
+lspconfig.cmake.setup({
+  capabilities = capabilities
+})
+lspconfig.cssls.setup({
+  capabilities = capabilities
+})
+lspconfig.dockerls.setup({
+  capabilities = capabilities
+})
+lspconfig.docker_compose_language_service.setup({
+  capabilities = capabilities
+})
+lspconfig.gopls.setup({
+  capabilities = capabilities
+})
+lspconfig.jsonls.setup({
+  capabilities = capabilities
+})
+lspconfig.jdtls.setup({
+  capabilities = capabilities
+})
+lspconfig.tsserver.setup({
+  capabilities = capabilities
+})
+lspconfig.kotlin_language_server.setup({
+  capabilities = capabilities
+})
+lspconfig.lua_ls.setup({
+  capabilities = capabilities
+})
+lspconfig.autotools_ls.setup({
+  capabilities = capabilities
+})
+lspconfig.markdown_oxide.setup({
+  capabilities = capabilities
+})
+lspconfig.matlab_ls.setup({
+  capabilities = capabilities
+})
+lspconfig.intelephense.setup({
+  capabilities = capabilities
+})
+lspconfig.powershell_es.setup({
+  capabilities = capabilities
+})
+lspconfig.pylsp.setup({
+  capabilities = capabilities
+})
+lspconfig.sqls.setup({
+  capabilities = capabilities
+})
+lspconfig.lemminx.setup({
+  capabilities = capabilities
+})
+lspconfig.gitlab_ci_ls.setup({
+  capabilities = capabilities
+})
 
 -- Global mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions

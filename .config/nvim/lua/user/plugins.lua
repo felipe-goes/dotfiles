@@ -149,7 +149,7 @@ return packer.startup(function(use)
   -- Test
   use({
     "vim-test/vim-test",
-    dependencies = {
+    requires = {
       "preservim/vimux"
     },
   })

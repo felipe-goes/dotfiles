@@ -1,6 +1,9 @@
 -- Setup language servers.
 local lspconfig = require("lspconfig")
+local clangd_capabilities = vim.lsp.protocol.make_client_capabilities()
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
+
+clangd_capabilities.offsetEncoding = { "utf-16" }
 
 lspconfig.awk_ls.setup({
   capabilities = capabilities
@@ -18,7 +21,7 @@ lspconfig.bashls.setup({
   capabilities = capabilities
 })
 lspconfig.clangd.setup({
-  capabilities = capabilities
+  capabilities = clangd_capabilities
 })
 lspconfig.omnisharp.setup({
   capabilities = capabilities

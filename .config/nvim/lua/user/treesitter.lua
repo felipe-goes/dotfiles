@@ -4,60 +4,18 @@ if not status_ok then
   return
 end
 
--- commented languages are not supported yet
 configs.setup({
-  ensure_installed = {
-    "arduino",
-    "asm",
-    "awk",
-    "bash",
-    "c",
-    "cpp",
-    "c_sharp",
-    "cmake",
-    "css",
-    "csv",
-    "dart",
-    "diff",
-    "dockerfile",
-    "gitcommit",
-    "git_config",
-    "git_rebase",
-    "gitattributes",
-    "gitignore",
-    "go",
-    "graphql",
-    "html",
-    "http",
-    "java",
-    "javascript",
-    "json",
-    "json5",
-    "kotlin",
-    "lua",
-    "luadoc",
-    "make",
-    "markdown",
-    "matlab",
-    -- "nginx",
-    "perl",
-    "php",
-    -- "powershell",
-    "printf",
-    "python",
-    "r",
-    "regex",
-    "ruby",
-    "rust",
-    "sql",
-    -- "ssh",
-    "swift",
-    "typescript",
-    "xml",
-    "yaml"
-  }, -- one of "all", "maintained" (parsers with maintainers), or list of languages
+  auto_install = true,
+  -- ensure_installed = { "arduino", "asm", "awk", "bash", "c", "cpp", "c_sharp",
+  --   "cmake", "css", "csv", "dart", "diff", "dockerfile", "gitcommit", "git_config",
+  --   "git_rebase", "gitattributes", "gitignore", "go", "graphql", "html", "http",
+  --   "java", "javascript", "json", "json5", "kotlin", "lua", "luadoc", "make",
+  --   "markdown", "matlab", "perl", "php", "printf", "python", "r", "regex", "ruby",
+  --   "rust", "sql", "swift", "typescript", "xml", "yaml"
+  --   -- "nginx", "powershell", "ssh",
+  -- }, -- one of "all", "maintained" (parsers with maintainers), or list of languages
   sync_install = false, -- install languages synchronously (only applied to `ensure_installed`)
-  ignore_install = { "phpdoc" }, -- List of parsers to ignore installing
+  ignore_install = {}, -- List of parsers to ignore installing
   autopairs = {
     enable = true,
   },

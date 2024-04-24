@@ -129,8 +129,9 @@ return packer.startup(function(use)
   -- Telescope
   use("nvim-telescope/telescope.nvim")
   use("nvim-telescope/telescope-fzy-native.nvim") -- not sure yet what it does
-  use("ahmedkhalf/project.nvim")
   use("nvim-telescope/telescope-media-files.nvim")
+  use("nvim-telescope/telescope-ui-select.nvim")
+  use("ahmedkhalf/project.nvim")
 
   -- Comment
   use("JoosepAlviste/nvim-ts-context-commentstring")

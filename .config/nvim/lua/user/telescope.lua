@@ -107,6 +107,25 @@ telescope.setup({
       override_generic_sorter = false,
       override_files_sorter = true,
     },
+    ["ui-select"] = {
+      require("telescope.themes").get_dropdown({
+        -- even more opts
+      }),
+
+      -- pseudo code / specification for writing custom displays, like the one
+      -- for "codeactions"
+      -- specific_opts = {
+      --   [kind] = {
+      --     make_indexed = function(items) -> indexed_items, width,
+      --     make_displayer = function(widths) -> displayer
+      --     make_display = function(displayer) -> function(e)
+      --     make_ordinal = function(e) -> string
+      --   },
+      --   -- for example to disable the custom builtin "codeactions" display
+      --      do the following
+      --   codeactions = false,
+      -- }
+    },
     -- Your extension configuration goes here:
     -- extension_name = {
     --   extension_config_key = value,
@@ -119,3 +138,6 @@ telescope.load_extension("fzy_native")
 telescope.load_extension("projects")
 telescope.load_extension("dap")
 telescope.load_extension("media_files")
+-- To get ui-select loaded and working with telescope, you need to call
+-- load_extension, somewhere after setup function:
+telescope.load_extension("ui-select")

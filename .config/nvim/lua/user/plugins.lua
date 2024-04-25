@@ -133,7 +133,6 @@ return packer.startup(function(use)
   use("nvim-telescope/telescope-fzy-native.nvim") -- not sure yet what it does
   use("nvim-telescope/telescope-media-files.nvim")
   use("nvim-telescope/telescope-ui-select.nvim")
-  use("ahmedkhalf/project.nvim")
 
   -- Comment
   use("JoosepAlviste/nvim-ts-context-commentstring")
@@ -155,13 +154,9 @@ return packer.startup(function(use)
   })
 
   -- Debugger
-  use({
-    "rcarriga/nvim-dap-ui",
-    requires = {
-      "mfussenegger/nvim-dap",
-      "nvim-neotest/nvim-nio",
-    },
-  })
+  use("mfussenegger/nvim-dap")
+  use("rcarriga/nvim-dap-ui")
+  use("nvim-neotest/nvim-nio")
   use("nvim-telescope/telescope-dap.nvim")
   use("theHamsta/nvim-dap-virtual-text")
 

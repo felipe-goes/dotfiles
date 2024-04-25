@@ -4,6 +4,9 @@ if not status_ok then
   return
 end
 
+local dap = require("dap")
+local dapui = require("dapui")
+
 local setup = {
   plugins = {
     marks = true, -- shows a list of your marks on ' and `
@@ -80,20 +83,21 @@ local opts = {
 }
 
 local mappings = {
-  ["b"] = { "<cmd>Telescope buffers<cr>", "Buffers" },
-  ["r"] = { "<cmd>NvimTreeRefresh<cr>", "Refresh NvimTree" },
-  ["e"] = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
-  ["w"] = { "<cmd>w<CR>", "Save" },
-  ["Q"] = { "<cmd>q<CR>", "Quit" },
-  ["q"] = { "<cmd>Bdelete!<CR>", "Close Buffer" },
-  ["h"] = { "<cmd>nohlsearch<CR>", "No Highlight" },
-  ["M"] = { "<cmd>PeekOpen<cr>", "Markdown Preview" },
-  ["m"] = { "<cmd>Telescope media_files<cr>", "Image Preview" },
-  ["H"] = { "<cmd>Telescope find_files hidden=true<cr>", "Find Hidden Files" },
-  ["f"] = { "<cmd>Telescope find_files<cr>", "Find Files" },
-  ["F"] = { "<cmd>Telescope live_grep<cr>", "Find Text" },
-  ["P"] = { "<cmd>Telescope projects<cr>", "Projects" },
-  ["L"] = { "<cmd>BufferLineTogglePin<cr>", "Lock Buffer" },
+  b = { "<cmd>Telescope buffers<cr>", "Buffers" },
+  r = { "<cmd>NvimTreeRefresh<cr>", "Refresh NvimTree" },
+  e = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
+  w = { "<cmd>w<cr>", "Save" },
+  W = { "<cmd>wa<cr>", "Save All" },
+  Q = { "<cmd>q<cr>", "Quit" },
+  q = { "<cmd>Bdelete!<cr>", "Close Buffer" },
+  h = { "<cmd>nohlsearch<cr>", "No Highlight" },
+  M = { "<cmd>PeekOpen<cr>", "Markdown Preview" },
+  m = { "<cmd>Telescope media_files<cr>", "Image Preview" },
+  H = { "<cmd>Telescope find_files hidden=true<cr>", "Find Hidden Files" },
+  f = { "<cmd>Telescope find_files<cr>", "Find Files" },
+  F = { "<cmd>Telescope live_grep<cr>", "Find Text" },
+  P = { "<cmd>Telescope projects<cr>", "Projects" },
+  L = { "<cmd>BufferLineTogglePin<cr>", "Lock Buffer" },
 
   g = {
     name = "Git",
@@ -184,7 +188,6 @@ local mappings = {
 
   c = {
     name = "C/C++",
-    -- f = { "<cmd>!clang-format -i %<cr><cr>", "Clang Format" }, The LSP is working fine now
     c = { ":!create-cpp-class ", "Create C++ Class" },
     b = { "<cmd>CMake build<cr>", "CMake Build" },
     B = { "<cmd>CMake build_all<cr>", "CMake Build All" },
@@ -194,53 +197,83 @@ local mappings = {
     S = { "<cmd>CMake select_build_type<cr>", "CMake Select Build Type" },
   },
 
+  t = {
+    name = "Test",
+    a = { "<cmd>TestSuite<cr>", "Test Suite" },
+    f = { "<cmd>TestFile<cr>", "Test File" },
+    l = { "<cmd>TestLast<cr>", "Test Last" },
+    n = { "<cmd>TestNearest<cr>", "Test Nearest" },
+    v = { "<cmd>TestVisit<cr>", "Test Visit" },
+  },
+
   d = {
     name = "Debugger",
     b = {
       function()
-        require("dap").toggle_breakpoint()
+        dap.toggle_breakpoint()
       end,
       "Toggle Breakpoint",
     },
+    R = {
+      function()
+        dap.clear_breakpoints()
+      end,
+      "Clear Breakpoints",
+    },
     n = {
       function()
-        require("dap").run_to_cursor()
+        dap.run_to_cursor()
       end,
       "Run to Cursor",
     },
     c = {
       function()
-        require("dap").terminate()
+        dap.terminate()
       end,
       "Terminate",
     },
-    R = {
-      function()
-        require("dap").clear_breakpoints()
-      end,
-      "Clear Breakpoints",
-    },
     e = {
       function()
-        require("dap").set_exception_breakpoints()
+        dap.set_exception_breakpoints()
       end,
       "Set Exception Breakpoints",
     },
+    o = {
+      function()
+        dap.step_over()
+      end,
+      "Step Over",
+    },
     i = {
       function()
-        require("dap.ui.widgets").hover()
+        dap.ui.widgets.hover()
       end,
       "Hover",
     },
-    t = { "<cmd>TestNearest<cr>", "Test Nearest" },
-    T = { "<cmd>TestFile<cr>", "Test File" },
-    a = { "<cmd>TestSuite<cr>", "Test Suite" },
-    l = { "<cmd>TestLast<cr>", "Test Last" },
-    g = { "<cmd>TestVisit<cr>", "Test Visit" },
-    q = { ":lua require'dapui'.toggle()<CR>", "Toggle Debugger Interface" },
-    r = { ":lua require'dap'.repl.toggle({}, 'vsplit')<CR><C-w>l", "Toggle Dap-Repl" },
-    k = { ":lua require'dap'.up()<CR>zz", "Up the Stack" },
-    j = { ":lua require'dap'.down()<CR>zz", "Down the Stack" },
+    q = {
+      function()
+        dapui.toggle()
+      end,
+      "Toggle Debugger Interface",
+    },
+    r = {
+      function()
+        dap.repl.toggle({}, "vsplit")
+      end,
+      "Toggle Dap-Repl",
+    },
+    k = {
+      function()
+        dap.up()
+      end,
+      "Up the Stack",
+    },
+    j = {
+      function()
+        dap.down()
+      end,
+      "Down the Stack",
+    },
     f = { ":Telescope dap frames<CR>", "Telescope frames" },
     B = { ":Telescope dap list_breakpoint<CR>", "Telescope List Breakpoints" },
     C = { ":Telescope dap commands<CR>", "Telescope Debugger Commands" },

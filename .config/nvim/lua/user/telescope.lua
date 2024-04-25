@@ -135,7 +135,6 @@ telescope.setup({
 })
 
 telescope.load_extension("fzy_native")
-telescope.load_extension("projects")
 telescope.load_extension("dap")
 telescope.load_extension("media_files")
 -- To get ui-select loaded and working with telescope, you need to call

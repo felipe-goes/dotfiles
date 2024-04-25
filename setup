@@ -38,25 +38,26 @@ pacman -S     \
 # clona na pasta /opt antes de dar um source no .bashrc
 
 # Neovim
-pacman -S       \
-  neovim        \
-  python-pynvim \
-  python-black  \
-  flake8        \
-  pyright       \
-  prettier      \
-  shfmt         \
-  shellcheck    \
-  stylua        \
-  tolua++       \
-  clang         \
-  ncdu          \
-  zk            \
-  lldb          \
-  mercurial     \
-  luarocks      \
-  composer      \
-  julia         \
+pacman -S        \
+  neovim         \
+  python-pynvim  \
+  python-black   \
+  python-debugpy \
+  flake8         \
+  pyright        \
+  prettier       \
+  shfmt          \
+  shellcheck     \
+  stylua         \
+  tolua++        \
+  clang          \
+  ncdu           \
+  zk             \
+  lldb           \
+  mercurial      \
+  luarocks       \
+  composer       \
+  julia          \
   chafa
 
 # Terminal customization

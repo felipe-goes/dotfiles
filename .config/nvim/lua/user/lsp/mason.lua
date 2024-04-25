@@ -23,5 +23,10 @@ mason.setup({
 masonlsp.setup({
   opts = {
     auto_install = true,
+    ensure_installed = {
+      "clangd",
+      "clang-format",
+      "codelldb",
+    },
   },
 })

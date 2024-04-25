@@ -71,7 +71,7 @@ lspconfig.intelephense.setup({
 lspconfig.powershell_es.setup({
   capabilities = capabilities
 })
-lspconfig.pylsp.setup({
+lspconfig.pyright.setup({
   capabilities = capabilities
 })
 lspconfig.sqls.setup({

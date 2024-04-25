@@ -20,13 +20,12 @@ mason.setup({
   },
 })
 
+-- acho que só funciona pra lsp
 masonlsp.setup({
-  opts = {
-    auto_install = true,
-    ensure_installed = {
-      "clangd",
-      "clang-format",
-      "codelldb",
-    },
+  ensure_installed = {
+    "clangd",
+    "bashls",
+    "pyright",
   },
+  automatic_installation = true,
 })

@@ -93,7 +93,10 @@ return packer.startup(function(use)
   --   deno run --allow-run --allow-net --allow-read --allow-write --allow-env --no-check scripts/build.js
   -- Go to the directory ~/.local/share/nvim/site/pack/packer/start/peek.nvim
   -- to run the command above
-  use({ "toppair/peek.nvim", run = "deno task --quiet build:fast" })
+  use({
+    "iamcco/markdown-preview.nvim",
+    run = "cd app && npm install",
+  })
   use({ "kevinhwang91/nvim-ufo", requires = "kevinhwang91/promise-async" })
   use({
     "princejoogie/chafa.nvim",

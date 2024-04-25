@@ -44,6 +44,6 @@ require("user.vim-test")
 require("user.whichkey")
 require("user.quickscope")
 require("user.neoscroll")
-require("user.peek")
+require("user.markdown")
 require("user.autocommands")
 require("user.colorscheme") -- always in the end

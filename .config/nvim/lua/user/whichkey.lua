@@ -91,7 +91,7 @@ local mappings = {
   Q = { "<cmd>q<cr>", "Quit" },
   q = { "<cmd>Bdelete!<cr>", "Close Buffer" },
   h = { "<cmd>nohlsearch<cr>", "No Highlight" },
-  M = { "<cmd>PeekOpen<cr>", "Markdown Preview" },
+  M = { "<cmd>MarkdownPreview<cr>", "Markdown Preview" },
   m = { "<cmd>Telescope media_files<cr>", "Image Preview" },
   H = { "<cmd>Telescope find_files hidden=true<cr>", "Find Hidden Files" },
   f = { "<cmd>Telescope find_files<cr>", "Find Files" },

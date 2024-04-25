@@ -16,6 +16,12 @@ if not dapvt_status_ok then
   return
 end
 
+local powershell_status_ok, powershell = pcall(require, "dap-powershell")
+if not powershell_status_ok then
+  vim.notify("Missing dap-powershell: dap.lua")
+  return
+end
+
 -- dap-ui
 dapui.setup({})
 
@@ -30,6 +36,10 @@ dap.listeners.before.event_terminated.dapui_config = function()
 end
 dap.listeners.before.event_exited.dapui_config = function()
   dapui.close()
+end
+dap.listeners.after.event_initialized.dapui_config = function()
+  dapui.open({})
+  powershell.correct_repl_colors()
 end
 
 -- require("dap").set_log_level("INFO")
@@ -56,4 +66,3 @@ dapvt.setup({
   virt_text_win_col = nil, -- position the virtual text at a fixed window column (starting from the first text column) ,
   -- e.g. 80 to position at column 80, see `:h nvim_buf_set_extmark()`
 })
-

@@ -156,8 +156,9 @@ return packer.startup(function(use)
   use("mfussenegger/nvim-dap")
   use("rcarriga/nvim-dap-ui")
   use("nvim-neotest/nvim-nio")
-  use("nvim-telescope/telescope-dap.nvim")
   use("theHamsta/nvim-dap-virtual-text")
+  use("Willem-J-an/nvim-dap-powershell")
+  use("nvim-telescope/telescope-dap.nvim")
 
   -- Build
   use("Shatur/neovim-cmake")

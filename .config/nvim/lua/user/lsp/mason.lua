@@ -26,6 +26,7 @@ masonlsp.setup({
     "clangd",
     "bashls",
     "pyright",
+    "powershell_es",
   },
   automatic_installation = true,
 })

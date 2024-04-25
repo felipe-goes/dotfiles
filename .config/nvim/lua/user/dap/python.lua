@@ -1,6 +1,6 @@
 local dap = require("dap")
 
--- Python Setup
+-- Python setup
 dap.adapters.python = function(cb, config)
   if config.request == "attach" then
     ---@diagnostic disable-next-line: undefined-field

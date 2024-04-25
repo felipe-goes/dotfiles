@@ -1,6 +1,6 @@
 local dap = require("dap")
 
--- C/C++ Setup
+-- C/C++ setup
 dap.adapters.codelldb = {
   type = "server",
   port = "${port}",

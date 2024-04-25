@@ -5,26 +5,11 @@ local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 clangd_capabilities.offsetEncoding = { "utf-16" }
 
-lspconfig.awk_ls.setup({
-  capabilities = capabilities
-})
-lspconfig.ansiblels.setup({
-  capabilities = capabilities
-})
-lspconfig.arduino_language_server.setup({
-  capabilities = capabilities
-})
-lspconfig.asm_lsp.setup({
-  capabilities = capabilities
-})
 lspconfig.bashls.setup({
   capabilities = capabilities
 })
 lspconfig.clangd.setup({
   capabilities = clangd_capabilities
-})
-lspconfig.omnisharp.setup({
-  capabilities = capabilities
 })
 lspconfig.cmake.setup({
   capabilities = capabilities
@@ -38,25 +23,10 @@ lspconfig.dockerls.setup({
 lspconfig.docker_compose_language_service.setup({
   capabilities = capabilities
 })
-lspconfig.gopls.setup({
-  capabilities = capabilities
-})
 lspconfig.jsonls.setup({
   capabilities = capabilities
 })
-lspconfig.jdtls.setup({
-  capabilities = capabilities
-})
-lspconfig.tsserver.setup({
-  capabilities = capabilities
-})
-lspconfig.kotlin_language_server.setup({
-  capabilities = capabilities
-})
 lspconfig.lua_ls.setup({
-  capabilities = capabilities
-})
-lspconfig.autotools_ls.setup({
   capabilities = capabilities
 })
 lspconfig.markdown_oxide.setup({
@@ -65,22 +35,13 @@ lspconfig.markdown_oxide.setup({
 lspconfig.matlab_ls.setup({
   capabilities = capabilities
 })
-lspconfig.intelephense.setup({
-  capabilities = capabilities
-})
 lspconfig.powershell_es.setup({
   capabilities = capabilities
 })
 lspconfig.pyright.setup({
   capabilities = capabilities
 })
-lspconfig.sqls.setup({
-  capabilities = capabilities
-})
-lspconfig.lemminx.setup({
-  capabilities = capabilities
-})
-lspconfig.gitlab_ci_ls.setup({
+lspconfig.tsserver.setup({
   capabilities = capabilities
 })
 

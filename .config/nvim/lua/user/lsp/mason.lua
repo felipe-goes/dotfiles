@@ -23,10 +23,19 @@ mason.setup({
 -- acho que só funciona pra lsp
 masonlsp.setup({
   ensure_installed = {
-    "clangd",
     "bashls",
-    "pyright",
+    "clangd",
+    "cmake",
+    "cssls",
+    "dockerls",
+    "docker_compose_language_service",
+    "jsonls",
+    "lua_ls",
+    "markdown_oxide",
+    "matlab_ls",
     "powershell_es",
+    "pyright",
+    "tsserver",
   },
   automatic_installation = true,
 })

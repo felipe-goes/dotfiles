@@ -19,26 +19,31 @@ local diagnostics = null_ls.builtins.diagnostics
 
 null_ls.setup({
   sources = {
-    -- lua
-    formatting.stylua.with({ extra_args = { "--indent-type", "Spaces", "--indent-width", "2" } }),
+    -- Formatting
     -- angular, css, flow, graphql, html, json, jsx, javascript, less, markdown,
     -- scss, typescript, vue, yaml
     formatting.prettier.with({ extra_args = { "--no-semi", "--single-quote", "--jsx-single-quote" } }),
+    -- bash
+    formatting.shfmt,
+    -- c, c++
+    formatting.clang_format,
+    -- lua
+    formatting.stylua.with({ extra_args = { "--indent-type", "Spaces", "--indent-width", "2" } }),
     -- python
     formatting.black.with({ extra_args = { "--fast" } }),
     formatting.isort,
-    -- c, c++
-    formatting.clang_format,
+
+    -- Linting
     -- bash
-    formatting.shfmt,
     require("none-ls-shellcheck.diagnostics"),
-    -- typescript, javascript
-    require("none-ls.formatting.eslint_d"),
-    require("none-ls.diagnostics.eslint_d"),
-    -- python
-    require("none-ls.diagnostics.flake8"),
     -- cpp
     require("none-ls.diagnostics.cpplint"),
+    -- lua
+    diagnostics.selene,
+    -- python
+    require("none-ls.diagnostics.flake8"),
+    -- typescript, javascript
+    require("none-ls.diagnostics.eslint_d"),
     -- yaml
     diagnostics.yamllint,
   },

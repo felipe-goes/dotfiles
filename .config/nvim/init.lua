@@ -16,6 +16,7 @@
 -- Inspired by https://github.com/LunarVim/Neovim-from-scratch/tree/master
 -- Inspired by https://github.com/jessarcher/dotfiles
 
+require("user.colorscheme") -- always on top
 require("user.indentline") -- always before options
 require("user.options")
 require("user.keymaps")
@@ -46,4 +47,3 @@ require("user.quickscope")
 require("user.neoscroll")
 require("user.markdown")
 require("user.autocommands")
-require("user.colorscheme") -- always in the end

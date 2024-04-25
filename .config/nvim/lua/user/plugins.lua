@@ -43,7 +43,6 @@ packer.init({
 return packer.startup(function(use)
   -- Run in background
   use("wbthomason/packer.nvim") -- Have packer manage itself
-  -- use({ "dracula/vim", as = "dracula" })
   use({
     "folke/tokyonight.nvim",
     lazy = false,
@@ -69,9 +68,7 @@ return packer.startup(function(use)
   use({ "akinsho/bufferline.nvim", tag = "*", requires = "nvim-tree/nvim-web-devicons" })
   use("moll/vim-bbye")
   use("tamton-aquib/staline.nvim")
-  use("lewis6991/impatient.nvim")
   use("lukas-reineke/indent-blankline.nvim")
-  use("goolord/alpha-nvim")
   use("antoinemadec/FixCursorHold.nvim")
   use("folke/which-key.nvim")
   use("jessarcher/vim-heritage")
@@ -146,7 +143,6 @@ return packer.startup(function(use)
   -- Git
   use("lewis6991/gitsigns.nvim")
   use("sindrets/diffview.nvim")
-  use("tpope/vim-fugitive")
 
   -- Test
   use({

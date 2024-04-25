@@ -16,6 +16,8 @@
 -- Inspired by https://github.com/LunarVim/Neovim-from-scratch/tree/master
 -- Inspired by https://github.com/jessarcher/dotfiles
 
+vim.loader.enable()
+
 require("user.colorscheme") -- always on top
 require("user.indentline") -- always before options
 require("user.options")
@@ -38,8 +40,6 @@ require("user.diffview")
 require("user.nvimtree")
 require("user.bufferline")
 require("user.staline")
-require("user.impatient")
-require("user.alpha")
 require("user.tmux")
 require("user.vim-test")
 require("user.whichkey")

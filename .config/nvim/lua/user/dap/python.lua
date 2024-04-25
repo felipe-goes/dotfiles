@@ -1,11 +1,5 @@
 local dap = require("dap")
 
--- Install debugpy into a vitualenv
--- mkdir .virtualenvs
--- cd .virtualenvs
--- python -m venv debugpy
--- debugpy/bin/python -m pip install debugpy
-
 -- Python Setup
 dap.adapters.python = function(cb, config)
   if config.request == "attach" then
@@ -24,7 +18,7 @@ dap.adapters.python = function(cb, config)
   else
     cb({
       type = "executable",
-      command = "$HOME/.virtualenvs/debugpy/bin/python",
+      command = "/home/felipe/.local/share/nvim/mason/packages/debugpy/venv/bin/python",
       args = { "-m", "debugpy.adapter" },
       options = {
         source_filetype = "python",

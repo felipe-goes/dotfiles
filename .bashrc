@@ -201,7 +201,6 @@ export PATH="$HOME/.scripts/compressgames:$PATH"
 export PATH="$HOME/.scripts/autoconfig:$PATH"
 export PATH="$HOME/.scripts/videos:$PATH"
 export PATH="$HOME/.tmuxifier/bin:$PATH"
-# export PATH="$HOME/.tmux:$PATH"
 
 # Para o fzf
 # Atalhos úteis:

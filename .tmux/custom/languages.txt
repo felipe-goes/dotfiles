@@ -1,0 +1,10 @@
+javascript
+typescript
+c
+cpp
+lua
+python
+bash
+css
+html
+powershell

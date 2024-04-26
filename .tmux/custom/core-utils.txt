@@ -1,0 +1,13 @@
+fd
+sed
+awk
+tr
+cut
+grep
+xargs
+ssh
+docker
+docker-compose
+chmod
+chown
+tmux

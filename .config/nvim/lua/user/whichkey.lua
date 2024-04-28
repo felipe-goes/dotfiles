@@ -83,20 +83,12 @@ local opts = {
 }
 
 local mappings = {
-  b = { "<cmd>Telescope buffers<cr>", "Buffers" },
-  r = { "<cmd>NvimTreeRefresh<cr>", "Refresh NvimTree" },
   e = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
-  w = { "<cmd>w<cr>", "Save" },
-  W = { "<cmd>wa<cr>", "Save All" },
-  Q = { "<cmd>q<cr>", "Quit" },
-  q = { "<cmd>Bdelete!<cr>", "Close Buffer" },
   h = { "<cmd>nohlsearch<cr>", "No Highlight" },
-  M = { "<cmd>MarkdownPreview<cr>", "Markdown Preview" },
-  m = { "<cmd>Telescope media_files<cr>", "Image Preview" },
-  H = { "<cmd>Telescope find_files hidden=true<cr>", "Find Hidden Files" },
+  m = { "<cmd>MarkdownPreview<cr>", "Markdown Preview" },
   f = { "<cmd>Telescope find_files<cr>", "Find Files" },
   F = { "<cmd>Telescope live_grep<cr>", "Find Text" },
-  P = { "<cmd>Telescope projects<cr>", "Projects" },
+  H = { "<cmd>Telescope find_files hidden=true<cr>", "Find Hidden Files" },
   L = { "<cmd>BufferLineTogglePin<cr>", "Lock Buffer" },
 
   g = {
@@ -159,10 +151,11 @@ local mappings = {
     a = { "<cmd>PickAltFont<cr>", "Pick Alt Font" },
   },
 
-  S = {
+  s = {
     name = "Search",
     c = { "<cmd>Telescope colorscheme<cr>", "Colorscheme" },
     C = { "<cmd>Telescope commands<cr>", "Commands" },
+    m = { "<cmd>Telescope media_files<cr>", "Image Preview" },
     h = { "<cmd>Telescope help_tags<cr>", "Find Help" },
     M = { "<cmd>Telescope man_pages<cr>", "Man Pages" },
     r = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
@@ -174,10 +167,10 @@ local mappings = {
     name = "Outros",
     f = { "<cmd>ToggleTerm direction=float<cr>", "Terminal Float" },
     h = { "<cmd>ToggleTerm size=10 direction=horizontal<cr>", "Terminal Horizontal" },
-    v = { "<cmd>ToggleTerm size=80 direction=vertical<cr>", " Terminal Vertical" },
+    v = { "<cmd>ToggleTerm size=80 direction=vertical<cr>", "Terminal Vertical" },
   },
 
-  s = {
+  S = {
     name = "SGDK",
     b = { "<cmd>!sgdk build<cr>", "Build SGDK Project" },
     e = { "<cmd>!sgdk blastem<cr>", "Build and Run Blastem" },
@@ -206,6 +199,7 @@ local mappings = {
     v = { "<cmd>TestVisit<cr>", "Test Visit" },
   },
 
+  -- See more in keymaps.lua
   d = {
     name = "Debugger",
     b = {
@@ -238,13 +232,7 @@ local mappings = {
       end,
       "Set Exception Breakpoints",
     },
-    o = {
-      function()
-        dap.step_over()
-      end,
-      "Step Over",
-    },
-    i = {
+    h = {
       function()
         dap.ui.widgets.hover()
       end,
@@ -256,25 +244,7 @@ local mappings = {
       end,
       "Toggle Debugger Interface",
     },
-    r = {
-      function()
-        dap.repl.toggle({}, "vsplit")
-      end,
-      "Toggle Dap-Repl",
-    },
-    k = {
-      function()
-        dap.up()
-      end,
-      "Up the Stack",
-    },
-    j = {
-      function()
-        dap.down()
-      end,
-      "Down the Stack",
-    },
-    f = { ":Telescope dap frames<CR>", "Telescope frames" },
+    f = { ":Telescope dap frames<CR>", "Telescope Frames" },
     B = { ":Telescope dap list_breakpoint<CR>", "Telescope List Breakpoints" },
     C = { ":Telescope dap commands<CR>", "Telescope Debugger Commands" },
   },

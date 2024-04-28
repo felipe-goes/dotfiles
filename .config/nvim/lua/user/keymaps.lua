@@ -87,7 +87,16 @@ vim.cmd("cmap w!! %!sudo tee > /dev/null %")
 keymap("n", "<leader>o", "o<esc>", opts)
 keymap("n", "<leader>O", "O<esc>", opts)
 
+-- Save and Exit
+keymap("n", "<leader>w", "<cmd>w<cr>", opts)
+keymap("n", "<leader>W", "<cmd>wa<cr>", opts)
+keymap("n", "<leader>q", "<cmd>Bdelete!<cr>", opts)
+keymap("n", "<leader>Q", "<cmd>q<cr>", opts)
+
 -- Plugins
+-- NvimTree
+keymap("n", "<leader>r<cr>", "<cmd>NvimTreeRefresh<cr>", opts)
+
 -- Lion
 vim.cmd("let g:lion_squeeze_spaces = 1") -- Remove as many spaces as possible when aligning
 

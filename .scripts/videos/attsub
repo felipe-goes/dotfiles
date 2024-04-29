@@ -9,12 +9,12 @@ sub=$2
 # Anexa legenda ao vídeo
 /usr/bin/ls -l --quoting-style=literal | tr -s ' ' | cut -d ' ' -f 9- |
   grep "$video" | tr -s '.' | cut -d '.' -f -1 | sed '/^[[:space:]]*$/d' |
-  xargs -I _ ffmpeg -i _."$video" -vf subtitles=_."$sub" _new-."$video"
+  xargs -I _ ffmpeg -i _."$video" -vf subtitles=_."$sub" _new-."$video" || exit
 
 # Remove os arquivos de entrada
 /usr/bin/ls -l --quoting-style=literal | tr -s ' ' | cut -d ' ' -f 9- |
   grep -v "new-\." | sed '/^[[:space:]]*$/d' |
-  xargs -I _ rm _
+  xargs -I _ rm _ || exit
 
 # Renomeia os arquivos de saída
 rename "new-.$video" ".$video" *

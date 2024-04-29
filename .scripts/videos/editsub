@@ -7,31 +7,31 @@ set -e
 
 /usr/bin/ls -l --quoting-style=literal | grep -E ".ass$" | tr -s ' ' |
   cut -d ' ' -f 9- | sed '/^[[:space:]]*$/d' |
-  xargs -I _ sed -i 's/H00FFFFFF/H002DADEE/g' _
+  xargs -I _ sed -i 's/H00FFFFFF/H002DADEE/g' _ || exit
 
 /usr/bin/ls -l --quoting-style=literal | grep -E ".ass$" | tr -s ' ' |
   cut -d ' ' -f 9- | sed '/^[[:space:]]*$/d' |
-  xargs -I _ sed -i 's/\,25\,/\,18\,/g' _
+  xargs -I _ sed -i 's/\,25\,/\,18\,/g' _ || exit
 
 /usr/bin/ls -l --quoting-style=literal | grep -E ".ass$" | tr -s ' ' |
   cut -d ' ' -f 9- | sed '/^[[:space:]]*$/d' |
-  xargs -I _ sed -i 's/\,26\,/\,18\,/g' _
+  xargs -I _ sed -i 's/\,26\,/\,18\,/g' _ || exit
 
 /usr/bin/ls -l --quoting-style=literal | grep -E ".ass$" | tr -s ' ' |
   cut -d ' ' -f 9- | sed '/^[[:space:]]*$/d' |
-  xargs -I _ sed -i 's/\,28\,/\,20\,/g' _
+  xargs -I _ sed -i 's/\,28\,/\,20\,/g' _ || exit
 
 /usr/bin/ls -l --quoting-style=literal | grep -E ".ass$" | tr -s ' ' |
   cut -d ' ' -f 9- | sed '/^[[:space:]]*$/d' |
-  xargs -I _ sed -i 's/\,30\,/\,22\,/g' _
+  xargs -I _ sed -i 's/\,30\,/\,22\,/g' _ || exit
 
 /usr/bin/ls -l --quoting-style=literal | grep -E ".ass$" | tr -s ' ' |
   cut -d ' ' -f 9- | sed '/^[[:space:]]*$/d' |
-  xargs -I _ sed -i 's/\,32\,/\,22\,/g' _
+  xargs -I _ sed -i 's/\,32\,/\,22\,/g' _ || exit
 
 /usr/bin/ls -l --quoting-style=literal | grep -E ".ass$" | tr -s ' ' |
   cut -d ' ' -f 9- | sed '/^[[:space:]]*$/d' |
-  xargs -I _ sed -i 's/\,35\,/\,24\,/g' _
+  xargs -I _ sed -i 's/\,35\,/\,24\,/g' _ || exit
 
 /usr/bin/ls -l --quoting-style=literal | grep -E ".ass$" | tr -s ' ' |
   cut -d ' ' -f 9- | sed '/^[[:space:]]*$/d' |

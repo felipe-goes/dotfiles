@@ -5,14 +5,14 @@
 video="mkv"
 audio="flac"
 sub="ass"
-audiotrack="3"
-subtrack="4"
+audiotrack=3
+subtrack=4
 
-exdata $audio $sub $audiotrack $subtrack || exit
-editsub || exit
-attaudio $video $audio || exit
+exdata $audio $sub $audiotrack $subtrack
+editsub
+attaudio $video $audio
 
-mv "*.$sub" ./out || exit
+mv ./*."$sub" ./out || exit
 (
   cd ./out || exit
   attsub "$video" "$sub"

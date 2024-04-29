@@ -12,12 +12,12 @@ subtrack=$4
 # Extrai o áudio
 /usr/bin/ls -l --quoting-style=literal | tr -s ' ' | cut -d ' ' -f 9- |
   grep -E ".mkv$" | sed '/^[[:space:]]*$/d' |
-  xargs -I _ mkvextract tracks _ "$audiotrack":_."$audio"
+  xargs -I _ mkvextract tracks _ "$audiotrack":_."$audio" || exit
 
 # Extrai a legenda
 /usr/bin/ls -l --quoting-style=literal | tr -s ' ' | cut -d ' ' -f 9- |
   grep -E ".mkv$" | sed '/^[[:space:]]*$/d' |
-  xargs -I _ mkvextract tracks _ "$subtrack":_."$sub"
+  xargs -I _ mkvextract tracks _ "$subtrack":_."$sub" || exit
 
 # Renomeia os arquivos de saída
 rename ".mkv.$audio" ".$audio" *

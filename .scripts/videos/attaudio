@@ -9,4 +9,4 @@ audio=$2
 
 /usr/bin/ls -l --quoting-style=literal | tr -s ' ' | cut -d ' ' -f 9- |
   grep "$video" | tr -s '.' | cut -d '.' -f -1 | sed '/^[[:space:]]*$/d' |
-  xargs -I _ ffmpeg -i _."$video" -i _."$audio" -map 0:v -map 1:a -c:v copy -shortest ./out/_."$video"
+  xargs -I _ ffmpeg -i _."$video" -i _."$audio" -map 0:v -map 1:a -c:v copy -shortest ./out/_."$video" || exit

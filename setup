@@ -31,7 +31,8 @@ pacman -S     \
   python-pip  \
   git-delta   \
   thefuck     \
-  zoxide
+  zoxide      \
+  glow
 
 # fzf shortcuts
 # junegunn/fzf-git.sh

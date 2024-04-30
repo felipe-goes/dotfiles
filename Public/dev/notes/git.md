@@ -2,9 +2,18 @@
 
 ## git add --patch
 
-https://www.youtube.com/watch?v=blbzIgM-aOU
-
 - `git add --path` - select each changed hunk in a file for commiting
+- `y` - Yes, add this hunk
+- `n` - No, don’t add this hunk
+- `d` - No, don’t add this hunk and all other remaining hunks. Useful if you’ve
+already added what you want to, and want to skip over the rest
+- `s` - Split the hunk into smaller hunks. This only works if there is unchanged
+lines between the changes in the displayed hunk, so this wouldn’t have any
+effect in the example above
+- `e` - Manually edit the hunk. This is probably the most powerful option. As
+promised, it will open the hunk in a text editor and you can edit it to your
+hearts content
+
 
 ## git bisect
 
@@ -29,7 +38,7 @@ git bisect bad
 git bisect good
 ```
 
-## Stash
+## stash
 
 - `git stash` - save current state of the repo for further work without
 committing any change
@@ -39,25 +48,25 @@ committing any change
 - `git stash drop <stash_id>` - delete a specific stash
 - `git stash clear` - delete all stash
 
-## Reset
+## reset
 
 - `git reset --hard HEAD` - going back to HEAD
 - `git reset --hard HEAD^` - going back to the commit before HEAD
 - `git reset --hard HEAD~1` - equivalent to "^"
 - `git reset --hard HEAD~2` - going back two commits before HEAD
 
-## Revert
+## revert
 
 - `git revert <commit_hash>` - revert commit by using the hash as reference
 - `git revert HEAD` - revert commit in HEAD
 
-## Clean
+## clean
 
 - `git clean -n` - show untracked files that `git clean` will remove
 - `git clean -df` - remove untracked files recursivly
 - `git clean -fX` - remove ignored files
 
-## Log
+## log
 
 - `git log <filename>` - show the history of commits of the file
 - `git log -p <filename>` - same as above but also show the changes from each
@@ -77,19 +86,19 @@ file
 - `git ls-files . --exclude-standard --others` - list untracked files
 - `git ls-files . --modified` - list not staged files
 
-## Fetch
+## fetch
 
 - `git fetch -a` - get changes from all branches from the remote but does not
 merge automatically
 - `git fetch -p` - update branches on local repo. remove the ones that not exist
 anymore in the remote
 
-## Merge
+## merge
 
 - `git merge --allow-unrelated-histories` - The default behavior has changed
 since Git 2.9. https://stackoverflow.com/questions/37937984/git-refusing-to-merge-unrelated-histories-on-rebase
 
-## Push
+## push
 
 - `git push -u origin HEAD` - push local branch and link it with the remote
 - `git push --set-upstream origin <branch_name>` - link branch with the remote
@@ -97,7 +106,7 @@ since Git 2.9. https://stackoverflow.com/questions/37937984/git-refusing-to-merg
 - `git branch -d -r origin/<branch>` - remove tracking to remote branch that was
 already removed
 
-## Cherry-Pick
+## cherry-pick
 
 Go to the branch you want to receive the commit.
 
@@ -106,7 +115,7 @@ Go to the branch you want to receive the commit.
 commit
 - `git cherry-pick <hash> -n` - cherry-pick and do not commit straight away
 
-## Worktree
+## worktree
 
 - `git worktree add <path>` - add new worktree inside the directory `<path>`.
 This will automatically checkout to the master branch
@@ -117,12 +126,12 @@ This will automatically checkout to the master branch
 anymore. This is useful when the path was removed but the worktree was not
 removed from the git repository
 
-## Checkout
+## checkout
 
 - `git checkout origin/<branch_name> <filename>` - revert file to the state in
 `<branch_name>`
 
-## Diff
+## diff
 
 - `git diff --name-only <branch_name>` - show only the name of the files
 modified compared to the `<branch_name>`. you can replace `<branch_name>` by
@@ -139,7 +148,7 @@ the files of a specific commit
   to each file (Deleted, Modified, Added)
   - The `-r` argument is to recurse into sub-trees
 
-## Clone
+## clone
 
 - `git clone <repo_url>` - clone repository
 - `git clone --recurse-submodules <repo_url>` - clone and automatically
@@ -147,7 +156,7 @@ initialize and update each sumodule in the repository, including nested ones,
 if any
 - `git clone <repo_url> --no-checkout` - clone only the repo history
 
-## Submodules
+## submodules
 
 - `git clone --recursive <repo_url>` - clone repo with submodules
 - `git submodule update --init --recursive` - initialize submodules if you have
@@ -160,11 +169,11 @@ submodule including nested submodules
 - More about submodules
   - https://www.vogella.com/tutorials/GitSubmodules/article.html#:~:text=2.3.-,Pulling%20with%20submodules,in%20the%20git%20pull%20command%20.
 
-## Tag
+## tag
 
 - `git tag <name_tag>` - this create a lightweight tag
 
-## Sparse (We are not going to use this functionality anymore)
+## sparse (We are not going to use this functionality anymore)
 
 - `git sparse-checkout init --cone` - initialize sparse
 - `git sparse-checkout set <folder_name>/` - download only the folder specified.
@@ -177,7 +186,7 @@ your index to not be sparse. Older versions of Git will not understand the
 sparse directory entries index extension and may fail to interact with your
 repository until it is disabled.
 
-## Others
+## others
 
 - `git commit --no-verify` - ignore git hooks
 - `git show <hash>` - show commit according to the hash
@@ -185,7 +194,7 @@ repository until it is disabled.
 - `git fetch -p` - remove tracking branches no longer on remote
 - `git for-each-ref` - list all branches (heads, origin, tags)
 
-## Configuration
+## configuration
 
 - `git config --global core.longpaths true` - avoid future problems with files
 that have a long path

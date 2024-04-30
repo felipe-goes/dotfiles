@@ -32,7 +32,8 @@ this cache rather than searching for it again.
 If Python fails to find the module following these steps, it raises an
 **ImportError** exception.
 
-Understanding how Python resolves imports is crucial for organizing your code and managing dependencies effectively.
+Understanding how Python resolves imports is crucial for organizing your code
+and managing dependencies effectively.
 
 ## How to import package installed via pipx
 

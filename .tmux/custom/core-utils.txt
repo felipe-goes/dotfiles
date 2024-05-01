@@ -3,6 +3,7 @@ sed
 awk
 tr
 cut
+git
 grep
 xargs
 ssh

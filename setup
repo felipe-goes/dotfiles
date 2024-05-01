@@ -59,7 +59,8 @@ pacman -S        \
   luarocks       \
   composer       \
   julia          \
-  chafa
+  chafa          \
+  delve
 
 # Terminal customization
 pacman -S   \

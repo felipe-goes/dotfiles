@@ -2,7 +2,8 @@
 -- https://github.com/mfussenegger/nvim-dap/wiki/Debug-Adapter-installation
 
 require("user.dap.dap")
-require("user.dap.cpp")
-require("user.dap.python")
 require("user.dap.bash")
+require("user.dap.cpp")
+require("user.dap.go")
 require("user.dap.powershell")
+require("user.dap.python")

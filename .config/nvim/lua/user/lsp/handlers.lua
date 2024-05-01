@@ -23,6 +23,9 @@ lspconfig.dockerls.setup({
 lspconfig.docker_compose_language_service.setup({
   capabilities = capabilities
 })
+lspconfig.gopls.setup({
+  capabilities = capabilities
+})
 lspconfig.jsonls.setup({
   capabilities = capabilities
 })

@@ -1,10 +1,11 @@
-javascript
-typescript
+bash
 c
 cpp
-lua
-python
-bash
 css
+go
 html
+javascript
+lua
 powershell
+python
+typescript

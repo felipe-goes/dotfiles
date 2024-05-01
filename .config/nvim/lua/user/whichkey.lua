@@ -125,7 +125,8 @@ local mappings = {
       "Workspace Diagnostics",
     },
     f = { "<cmd>lua vim.lsp.buf.format({ async = true })<cr>", "Format" },
-    i = { "<cmd>Mason<cr>", "Info" },
+    i = { "<cmd>LspInfo<cr>", "Info" },
+    I = { "<cmd>Mason<cr>", "Install" },
     k = {
       "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>",
       "Prev Diagnostic",

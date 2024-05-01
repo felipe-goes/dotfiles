@@ -16,8 +16,6 @@ pacman -S     \
   git         \
   fzf         \
   flatpak     \
-  python      \
-  nodejs      \
   npm         \
   fd          \
   bat         \
@@ -28,7 +26,6 @@ pacman -S     \
   unzip       \
   bashtop     \
   firefox     \
-  python-pip  \
   git-delta   \
   thefuck     \
   zoxide      \
@@ -79,9 +76,13 @@ pacman -S   \
 # Development
 pacman -S        \
   cmake          \
+  nodejs         \
+  python         \
+  python-pip     \
   docker         \
   docker-compose \
-  catch2
+  catch2         \
+  go
 
 # conventional-changelog/commitlint
 # clona na pasta /opt

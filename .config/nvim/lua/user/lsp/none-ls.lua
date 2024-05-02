@@ -38,6 +38,8 @@ null_ls.setup({
     require("none-ls-shellcheck.diagnostics"),
     -- cpp
     require("none-ls.diagnostics.cpplint"),
+    -- go
+    diagnostics.staticcheck,
     -- lua
     diagnostics.selene,
     -- python

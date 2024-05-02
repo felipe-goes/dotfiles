@@ -33,7 +33,7 @@ staline.setup({
     true_colors = true,
     left_separator = "",
     right_separator = "",
-    mod_symbol = "  ",
+    mod_symbol = "  ",
     lsp_client_symbol = " ",
     line_column = "%l:%c [%p%%]",
     -- line_column = "%l:%c [%L]",
@@ -46,20 +46,20 @@ staline.setup({
     V = "#fc802d"
   },
   mode_icons = {
-    n = " ",
-    i = " ",
+    n = "󰋜 ",
+    i = "󰏫 ",
     c = " ",
-    v = " ",
-    V = " ",
+    v = "󰈈 ",
+    V = "󰈈 ",
     R = " ",
   },
   special_table = {
     NvimTree = { "NvimTree", " " },
-    packer = { "Packer", " " }, -- etc
+    packer = { "Packer", "󰏖 " }, -- etc
   },
   lsp_symbols = {
-    Error = "  ",
-    Info = "  ",
+    Error = "  ",
+    Info = "  ",
     Warn = "  ",
     Hint = "  ",
   },

@@ -57,7 +57,7 @@ return packer.startup(function(use)
     "nvim-treesitter/nvim-treesitter",
     run = ":TSUpdate",
   })
-  use("kyazdani42/nvim-web-devicons")
+  use("nvim-tree/nvim-web-devicons")
   use("stevearc/dressing.nvim")
   use({
     "ziontee113/icon-picker.nvim",

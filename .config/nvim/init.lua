@@ -20,6 +20,7 @@ vim.loader.enable()
 
 require("user.colorscheme") -- always on top
 require("user.indentline") -- always before options
+require("user.devicons")
 require("user.options")
 require("user.plugins")
 require("user.colorizer")

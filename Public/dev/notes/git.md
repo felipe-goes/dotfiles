@@ -7,28 +7,58 @@ be ignored by Git, rather than specific lines of content within a file.
 If you need to ignore a specific line within a file, you have a few options:
 
 1. **Manually Manage Changes**: You can manually avoid staging or committing
-the specific line you want to ignore. This requires discipline to review and
-manage changes on a line-by-line basis.
+   the specific line you want to ignore. This requires discipline to review and
+   manage changes on a line-by-line basis.
 
 2. **Use Git Attributes**: Git has a feature called "smudge" and "clean"
-filters that can process files on checkout and commit. While these can be used
-to modify the content of files, it is a complex and uncommon solution.
+   filters that can process files on checkout and commit. While these can be used
+   to modify the content of files, it is a complex and uncommon solution.
 
 3. **Use a Separate Configuration File**: Depending on your use case, you might
-consider storing the line you want to ignore in a separate configuration file.
-This configuration file can then be ignored in Git by adding it to your
-`.gitignore`.
+   consider storing the line you want to ignore in a separate configuration file.
+   This configuration file can then be ignored in Git by adding it to your
+   `.gitignore`.
 
 Remember that ignoring individual lines can lead to complications when
 collaborating with others or maintaining a project. It's generally better
 practice to manage your codebase in a way that doesn't require ignoring
 specific lines.
 
-# [Conventional Commits Pattern](https://medium.com/linkapi-solutions/conventional-commits-pattern-3778d1a1e657)
+# How to migrate a repo
 
-As regras são muito simples, como demonstrado abaixo temos um tipo de *commit*
-(*type*), o escopo/contexto do *commit* (*scope*) e o assunto/mensagem do
-*commit* (*subject*), mas adiante irei detalhar cada um.
+Clone the repo to your machine. We will bare clone with `git clone --bare repo_to_be_copied`
+to only get the history, if you already have it cloned, cd into it. Then go to
+the directory of the repo you just cloned using the `--bare` option and run the
+command `git push --mirror new_copied_repo`.
+
+# commitlint
+
+https://github.com/conventional-changelog/commitlint
+
+To use the repo, you need both `NodeJS` and `yarn` installed. There already some
+configuration already available in the repository. In order to import the
+conventional commit pattern, run the following command in the root directory of
+the project: `yarn add -D @commitlint/cli @commitlint/config-conventional`.
+
+After that, create a file in the root directory of the project called
+`commitlint.config.js` and put the following inside of it:
+
+```
+module.exports = {
+    extends: [
+        "@commitlint/config-conventional"
+    ],
+}
+```
+
+Now you can pipe the commit text to the commitlint script and it will give you
+the log.
+
+# [Translated from - Conventional Commits Pattern](https://medium.com/linkapi-solutions/conventional-commits-pattern-3778d1a1e657)
+
+The rules are very simple. Like it is shown below, we have the commit _type_,
+the _scope_ of the commit which tells the context of it and the _subject_ of the
+commit.
 
 ```
 !type(?scope): !subject
@@ -36,74 +66,74 @@ As regras são muito simples, como demonstrado abaixo temos um tipo de *commit*
 <?footer>
 ```
 
-Dessa maneira, `!` indica os atributos obrigatórios e `?` indica os atributos
-não obrigatórios. Nesse artigo não iremos falar sobre o `body` e nem o `footer`
-do commit. Mas tratam-se de especificações simples, que vocês podem ver mais
-[aqui](https://www.conventionalcommits.org/pt-br/v1.0.0-beta.4/#especifica%C3%A7%C3%A3o).
+This way, `!` indicates which attributes are mandatory and `?` the ones that are
+optional. We are not getting into details regarding `body` and `footer` but you
+can check that [in this link](https://www.conventionalcommits.org/pt-br/v1.0.0-beta.4/#especifica%C3%A7%C3%A3o).
 
-Type: Quais são os tipos de commit
+Which are the commit types?
 
-O type é responsável por nos dizer qual o tipo de alteração ou iteração está
-sendo feita, das regras da convenção, temos os seguintes tipos:
+The type is responsible to tell which kind of change or iteration is being done.
+These are the rules of convention we have:
 
-- `test:` indica qualquer tipo de criação ou alteração de códigos de teste.
+- `test:` indicates any type of creation or update on the tests.
 
-**Exemplo:** Criação de testes unitários.
+**Example:** New unit tests
 
-- `feat:` indica o desenvolvimento de uma nova feature ao projeto.
+- `feat:` indicates the development of a new feature to the project.
 
-**Exemplo:** Acréscimo de um serviço, funcionalidade, endpoint, etc.
+**Example:** Add new service, functionality, endpoint, etc.
 
-- `refactor:` usado quando houver uma refatoração de código que não tenha
-qualquer tipo de impacto na lógica/regras de negócio do sistema.
+- `refactor:` used when there is a refactoring on the code that has no impact
+  in the logic or in the business rules of the system.
 
-**Exemplo:** Mudanças de código após um code review
+**Example:** Code changes after core review
 
-- `style:` empregado quando há mudanças de formatação e estilo do código que
-não alteram o sistema de nenhuma forma.
+- `style:` used when there are formatting and style changes to the code that
+  does not change the system behavior whatsoever.
+  não alteram o sistema de nenhuma forma.
 
-**Exemplo:** Mudar o style-guide, mudar de convenção lint, arrumar indentações,
-remover espaços em brancos, remover comentários, etc..
+**Example:** Style guide change, changed the linter, fix identations, remove
+trailing whitespaces, remove comments, etc.
 
-- `fix:` utilizado quando há correção de erros que estão gerando bugs no sistema.
+- `fix:` used when there is a fix that were causing issues to the system.
 
-**Exemplo:** Aplicar tratativa para uma função que não está tendo o
-comportamento esperado e retornando erro.
+**Example:** Update function which was not behaving properly or update the code
+that was not building.
 
-- `chore:` indica mudanças no projeto que não afetem o sistema ou arquivos de
-testes. São mudanças de desenvolvimento.
+- `chore:` indicates a change in the project that does not affect the system or
+  the test files. These are changes in the project organization.
 
-**Exemplo:** Mudar regras do eslint, adicionar prettier, adicionar mais
-extensões de arquivos ao .gitignore
+**Example:** Update linting rules, add a linter, add more extension files to the
+.gitignore
 
-- `docs:` usado quando há mudanças na documentação do projeto.
+- `docs:` used when there are documentation changes to the project.
 
-**Exemplo:** adicionar informações na documentação da API, mudar o README, etc.
+**Example:** add new api documentation, update README, etc.
 
-- `build:` utilizada para indicar mudanças que afetam o processo de build do
-projeto ou dependências externas.
+- `build:` used to indicate changes that affect the build process of the of the
+  project or external dependencies.
 
-**Exemplo:** Gulp, adicionar/remover dependências do npm, etc.
+**Example:** Gulp, add/remove npm/pip dependencies, etc.
 
-- `perf:` indica uma alteração que melhorou a performance do sistema.
+- `perf:` indicate change that unhanced the system performance.
 
-**Exemplo:** alterar ForEach por while, melhorar a query ao banco, etc.
+**Example:** update ForEach for while, update bank query, etc.
 
-- `ci:` utilizada para mudanças nos arquivos de configuração de CI.
+- `ci:` used for changes in the CI configuration files.
 
-**Exemplo:** Circle, Travis, BrowserStack, etc.
+**Example:** Circle, Travies, BrowserStack, etc.
 
-- `revert:` indica a reverão de um commit anterior.
+- `revert:` indicates a git revert was made to the repo.
 
-Observações:
+Summarize:
 
-- Só pode ser utilizado um *type* por commit;
-- O *type* é **obrigatório**;
-- Caso esteja indeciso sobre qual *type* usar, provavelmente trata-se de uma
-grande mudança e é possível separar esse *commit* em dois ou mais *commits*;
-- A diferença entre `build` e `chore` pode ser um tanto quanto sutil e pode
-gerar confusão, por isso devemos ficar atentos quanto ao tipo correto. No caso
-do Node.js por exemplo, podemos pensar que quando há uma adição/alteração de
-certa dependência de desenvolvimento presente em `devDependencies`, utilizamos
-o `chore`.  Já para alterações/adições de dependências comuns aos projeto, e
-que haja impacto direto e real sobre o sistema, utilizamos o `build`.
+- Only one _type_ is allowed per commit;
+- The _type_ is **mandatory**;
+- If you are not sure about which _type_ to choose, probably it means that you
+  are making a big change that could be separeted in 2 or more commits;
+- The difference between `build` and `chore` can be a little tricky and lead to
+  confusion. This is why we need to pay attention about the correct type. Using
+  Noje.js as an example, we can think that when there is an update/addition of
+  a development dependency present in `devDependencies`, we use `chore`. In other
+  hand, for update/addition of dependencies that are common to the project, and
+  there is a real and direct impact to the system, we use `build`.

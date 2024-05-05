@@ -29,9 +29,9 @@ if [[ "^$option$" =~ "cheat-sheet" ]]; then
 	fi
 elif [[ "^$option$" =~ "chatgpt" ]]; then
 	if [ "$existSession" == "" ]; then
-		bash -c "export OPENAI_API_KEY='replace-with-key' && chatgpt --set-model $(chatgpt --list-models | tail -n +2 | fzf | awk '{print $2}') && chatgpt --interactive"
+		bash -c "$HOME/go/bin/mods -M -f ; read"
 	else
-		tmux neww -n "$option" bash -c "export OPENAI_API_KEY='replace-with-key' && chatgpt --set-model $(chatgpt --list-models | tail -n +2 | fzf | awk '{print $2}') && chatgpt --interactive"
+		tmux neww -n "$option" bash -c "$HOME/go/bin/mods -M -f ; read"
 	fi
 elif [[ "^$option$" =~ "notes" ]]; then
 	if [ "$existSession" == "" ]; then

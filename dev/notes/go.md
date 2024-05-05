@@ -548,3 +548,8 @@
         - [constraints](https://golang.org/x/exp/constraints)
         - [slices](https://golang.org/x/exp/slices)
         - [maps](https://golang.org/x/exp/maps)
+
+## Error Management
+
+## Concurrent Programming
+## Testing

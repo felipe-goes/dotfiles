@@ -35,9 +35,9 @@ elif [[ "^$option$" =~ "chatgpt" ]]; then
 	fi
 elif [[ "^$option$" =~ "notes" ]]; then
 	if [ "$existSession" == "" ]; then
-		bash -c "glow $HOME/Public/dev/utils"
+		bash -c "glow -w 80 $HOME/Public/dev/utils"
 	else
-		tmux neww -n "$option" bash -c "glow $HOME/Public/dev/notes"
+		tmux neww -n "$option" bash -c "glow -w 80 $HOME/Public/dev/notes"
 	fi
 elif [[ "^$option$" =~ "man" ]]; then
 	if [ "$existSession" == "" ]; then

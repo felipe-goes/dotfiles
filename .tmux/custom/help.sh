@@ -1,10 +1,10 @@
 #!/bin/bash
-option=$(bat "$HOME/.tmux/custom/options.txt" | fzf)
+option=$(bat "$HOME/.tmux/custom/options.txt" | gum filter)
 
 existSession=$(tmux ls 2>/dev/null)
 
 if [[ "^$option$" =~ "cheat-sheet" ]]; then
-	selected=$(bat "$HOME/.tmux/custom/languages.txt" "$HOME/.tmux/custom/core-utils.txt" | fzf)
+	selected=$(bat "$HOME/.tmux/custom/languages.txt" "$HOME/.tmux/custom/core-utils.txt" | gum filter)
 
 	if grep -qs "^$selected$" "$HOME/.tmux/custom/languages.txt"; then
 		read -r -p "query: " query
@@ -41,15 +41,15 @@ elif [[ "^$option$" =~ "notes" ]]; then
 	fi
 elif [[ "^$option$" =~ "man" ]]; then
 	if [ "$existSession" == "" ]; then
-		bat "$HOME/.tmux/custom/languages.txt" "$HOME/.tmux/custom/core-utils.txt" | fzf
+		bat "$HOME/.tmux/custom/languages.txt" "$HOME/.tmux/custom/core-utils.txt" | gum filter
 	else
-		tmux neww -n "$option" bash -c "man $(bat "$HOME"/.tmux/custom/languages.txt "$HOME"/.tmux/custom/core-utils.txt | fzf) & while [ : ]; do sleep 1; done"
+		tmux neww -n "$option" bash -c "man $(bat "$HOME"/.tmux/custom/languages.txt "$HOME"/.tmux/custom/core-utils.txt | gum filter) & while [ : ]; do sleep 1; done"
 	fi
 elif [[ "^$option$" =~ "eg" ]]; then
 	if [ "$existSession" == "" ]; then
-		bat "$HOME/.tmux/custom/languages.txt" "$HOME/.tmux/custom/core-utils.txt" | fzf
+		bat "$HOME/.tmux/custom/languages.txt" "$HOME/.tmux/custom/core-utils.txt" | gum filter
 	else
-		tmux neww -n "$option" bash -c "tldr $(bat "$HOME"/.tmux/custom/languages.txt "$HOME"/.tmux/custom/core-utils.txt | fzf) & while [ : ]; do sleep 1; done"
+		tmux neww -n "$option" bash -c "tldr $(bat "$HOME"/.tmux/custom/languages.txt "$HOME"/.tmux/custom/core-utils.txt | gum filter) & while [ : ]; do sleep 1; done"
 	fi
 else
 	tmux neww -n "not-found" bash -c "echo 'Please select one of the listed options' & while [ : ]; do sleep 1; done"

@@ -29,7 +29,8 @@ pacman -S     \
   git-delta   \
   thefuck     \
   zoxide      \
-  glow
+  glow        \
+  gum
 
 # fzf shortcuts
 # junegunn/fzf-git.sh
@@ -83,6 +84,7 @@ pacman -S        \
   docker-compose \
   catch2         \
   go
+  # go install github.com/charmbracelet/mods@latest
 
 # conventional-changelog/commitlint
 # clona na pasta /opt

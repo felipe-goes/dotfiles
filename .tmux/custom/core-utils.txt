@@ -13,3 +13,6 @@ chmod
 chown
 tmux
 pacman
+gum
+mods
+vhs

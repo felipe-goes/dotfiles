@@ -30,6 +30,7 @@ masonlsp.setup({
     "dockerls",
     "docker_compose_language_service",
     "gopls",
+    "html",
     "jsonls",
     "lua_ls",
     "markdown_oxide",

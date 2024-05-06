@@ -40,6 +40,8 @@ null_ls.setup({
     require("none-ls.diagnostics.cpplint"),
     -- go
     diagnostics.staticcheck,
+    -- html
+    diagnostics.markuplint,
     -- lua
     diagnostics.selene,
     -- python

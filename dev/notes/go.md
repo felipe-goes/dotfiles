@@ -111,3 +111,56 @@ This allows the user to enter input directly into the terminal until the word
 This example provides a robust foundation for building CLI tools in Go that
 require input from both files and stdin, making it versatile for various
 scripting and data processing tasks.
+
+# How to read from a file with go?
+
+To read from a file in Go, you can use the `os` package to open the file,
+and then use the `bufio` package for buffered I/O operations. Here is a
+simple example of reading a file line by line in Go:
+
+```
+package main
+
+import (
+    "bufio"
+    "fmt"
+    "log"
+    "os"
+)
+
+func main() {
+    // Open the file for reading
+    file, err := os.Open("example.txt")
+    if err != nil {
+        log.Fatalf("failed to open file: %v", err)
+    }
+    defer file.Close()
+
+    // Create a new scanner to read from the file
+    scanner := bufio.NewScanner(file)
+
+    // Read the file line by line
+    for scanner.Scan() {
+        line := scanner.Text()
+        fmt.Println(line)
+    }
+
+    // Check for any errors that occurred during scanning
+    if err := scanner.Err(); err != nil {
+        log.Fatalf("error scanning file: %v", err)
+    }
+}
+```
+
+In this example:
+
+1. We open a file "example.txt" for reading using `os.Open`.
+2. We create a new scanner using `bufio.NewScanner` to read from the file.
+3. We loop through the file line by line using `scanner.Scan()` and retrieve
+each line using `scanner.Text()`.
+4. Finally, we check for any errors that may have occurred during the
+scanning process.
+
+Make sure to handle errors properly for file opening and scanning to ensure
+your program behaves as expected.
+

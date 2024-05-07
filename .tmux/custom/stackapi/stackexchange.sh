@@ -4,6 +4,7 @@
 site=$(bat "$HOME"/.tmux/custom/stackapi/sites.txt | gum filter --indicator=">")
 query=$(gum input --placeholder "query")
 
+# take query based on chosen site
 case "$site" in
 "stackoverflow")
 	tag=$(

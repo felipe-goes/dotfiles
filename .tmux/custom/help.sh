@@ -1,8 +1,8 @@
 #!/bin/bash
-option=$(bat "$HOME/.tmux/custom/options.txt" | gum filter)
+option=$(bat "$HOME/.tmux/custom/options.txt" | gum filter --indicator=">")
 
 if [[ "^$option$" =~ "cheat-sheet" ]]; then
-	selected=$(bat "$HOME/.tmux/custom/languages.txt" "$HOME/.tmux/custom/core-utils.txt" | gum filter)
+	selected=$(bat "$HOME/.tmux/custom/languages.txt" "$HOME/.tmux/custom/core-utils.txt" | gum filter --indicator=">")
 
 	if grep -qs "^$selected$" "$HOME/.tmux/custom/languages.txt"; then
 		query=$(gum input --placeholder "query")
@@ -22,9 +22,9 @@ elif [[ "^$option$" =~ "chatgpt" ]]; then
 elif [[ "^$option$" =~ "notes" ]]; then
   tmux neww -n "$option" bash -c "glow -s dark $HOME/dev/notes/$(ls "$HOME"/dev/notes | gum choose --height=50) | gum pager ; read"
 elif [[ "^$option$" =~ "man" ]]; then
-	tmux neww -n "$option" bash -c "man $(bat "$HOME"/.tmux/custom/languages.txt "$HOME"/.tmux/custom/core-utils.txt | gum filter) ; read"
+	tmux neww -n "$option" bash -c "man $(bat "$HOME"/.tmux/custom/languages.txt "$HOME"/.tmux/custom/core-utils.txt | gum filter --indicator=">") ; read"
 elif [[ "^$option$" =~ "eg" ]]; then
-	tmux neww -n "$option" bash -c "tldr $(bat "$HOME"/.tmux/custom/languages.txt "$HOME"/.tmux/custom/core-utils.txt | gum filter) ; read"
+	tmux neww -n "$option" bash -c "tldr $(bat "$HOME"/.tmux/custom/languages.txt "$HOME"/.tmux/custom/core-utils.txt | gum filter --indicator=">") ; read"
 elif [[ "^$option$" =~ "stackexchange" ]]; then
 	tmux neww -n "$option" bash -c "bash $HOME/.tmux/custom/stackapi/stackexchange.sh | bash $HOME/.tmux/custom/stackapi/filter.sh ; read"
 else

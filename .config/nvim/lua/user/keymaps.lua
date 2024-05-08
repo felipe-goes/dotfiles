@@ -94,7 +94,41 @@ keymap("n", "<leader>q", "<cmd>Bdelete!<cr>", opts)
 keymap("n", "<leader>Q", "<cmd>q<cr>", opts)
 
 -- Plugins
--- NvimTree
+-- Harpoon
+local harpoon = require("harpoon")
+vim.keymap.set("n", "<leader>a", function() harpoon:list():add() end)
+vim.keymap.set("n", "<c-e>", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end)
+
+vim.keymap.set("n", "<m-y>", function() harpoon:list():select(1) end)
+vim.keymap.set("n", "<m-u>", function() harpoon:list():select(2) end)
+vim.keymap.set("n", "<m-i>", function() harpoon:list():select(3) end)
+vim.keymap.set("n", "<m-o>", function() harpoon:list():select(4) end)
+
+-- toggle previous & next buffers stored within harpoon list
+vim.keymap.set("n", "<c-p>", function() harpoon:list():prev() end)
+vim.keymap.set("n", "<c-n>", function() harpoon:list():next() end)
+
+local conf = require("telescope.config").values
+local function toggle_telescope(harpoon_files)
+    local file_paths = {}
+    for _, item in ipairs(harpoon_files.items) do
+        table.insert(file_paths, item.value)
+    end
+
+    require("telescope.pickers").new({}, {
+        prompt_title = "harpoon",
+        finder = require("telescope.finders").new_table({
+            results = file_paths,
+        }),
+        previewer = conf.file_previewer({}),
+        sorter = conf.generic_sorter({}),
+    }):find()
+end
+
+vim.keymap.set("n", "<c-e>", function() toggle_telescope(harpoon:list()) end,
+    { desc = "open harpoon window" })
+
+-- nvimtree
 keymap("n", "<leader>r<cr>", "<cmd>NvimTreeRefresh<cr>", opts)
 
 -- Lion

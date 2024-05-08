@@ -128,6 +128,11 @@ return packer.startup(function(use)
   use("nvimtools/none-ls-extras.nvim")
   use("gbprod/none-ls-shellcheck.nvim")
 
+  use({
+    "ThePrimeagen/harpoon",
+    branch = "harpoon2",
+    requires = { { "nvim-lua/plenary.nvim" } },
+  })
   -- Telescope
   use("nvim-telescope/telescope.nvim")
   use("nvim-telescope/telescope-fzy-native.nvim") -- not sure yet what it does
@@ -148,7 +153,7 @@ return packer.startup(function(use)
   use({
     "vim-test/vim-test",
     requires = {
-      "preservim/vimux"
+      "preservim/vimux",
     },
   })
 

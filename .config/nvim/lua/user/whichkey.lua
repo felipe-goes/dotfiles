@@ -89,6 +89,7 @@ local mappings = {
   f = { "<cmd>Telescope find_files<cr>", "Find Files" },
   F = { "<cmd>Telescope live_grep<cr>", "Find Text" },
   H = { "<cmd>Telescope find_files hidden=true<cr>", "Find Hidden Files" },
+  b = { "<cmd>Telescope buffers<cr>", "Find Buffers" },
   L = { "<cmd>BufferLineTogglePin<cr>", "Lock Buffer" },
 
   g = {

@@ -154,21 +154,12 @@ local mappings = {
 
   s = {
     name = "Search",
-    c = { "<cmd>Telescope colorscheme<cr>", "Colorscheme" },
-    C = { "<cmd>Telescope commands<cr>", "Commands" },
+    c = { "<cmd>Telescope commands<cr>", "Commands" },
     m = { "<cmd>Telescope media_files<cr>", "Image Preview" },
     h = { "<cmd>Telescope help_tags<cr>", "Find Help" },
-    M = { "<cmd>Telescope man_pages<cr>", "Man Pages" },
-    r = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
-    R = { "<cmd>Telescope registers<cr>", "Registers" },
+    R = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
+    r = { "<cmd>Telescope registers<cr>", "Registers" },
     k = { "<cmd>Telescope keymaps<cr>", "Keymaps" },
-  },
-
-  o = {
-    name = "Outros",
-    f = { "<cmd>ToggleTerm direction=float<cr>", "Terminal Float" },
-    h = { "<cmd>ToggleTerm size=10 direction=horizontal<cr>", "Terminal Horizontal" },
-    v = { "<cmd>ToggleTerm size=80 direction=vertical<cr>", "Terminal Vertical" },
   },
 
   S = {

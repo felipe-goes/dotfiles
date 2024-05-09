@@ -26,7 +26,7 @@ if [[ "^$option$" =~ "cheat-sheet" ]]; then
 	fi
 # build chatgpt query
 elif [[ "^$option$" =~ "chatgpt" ]]; then
-	tmux neww -n "$option" bash -c "export OPENAI_API_KEY='replace-with-key' && $HOME/go/bin/mods -M -f ; read"
+	tmux neww -n "$option" bash -c "$HOME/.tmux/custom/chatgpt/chatgpt.sh ; read"
 # run glow in notes folder
 elif [[ "^$option$" =~ "notes" ]]; then
 	tmux neww -n "$option" bash -c "glow -s dark $HOME/dev/notes/$(eza "$HOME"/dev/notes | gum choose --height=40) | gum pager ; read"

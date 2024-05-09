@@ -31,7 +31,8 @@ pacman -S --needed \
   zoxide           \
   glow             \
   gum              \
-  vhs
+  vhs              \
+  ansible
 
 # fzf shortcuts
 # junegunn/fzf-git.sh

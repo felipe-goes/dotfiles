@@ -83,7 +83,8 @@ local opts = {
 }
 
 local mappings = {
-  e = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
+  r = { "<cmd>NvimTreeRefresh<cr>", "NvimTree Refresh" },
+  p = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
   h = { "<cmd>nohlsearch<cr>", "No Highlight" },
   m = { "<cmd>MarkdownPreview<cr>", "Markdown Preview" },
   f = { "<cmd>Telescope find_files<cr>", "Find Files" },

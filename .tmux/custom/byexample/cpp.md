@@ -1,0 +1,91 @@
+# Cpp By Example
+
+## cppbyexample
+
+- About This Website
+- Absolute Value
+- Add to an Array
+- Append to Strings
+- Concatenate Strings
+- Const
+- Constructors
+- Convert a String to int or float
+- Convert an int or float to String
+- Create a File
+- Declare Variables
+- Destructors
+- Exceptions
+- Find with Hash Map
+- Find with Hash Set
+- For Loop
+- Functions
+- Generate Random ints and floats
+- Hash Maps
+- Hash Sets
+- Heap
+- Index Into an Array
+- Initialize a Struct
+- Just print()
+- Main
+- Member Functions
+- Namespace Aliases
+- Namespaces
+- Nearest Integer
+- Ordered Map
+- Ordered Set
+- Parse a CSV File
+- Pass an Array to a Function
+- Pointers
+- Pointers vs References
+- Print
+- Print Standard Library Containers
+- Public, Protected, and Private
+- Raise to Power
+- Read a File
+- Recursion
+- Remainder
+- Smart Pointers
+- Sorting
+- Split Strings
+- Square Root
+- Square a Number
+- Stack
+- Store Custom Types in a Hash Map
+- Store Custom Types in a Hash Set
+- String Compare
+- String Length
+- Substring
+- Templates
+- Ternary Operator
+- Trim Whitespace
+- Vector
+- What Are References
+- What is a Class
+- What is a Lambda (Closure)
+- What is size_t
+- Why Use Pointers
+- Why Use References
+- iostream
+- shared_ptr
+- std
+- std::vector Reference
+- this Pointer
+- unique_ptr
+
+## cbyexample
+
+- Modules
+- Pass by Reference
+- Range
+- Namespaces
+- Classes
+- Class Methods
+- Constructors & Destructors
+- Encapsulation
+- Inheritance
+- Polymorphism
+- Friend Functions
+- Templates
+- Structured Bindings
+- Lambda Expressions
+- Exception Handling

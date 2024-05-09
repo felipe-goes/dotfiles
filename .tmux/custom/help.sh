@@ -29,7 +29,7 @@ elif [[ "^$option$" =~ "chatgpt" ]]; then
 	tmux neww -n "$option" bash -c "export OPENAI_API_KEY='replace-with-key' && $HOME/go/bin/mods -M -f ; read"
 # run glow in notes folder
 elif [[ "^$option$" =~ "notes" ]]; then
-	tmux neww -n "$option" bash -c "glow -s dark $HOME/dev/notes/$(ls "$HOME"/dev/notes | gum choose --height=50) | gum pager ; read"
+	tmux neww -n "$option" bash -c "glow -s dark $HOME/dev/notes/$(eza "$HOME"/dev/notes | gum choose --height=40) | gum pager ; read"
 # run man in the selected language or core-util according to txt files
 elif [[ "^$option$" =~ "man" ]]; then
 	tmux neww -n "$option" bash -c "man $(bat "$HOME"/.tmux/custom/languages.txt "$HOME"/.tmux/custom/core-utils.txt | gum filter --indicator=">") ; read"
@@ -38,7 +38,10 @@ elif [[ "^$option$" =~ "eg" ]]; then
 	tmux neww -n "$option" bash -c "tldr $(bat "$HOME"/.tmux/custom/languages.txt "$HOME"/.tmux/custom/core-utils.txt | gum filter --indicator=">") ; read"
 # build stack exchange query based on given information
 elif [[ "^$option$" =~ "stackexchange" ]]; then
-	tmux neww -n "$option" bash -c "bash $HOME/.tmux/custom/stackapi/stackexchange.sh | bash $HOME/.tmux/custom/stackapi/filter.sh ; read"
+	tmux neww -n "$option" bash -c "bash $HOME/.tmux/custom/stackapi/stackapi.sh | bash $HOME/.tmux/custom/stackapi/filter.sh ; read"
+# handle other cases
+elif [[ "^$option$" =~ "by-example" ]]; then
+	tmux neww -n "$option" bash -c "bash $HOME/.tmux/custom/byexample/byexample.sh ; read"
 # handle other cases
 else
 	tmux neww -n "not-found" bash -c "echo 'Please select one of the listed options' ; read"

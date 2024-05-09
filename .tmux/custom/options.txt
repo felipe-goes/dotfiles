@@ -1,3 +1,4 @@
+by-example
 cheat-sheet
 chatgpt
 eg

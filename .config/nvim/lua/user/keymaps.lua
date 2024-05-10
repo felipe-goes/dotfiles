@@ -108,26 +108,6 @@ vim.keymap.set("n", "<m-o>", function() harpoon:list():select(4) end)
 vim.keymap.set("n", "H", function() harpoon:list():prev() end)
 vim.keymap.set("n", "L", function() harpoon:list():next() end)
 
-local conf = require("telescope.config").values
-local function toggle_telescope(harpoon_files)
-    local file_paths = {}
-    for _, item in ipairs(harpoon_files.items) do
-        table.insert(file_paths, item.value)
-    end
-
-    require("telescope.pickers").new({}, {
-        prompt_title = "harpoon",
-        finder = require("telescope.finders").new_table({
-            results = file_paths,
-        }),
-        previewer = conf.file_previewer({}),
-        sorter = conf.generic_sorter({}),
-    }):find()
-end
-
-vim.keymap.set("n", "<leader>e", function() toggle_telescope(harpoon:list()) end,
-    { desc = "Open Harpoon Window" })
-
 -- Lion
 vim.cmd("let g:lion_squeeze_spaces = 1") -- Remove as many spaces as possible when aligning
 

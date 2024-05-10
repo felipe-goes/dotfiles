@@ -12,7 +12,6 @@ pacman -Syu
 pacman -S --needed \
   tldr             \
   ripgrep          \
-  latte-dock       \
   git              \
   fzf              \
   flatpak          \

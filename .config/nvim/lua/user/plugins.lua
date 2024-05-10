@@ -65,7 +65,6 @@ return packer.startup(function(use)
       require("icon-picker")
     end,
   })
-  use({ "akinsho/bufferline.nvim", tag = "*", requires = "nvim-tree/nvim-web-devicons" })
   use("moll/vim-bbye")
   use("tamton-aquib/staline.nvim")
   use("lukas-reineke/indent-blankline.nvim")

@@ -8,9 +8,9 @@ if initialize_session "neovim"; then
 
   # Create a new window inline within session layout definition.
   new_window "neovim"
+  new_window
 
   # Create a new window inline within session layout definition.
-  new_window "bash"
   run_cmd "cd $HOME && clear"
 
   # Select the default active window on session creation.

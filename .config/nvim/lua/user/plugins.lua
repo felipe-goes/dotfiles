@@ -148,6 +148,14 @@ return packer.startup(function(use)
   -- Git
   use("lewis6991/gitsigns.nvim")
   use("sindrets/diffview.nvim")
+  use({
+    "NeogitOrg/neogit",
+    requires = {
+      "nvim-lua/plenary.nvim",
+      "sindrets/diffview.nvim",
+      "nvim-telescope/telescope.nvim",
+    },
+  })
 
   -- Test
   use({
@@ -175,7 +183,6 @@ return packer.startup(function(use)
 
   -- Honorable Mention
   -- use("tpope/vim-dispatch")
-  -- use("tpope/vim-fugitive") | use("tpope/vim-rhubarb")
   -- use("sickill/vim-pasta")
   -- use("airblade/vim-rooter")
   -- Plug 'mg979/vim-visual-multi', {'branch': 'master'}

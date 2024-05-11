@@ -57,6 +57,7 @@ return packer.startup(function(use)
     "nvim-treesitter/nvim-treesitter",
     run = ":TSUpdate",
   })
+  use("nvim-treesitter/nvim-treesitter-context")
   use("nvim-tree/nvim-web-devicons")
   use("stevearc/dressing.nvim")
   use({

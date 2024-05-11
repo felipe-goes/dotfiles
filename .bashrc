@@ -187,7 +187,7 @@ cyan="#2CF9ED"
 
 # Exports
 key=$(
-	ansible-vault view --vault-password-file="$HOME"/password.txt secure-vault |
+	ansible-vault view --vault-password-file="$HOME"/password.txt "$HOME"/secure-vault |
 		cut -d ':' -f 2 |
 		sed -n '1p'
 )

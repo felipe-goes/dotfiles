@@ -83,6 +83,7 @@ local opts = {
 }
 
 local mappings = {
+  E = { "<cmd>NvimTreeToggle<cr>", "NvimTree Toggle" },
   r = { "<cmd>NvimTreeRefresh<cr>", "NvimTree Refresh" },
   p = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
   h = { "<cmd>nohlsearch<cr>", "No Highlight" },

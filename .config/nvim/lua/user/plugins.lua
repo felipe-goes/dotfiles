@@ -80,6 +80,7 @@ return packer.startup(function(use)
   use("chrisbra/csv.vim")
   use("jghauser/follow-md-links.nvim")
   use("kevinhwang91/nvim-bqf")
+  use("ggandor/leap.nvim")
 
   -- Miscellaneous
   use("tommcdo/vim-lion")

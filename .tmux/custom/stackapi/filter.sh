@@ -12,4 +12,4 @@ url=$(
 		rev
 )
 
-mdmagic "$url" | glow -p
+mdmagic "stackexchange" "$url" | glow -p

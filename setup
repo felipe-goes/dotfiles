@@ -90,6 +90,9 @@ pacman -S --needed \
   # querystack
   # git clone git@github.com:felipe-goes/querystack.git
   # cd querystack && go build . && mv querystack $HOME/go/bin/
+  # mdmagic
+  # git clone git@github.com:felipe-goes/mdmagic.git
+  # cd mdmagic && go build . && mv mdmagic $HOME/go/bin/
 
 # conventional-changelog/commitlint
 # clona na pasta /opt

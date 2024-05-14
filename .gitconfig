@@ -1,5 +1,5 @@
 [user]
-	name = Felipe Góes
+	name = Felipe Goes
 	email = ogoesfelipe@gmail.com
 [init]
 	defaultBranch = main
@@ -19,3 +19,23 @@
 	conflictstyle = diff3
 [diff]
 	colorMoved = default
+[alias]
+	a = add
+	r = restore
+	aa = add -A
+	ap = add --patch
+	br = branch
+	ci = commit
+	co = checkout
+	cp = cherry-pick
+	od = push origin --delete
+	pr = pull rebase
+	rs = restore --staged
+	st = status -s
+	bra = branch -a
+	cdf = clean -df
+	log = log --graph --decorate
+	fap = fetch -ap
+	conf = config --global --edit
+	logf = log --graph --decorate -p --name-only
+	amend = commit --amend

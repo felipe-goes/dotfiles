@@ -186,7 +186,7 @@ cyan="#2CF9ED"
 
 # Exports
 key=$(
-	ansible-vault view --vault-password-file="$HOME"/password.txt "$HOME"/secure-vault |
+	ansible-vault view --vault-password-file="$HOME"/password.txt "$HOME"/secure-vault.json |
 		cut -d ':' -f 2 |
 		sed -n '1p'
 )
@@ -209,6 +209,7 @@ export PATH="$HOME/.scripts/autoconfig:$PATH"
 export PATH="$HOME/.scripts/videos:$PATH"
 export PATH="$HOME/.tmuxifier/bin:$PATH"
 export PATH="$HOME/go/bin:$PATH"
+export PATH="/opt/exercism:$PATH"
 
 # Para o fzf
 # Atalhos úteis:

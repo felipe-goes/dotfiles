@@ -2,8 +2,7 @@
 
 key=$(
 	ansible-vault view --vault-password-file="$HOME"/password.txt "$HOME"/secure-vault.json |
-		cut -d ':' -f 2 |
-		sed -n '1p'
+		jq ".openai.key" | sed s/\"// | sed s/\"//
 )
 export OPENAI_API_KEY="$key"
 "$HOME"/go/bin/mods -M -f

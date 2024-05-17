@@ -21,6 +21,7 @@
 	colorMoved = default
 [alias]
 	a = add
+	l = log --graph --decorate
 	r = restore
 	aa = add -A
 	ap = add --patch
@@ -28,14 +29,13 @@
 	ci = commit
 	co = checkout
 	cp = cherry-pick
+	lf = log --graph --decorate -p --name-only
 	od = push origin --delete
 	pr = pull rebase
 	rs = restore --staged
 	st = status -s
 	bra = branch -a
 	cdf = clean -df
-	log = log --graph --decorate
 	fap = fetch -ap
 	conf = config --global --edit
-	logf = log --graph --decorate -p --name-only
 	amend = commit --amend

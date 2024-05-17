@@ -81,6 +81,7 @@ return packer.startup(function(use)
   use("jghauser/follow-md-links.nvim")
   use("kevinhwang91/nvim-bqf")
   use("ggandor/leap.nvim")
+  use {'ray-x/guihua.lua', run = 'cd lua/fzy && make'}
 
   -- Miscellaneous
   use("tommcdo/vim-lion")
@@ -113,6 +114,7 @@ return packer.startup(function(use)
   use("ray-x/lsp_signature.nvim") -- lsp signature hint as you type
   use("hrsh7th/cmp-nvim-lsp")
   use("hrsh7th/cmp-nvim-lua")
+  use("ray-x/go.nvim")
 
   -- Snippets
   use("L3MON4D3/LuaSnip") -- snippet engine

@@ -193,6 +193,7 @@ export OPENAI_API_KEY="$key"
 export PVSNESLIB_HOME=/mnt/c/pvsneslib/
 export GDK=/opt/SGDK
 export EDITOR=/usr/sbin/nvim
+export GOPATH="$HOME/go"
 # Use fd instead of find
 export FZF_DEFAULT_OPTS="--color=fg:${fg},bg:${bg},hl:${purple},fg+:${fg},bg+:${bg_highlight},hl+:${purple},info:${blue},prompt:${cyan},pointer:${cyan},marker:${cyan},spinner:${cyan},header:${cyan}"
 export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git"

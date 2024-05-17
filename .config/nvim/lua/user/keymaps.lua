@@ -94,11 +94,13 @@ keymap("n", "<leader>q", "<cmd>Bdelete!<cr>", opts)
 keymap("n", "<leader>Q", "<cmd>q<cr>", opts)
 
 -- Plugins
--- Harpoon
-local harpoon = require("harpoon")
-vim.keymap.set("n", "<leader>a", function() harpoon:list():add() end)
-vim.keymap.set("n", "<leader>e", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end)
 
+-- Harpoon
+local status_ok, harpoon = pcall(require, "harpoon")
+if not status_ok then
+  vim.notify("Missing harpoon: keymaps.lua")
+  return
+end
 vim.keymap.set("n", "<m-y>", function() harpoon:list():select(1) end)
 vim.keymap.set("n", "<m-u>", function() harpoon:list():select(2) end)
 vim.keymap.set("n", "<m-i>", function() harpoon:list():select(3) end)
@@ -107,6 +109,8 @@ vim.keymap.set("n", "<m-o>", function() harpoon:list():select(4) end)
 -- toggle previous & next buffers stored within harpoon list
 vim.keymap.set("n", "H", function() harpoon:list():prev() end)
 vim.keymap.set("n", "L", function() harpoon:list():next() end)
+
+harpoon:setup()
 
 -- Lion
 vim.cmd("let g:lion_squeeze_spaces = 1") -- Remove as many spaces as possible when aligning

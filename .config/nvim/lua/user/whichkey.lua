@@ -6,6 +6,7 @@ end
 
 local dap = require("dap")
 local dapui = require("dapui")
+local harpoon = require("harpoon")
 
 local setup = {
   plugins = {
@@ -93,6 +94,18 @@ local mappings = {
   H = { "<cmd>Telescope find_files hidden=true<cr>", "Find Hidden Files" },
   b = { "<cmd>Telescope buffers<cr>", "Find Buffers" },
   L = { "<cmd>BufferLineTogglePin<cr>", "Lock Buffer" },
+  e = {
+    function()
+      harpoon.ui:toggle_quick_menu(harpoon:list())
+    end,
+    "Harpoon",
+  },
+  a = {
+    function()
+      harpoon:list():add()
+    end,
+    "Add to Harpoon",
+  },
 
   g = {
     name = "Git",

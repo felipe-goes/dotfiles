@@ -146,7 +146,6 @@ local mappings = {
     },
     a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
     f = { "<cmd>lua vim.lsp.buf.format({ async = true })<cr>", "Format" },
-    q = { "<cmd>lua vim.lsp.diagnostic.set_loclist()<cr>", "Quickfix" },
     r = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename" },
     t = { "<cmd>lua vim.lsp.buf.type_definition()<cr>", "Type Definition" },
     i = { "<cmd>LspInfo<cr>", "Info" },

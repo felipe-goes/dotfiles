@@ -6,6 +6,7 @@ end
 
 local dap = require("dap")
 local dapui = require("dapui")
+local widgets = require("dap.ui.widgets")
 local harpoon = require("harpoon")
 
 local setup = {
@@ -206,13 +207,7 @@ local mappings = {
   -- See more in keymaps.lua
   d = {
     name = "Debugger",
-    b = {
-      function()
-        dap.toggle_breakpoint()
-      end,
-      "Toggle Breakpoint",
-    },
-    R = {
+    a = {
       function()
         dap.clear_breakpoints()
       end,
@@ -224,25 +219,22 @@ local mappings = {
       end,
       "Run to Cursor",
     },
-    c = {
-      function()
-        dap.terminate()
-      end,
-      "Terminate",
-    },
     e = {
       function()
         dap.set_exception_breakpoints()
       end,
       "Set Exception Breakpoints",
     },
-    h = {
+    u = {
       function()
-        dap.ui.widgets.hover()
+        widgets.hover()
+        -- widgets.centered_float(widgets.scopes)
       end,
       "Hover",
     },
-    q = {
+    d = { "<cmd>DapToggleBreakpoint<cr>", "Toggle Breakpoint" },
+    q = { "<cmd>DapTerminate<cr>", "Close" },
+    t = {
       function()
         dapui.toggle()
       end,

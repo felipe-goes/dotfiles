@@ -128,26 +128,28 @@ local mappings = {
 
   l = {
     name = "LSP",
+    d = {
+      name = "Diagnostics",
+      d = { "<cmd>lua vim.diagnostic.open_float()<cr>", "Hover" },
+      f = { "<cmd>lua vim.diagnostic.setloclist()<cr>", "File" },
+      w = { "<cmd>Telescope diagnostics<cr>", "Workspace" },
+      l = { "<cmd>lua vim.lsp.codelens.run()<cr>", "CodeLens Action" },
+      j = { "<cmd>lua vim.diagnostic.goto_next()<cr>", "Next = ]d" },
+      k = { "<cmd>lua vim.diagnostic.goto_prev()<CR>", "Prev = [d]" },
+    },
+    w = {
+      name = "Workspace",
+      a = { "<cmd>lua vim.lsp.buf.add_workspace_folder()<cr>", "Add Workspace Folder" },
+      r = { "<cmd>lua vim.lsp.buf.remove_workspace_folder()<cr>", "Remove Workspace Folder" },
+      l = { "<cmd>lua vim.lsp.buf.list_workspace_folders()<cr>", "List Workspace Folders" },
+    },
     a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
-    d = { "<cmd>lua vim.diagnostic.open_float()<CR>", "Hover Diagnostics" },
-    D = {
-      "<cmd>Telescope diagnostics<cr>",
-      "Document Diagnostics",
-    },
     f = { "<cmd>lua vim.lsp.buf.format({ async = true })<cr>", "Format" },
-    i = { "<cmd>LspInfo<cr>", "Info" },
-    I = { "<cmd>Mason<cr>", "Install" },
-    k = {
-      "<cmd>lua vim.diagnostic.goto_prev()<CR>",
-      "Prev Diagnostic",
-    },
-    j = {
-      "<cmd>lua vim.diagnostic.goto_next()<cr>",
-      "Next Diagnostic",
-    },
-    l = { "<cmd>lua vim.lsp.codelens.run()<cr>", "CodeLens Action" },
     q = { "<cmd>lua vim.lsp.diagnostic.set_loclist()<cr>", "Quickfix" },
     r = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename" },
+    t = { "<cmd>lua vim.lsp.buf.type_definition()<cr>", "Type Definition" },
+    i = { "<cmd>LspInfo<cr>", "Info" },
+    I = { "<cmd>Mason<cr>", "Install" },
     s = { "<cmd>Telescope lsp_document_symbols<cr>", "Document Symbols" },
     S = {
       "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>",

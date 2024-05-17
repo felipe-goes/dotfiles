@@ -85,16 +85,10 @@ local opts = {
 }
 
 local mappings = {
-  E = { "<cmd>NvimTreeToggle<cr>", "NvimTree Toggle" },
-  r = { "<cmd>NvimTreeRefresh<cr>", "NvimTree Refresh" },
-  p = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
   h = { "<cmd>nohlsearch<cr>", "No Highlight" },
   m = { "<cmd>MarkdownPreview<cr>", "Markdown Preview" },
-  f = { "<cmd>Telescope find_files<cr>", "Find Files" },
-  F = { "<cmd>Telescope live_grep<cr>", "Find Text" },
-  H = { "<cmd>Telescope find_files hidden=true<cr>", "Find Hidden Files" },
-  b = { "<cmd>Telescope buffers<cr>", "Find Buffers" },
-  L = { "<cmd>BufferLineTogglePin<cr>", "Lock Buffer" },
+  p = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
+  r = { "<cmd>NvimTreeRefresh<cr>", "NvimTree Refresh" },
   e = {
     function()
       harpoon.ui:toggle_quick_menu(harpoon:list())
@@ -106,6 +100,14 @@ local mappings = {
       harpoon:list():add()
     end,
     "Add to Harpoon",
+  },
+
+  f = {
+    name = "Telescope Find",
+    f = { "<cmd>Telescope find_files<cr>", "Files" },
+    p = { "<cmd>Telescope live_grep<cr>", "Text" },
+    h = { "<cmd>Telescope find_files hidden=true<cr>", "Hidden Files" },
+    b = { "<cmd>Telescope buffers<cr>", "Buffers" },
   },
 
   g = {

@@ -94,6 +94,9 @@ keymap("n", "<leader>q", "<cmd>Bdelete!<cr>", opts)
 keymap("n", "<leader>Q", "<cmd>q<cr>", opts)
 
 -- Plugins
+-- Gitsigns
+vim.keymap.set("n", "[g", "<cmd>lua require'gitsigns'.prev_hunk()<cr>")
+vim.keymap.set("n", "]g", "<cmd>lua require'gitsigns'.next_hunk()<cr>")
 
 -- Harpoon
 local status_ok, harpoon = pcall(require, "harpoon")

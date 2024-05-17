@@ -152,6 +152,7 @@ return packer.startup(function(use)
   use("sindrets/diffview.nvim")
   use({
     "NeogitOrg/neogit",
+    tag = "v0.0.1",
     requires = {
       "nvim-lua/plenary.nvim",
       "sindrets/diffview.nvim",

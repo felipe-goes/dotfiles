@@ -128,6 +128,7 @@ return packer.startup(function(use)
   use("nvimtools/none-ls.nvim") -- for formatters and linters
   use("nvimtools/none-ls-extras.nvim")
   use("gbprod/none-ls-shellcheck.nvim")
+  use("folke/trouble.nvim")
 
   use({
     "ThePrimeagen/harpoon",

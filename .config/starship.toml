@@ -85,9 +85,9 @@ format = "rust: [ $version](red bold)"
 format = "go: [ $version](bold cyan) "
 
 [battery]
-full_symbol = " "
-charging_symbol = "⚡️"
-discharging_symbol = " "
+full_symbol = "󱐥 "
+charging_symbol = "󰂄"
+discharging_symbol = "󰁺 "
 
 [[battery.display]]  # "bold red" style when capacity is between 0% and 10%
 threshold = 10

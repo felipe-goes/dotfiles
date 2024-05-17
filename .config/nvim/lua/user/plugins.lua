@@ -146,6 +146,7 @@ return packer.startup(function(use)
   -- Comment
   use("JoosepAlviste/nvim-ts-context-commentstring")
   use("numToStr/Comment.nvim") -- Easily comment stuff
+  use("folke/todo-comments.nvim")
   -- Save this for later if the comment plugin is getting a hard time on files with different languages
   -- use("jessarcher/vim-context-commentstring")
 

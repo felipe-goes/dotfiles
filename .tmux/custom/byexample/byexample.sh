@@ -11,16 +11,14 @@ query=$(
 		sed 's/[ \t]*$//'
 )
 
-if [[ "^$language$" =~ "cpp" ]]; then
-	site=$(
-		bat "$HOME"/.tmux/custom/byexample/"$language"-sites.txt |
-			grep --extended-regexp "^$query," |
-			cut -d ',' -f 2
-	)
-
-	mdmagic "$language"byexample "$site" | glow -p
-else
+site=$(
 	bat "$HOME"/.tmux/custom/byexample/"$language"-sites.txt |
 		grep --extended-regexp "^$query," |
 		cut -d ',' -f 2
+)
+
+if [[ "^$language$" =~ "cpp" ]]; then
+	tmux neww -n "byexample" bash -c "mdmagic ${language}byexample $site | glow -p"
+else
+	tmux neww -n "byexample" bash -c "echo $site ; read"
 fi

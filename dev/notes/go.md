@@ -100,13 +100,13 @@ terminal.
 ## Explanation
 
 - **Command-line Arguments**: The program checks `os.Args`, which is a slice
-containing the command-line arguments. The first element (`os.Args[0]`) is
-always the path to the executable, so actual arguments start from `os.Args[1]`.
+  containing the command-line arguments. The first element (`os.Args[0]`) is
+  always the path to the executable, so actual arguments start from `os.Args[1]`.
 - **File Handling**: The program uses `os.Open` to open files and `bufio.Scanner`
-to read them line by line.
+  to read them line by line.
 - **Standard Input**: It uses another `bufio.Scanner` that reads from `os.Stdin`.
-This allows the user to enter input directly into the terminal until the word
-"exit" is entered.
+  This allows the user to enter input directly into the terminal until the word
+  "exit" is entered.
 
 This example provides a robust foundation for building CLI tools in Go that
 require input from both files and stdin, making it versatile for various
@@ -157,10 +157,53 @@ In this example:
 1. We open a file "example.txt" for reading using `os.Open`.
 2. We create a new scanner using `bufio.NewScanner` to read from the file.
 3. We loop through the file line by line using `scanner.Scan()` and retrieve
-each line using `scanner.Text()`.
+   each line using `scanner.Text()`.
 4. Finally, we check for any errors that may have occurred during the
-scanning process.
+   scanning process.
 
 Make sure to handle errors properly for file opening and scanning to ensure
 your program behaves as expected.
 
+# How to efficiently concatenate strings in go
+
+In Go, a `string` is a primitive type, which means it is read-only, and every
+manipulation of it will create a new string.
+So if I want to concatenate strings many times without knowing the length of
+the resulting string, what's the best way to do it?
+The naive way would be:
+
+```
+var s string
+for i := 0; i &lt; 1000; i++ {
+    s += getShortStringFromSomewhere()
+}
+return s
+```
+
+but that does not seem very efficient.
+
+## Answer
+
+From Go 1.10 there is a `strings.Builder` type, please take a look at this
+answer for more detail.
+
+Use the `bytes` package. It has a `Buffer` type which implements `io`.Writer.
+
+```
+package main
+
+import (
+    "bytes"
+    "fmt"
+)
+
+func main() {
+    var buffer bytes.Buffer
+        for i := 0; i < 1000; i++ {
+            buffer.WriteString("a")
+        }
+    fmt.Println(buffer.String())
+}
+```
+
+This does it in O(n) time.

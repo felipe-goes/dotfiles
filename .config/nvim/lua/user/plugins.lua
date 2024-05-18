@@ -81,7 +81,10 @@ return packer.startup(function(use)
   use("jghauser/follow-md-links.nvim")
   use("kevinhwang91/nvim-bqf")
   use("ggandor/leap.nvim")
-  use {'ray-x/guihua.lua', run = 'cd lua/fzy && make'}
+  use({ "ray-x/guihua.lua", run = "cd lua/fzy && make" })
+  use("rcarriga/nvim-notify")
+  use("folke/noice.nvim")
+  use("MunifTanjim/nui.nvim")
 
   -- Miscellaneous
   use("tommcdo/vim-lion")
@@ -111,7 +114,6 @@ return packer.startup(function(use)
   use("hrsh7th/cmp-path") -- path completions
   use("hrsh7th/cmp-cmdline") -- cmdline completion
   use("saadparwaiz1/cmp_luasnip") -- snippet completions
-  use("ray-x/lsp_signature.nvim") -- lsp signature hint as you type
   use("hrsh7th/cmp-nvim-lsp")
   use("hrsh7th/cmp-nvim-lua")
   use("ray-x/go.nvim")

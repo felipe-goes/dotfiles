@@ -16,20 +16,7 @@ noice.setup({
   cmdline = {
     enabled = true, -- enables the Noice cmdline UI
     view = "cmdline_popup", -- view for rendering the cmdline. Change to `cmdline` to get a classic cmdline at the bottom
-    opts = {
-      position = {
-        row = 20,
-        col = "50%",
-      },
-      size = {
-        width = 60,
-        height = "auto",
-      },
-      border = {
-        style = "rounded",
-        padding = { 0, 1 },
-      },
-    }, -- global options for the cmdline. See section on views
+    opts = {}, -- global options for the cmdline. See section on views
     ---@type table<string, CmdlineFormat>
     format = {
       -- conceal: (default=true) This will hide the text in the cmdline that matches the pattern.
@@ -211,9 +198,43 @@ noice.setup({
   },
   throttle = 1000 / 30, -- how frequently does Noice need to check for ui updates? This has no effect when in blocking mode.
   ---@type NoiceConfigViews
-  views = {}, ---@see section on views
+  views = {
+    cmdline_popup = {
+      position = {
+        row = 20,
+        col = "50%",
+      },
+      size = {
+        width = 60,
+        height = "auto",
+      },
+    },
+    popupmenu = {
+      relative = "editor",
+      position = {
+        row = 8,
+        col = "50%",
+      },
+      size = {
+        width = 60,
+        height = 10,
+      },
+      border = {
+        style = "rounded",
+        padding = { 0, 1 },
+      },
+      win_options = {
+        winhighlight = { Normal = "Normal", FloatBorder = "DiagnosticInfo" },
+      },
+    },
+  },
   ---@type NoiceRouteConfig[]
-  routes = {}, --- @see section on routes
+  -- routes = {
+  --   {
+  --     view = "notify",
+  --     filter = { event = "msg_showmode" },
+  --   },
+  -- },
   ---@type table<string, NoiceFilter>
   status = {}, --- @see section on statusline components
   ---@type NoiceFormatOptions

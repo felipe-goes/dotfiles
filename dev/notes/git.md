@@ -31,6 +31,88 @@ to only get the history, if you already have it cloned, cd into it. Then go to
 the directory of the repo you just cloned using the `--bare` option and run the
 command `git push --mirror new_copied_repo`.
 
+# How to commit with a placeholder?
+
+You can open the commit editor with a pre-filled message by using the `-m` flag
+for `git commit` or by creating a commit message file. Here are two
+straightforward methods to achieve this:
+
+## Method 1: Using the `-m` Flag
+
+When you commit changes, you can supply the commit message directly using the
+`-m` flag. However, if you want to open the editor with a specific text
+pre-filled, you can use the `-e` flag along with `-m`. For example:
+
+```
+git commit -m "Initial placeholder message" -e
+```
+
+This command will open your default text editor with the message "Initial
+placeholder message" already filled in, allowing you to edit it further.
+
+## Method 2: Using a File for the Commit Message
+
+1. Create a temporary file with the message:
+
+Create a file (e.g., `commit_message.tmp`) and write your placeholder message
+in it.
+
+```
+echo "Initial placeholder message" > commit_message.tmp
+```
+
+2. Open the commit editor with the file:
+
+Use the `-t` flag with `git commit` to open the editor with the content of the
+file.
+
+```
+git commit -t commit_message.tmp
+```
+
+This command will open your default editor with the contents of
+`commit_message.tmp`.
+
+## Example for Method 2:
+
+1. Create a file with a placeholder message:
+
+```
+echo "Initial placeholder message" > /tmp/commit_message.txt
+```
+
+2. Use the file to pre-fill the commit message in the editor:
+
+```
+git commit -t /tmp/commit_message.txt
+```
+
+This opens your editor with the contents of `/tmp/commit_message.txt`, allowing
+you to modify the message before committing.
+
+## Setting Up a Template for Commit Messages
+
+You can also set up a commit message template that will be used for all your
+commits. To do this, follow these steps:
+
+1. Create a template file with your placeholder message:
+
+```
+echo "Initial placeholder message" > ~/.gitmessage.txt
+```
+
+2. Configure git to use this template file:
+
+```
+git config --global commit.template ~/.gitmessage.txt
+```
+
+Now, whenever you run `git commit` without the `-m` flag, the editor will be
+opened with the contents of `~/.gitmessage.txt` pre-filled.
+
+By using one of these methods, you can easily open your commit editor with a
+specific placeholder text.
+
 # commitlint
 
 https://github.com/conventional-changelog/commitlint

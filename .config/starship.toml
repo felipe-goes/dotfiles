@@ -5,7 +5,7 @@
 add_newline = false
 
 format = """
-[╭── ](bold blue)$directory$rust$package$git_branch$git_status$golang$docker_context $fill [ ](bold green) $username$gcloud$aws$kubernetes$battery
+[╭── ](bold blue)$directory$rust$package$git_branch$git_status$golang$docker_context $fill [ ](bold green) $username$gcloud$aws$kubernetes
 [╰──❯ ](bold blue)
 """
 

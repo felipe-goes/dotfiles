@@ -21,6 +21,7 @@
 	colorMoved = default
 [alias]
 	a = add
+	d = diff
 	l = log --graph --decorate
 	r = restore
 	aa = add -A
@@ -29,6 +30,7 @@
 	ci = commit
 	co = checkout
 	cp = cherry-pick
+	ds = diff --staged
 	lf = log --graph --decorate -p --name-only
 	od = push origin --delete
 	pr = pull rebase

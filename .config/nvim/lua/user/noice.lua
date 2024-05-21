@@ -229,12 +229,12 @@ noice.setup({
     },
   },
   ---@type NoiceRouteConfig[]
-  -- routes = {
-  --   {
-  --     view = "notify",
-  --     filter = { event = "msg_showmode" },
-  --   },
-  -- },
+  routes = {
+    {
+      view = "notify",
+      filter = { event = "msg_showmode" },
+    },
+  },
   ---@type table<string, NoiceFilter>
   status = {}, --- @see section on statusline components
   ---@type NoiceFormatOptions

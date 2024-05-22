@@ -6,8 +6,6 @@ end
 
 -- ~/.local/share/nvim/site/pack/packer/start/nvim-notify/lua/notify/config/init.lua
 -- update default_config { timeout = 500 }
--- ~/.local/share/nvim/site/pack/packer/start/noice.nvim/lua/noice/ui/msg.lua
--- commented function M.on_showmode(event, content) else statement
 
 noice.setup({
   -- you can enable a preset for easier configuration
@@ -235,6 +233,20 @@ noice.setup({
   },
   ---@type NoiceRouteConfig[]
   routes = {
+    {
+      filter = {
+        event = "msg_showmode",
+        find = "INSERT",
+      },
+      opts = { skip = true },
+    },
+    {
+      filter = {
+        event = "msg_showmode",
+        find = "VISUAL",
+      },
+      opts = { skip = true },
+    },
     {
       view = "notify",
       filter = { event = "msg_showmode" },

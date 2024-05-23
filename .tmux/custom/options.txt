@@ -2,6 +2,7 @@ by-example
 cheat-sheet
 chatgpt
 eg
+exercism
 man
 notes
 stackexchange

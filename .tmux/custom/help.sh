@@ -74,6 +74,10 @@ elif [[ "^$option$" =~ "stackexchange" ]]; then
 elif [[ "^$option$" =~ "by-example" ]]; then
 	bash -c "$HOME/.tmux/custom/byexample/byexample.sh"
 
+# exercism
+elif [[ "^$option$" =~ "exercism" ]]; then
+	bash -c "$HOME/.tmux/custom/exercism/exercism.sh"
+
 # handle other cases
 else
 	echo "Please select one of the listed options"

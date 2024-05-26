@@ -10,7 +10,13 @@ exerciseDir=$(
 )
 
 # get the desired lesson
-exerciseDir=$(echo "$exerciseDir" | awk '{ print $3 }')
+exerciseDir=$(
+	echo "$exerciseDir" |
+		rev |
+		sed 's/^ *//' |
+		cut -d ' ' -f 1 |
+		rev
+)
 exercise=${exerciseDir//-/_}
 
 # create new window

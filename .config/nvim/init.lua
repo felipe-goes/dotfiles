@@ -13,22 +13,23 @@
 -- Great source of plugins for Neovim
 -- https://github.com/rockerBOO/awesome-neovim#file-explorer
 
--- Inspired by https://github.com/LunarVim/Neovim-from-scratch/tree/master
--- Inspired by https://github.com/jessarcher/dotfiles
-
-vim.loader.enable()
+require("user.plugins")
+local status_ok, notify = pcall(require, "notify")
+if not status_ok then
+  vim.notify("Missing notify: init.lua")
+  return
+end
+vim.notify = notify
 
 require("user.colorscheme") -- always on top
 require("user.indentline") -- always before options
-require("user.devicons")
 require("user.options")
-require("user.plugins")
+require("user.devicons")
 require("user.colorizer")
 require("user.completions")
 require("user.ufo")
 require("user.lsp")
 require("user.dap")
-require("user.cmake")
 require("user.telescope")
 require("user.chafa")
 require("user.treesitter")
@@ -40,11 +41,8 @@ require("user.neogit")
 require("user.diffview")
 require("user.nvimtree")
 require("user.staline")
-require("user.tmux")
 require("user.vim-test")
-require("user.quickscope")
 require("user.neoscroll")
-require("user.markdown")
 require("user.trouble")
 require("user.go")
 require("user.todo")

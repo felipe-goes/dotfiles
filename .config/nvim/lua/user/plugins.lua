@@ -15,14 +15,14 @@ local plugins = {
   -- Run in background
   {
     "folke/tokyonight.nvim",
-    lazy = false, -- make sure we load this during startup if it is your main colorscheme
+    lazy = false,    -- make sure we load this during startup if it is your main colorscheme
     priority = 1000, -- make sure to load this before all the other start plugins
     config = function()
       -- load the colorscheme here
       vim.cmd([[colorscheme tokyonight]])
     end,
   },
-  "nvim-lua/popup.nvim", -- An implementation of the Popup API from vim in Neovim
+  "nvim-lua/popup.nvim",   -- An implementation of the Popup API from vim in Neovim
   "nvim-lua/plenary.nvim", -- Useful lua functions used by lots of plugins
   "ryanoasis/vim-devicons",
   {
@@ -129,19 +129,12 @@ local plugins = {
   "tpope/vim-surround",
   "tpope/vim-repeat",
   { "kevinhwang91/nvim-ufo", dependencies = "kevinhwang91/promise-async" },
-  {
-    "princejoogie/chafa.nvim",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "m00qek/baleia.nvim",
-    },
-  },
 
   -- Completion
-  "hrsh7th/nvim-cmp", -- The completion plugin
-  "hrsh7th/cmp-buffer", -- buffer completions
-  "hrsh7th/cmp-path", -- path completions
-  "hrsh7th/cmp-cmdline", -- cmdline completion
+  "hrsh7th/nvim-cmp",         -- The completion plugin
+  "hrsh7th/cmp-buffer",       -- buffer completions
+  "hrsh7th/cmp-path",         -- path completions
+  "hrsh7th/cmp-cmdline",      -- cmdline completion
   "saadparwaiz1/cmp_luasnip", -- snippet completions
   "hrsh7th/cmp-nvim-lsp",
   "hrsh7th/cmp-nvim-lua",
@@ -174,7 +167,7 @@ local plugins = {
     "williamboman/mason-lspconfig.nvim",
   },
   "tamago324/nlsp-settings.nvim", -- language server settings defined in json
-  "nvimtools/none-ls.nvim", -- for formatters and linters
+  "nvimtools/none-ls.nvim",       -- for formatters and linters
   "nvimtools/none-ls-extras.nvim",
   "gbprod/none-ls-shellcheck.nvim",
   {
@@ -214,7 +207,6 @@ local plugins = {
   "sindrets/diffview.nvim",
   {
     "NeogitOrg/neogit",
-    tag = "v0.0.1",
     dependencies = {
       "nvim-lua/plenary.nvim",
       "sindrets/diffview.nvim",

@@ -161,9 +161,12 @@ local mappings = {
 
   i = {
     name = "Icon Picker",
-    i = { "<cmd>PickIcons<cr>", "Pick Icons & Emoji" },
-    s = { "<cmd>PickSymbols<cr>", "Pick Symbols" },
-    a = { "<cmd>PickAltFont<cr>", "Pick Alt Font" },
+    a = { "<cmd>IconPickerNormal<cr>", "Pick Icons" },
+    n = { "<cmd>IconPickerNormal nerd_font nerd_font_v3<cr>", "Pick Nerd Font" },
+    e = { "<cmd>IconPickerNormal emoji<cr>", "Pick Emoji" },
+    s = { "<cmd>IconPickerNormal symbols<cr>", "Pick Symbol" },
+    f = { "<cmd>IconPickerNormal alt_font<cr>", "Pick Alt Font" },
+    h = { "<cmd>IconPickerNormal html_colors<cr>", "Pick HTML Colors" },
   },
 
   s = {

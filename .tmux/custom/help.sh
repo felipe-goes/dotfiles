@@ -78,8 +78,12 @@ elif [[ "^$option$" =~ "by-example" ]]; then
 elif [[ "^$option$" =~ "exercism" ]]; then
 	bash -c "$HOME/.tmux/custom/exercism/exercism.sh"
 
+# ollama
+elif [[ "^$option$" =~ "ollama" ]]; then
+	tmux neww -n "ollama" bash -c "ollama run llama3"
+
 # handle other cases
 else
 	echo "Please select one of the listed options"
-	read
+	read -r
 fi

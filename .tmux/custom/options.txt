@@ -5,4 +5,5 @@ eg
 exercism
 man
 notes
+ollama
 stackexchange

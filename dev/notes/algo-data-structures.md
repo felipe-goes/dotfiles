@@ -1,56 +1,27 @@
-# Algorithms and Data Structures
+# Algorithms and Data Structures Tutorial - Full Course for Beginners
 
-# Storing and Accessing Data
+# Introduction to Algorithms
 
-## Introduction
+- Algorithmic Thinking
+- BigO Notation
+    - O(1)
+    - O(log n)
+    - O(n)
+    - O(n log n)
+    - O(n^2)
+    - O(n!)
+    - O(x^n)
+- Algorithms
+    - Linear Search
+        - O(n) Time
+        - O(1) Space
+    - Binary Search
+        - O(log n) Time
+        - O(1) Space
+    - Recursive Binary Search
+        - O(log n) Time
+        - O(log n) Space
+    - Merge Sort O(n log n) // não tenho ctz
 
-- Storing and accessing data using arrays
-  - Creating arrays
-  - Adding and updating array data
-  - Enumerating array data
-- Measuring algorithmic complexity
-  - Asymptotic analysis
-  - Big-O notation
-
-## Arrays
-
-- Can contain multiple instances of a type
-- Numeric indexing
-- Access individual items
-- Static or dynamic sizing
-- Fixed size once created
-
-## Asymptotic Analysis of Algorithms
-
-- Big-O
-
-# Linked Lists
-
-## Introduction
-
-- What are linked lists?
-  - Nodes
-  - Node chains
-- Singly linked lists
-- Doubly linked lists
-- Sorted linked lists
-
-## Operations
-
-- Adding and removing
-- Enumeration
-- Searching
-
-# Stacks and Queues
-
-## Stacks
-
-- Last-in, First-out data structure
-
-## Queues
-
-- First-in, First-out data structure
-
-## Dequeue
-
-- Double-ended queue
+# Introduction to Data Structures
+# Algorithms: Sorting and Searching

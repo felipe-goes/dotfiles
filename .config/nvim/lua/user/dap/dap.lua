@@ -16,12 +16,6 @@ if not dapvt_status_ok then
   return
 end
 
-local powershell_status_ok, powershell = pcall(require, "dap-powershell")
-if not powershell_status_ok then
-  vim.notify("Missing dap-powershell: dap.lua")
-  return
-end
-
 -- dap-ui
 dapui.setup({})
 
@@ -39,7 +33,6 @@ dap.listeners.before.event_exited.dapui_config = function()
 end
 dap.listeners.after.event_initialized.dapui_config = function()
   dapui.open({})
-  powershell.correct_repl_colors()
 end
 
 -- require("dap").set_log_level("INFO")

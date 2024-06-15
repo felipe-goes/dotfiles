@@ -78,14 +78,6 @@ local plugins = {
         desc = "Flash",
       },
       {
-        "S",
-        mode = { "n", "x", "o" },
-        function()
-          require("flash").treesitter()
-        end,
-        desc = "Flash Treesitter",
-      },
-      {
         "r",
         mode = "o",
         function()
@@ -230,7 +222,6 @@ local plugins = {
   "theHamsta/nvim-dap-virtual-text",
   "nvim-telescope/telescope-dap.nvim",
   -- Debuggers
-  "Willem-J-an/nvim-dap-powershell",
   "leoluz/nvim-dap-go",
 
   -- Tmux

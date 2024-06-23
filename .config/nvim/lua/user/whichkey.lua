@@ -109,7 +109,6 @@ local mappings = {
     h = { "<cmd>Telescope find_files hidden=true<cr>", "Hidden Files" },
     b = { "<cmd>Telescope buffers<cr>", "Buffers" },
     t = { "<cmd>TodoTelescope<cr>", "Todo Telescope" },
-    T = { "<cmd>TodoTrouble<cr>", "Todo Trouble" },
   },
 
   g = {
@@ -134,8 +133,6 @@ local mappings = {
     d = {
       name = "Diagnostics",
       d = { "<cmd>lua vim.diagnostic.open_float()<cr>", "Hover" },
-      f = { "<cmd>Trouble document_diagnostics<cr>", "File" },
-      w = { "<cmd>Trouble workspace_diagnostics<cr>", "Workspace" },
       l = { "<cmd>lua vim.lsp.codelens.run()<cr>", "CodeLens Action" },
       j = { "<cmd>lua vim.diagnostic.goto_next()<cr>", "Next = ]d" },
       k = { "<cmd>lua vim.diagnostic.goto_prev()<CR>", "Prev = [d]" },
@@ -200,6 +197,21 @@ local mappings = {
   },
 
   t = {
+    name = "Trouble",
+    d = { "<cmd>Trouble diagnostics toggle focus=true<cr>", "LSP Diagnostics" },
+    t = { "<cmd>Trouble lsp_type_definitions toggle focus=true<cr>", "LSP Type Definitions" },
+    s = { "<cmd>Trouble symbols toggle focus=true<cr>", "LSP Symbols" },
+    T = { "<cmd>Trouble todo toggle focus=true<cr>", "Todo" },
+    j = {
+      name = "Bottom",
+      d = { "<cmd>Trouble diagnostics win.position=bottom focus=true<cr>", "LSP Diagnostics" },
+      t = { "<cmd>Trouble lsp_type_definitions win.position=bottom focus=true<cr>", "LSP Type Definitions" },
+      s = { "<cmd>Trouble symbols win.position=bottom focus=true<cr>", "LSP Symbols" },
+      T = { "<cmd>Trouble todo win.position=bottom focus=true<cr>", "Todo" },
+    },
+  },
+
+  T = {
     name = "Test",
     a = { "<cmd>TestSuite<cr>", "Test Suite" },
     f = { "<cmd>TestFile<cr>", "Test File" },

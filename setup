@@ -9,6 +9,7 @@ cd "$HOME"
 pacman -Syu
 
 # System
+# missing: npm, make, bashtop
 pacman -S --needed \
   tldr             \
   ripgrep          \
@@ -40,6 +41,8 @@ pacman -S --needed \
 # clona na pasta /opt antes de dar um source no .bashrc
 
 # Neovim
+# missing: tolua++, python-pynvim, python-black, python-debugpy, flake8
+# missing: prettier, composer
 pacman -S --needed \
   neovim           \
   python-pynvim    \
@@ -78,6 +81,7 @@ pacman -S --needed \
   # git clone git@github.com:jimeh/tmuxifier.git ~/.tmuxifier
 
 # Development
+# missing: python-pip
 pacman -S --needed \
   cmake            \
   nodejs           \

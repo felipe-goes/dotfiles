@@ -3,10 +3,12 @@ ansible-vault
 awk
 chmod
 chown
+cmake
 cut
 docker
 docker-compose
 fd
+gcc
 git
 glow
 grep
@@ -18,5 +20,7 @@ skate
 ssh
 tr
 tmux
+unzip
 vhs
 xargs
+zip

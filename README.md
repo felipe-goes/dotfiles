@@ -9,25 +9,19 @@ Arquivos de configuração do sistema.
 alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 ```
 
-2. Para evitar problemas de recursão esquisitos, rode o comando abaixo.
-
-```
-echo ".dotfiles" >> .gitignore
-```
-
-3. Agora clone o repositório.
+2. Agora clone o repositório.
 
 ```
 git clone --bare <git-repo-url> $HOME/.dotfiles
 ```
 
-4. Faça o checkout dos arquivos do repositório.
+3. Faça o checkout dos arquivos do repositório.
 
 ```
 config checkout
 ```
 
-5. O passo acima pode falhar com uma mensagem como essa:
+4. O passo acima pode falhar com uma mensagem como essa:
 
 ```
 error: The following untracked working tree files would be overwritten by checkout:
@@ -44,7 +38,7 @@ quiser ou delete se não se importar.
 Uma vez que você resolver estes conflitos é só rodar `config checkout`
 novamente.
 
-6. Defina a flag `showUntrackedFiles` para `no` neste repositório.
+5. Defina a flag `showUntrackedFiles` para `no` neste repositório.
 
 ```
 config config --local status.showUntrackedFiles no
@@ -52,15 +46,12 @@ config config --local status.showUntrackedFiles no
 
 ## Instalação das dependências
 
-O arquivo *setup* é um script que contém todas as dependências necessárias
-para o sistema. Caso você esteja instalando no *WSL*, alguns programas podem
-ser removidos antes de instalar, pois são programas de interface gráfica.
+Rode o comando:
 
-Uma vez que o script tenha sido revisado, instale com `sudo ./setup`.
+```
+cd "$HOME/.install-packages/" && sudo bash apt.sh && bash nix-setup.sh && bash repos.sh && sudo bash move.sh"
+```
 
 ## Configurando o NeoVim
 
-Navegue até a pasta de configuração do NeoVim em `$HOME/.config/nvim`, abra o
-arquivo de plugins com o comando `nvim lua/user/plugins.lua` e salve-o. Isto
-irá sincronizar todos os plugins e configurar o que for necessário. Aguarde um
-pouco que esta operação pode demorar um pouco. Talvez seja necessário repeti-la.
+Abra qualquer arquivo com o neovim e ele irá automaticamente instalar os plugins.

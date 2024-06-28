@@ -1,0 +1,33 @@
+Easy
+
+- Reverse String (feito)
+- Nth Prime (feito)
+- Sublist (feito)
+- List Ops
+
+Medium
+
+- Strain
+- Flatten Array
+- Tree Building
+- Parallel Letter Frequency
+- Simple Linked Lists
+- Linked Lists
+- Grep
+- Word Search
+- Simple Linked List
+- Error Handling
+- Binary Search
+- Transpose
+- PaaS I/O
+- Matching Brackets
+- Binary Search Tree
+- Secret Handshake
+- Markdown
+- Variable Length Quantity
+
+Hard
+
+- Book Store
+- Connect
+- Forth

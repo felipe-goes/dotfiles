@@ -1,5 +1,7 @@
 #!/bin/bash
 
+thread=$1
+
 set -e
 
 key=$(
@@ -7,4 +9,6 @@ key=$(
 		jq ".openai.key" | sed s/\"// | sed s/\"//
 )
 export OPENAI_API_KEY="$key"
-mods -M -f
+# mods -f --word-wrap=83
+chatgpt --set-thread "$thread"
+chatgpt -i

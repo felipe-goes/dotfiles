@@ -15,6 +15,7 @@ grep
 gum
 mods
 pacman
+pandoc
 sed
 skate
 ssh

@@ -30,7 +30,10 @@ if [[ "^$option$" =~ "cheat-sheet" ]]; then
 
 # build chatgpt query
 elif [[ "^$option$" =~ "chatgpt" ]]; then
-	tmux neww -n "$option" bash -c "$HOME/.tmux/custom/chatgpt/chatgpt.sh ; read"
+	thread=$(bat "$HOME/.tmux/custom/chatgpt/threads.txt" \
+		 | gum filter --indicator=">")
+
+	tmux neww -n "$option" bash -c "$HOME/.tmux/custom/chatgpt/chatgpt.sh $thread ; read"
 
 # run glow in notes folder
 elif [[ "^$option$" =~ "notes" ]]; then

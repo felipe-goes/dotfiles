@@ -1,0 +1,7 @@
+default
+c
+cmake
+cpp
+make
+sdl2
+sgdk

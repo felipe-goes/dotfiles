@@ -115,35 +115,6 @@ if ! shopt -oq posix; then
 	fi
 fi
 
-# Adicionado ao bashrc
-## Alias
-alias eg=tldr
-alias lsc='eza --color=always --long --git --icons=always'
-alias ls='eza -1 --color=always --git --icons=always'
-alias la='eza -1 --all --color=always --git --icons=always'
-alias lt='eza --color=always --long --tree --level=2 --git --no-filesize --icons=always --no-time --no-user --no-permissions'
-alias v='fd --type f --hidden --exclude .git | fzf-tmux -p --reverse | xargs nvim'
-alias vi=nvim
-alias df=duf
-alias ds='sudo systemctl start docker'
-alias pyserver='python -m http.server 8080'
-alias fcol="tr -s ' ' | cut -d ' ' -f9-"
-alias gf='gum filter'
-alias commitlint='/opt/commitlint/node_modules/.bin/commitlint'
-alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
-
-# Folder Shortcuts
-alias windows='cd /mnt/c/Users/ogoes/'
-export WINDOWS='/mnt/c/Users/ogoes/'
-
-# FZF Theme
-fg="#CBE0F0"
-bg="#011628"
-bg_highlight="#143652"
-purple="#B388FF"
-blue="#06BCE4"
-cyan="#2CF9ED"
-
 # Exports
 key=$(
 	ansible-vault view --vault-password-file="$HOME"/password.txt "$HOME"/secure-vault.json |
@@ -156,12 +127,40 @@ export PVSNESLIB_HOME=/mnt/c/pvsneslib/
 export GDK=/opt/SGDK
 export EDITOR=/home/felipe/.nix-profile/bin/nvim
 export GOPATH="$HOME/go"
-# Use fd instead of find
-export FZF_DEFAULT_OPTS="--color=fg:${fg},bg:${bg},hl:${purple},fg+:${fg},bg+:${bg_highlight},hl+:${purple},info:${blue},prompt:${cyan},pointer:${cyan},marker:${cyan},spinner:${cyan},header:${cyan}"
+# ctrl-r : histórico de comandos
+# ctrl-t : lista os arquivos e diretórios da pasta atual
+# alt-c  : lista os diretórios da pasta atual
+# ctrl-gf: git Files
+# ctrl-gb: git Branches
+# ctrl-gt: git Tags
+# ctrl-gr: git Remotes
+# ctrl-gh: git Hashes
+# ctrl-gs: git Stashes
+# ctrl-gl: git Reflogs
+# ctrl-gw: git Worktrees
+# ctrl-ge: git for-Each-ref
+export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
+--color=fg:#c0caf5,bg:#1a1b26,hl:#bb9af7
+--color=fg+:#c0caf5,bg+:#1a1b26,hl+:#7dcfff
+--color=info:#7aa2f7,prompt:#7dcfff,pointer:#7dcfff
+--color=marker:#9ece6a,spinner:#9ece6a,header:#9ece6a'
 export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_CTRL_T_OPTS="--preview 'bat -n --color=always --line-range :500 {}'"
 export FZF_ALT_C_COMMAND="fd --type=d --hidden --strip-cwd-prefix --exclude .git"
-export BAT_THEME=tokyonight_night
+export FZF_ALT_C_OPTS="--preview 'eza --tree --color=always {} | head -200'"
+
+
+# Use fd (https:://github.com/sharkdp/fd) for listing path candidates.
+# - The first argument to the function ($1) is the base path to start traversal
+# - See the source code (completion.{bash,zsh}) for the details.
+_fzf_compgen_path() {
+	fd --hidden --exclude .git . "$1"
+}
+# Use fd to generate the list for directory completion
+_fzf_compgen_dir() {
+	fd --type=d --hidden --exclude .git . "$1"
+}
 
 export PATH="$HOME/.scripts/sgdk:$PATH"
 export PATH="$HOME/.scripts/pvsneslib:$PATH"
@@ -173,47 +172,9 @@ export PATH="$HOME/.tmuxifier/bin:$PATH"
 export PATH="$HOME/go/bin:$PATH"
 export PATH="/opt/exercism:$PATH"
 
-# Para o fzf
-# Atalhos úteis:
-# ctrl-r : histórico de comandos
-# ctrl-t : lista os arquivos e diretórios da pasta atual
-# alt-c  : lista os diretórios da pasta atual
-source /usr/share/fzf/completion.bash
-source /usr/share/fzf/key-bindings.bash
-
-# Use fd (https://github.com/sharkdp/fd) for listing path candidates.
-# - The first argument to the function is the base path to start traversal
-# - See the source code (completion.*) for the details
-_fzf_compgen_path() {
-	fd --hidden --exclude .git . "$1"
-}
-
-# Use fd to generate the list for directory completion
-_fzf_compgen_dir() {
-	fd --type=d --exclude .git . "$1"
-}
-
 source /opt/fzf-git.sh/fzf-git.sh
-
-export FZF_CTRL_T_OPTS="--preview 'bat -n --color=always --line-range :500 {}'"
-export FZF_ALT_C_OPTS="--preview 'eza --tree --color=always {} | head -200'"
-
-# Advanced customization of fzf options via _fzf_comprun function
-# - The first argument to the function is the name of the command.
-# - You should make sure to pass the rest of the arguments to fzf.
-_fzf_comprun() {
-	local command=$1
-	shift
-
-	case "$command" in
-	cd) fzf --preview 'eza --tree --color=always {} | head -200' "$@" ;;
-	export | unset) fzf --preview "eval 'echo $'{}" "$@" ;;
-	ssh) fzf --preview 'dig {}' "$@" ;;
-	*) fzf --preview "bat -n --color=always --line-range :500 {}" "$@" ;;
-	esac
-}
-
 eval "$(tmuxifier init -)"
 eval "$(zoxide init --cmd cd bash)"
 eval "$(starship init bash)"
+eval "$(fzf --bash)"
 . <(chatgpt --set-completions bash)

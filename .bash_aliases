@@ -18,3 +18,17 @@ alias fcol="tr -s ' ' | cut -d ' ' -f9-"
 alias gf='gum filter'
 alias commitlint='/opt/commitlint/node_modules/.bin/commitlint'
 alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+alias trim="awk '{\$1=\$1;print}'"
+
+function take {
+	mkdir -p "$1"
+	cd "$1" || return
+}
+
+function note {
+	{
+		echo "date: $(date)"
+		echo "$@"
+		echo ""
+	} >>"$HOME"/drafts.txt
+}

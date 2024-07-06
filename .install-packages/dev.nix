@@ -5,4 +5,6 @@ with import <nixpkgs> {}; [
 	docker-compose
 	catch2
 	go
+	xh
+	difftastic
 ]

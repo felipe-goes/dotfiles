@@ -121,12 +121,16 @@ key=$(
 		jq ".openai.key" | sed s/\"// | sed s/\"//
 )
 export OPENAI_API_KEY="$key"
-export LIBGL_ALWAYS_SOFTWARE=1
-export MESA_GL_VERSION_OVERRIDE=4.5
 export PVSNESLIB_HOME=/mnt/c/pvsneslib/
 export GDK=/opt/SGDK
 export EDITOR=/home/felipe/.nix-profile/bin/nvim
 export GOPATH="$HOME/go"
+
+# WSL
+export LIBGL_ALWAYS_SOFTWARE=1
+export MESA_GL_VERSION_OVERRIDE=4.5
+
+# FZF
 # ctrl-r : histórico de comandos
 # ctrl-t : lista os arquivos e diretórios da pasta atual
 # alt-c  : lista os diretórios da pasta atual
@@ -149,6 +153,11 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_CTRL_T_OPTS="--preview 'bat -n --color=always --line-range :500 {}'"
 export FZF_ALT_C_COMMAND="fd --type=d --hidden --strip-cwd-prefix --exclude .git"
 export FZF_ALT_C_OPTS="--preview 'eza --tree --color=always {} | head -200'"
+
+# difftastic
+export DFT_COLOR=always
+export DFT_DISPLAY=side-by-side-show-both
+export DFT_TAB_WIDTH=2
 
 # Use fd (https:://github.com/sharkdp/fd) for listing path candidates.
 # - The first argument to the function ($1) is the base path to start traversal

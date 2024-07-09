@@ -8,6 +8,8 @@ cut
 docker
 docker-compose
 fd
+fzf
+fzf-tmux
 gcc
 git
 glow

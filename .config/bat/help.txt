@@ -1,1 +1,3 @@
 https://github.com/sharkdp/bat
+
+bat cache --build

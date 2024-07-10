@@ -14,24 +14,13 @@ vim.opt.rtp:prepend(lazypath)
 local plugins = {
   -- Run in background
   {
-    "folke/tokyonight.nvim",
-    lazy = false,    -- make sure we load this during startup if it is your main colorscheme
-    priority = 1000, -- make sure to load this before all the other start plugins
-    config = function()
-      -- load the colorscheme here
-      vim.cmd([[colorscheme tokyonight]])
-    end,
+    "scottmckendry/cyberdream.nvim",
+    lazy = false,
+    priority = 1000,
   },
-  "nvim-lua/popup.nvim",   -- An implementation of the Popup API from vim in Neovim
+  "nvim-lua/popup.nvim", -- An implementation of the Popup API from vim in Neovim
   "nvim-lua/plenary.nvim", -- Useful lua functions used by lots of plugins
   "ryanoasis/vim-devicons",
-  {
-    "windwp/nvim-autopairs",
-    event = "InsertEnter",
-    config = true,
-    -- use opts = {} for passing setup options
-    -- this is equalent to setup({}) function
-  },
   {
     "nvim-treesitter/nvim-treesitter",
     cmd = "TSUpdate",
@@ -70,7 +59,7 @@ local plugins = {
     event = "VeryLazy",
     keys = {
       {
-        "s",
+        "<cr>",
         mode = { "n", "x", "o" },
         function()
           require("flash").jump()
@@ -117,16 +106,15 @@ local plugins = {
   -- Miscellaneous
   "tommcdo/vim-lion",
   "nvim-tree/nvim-tree.lua",
-  "karb94/neoscroll.nvim",
-  "tpope/vim-surround",
   "tpope/vim-repeat",
+  { "echasnovski/mini.nvim", version = false },
   { "kevinhwang91/nvim-ufo", dependencies = "kevinhwang91/promise-async" },
 
   -- Completion
-  "hrsh7th/nvim-cmp",         -- The completion plugin
-  "hrsh7th/cmp-buffer",       -- buffer completions
-  "hrsh7th/cmp-path",         -- path completions
-  "hrsh7th/cmp-cmdline",      -- cmdline completion
+  "hrsh7th/nvim-cmp", -- The completion plugin
+  "hrsh7th/cmp-buffer", -- buffer completions
+  "hrsh7th/cmp-path", -- path completions
+  "hrsh7th/cmp-cmdline", -- cmdline completion
   "saadparwaiz1/cmp_luasnip", -- snippet completions
   "hrsh7th/cmp-nvim-lsp",
   "hrsh7th/cmp-nvim-lua",
@@ -159,7 +147,7 @@ local plugins = {
     "williamboman/mason-lspconfig.nvim",
   },
   "tamago324/nlsp-settings.nvim", -- language server settings defined in json
-  "nvimtools/none-ls.nvim",       -- for formatters and linters
+  "nvimtools/none-ls.nvim", -- for formatters and linters
   "nvimtools/none-ls-extras.nvim",
   "gbprod/none-ls-shellcheck.nvim",
   {

@@ -31,7 +31,7 @@ trouble.setup({
   open_no_results = false, -- open the trouble window when there are no results
   ---@type trouble.Window.opts
   win = {
-    position = "right",
+    position = "bottom",
     type = "split",
     relative = "win",
   }, -- window options for the results window. Can be a split or a floating window.

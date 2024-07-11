@@ -188,12 +188,11 @@ local mappings = {
   c = {
     name = "C/C++",
     c = { ":!create-cpp-class ", "Create C++ Class" },
-    b = { "<cmd>CMake build<cr>", "CMake Build" },
-    B = { "<cmd>CMake build_all<cr>", "CMake Build All" },
-    r = { "<cmd>CMake build_and_run<cr>", "CMake Build & Run" },
-    d = { "<cmd>CMake build_and_debug<cr>", "CMake Build & Debug" },
-    s = { "<cmd>CMake select_target<cr>", "CMake Select Target" },
-    S = { "<cmd>CMake select_build_type<cr>", "CMake Select Build Type" },
+    g = { "<cmd>CMakeGenerate<cr>", "CMake Generate" },
+    b = { "<cmd>CMakeBuild<cr>", "CMake Build" },
+    r = { "<cmd>CMakeRun<cr>", "CMake Run" },
+    d = { "<cmd>CMakeDebug<cr>", "CMake Debug" },
+    t = { "<cmd>CMakeTest<cr>", "CMake Test" },
   },
 
   t = {
@@ -218,6 +217,11 @@ local mappings = {
     l = { "<cmd>TestLast<cr>", "Test Last" },
     n = { "<cmd>TestNearest<cr>", "Test Nearest" },
     v = { "<cmd>TestVisit<cr>", "Test Visit" },
+  },
+
+  n = {
+    name = "Noice",
+    d = { "<cmd>Noice dismiss<cr>", "Noice dismiss" },
   },
 
   -- See more in keymaps.lua

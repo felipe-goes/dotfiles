@@ -4,6 +4,10 @@ if not status_ok then
   return
 end
 
+vim.cmd([[
+  set termguicolors
+]])
+
 cyberdream.setup({
   theme = {
     variant = "default",

@@ -109,7 +109,12 @@ local plugins = {
   -- Miscellaneous
   "tommcdo/vim-lion",
   "nvim-tree/nvim-tree.lua",
-  "tpope/vim-repeat",
+  -- "tpope/vim-repeat",
+  {
+    "kylechui/nvim-surround",
+    version = "*", -- Use for stability; omit to use `main` branch for the latest features
+    event = "VeryLazy",
+  },
   { "echasnovski/mini.nvim", version = false },
   { "kevinhwang91/nvim-ufo", dependencies = "kevinhwang91/promise-async" },
 

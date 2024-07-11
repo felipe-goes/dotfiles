@@ -25,6 +25,7 @@ require("user.colorscheme") -- always on top
 require("user.indentline") -- always before options
 require("user.options")
 require("user.mini")
+require("user.surround")
 require("user.devicons")
 require("user.colorizer")
 require("user.completions")

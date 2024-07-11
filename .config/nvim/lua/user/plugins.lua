@@ -36,8 +36,10 @@ local plugins = {
     end,
   },
   "moll/vim-bbye",
-  -- TODO: Migrate from staline to lualine
-  "tamton-aquib/staline.nvim",
+  {
+    "nvim-lualine/lualine.nvim",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+  },
   {
     "lukas-reineke/indent-blankline.nvim",
     main = "ibl",

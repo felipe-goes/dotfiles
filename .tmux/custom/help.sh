@@ -71,7 +71,7 @@ elif [[ "^$option$" =~ "stackexchange" ]]; then
 			cut -d ' ' -f 1 |
 			rev
 	)
-	tmux neww -n "stackexchange" bash -c "mdmagic stackexchange $url | glow -p"
+	[[ "$url" != "" ]] && tmux neww -n "stackexchange" bash -c "mdmagic stackexchange $url | glow -p"
 
 # get help for chosen from one of the by-example sites on the list
 elif [[ "^$option$" =~ "by-example" ]]; then

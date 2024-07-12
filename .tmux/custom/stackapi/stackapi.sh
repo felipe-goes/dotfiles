@@ -37,5 +37,10 @@ case "$site" in
 	;;
 esac
 
-test -n "$tag" && tag=$(echo "$tag" | cut -d ' ' -f 1)
-querystack "$site" "$query" "$tag"
+tag=$(echo "$tag" | cut -d ' ' -f 1)
+[[ "$tag" == "TagName" ]] && tag="" # tag is none if TagName was picked
+
+# Run querystack only if it has valid arguments
+[[ "$site" != "" ]] &&
+	[[ "$query" != "" ]] &&
+	querystack "$site" "$query" "$tag"

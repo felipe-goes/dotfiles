@@ -20,6 +20,7 @@ alias commitlint='/opt/commitlint/node_modules/.bin/commitlint'
 alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias trim="awk '{\$1=\$1;print}'"
 alias pandoc="pandoc -V geometry:margin=3cm -o"
+alias update='sudo apt update && sudo apt upgrade'
 
 function take {
 	mkdir -p "$1"

@@ -30,8 +30,8 @@ if [[ "^$option$" =~ "cheat-sheet" ]]; then
 
 # build chatgpt query
 elif [[ "^$option$" =~ "chatgpt" ]]; then
-	thread=$(bat "$HOME/.tmux/custom/chatgpt/threads.txt" \
-		 | gum filter --indicator=">")
+	thread=$(chatgpt --list-threads | tail -n +2 | gum filter --indicator=">")
+	thread=$(echo "$thread" | awk \{'print $2'\})
 
 	tmux neww -n "$option" bash -c "$HOME/.tmux/custom/chatgpt/chatgpt.sh $thread ; read"
 

@@ -144,13 +144,17 @@ export MESA_GL_VERSION_OVERRIDE=4.5
 # ctrl-gw: git Worktrees
 # ctrl-ge: git for-Each-ref
 export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
---color=fg:#c0caf5,bg:#1a1b26,hl:#bb9af7
---color=fg+:#c0caf5,bg+:#2b2c37,hl+:#7dcfff
---color=info:#7aa2f7,prompt:#7dcfff,pointer:#7dcfff
---color=marker:#9ece6a,spinner:#9ece6a,header:#9ece6a'
+  --color=fg:#d0d0d0,fg+:#d0d0d0,bg:#141618,bg+:#2c2e30
+  --color=hl:#33363b,hl+:#4ecbd1,info:#4e8cd1,marker:#e8e847
+  --color=prompt:#e84e8d,spinner:#e84e8d,pointer:#e84e8d,header:#87afaf
+  --color=border:#262626,label:#e8e847,query:#d9d9d9
+  --border="rounded" --border-label="" --preview-window="border-rounded" --prompt="> "
+  --marker="◆" --pointer=">" --separator="─" --scrollbar="│"'
 export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_CTRL_T_OPTS="--tmux 75%,75% --preview 'bat -n --color=always --line-range :500 {}'"
+export FZF_CTRL_R_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_CTRL_R_OPTS="--tmux 50%,75%"
 export FZF_ALT_C_COMMAND="fd --type=d --hidden --strip-cwd-prefix --exclude .git"
 export FZF_ALT_C_OPTS="--tmux 75%,75% --preview 'eza --tree --color=always {} | head -200'"
 

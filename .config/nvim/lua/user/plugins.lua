@@ -160,7 +160,17 @@ local plugins = {
   "gbprod/none-ls-shellcheck.nvim",
   {
     "folke/trouble.nvim",
-    dependencies = { "nvim-tree/nvim-web-devicons" },
+    opts = {
+      focus = true,
+      icons = {
+        ---@type trouble.Indent.symbols
+        indent = {
+          last = "╰╴", -- rounded
+        },
+      },
+      cmd = "Trouble",
+      dependencies = { "nvim-tree/nvim-web-devicons" },
+    },
   },
 
   {

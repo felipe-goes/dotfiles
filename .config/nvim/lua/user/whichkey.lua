@@ -9,262 +9,7 @@ local dapui = require("dapui")
 local widgets = require("dap.ui.widgets")
 local harpoon = require("harpoon")
 
-local setup = {
-  plugins = {
-    marks = true, -- shows a list of your marks on ' and `
-    registers = true, -- shows your registers on " in NORMAL or <C-r> in INSERT mode
-    spelling = {
-      enabled = true, -- enabling this will show WhichKey when pressing z= to select spelling suggestions
-      suggestions = 20, -- how many suggestions should be shown in the list?
-    },
-    -- the presets plugin, adds help for a bunch of default keybindings in Neovim
-    -- No actual key bindings are created
-    presets = {
-      operators = false, -- adds help for operators like d, y, ... and registers them for motion / text object completion
-      motions = false, -- adds help for motions
-      text_objects = false, -- help for text objects triggered after entering an operator
-      windows = true, -- default bindings on <c-w>
-      nav = true, -- misc bindings to work with windows
-      z = true, -- bindings for folds, spelling and others prefixed with z
-      g = true, -- bindings for prefixed with g
-    },
-  },
-  -- add operators that will trigger motion and text object completion
-  -- to enable all native operators, set the preset / operators plugin above
-  -- operators = { gc = "Comments" },
-  key_labels = {
-    -- override the label used to display some keys. It doesn't effect WK in any other way.
-    -- For example:
-    -- ["<space>"] = "SPC",
-    -- ["<cr>"] = "RET",
-    -- ["<tab>"] = "TAB",
-  },
-  icons = {
-    breadcrumb = "»", -- symbol used in the command line area that shows your active key combo
-    separator = "➜", -- symbol used between a key and it's label
-    group = "+", -- symbol prepended to a group
-  },
-  popup_mappings = {
-    scroll_down = "<c-d>", -- binding to scroll down inside the popup
-    scroll_up = "<c-u>", -- binding to scroll up inside the popup
-  },
-  window = {
-    border = "rounded", -- none, single, double, shadow
-    position = "bottom", -- bottom, top
-    margin = { 1, 0, 1, 0 }, -- extra window margin [top, right, bottom, left]
-    padding = { 2, 2, 2, 2 }, -- extra window padding [top, right, bottom, left]
-    winblend = 0,
-  },
-  layout = {
-    height = { min = 4, max = 25 }, -- min and max height of the columns
-    width = { min = 20, max = 50 }, -- min and max width of the columns
-    spacing = 3, -- spacing between columns
-    align = "left", -- align columns left, center or right
-  },
-  ignore_missing = true, -- enable this to hide mappings for which you didn't specify a label
-  hidden = { "<silent>", "<cmd>", "<Cmd>", "<CR>", "call", "lua", "^:", "^ " }, -- hide mapping boilerplate
-  show_help = true, -- show help message on the command line when the popup is visible
-  triggers = "auto", -- automatically setup triggers
-  -- triggers = {"<leader>"} -- or specify a list manually
-  triggers_blacklist = {
-    -- list of mode / prefixes that should never be hooked by WhichKey
-    -- this is mostly relevant for key maps that start with a native binding
-    -- most people should not need to change this
-    i = { "j", "j" },
-    v = { "j", "j" },
-  },
-}
-
-local opts = {
-  mode = "n", -- NORMAL mode
-  prefix = "<leader>",
-  buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
-  silent = true, -- use `silent` when creating keymaps
-  noremap = true, -- use `noremap` when creating keymaps
-  nowait = true, -- use `nowait` when creating keymaps
-}
-
-local mappings = {
-  h = { "<cmd>nohlsearch<cr>", "No Highlight" },
-  m = { "<cmd>MarkdownPreview<cr>", "Markdown Preview" },
-  p = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
-  r = { "<cmd>NvimTreeRefresh<cr>", "NvimTree Refresh" },
-  e = {
-    function()
-      harpoon.ui:toggle_quick_menu(harpoon:list())
-    end,
-    "Harpoon",
-  },
-  a = {
-    function()
-      harpoon:list():add()
-    end,
-    "Add to Harpoon",
-  },
-
-  f = {
-    name = "Telescope Find",
-    f = { "<cmd>Telescope find_files<cr>", "Files" },
-    p = { "<cmd>Telescope live_grep<cr>", "Text" },
-    h = { "<cmd>Telescope find_files hidden=true<cr>", "Hidden Files" },
-    b = { "<cmd>Telescope buffers<cr>", "Buffers" },
-    t = { "<cmd>TodoTelescope<cr>", "Todo Telescope" },
-  },
-
-  g = {
-    name = "Git",
-    i = { "<cmd>Neogit<cr>", "Neogit Interface" },
-    j = { "<cmd>lua require'gitsigns'.next_hunk()<cr>", "Next Hunk = ]g" },
-    k = { "<cmd>lua require'gitsigns'.prev_hunk()<cr>", "Prev Hunk = [g" },
-    b = { "<cmd>lua require'gitsigns'.blame_line()<cr>", "Blame" },
-    p = { "<cmd>lua require'gitsigns'.preview_hunk()<cr>", "Preview Hunk" },
-    r = { "<cmd>lua require'gitsigns'.reset_hunk()<cr>", "Reset Hunk" },
-    R = { "<cmd>lua require'gitsigns'.reset_buffer()<cr>", "Reset Buffer" },
-    s = { "<cmd>lua require'gitsigns'.stage_hunk()<cr>", "Stage Hunk" },
-    u = { "<cmd>lua require'gitsigns'.undo_stage_hunk()<cr>", "Undo Stage Hunk" },
-    d = { "<cmd>lua require'gitsigns'.diffthis() HEAD<cr>", "Diff File" },
-    q = { "<cmd>DiffviewClose<cr>", "Diff Close" },
-    t = { "<cmd>DiffviewToggleFiles<cr>", "Diff Toggle" },
-    f = { "<cmd>DiffviewFileHistory %<cr>", "Current File History" },
-  },
-
-  l = {
-    name = "LSP",
-    d = {
-      name = "Diagnostics",
-      d = { "<cmd>lua vim.diagnostic.open_float()<cr>", "Hover" },
-      l = { "<cmd>lua vim.lsp.codelens.run()<cr>", "CodeLens Action" },
-      j = { "<cmd>lua vim.diagnostic.goto_next()<cr>", "Next = ]d" },
-      k = { "<cmd>lua vim.diagnostic.goto_prev()<CR>", "Prev = [d]" },
-    },
-    w = {
-      name = "Workspace",
-      a = { "<cmd>lua vim.lsp.buf.add_workspace_folder()<cr>", "Add Workspace Folder" },
-      r = { "<cmd>lua vim.lsp.buf.remove_workspace_folder()<cr>", "Remove Workspace Folder" },
-      l = { "<cmd>lua vim.lsp.buf.list_workspace_folders()<cr>", "List Workspace Folders" },
-    },
-    a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
-    f = { "<cmd>lua vim.lsp.buf.format({ async = true })<cr>", "Format" },
-    r = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename" },
-    t = { "<cmd>Trouble lsp_type_definitions<cr>", "Type Definition" },
-    i = { "<cmd>LspInfo<cr>", "Info" },
-    I = { "<cmd>Mason<cr>", "Install" },
-    s = { "<cmd>Telescope lsp_document_symbols<cr>", "Document Symbols" },
-    S = {
-      "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>",
-      "Workspace Symbols",
-    },
-  },
-
-  i = {
-    name = "Icon Picker",
-    a = { "<cmd>IconPickerNormal<cr>", "Pick Icons" },
-    n = { "<cmd>IconPickerNormal nerd_font nerd_font_v3<cr>", "Pick Nerd Font" },
-    e = { "<cmd>IconPickerNormal emoji<cr>", "Pick Emoji" },
-    s = { "<cmd>IconPickerNormal symbols<cr>", "Pick Symbol" },
-    f = { "<cmd>IconPickerNormal alt_font<cr>", "Pick Alt Font" },
-    h = { "<cmd>IconPickerNormal html_colors<cr>", "Pick HTML Colors" },
-  },
-
-  s = {
-    name = "Search",
-    c = { "<cmd>Telescope commands<cr>", "Commands" },
-    m = { "<cmd>Telescope media_files<cr>", "Image Preview" },
-    h = { "<cmd>Telescope help_tags<cr>", "Find Help" },
-    R = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
-    r = { "<cmd>Telescope registers<cr>", "Registers" },
-    k = { "<cmd>Telescope keymaps<cr>", "Keymaps" },
-  },
-
-  S = {
-    name = "SGDK",
-    b = { "<cmd>!sgdk build<cr>", "Build SGDK Project" },
-    e = { "<cmd>!sgdk blastem<cr>", "Build and Run Blastem" },
-    h = { "<cmd>!sgdk bizhawk<cr>", "Build and Run Bizhawk" },
-    c = { "<cmd>!sgdk clean<cr>", "Clean SGDK Project" },
-    C = { "<cmd>!sgdk cmake<cr>", "Generate compile_commands.json" },
-  },
-
-  c = {
-    name = "C/C++",
-    c = { ":!create-cpp-class ", "Create C++ Class" },
-    g = { "<cmd>CMakeGenerate<cr>", "CMake Generate" },
-    b = { "<cmd>CMakeBuild<cr>", "CMake Build" },
-    r = { "<cmd>CMakeRun<cr>", "CMake Run" },
-    d = { "<cmd>CMakeDebug<cr>", "CMake Debug" },
-    t = { "<cmd>CMakeTest<cr>", "CMake Test" },
-  },
-
-  t = {
-    name = "Trouble",
-    d = { "<cmd>Trouble diagnostics toggle focus=true<cr>", "LSP Diagnostics" },
-    t = { "<cmd>Trouble lsp_type_definitions toggle focus=true<cr>", "LSP Type Definitions" },
-    s = { "<cmd>Trouble symbols toggle focus=true<cr>", "LSP Symbols" },
-    T = { "<cmd>Trouble todo toggle focus=true<cr>", "Todo" },
-    j = {
-      name = "Bottom",
-      d = { "<cmd>Trouble diagnostics win.position=bottom focus=true<cr>", "LSP Diagnostics" },
-      t = { "<cmd>Trouble lsp_type_definitions win.position=bottom focus=true<cr>", "LSP Type Definitions" },
-      s = { "<cmd>Trouble symbols win.position=bottom focus=true<cr>", "LSP Symbols" },
-      T = { "<cmd>Trouble todo win.position=bottom focus=true<cr>", "Todo" },
-    },
-  },
-
-  T = {
-    name = "Test",
-    a = { "<cmd>TestSuite<cr>", "Test Suite" },
-    f = { "<cmd>TestFile<cr>", "Test File" },
-    l = { "<cmd>TestLast<cr>", "Test Last" },
-    n = { "<cmd>TestNearest<cr>", "Test Nearest" },
-    v = { "<cmd>TestVisit<cr>", "Test Visit" },
-  },
-
-  n = {
-    name = "Noice",
-    d = { "<cmd>Noice dismiss<cr>", "Noice dismiss" },
-  },
-
-  -- See more in keymaps.lua
-  d = {
-    name = "Debugger",
-    a = {
-      function()
-        dap.clear_breakpoints()
-      end,
-      "Clear Breakpoints",
-    },
-    n = {
-      function()
-        dap.run_to_cursor()
-      end,
-      "Run to Cursor",
-    },
-    e = {
-      function()
-        dap.set_exception_breakpoints()
-      end,
-      "Set Exception Breakpoints",
-    },
-    u = {
-      function()
-        widgets.hover()
-        -- widgets.centered_float(widgets.scopes)
-      end,
-      "Hover",
-    },
-    d = { "<cmd>DapToggleBreakpoint<cr>", "Toggle Breakpoint" },
-    q = { "<cmd>DapTerminate<cr>", "Close" },
-    t = {
-      function()
-        dapui.toggle()
-      end,
-      "Toggle Debugger Interface",
-    },
-    f = { ":Telescope dap frames<CR>", "Telescope Frames" },
-    B = { ":Telescope dap list_breakpoint<CR>", "Telescope List Breakpoints" },
-    C = { ":Telescope dap commands<CR>", "Telescope Debugger Commands" },
-  },
-}
+local mappings = {}
 
 local vopts = {
   mode = "v", -- VISUAL mode
@@ -276,6 +21,185 @@ local vopts = {
 }
 local vmappings = {}
 
-which_key.setup(setup)
-which_key.register(mappings, opts)
-which_key.register(vmappings, vopts)
+-- which_key.setup(setup)
+-- which_key.register(mappings, opts)
+-- which_key.register(vmappings, vopts)
+
+which_key.add({
+  -- opts
+  {
+    mode = "n", -- NORMAL mode
+    prefix = "<leader>",
+    buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
+    silent = true, -- use `silent` when creating keymaps
+    noremap = true, -- use `noremap` when creating keymaps
+    nowait = true, -- use `nowait` when creating keymaps
+  },
+
+  -- Does not have a group
+  { "<leader>h", "<cmd>nohlsearch<cr>", desc = "No Highlight" },
+  { "<leader>m", "<cmd>MarkdownPreview<cr>", desc = "Markdown Preview" },
+  { "<leader>p", "<cmd>NvimTreeToggle<cr>", desc = "Explorer" },
+  { "<leader>r", "<cmd>NvimTreeRefresh<cr>", desc = "NvimTree Refresh" },
+  { "<leader>n", "<cmd>Noice dismiss<cr>", desc = "Noice dismiss" },
+  {
+    "<leader>e",
+    function()
+      harpoon.ui:toggle_quick_menu(harpoon:list())
+    end,
+    desc = "Harpoon",
+  },
+  {
+    "<leader>a",
+    function()
+      harpoon:list():add()
+    end,
+    desc = "Add to Harpoon",
+  },
+
+  -- Telescope Find
+  { "<leader>f", group = "Telescope Find" },
+  { "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "Files", mode = "n" },
+  { "<leader>fp", "<cmd>Telescope live_grep<cr>", desc = "Text" },
+  { "<leader>fh", "<cmd>Telescope find_files hidden=true<cr>", desc = "Hidden Files" },
+  { "<leader>fb", "<cmd>Telescope buffers<cr>", desc = "Buffers" },
+  { "<leader>ft", "<cmd>TodoTelescope<cr>", desc = "Todo" },
+
+  -- Git
+  { "<leader>g", group = "Git" },
+  { "<leader>gi", "<cmd>Neogit<cr>", desc = "Neogit Interface" },
+  { "<leader>gj", "<cmd>lua require'gitsigns'.next_hunk()<cr>", desc = "Next Hunk = ]g" },
+  { "<leader>gk", "<cmd>lua require'gitsigns'.prev_hunk()<cr>", desc = "Prev Hunk = [g" },
+  { "<leader>gb", "<cmd>lua require'gitsigns'.blame_line()<cr>", desc = "Blame" },
+  { "<leader>gp", "<cmd>lua require'gitsigns'.preview_hunk()<cr>", desc = "Preview Hunk" },
+  { "<leader>gr", "<cmd>lua require'gitsigns'.reset_hunk()<cr>", desc = "Reset Hunk" },
+  { "<leader>gR", "<cmd>lua require'gitsigns'.reset_buffer()<cr>", desc = "Reset Buffer" },
+  { "<leader>gs", "<cmd>lua require'gitsigns'.stage_hunk()<cr>", desc = "Stage Hunk" },
+  { "<leader>gu", "<cmd>lua require'gitsigns'.undo_stage_hunk()<cr>", desc = "Undo Stage Hunk" },
+  { "<leader>gd", "<cmd>lua require'gitsigns'.diffthis() HEAD<cr>", desc = "Diff File" },
+  { "<leader>gq", "<cmd>DiffviewClose<cr>", desc = "Diff Close" },
+  { "<leader>gt", "<cmd>DiffviewToggleFiles<cr>", desc = "Diff Toggle" },
+  { "<leader>gf", "<cmd>DiffviewFileHistory %<cr>", desc = "Current File History" },
+
+  -- LSP
+  { "<leader>l", group = "LSP" },
+  { "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<cr>", desc = "Code Action" },
+  { "<leader>lf", "<cmd>lua vim.lsp.buf.format({ async = true })<cr>", desc = "Format" },
+  { "<leader>lr", "<cmd>lua vim.lsp.buf.rename()<cr>", desc = "Rename" },
+  { "<leader>lt", "<cmd>Trouble lsp_type_definitions<cr>", desc = "Type Definition" },
+  { "<leader>li", "<cmd>LspInfo<cr>", desc = "Info" },
+  { "<leader>lI", "<cmd>Mason<cr>", desc = "Install" },
+  { "<leader>ls", "<cmd>Telescope lsp_document_symbols<cr>", desc = "Document Symbols" },
+  {
+    "<leader>lS",
+    "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>",
+    desc = "Workspace Symbols",
+  },
+
+  -- LSP Diagnostics
+  { "<leader>ld", group = "LSP Diagnostics" },
+  { "<leader>ldd", "<cmd>lua vim.diagnostic.open_float()<cr>", desc = "Hover" },
+  { "<leader>ldl", "<cmd>lua vim.lsp.codelens.run()<cr>", desc = "CodeLens Action" },
+  { "<leader>ldj", "<cmd>lua vim.diagnostic.goto_next()<cr>", desc = "Next = ]d" },
+  { "<leader>ldk", "<cmd>lua vim.diagnostic.goto_prev()<CR>", desc = "Prev = [d]" },
+
+  -- LSP Workspace
+  { "<leader>lw", group = "LSP Workspace" },
+  { "<leader>lwa", "<cmd>lua vim.lsp.buf.add_workspace_folder()<cr>", desc = "Add Workspace Folder" },
+  { "<leader>lwr", "<cmd>lua vim.lsp.buf.remove_workspace_folder()<cr>", desc = "Remove Workspace Folder" },
+  { "<leader>lwl", "<cmd>lua vim.lsp.buf.list_workspace_folders()<cr>", desc = "List Workspace Folders" },
+
+  -- Icon Picker
+  { "<leader>i", group = "Icon Picker" },
+  { "<leader>ia", "<cmd>IconPickerNormal<cr>", desc = "Pick Icons" },
+  { "<leader>in", "<cmd>IconPickerNormal nerd_font nerd_font_v3<cr>", desc = "Pick Nerd Font" },
+  { "<leader>ie", "<cmd>IconPickerNormal emoji<cr>", desc = "Pick Emoji" },
+  { "<leader>is", "<cmd>IconPickerNormal symbols<cr>", desc = "Pick Symbol" },
+  { "<leader>if", "<cmd>IconPickerNormal alt_font<cr>", desc = "Pick Alt Font" },
+  { "<leader>ih", "<cmd>IconPickerNormal html_colors<cr>", desc = "Pick HTML Colors" },
+
+  -- Search
+  { "<leader>s", group = "Search" },
+  { "<leader>sc", "<cmd>Telescope commands<cr>", desc = "Commands" },
+  { "<leader>sm", "<cmd>Telescope media_files<cr>", desc = "Image Preview" },
+  { "<leader>sh", "<cmd>Telescope help_tags<cr>", desc = "Find Help" },
+  { "<leader>sR", "<cmd>Telescope oldfiles<cr>", desc = "Open Recent File" },
+  { "<leader>sr", "<cmd>Telescope registers<cr>", desc = "Registers" },
+  { "<leader>sk", "<cmd>Telescope keymaps<cr>", desc = "Keymaps" },
+
+  -- SGDK
+  { "<leader>S", group = "SGDK" },
+  { "<leader>Sb", "<cmd>!sgdk build<cr>", desc = "Build SGDK Project" },
+  { "<leader>Se", "<cmd>!sgdk blastem<cr>", desc = "Build and Run Blastem" },
+  { "<leader>Sh", "<cmd>!sgdk bizhawk<cr>", desc = "Build and Run Bizhawk" },
+  { "<leader>Sc", "<cmd>!sgdk clean<cr>", desc = "Clean SGDK Project" },
+  { "<leader>SC", "<cmd>!sgdk cmake<cr>", desc = "Generate compile_commands.json" },
+
+  -- C/C++
+  { "<leader>c", group = "C/C++" },
+  { "<leader>cg", "<cmd>CMakeGenerate<cr>", desc = "CMake Generate" },
+  { "<leader>cb", "<cmd>CMakeBuild<cr>", desc = "CMake Build" },
+  { "<leader>cr", "<cmd>CMakeRun<cr>", desc = "CMake Run" },
+  { "<leader>cd", "<cmd>CMakeDebug<cr>", desc = "CMake Debug" },
+  { "<leader>ct", "<cmd>CMakeTest<cr>", desc = "CMake Test" },
+
+  -- Trouble
+  { "<leader>t", group = "Trouble" },
+  { "<leader>td", "<cmd>Trouble diagnostics toggle<cr>", desc = "LSP Diagnostics" },
+  { "<leader>tt", "<cmd>Trouble lsp_type_definitions toggle<cr>", desc = "LSP Type Definitions" },
+  { "<leader>ts", "<cmd>Trouble symbols toggle focus=true<cr>", desc = "LSP Symbols" },
+  { "<leader>tT", "<cmd>Trouble todo toggle<cr>", desc = "Todo" },
+
+  -- Test
+  { "<leader>T", group = "Test" },
+  { "<leader>Ta", "<cmd>TestSuite<cr>", desc = "Test Suite" },
+  { "<leader>Tf", "<cmd>TestFile<cr>", desc = "Test File" },
+  { "<leader>Tl", "<cmd>TestLast<cr>", desc = "Test Last" },
+  { "<leader>Tn", "<cmd>TestNearest<cr>", desc = "Test Nearest" },
+  { "<leader>Tv", "<cmd>TestVisit<cr>", desc = "Test Visit" },
+
+  -- Debugger
+  -- See more in keymaps.lua
+  { "<leader>d", group = "Debugger" },
+  {
+    "<leader>da",
+    function()
+      dap.clear_breakpoints()
+    end,
+    desc = "Clear Breakpoints",
+  },
+  {
+    "<leader>dn",
+    function()
+      dap.run_to_cursor()
+    end,
+    desc = "Run to Cursor",
+  },
+  {
+    "<leader>de",
+    function()
+      dap.set_exception_breakpoints()
+    end,
+    desc = "Set Exception Breakpoints",
+  },
+  {
+    "<leader>du",
+    function()
+      widgets.hover()
+      -- widgets.centered_float(widgets.scopes)
+    end,
+    desc = "Hover",
+  },
+  { "<leader>dd", "<cmd>DapToggleBreakpoint<cr>", desc = "Toggle Breakpoint" },
+  { "<leader>dq", "<cmd>DapTerminate<cr>", desc = "Close" },
+  {
+    "<leader>dt",
+    function()
+      dapui.toggle()
+    end,
+    desc = "Toggle Debugger Interface",
+  },
+  { "<leader>df", ":Telescope dap frames<CR>", desc = "Telescope Frames" },
+  { "<leader>dB", ":Telescope dap list_breakpoint<CR>", desc = "Telescope List Breakpoints" },
+  { "<leader>dC", ":Telescope dap commands<CR>", desc = "Telescope Debugger Commands" },
+})

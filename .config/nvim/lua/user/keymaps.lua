@@ -72,9 +72,6 @@ keymap("n", "n", "nzzzv", opts)
 keymap("n", "N", "Nzzzv", opts)
 keymap("n", "J", "mzJ`z", opts)
 
--- Open the current file in the default program
-keymap("n", "<leader>x", ":!xdg-open %<cr><cr>", opts)
-
 -- Easy insertion of a trailing ; or , from insert mode
 keymap("i", ";;", "<esc>A;<esc>", opts)
 keymap("i", ",,", "<esc>A,<esc>", opts)
@@ -84,6 +81,9 @@ vim.cmd("cmap w!! %!sudo tee > /dev/null %")
 -- Quickly insert an empty new line without entering insert mode
 keymap("n", "<leader>o", "o<esc>", opts)
 keymap("n", "<leader>O", "O<esc>", opts)
+
+-- Clean search highlight
+keymap("n", "<leader>h", "<cmd>nohlsearch<cr>", opts)
 
 -- Save and Exit
 keymap("n", "<leader>w", "<cmd>w<cr>", opts)

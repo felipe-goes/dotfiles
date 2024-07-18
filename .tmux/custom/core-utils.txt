@@ -16,6 +16,7 @@ glow
 grep
 gum
 mods
+nix-env
 pacman
 pandoc
 sed
@@ -25,5 +26,6 @@ tr
 tmux
 unzip
 vhs
+when
 xargs
 zip

@@ -36,11 +36,35 @@ which_key.add({
     nowait = true, -- use `nowait` when creating keymaps
   },
 
-  -- Does not have a group
-  { "<leader>h", "<cmd>nohlsearch<cr>", desc = "No Highlight" },
-  { "<leader>m", "<cmd>MarkdownPreview<cr>", desc = "Markdown Preview" },
-  { "<leader>p", "<cmd>NvimTreeToggle<cr>", desc = "Explorer" },
-  { "<leader>r", "<cmd>NvimTreeRefresh<cr>", desc = "NvimTree Refresh" },
+  -- Hidden
+  { "<leader>q", hidden = true },
+  { "<leader>Q", hidden = true },
+  { "<leader>w", hidden = true },
+  { "<leader>W", hidden = true },
+  { "<leader>o", hidden = true },
+  { "<leader>O", hidden = true },
+  { "<leader>h", hidden = true },
+  { "<leader>r", hidden = true },
+
+  -- Do not have a group
+  {
+    "<leader>m",
+    "<cmd>PeekOpen<cr>",
+    desc = "Markdown Preview",
+    icon = {
+      icon = "󰍔",
+      color = "blue",
+    },
+  },
+  {
+    "<leader>p",
+    "<cmd>NvimTreeToggle<cr>",
+    desc = "Explorer",
+    icon = {
+      icon = "󰉋",
+      color = "blue",
+    },
+  },
   { "<leader>n", "<cmd>Noice dismiss<cr>", desc = "Noice dismiss" },
   {
     "<leader>e",
@@ -48,6 +72,10 @@ which_key.add({
       harpoon.ui:toggle_quick_menu(harpoon:list())
     end,
     desc = "Harpoon",
+    icon = {
+      icon = "⇀",
+      color = "orange",
+    },
   },
   {
     "<leader>a",
@@ -55,6 +83,10 @@ which_key.add({
       harpoon:list():add()
     end,
     desc = "Add to Harpoon",
+    icon = {
+      icon = "󰐕",
+      color = "orange",
+    },
   },
 
   -- Telescope Find
@@ -82,7 +114,7 @@ which_key.add({
   { "<leader>gf", "<cmd>DiffviewFileHistory %<cr>", desc = "Current File History" },
 
   -- LSP
-  { "<leader>l", group = "LSP" },
+  { "<leader>l", group = "LSP", icon = { icon = "", color = "green" } },
   { "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<cr>", desc = "Code Action" },
   { "<leader>lf", "<cmd>lua vim.lsp.buf.format({ async = true })<cr>", desc = "Format" },
   { "<leader>lr", "<cmd>lua vim.lsp.buf.rename()<cr>", desc = "Rename" },
@@ -110,7 +142,7 @@ which_key.add({
   { "<leader>lwl", "<cmd>lua vim.lsp.buf.list_workspace_folders()<cr>", desc = "List Workspace Folders" },
 
   -- Icon Picker
-  { "<leader>i", group = "Icon Picker" },
+  { "<leader>i", group = "Icon Picker", icon = { icon = "", color = "yellow" } },
   { "<leader>ia", "<cmd>IconPickerNormal<cr>", desc = "Pick Icons" },
   { "<leader>in", "<cmd>IconPickerNormal nerd_font nerd_font_v3<cr>", desc = "Pick Nerd Font" },
   { "<leader>ie", "<cmd>IconPickerNormal emoji<cr>", desc = "Pick Emoji" },
@@ -128,7 +160,7 @@ which_key.add({
   { "<leader>sk", "<cmd>Telescope keymaps<cr>", desc = "Keymaps" },
 
   -- SGDK
-  { "<leader>S", group = "SGDK" },
+  { "<leader>S", group = "SGDK", icon = { icon = "󰊖", color = "purple" } },
   { "<leader>Sb", "<cmd>!sgdk build<cr>", desc = "Build SGDK Project" },
   { "<leader>Se", "<cmd>!sgdk blastem<cr>", desc = "Build and Run Blastem" },
   { "<leader>Sh", "<cmd>!sgdk bizhawk<cr>", desc = "Build and Run Bizhawk" },
@@ -136,7 +168,7 @@ which_key.add({
   { "<leader>SC", "<cmd>!sgdk cmake<cr>", desc = "Generate compile_commands.json" },
 
   -- C/C++
-  { "<leader>c", group = "C/C++" },
+  { "<leader>c", group = "C/C++", icon = { icon = "󰙲", color = "blue" } },
   { "<leader>cg", "<cmd>CMakeGenerate<cr>", desc = "CMake Generate" },
   { "<leader>cb", "<cmd>CMakeBuild<cr>", desc = "CMake Build" },
   { "<leader>cr", "<cmd>CMakeRun<cr>", desc = "CMake Run" },
@@ -144,7 +176,7 @@ which_key.add({
   { "<leader>ct", "<cmd>CMakeTest<cr>", desc = "CMake Test" },
 
   -- Trouble
-  { "<leader>t", group = "Trouble" },
+  { "<leader>t", group = "Trouble", icon = { icon = "󱖫", color = "yellow" } },
   { "<leader>td", "<cmd>Trouble diagnostics toggle<cr>", desc = "LSP Diagnostics" },
   { "<leader>tt", "<cmd>Trouble lsp_type_definitions toggle<cr>", desc = "LSP Type Definitions" },
   { "<leader>ts", "<cmd>Trouble symbols toggle focus=true<cr>", desc = "LSP Symbols" },

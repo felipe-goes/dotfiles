@@ -5,7 +5,7 @@
 add_newline = false
 
 format = """
-[╭── ](bold blue)$directory$rust$package$git_branch$git_status$golang$docker_context $fill [ ](bold green) $username$gcloud$aws$kubernetes
+[╭── ](bold blue)$directory$rust$package$git_branch$git_status$golang$docker_context $fill [ ](bold red) $username$gcloud$aws$kubernetes
 [╰──❯ ](bold blue)
 """
 
@@ -32,7 +32,7 @@ disabled = false
 [gcloud]
 style = "blue"
 format = '[$symbol$account(\($project\))]($style) '
-symbol = "️G⅁:☁️"
+symbol = "️ 󱇶"
 [gcloud.region_aliases]
 us-central1 = "uc1"
 asia-northeast1 = "an1"
@@ -40,16 +40,16 @@ asia-northeast1 = "an1"
 [aws]
 format = '[$symbol$profile(\($region\))]($style) '
 style = "bold yellow"
-symbol = "∀⍵₷☁️☁️"
+symbol = "󰸏"
 [aws.region_aliases]
 ap-southeast-2 = "au"
 us-east-1 = "va"
 
 [package]
-format = " package: [ $version](208 bold) "
+format = " package: [󰏓 $version](208 bold) "
 
 [docker_context]
-format = "docker: [ $context](blue bold)"
+format = "docker: [󰡨 $context](blue bold)"
 disabled = false
 
 [directory]
@@ -89,12 +89,12 @@ full_symbol = "󱐥 "
 charging_symbol = "󰂄"
 discharging_symbol = "󰁺 "
 
-[[battery.display]]  # "bold red" style when capacity is between 0% and 10%
-threshold = 10
+[[battery.display]]  # "bold red" style when capacity is between 0% and 15%
+threshold = 15
 style = "bold red"
 
-[[battery.display]]  # "bold yellow" style when capacity is between 10% and 30%
-threshold = 30
+[[battery.display]]  # "bold yellow" style when capacity is between 15% and 35%
+threshold = 35
 style = "bold yellow"
 
 [[battery.display]]

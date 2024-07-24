@@ -15,6 +15,7 @@ git
 glow
 grep
 gum
+ln
 mods
 nix-env
 pacman

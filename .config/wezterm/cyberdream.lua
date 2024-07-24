@@ -1,0 +1,1 @@
+/mnt/c/Users/ogoes/.config/wezterm/cyberdream.lua

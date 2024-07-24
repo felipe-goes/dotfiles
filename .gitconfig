@@ -30,4 +30,5 @@
 	cdf = clean -df
 	fap = fetch -ap
 	conf = config --global --edit
+	undo = reset HEAD~1
 	amend = commit --amend

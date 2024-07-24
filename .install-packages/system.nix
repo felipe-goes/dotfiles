@@ -3,7 +3,6 @@ with import <nixpkgs> {}; [
 	ripgrep
 	git
 	fzf
-	fd
 	bat
 	duf
 	zip

@@ -1,6 +1,7 @@
 #!/bin/bash
 alias c='clear'
 alias s='source $HOME/.bashrc'
+alias fd='fdfind'
 alias al="alias | cut -d ' ' -f 2- | fzf --tmux --reverse"
 alias ual='unalias $(alias | cut -d " " -f 2- | fzf --tmux --reverse | cut -d "=" -f -1)'
 alias eg=tldr

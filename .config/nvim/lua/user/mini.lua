@@ -4,11 +4,9 @@ local pairs = require("mini.pairs")
 
 -- local completion = require("mini.completion")
 local bracketed = require("mini.bracketed")
-local animate = require("mini.animate")
 
 ai.setup()
 operators.setup()
 pairs.setup()
 
 bracketed.setup()
-animate.setup()

@@ -33,7 +33,7 @@ elif [[ "^$option$" =~ "chatgpt" ]]; then
 	thread=$(chatgpt --list-threads | tail -n +2 | gum filter --indicator=">")
 	thread=$(echo "$thread" | awk \{'print $2'\})
 
-	tmux neww -n "$option" bash -c "$HOME/.tmux/custom/chatgpt/chatgpt.sh $thread ; read"
+	bash -c "$HOME/.tmux/custom/chatgpt/chatgpt.sh $thread"
 
 # run glow in notes folder
 elif [[ "^$option$" =~ "notes" ]]; then

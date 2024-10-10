@@ -1,5 +1,4 @@
 # dotfiles
-Arquivos de configuração do sistema.
 
 ## Clone o repositório
 

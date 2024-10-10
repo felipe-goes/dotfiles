@@ -70,13 +70,13 @@ symbol = " "
 ahead = "⇡${count} "
 diverged = "😵${ahead_count}⇣${behind_count} "
 behind = "⇣${count} "
-conflicted = "🏳 "
+conflicted = " 󰈻 "
 untracked = ""
-stashed = "📦"
+stashed = "󰏓"
 modified = ""
 staged = '[++\($count\)](green)'
 renamed = ""
-deleted = "🗑"
+deleted = "󰩹"
 
 [rust]
 format = "rust: [ $version](red bold)"

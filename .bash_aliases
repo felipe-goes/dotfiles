@@ -20,9 +20,21 @@ alias fcol="tr -s ' ' | cut -d ' ' -f9-"
 alias gf='gum filter'
 alias commitlint='/opt/commitlint/node_modules/.bin/commitlint'
 alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
-alias trim="awk '{\$1=\$1;print}'"
-alias pandoc="pandoc -V geometry:margin=3cm -o"
+alias pandoc="pandoc -V geometry:margin=2cm -o"
 alias update='sudo apt update && sudo apt upgrade'
+alias nix-uninstall='nix-env -e'
+alias nix-update='nix-env -u'
+alias nix-search='nix-env -qaP --description'
+alias glowp='glow -p -w 83'
+alias spotify='ncspot'
+alias rename='rename.ul'
+
+function trim {
+	awk '{\$1=\$1;print}'
+}
+function nix-install {
+	nix-env -iA nixpkgs."$1"
+}
 
 function take {
 	mkdir -p "$1"

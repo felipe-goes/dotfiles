@@ -20,9 +20,11 @@ mods
 nix-env
 pacman
 pandoc
+rename
 sed
 skate
 ssh
+task
 tr
 tmux
 unzip

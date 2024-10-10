@@ -37,7 +37,6 @@ masonlsp.setup({
     "matlab_ls",
     "powershell_es",
     "pyright",
-    "tsserver",
   },
   automatic_installation = true,
 })

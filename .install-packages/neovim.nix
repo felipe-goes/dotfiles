@@ -1,5 +1,6 @@
 with import <nixpkgs> {}; [
 	neovim
+	neovim-remote
 	ncdu
 	mercurial
 	luarocks

@@ -5,11 +5,11 @@
 video="mkv"
 audio="flac"
 sub="ass"
-audiotrack=3
-subtrack=4
+audiotrack=2
+subtrack=3
 
 exdata $audio $sub $audiotrack $subtrack
-editsub
+# editsub
 attaudio $video $audio
 
 mv ./*."$sub" ./out || exit

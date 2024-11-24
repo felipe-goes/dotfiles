@@ -12,9 +12,11 @@ sub=$2
   xargs -I _ ffmpeg -i _."$video" -vf subtitles=_."$sub" _new-."$video" || exit
 
 # Remove os arquivos de entrada
-/usr/bin/ls -l --quoting-style=literal | tr -s ' ' | cut -d ' ' -f 9- |
-  grep -v "new-\." | sed '/^[[:space:]]*$/d' |
-  xargs -I _ rm _ || exit
+# /usr/bin/ls -l --quoting-style=literal | tr -s ' ' | cut -d ' ' -f 9- |
+#   grep -v "new-\." | sed '/^[[:space:]]*$/d' |
+#   xargs -I _ rm _ || exit
 
 # Renomeia os arquivos de saída
-rename "new-.$video" ".$video" *
+# rename.ul "new-.$video" ".$video" *
+
+echo "Terminou o attsub"

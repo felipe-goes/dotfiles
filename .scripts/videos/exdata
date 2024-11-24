@@ -20,5 +20,9 @@ subtrack=$4
   xargs -I _ mkvextract tracks _ "$subtrack":_."$sub" || exit
 
 # Renomeia os arquivos de saída
-rename ".mkv.$audio" ".$audio" *
-rename ".mkv.$sub" ".$sub" *
+rename.ul ".mkv.$audio" ".$audio" *
+rename.ul ".mkv.$sub" ".$sub" *
+
+echo "Terminou o exdata"
+echo
+sleep 2

@@ -1,5 +1,6 @@
 ansible
 ansible-vault
+apt
 awk
 chmod
 chown
@@ -8,6 +9,7 @@ cut
 docker
 docker-compose
 fd
+freeze
 fzf
 fzf-tmux
 gcc
@@ -29,6 +31,8 @@ tr
 tmux
 unzip
 vhs
+watch
 when
 xargs
+yt-dlp
 zip

@@ -28,6 +28,7 @@ alias nix-search='nix-env -qaP --description'
 alias glowp='glow -p -w 83'
 alias spotify='ncspot'
 alias rename='rename.ul'
+alias grep='grep -i'
 
 function trim {
 	awk '{\$1=\$1;print}'

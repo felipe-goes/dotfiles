@@ -29,6 +29,7 @@ alias glowp='glow -p -w 83'
 alias spotify='ncspot'
 alias rename='rename.ul'
 alias grep='grep -i'
+alias chrome='google-chrome-stable'
 
 function trim {
 	awk '{\$1=\$1;print}'

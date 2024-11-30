@@ -121,6 +121,11 @@ key=$(
 		jq ".openai.key" | sed s/\"// | sed s/\"//
 )
 export OPENAI_API_KEY="$key"
+key=$(
+	ansible-vault view --vault-password-file="$HOME"/password.txt "$HOME"/secure-vault.json |
+		jq ".weather.key" | sed s/\"// | sed s/\"//
+)
+export OPEN_WEATHER_API_KEY="$key"
 export PVSNESLIB_HOME=/mnt/c/pvsneslib/
 export GDK=/opt/SGDK
 export EDITOR=/home/felipe/.nix-profile/bin/nvim
@@ -193,3 +198,11 @@ eval "$(zoxide init --cmd cd bash)"
 eval "$(starship init bash)"
 eval "$(fzf --bash)"
 . <(chatgpt --set-completions bash)
+
+if [ -z "$TMUX" ]; then
+	# Check if no tmux sessions are running
+	if ! tmux has-session -t main 2>/dev/null; then
+		tmux new-session -d -s main
+		tmux attach -t main
+	fi
+fi

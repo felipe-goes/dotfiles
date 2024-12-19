@@ -58,7 +58,7 @@ which_key.add({
   },
   {
     "<leader>p",
-    "<cmd>NvimTreeToggle<cr>",
+    "<cmd>Oil --float<cr>",
     desc = "Explorer",
     icon = {
       icon = "󰉋",

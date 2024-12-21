@@ -206,7 +206,7 @@ local plugins = {
   },
   -- Telescope
   "nvim-telescope/telescope.nvim",
-  "nvim-telescope/telescope-fzy-native.nvim", -- not sure yet what it does
+  { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
   "nvim-telescope/telescope-media-files.nvim",
   "nvim-telescope/telescope-ui-select.nvim",
 

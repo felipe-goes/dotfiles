@@ -109,10 +109,7 @@ telescope.setup({
       filetypes = { "png", "webp", "jpg", "jpeg" },
       find_cmd = "rg", -- find command (defaults to `fd`)
     },
-    fzy_native = {
-      override_generic_sorter = false,
-      override_files_sorter = true,
-    },
+    fzf = {},
     ["ui-select"] = {
       require("telescope.themes").get_dropdown({
         -- even more opts
@@ -140,7 +137,7 @@ telescope.setup({
   },
 })
 
-telescope.load_extension("fzy_native")
+telescope.load_extension("fzf")
 telescope.load_extension("dap")
 telescope.load_extension("media_files")
 -- To get ui-select loaded and working with telescope, you need to call

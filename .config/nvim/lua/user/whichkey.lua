@@ -92,7 +92,13 @@ which_key.add({
   -- Telescope Find
   { "<leader>f", group = "Telescope Find" },
   { "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "Files", mode = "n" },
-  { "<leader>fp", "<cmd>Telescope live_grep<cr>", desc = "Text" },
+  -- "<leader>fp" was implemented in multigrep.lua file
+  {
+    "<leader>fn",
+    "<cmd>lua require'telescope.builtin'.find_files { cwd = vim.fn.stdpath('config') }<cr>",
+    desc = "Neovim Files",
+    mode = "n",
+  },
   { "<leader>fh", "<cmd>Telescope find_files hidden=true<cr>", desc = "Hidden Files" },
   { "<leader>fb", "<cmd>Telescope buffers<cr>", desc = "Buffers" },
   { "<leader>ft", "<cmd>TodoTelescope<cr>", desc = "Todo" },

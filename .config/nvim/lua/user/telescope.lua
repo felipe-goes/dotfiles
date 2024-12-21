@@ -143,3 +143,4 @@ telescope.load_extension("media_files")
 -- To get ui-select loaded and working with telescope, you need to call
 -- load_extension, somewhere after setup function:
 telescope.load_extension("ui-select")
+require("user.multigrep").setup()

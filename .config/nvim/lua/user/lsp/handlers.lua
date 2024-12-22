@@ -41,6 +41,9 @@ lspconfig.markdown_oxide.setup({
 lspconfig.matlab_ls.setup({
   capabilities = capabilities
 })
+lspconfig.omnisharp.setup({
+  capabilities = capabilities
+})
 lspconfig.powershell_es.setup({
   capabilities = capabilities
 })

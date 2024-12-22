@@ -54,3 +54,22 @@ cd "$HOME/.install-packages/" && sudo bash apt.sh && bash nix-setup.sh && bash r
 ## Configurando o NeoVim
 
 Abra qualquer arquivo com o neovim e ele irá automaticamente instalar os plugins.
+
+# Configurações extras
+
+## Instalar o mono
+
+https://www.liberiangeek.net/2024/04/install-mono-on-ubuntu-24-04/
+
+## Mudança no tmux-sessionx
+
+Adicionar a flag `--tac`, como no trecho de código abaixo, no arquivo
+`scripts/sessionsx.sh`.
+
+```
+  if [[ "$FZF_BUILTIN_TMUX" == "on" ]]; then
+    fzf_size_arg="--tmux --tac"
+  else
+    fzf_size_arg="-p"
+  fi
+```

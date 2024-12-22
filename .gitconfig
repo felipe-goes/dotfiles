@@ -26,6 +26,7 @@
 	pr = pull rebase
 	rs = restore --staged
 	st = status -s
+	re = rebase -i
 	bra = branch -a
 	cdf = clean -df
 	fap = fetch -ap

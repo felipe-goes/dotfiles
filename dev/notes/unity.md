@@ -333,3 +333,204 @@ period.
 
 With this setup, you're ready to start writing and compiling C# programs on
 Ubuntu!
+
+# Question
+
+Using this code and dragging and dropping it to a square object (called player)
+above another square object (called ground) I was able to detect collision
+between both and managed to make the player jump. explain me how this behavior
+works in Unity. for example, how Unity knows when to call the method
+OnCollisionEnter2D and how it works?
+
+```cs
+using UnityEngine;
+
+public class ControlPlayer : MonoBehaviour
+{
+    bool isOnGround;
+
+    void OnCollisionEnter2D(Collision2D coll) {
+        if(coll.collider.name == "ground")
+            isOnGround = true;
+        else
+            isOnGround = false;
+    }
+
+    void Jump() {
+        GetComponent<Rigidbody2D>().AddForce(new Vector2(0, 400.0f));
+        isOnGround = false;
+    }
+
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Start()
+    {
+
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.Space) && isOnGround)
+            Jump();
+    }
+}
+```
+
+## Answer
+
+In Unity, the behavior you're seeing with the `OnCollisionEnter2D` method is
+related to Unity's physics system, specifically 2D collisions. Here's a
+detailed explanation of how this works and why Unity knows when to call
+`OnCollisionEnter2D` in your code:
+
+## 1. **Unity's Physics System**
+
+Unity uses a physics engine to simulate physical interactions between objects
+in the game. For 2D games, Unity uses the **Box2D** physics engine, which
+allows you to simulate rigid bodies, collisions, and other physical behaviors.
+Unity automatically detects when two objects with appropriate colliders (like
+`BoxCollider2D`, `CircleCollider2D`, etc.) come into contact.
+
+## 2. **Colliders and Rigidbodies**
+
+For collisions to be detected, both objects involved in the collision must have
+**colliders** attached to them. In your case, you have two square objects:
+**player** and **ground**.
+
+- The **player** object must have a **collider** (e.g., `BoxCollider2D`).
+- The **ground** object must also have a collider (usually a `BoxCollider2D`
+  for a simple square or rectangle).
+
+Additionally, for the physics engine to process forces like gravity and
+jumping, the **player** object needs to have a `Rigidbody2D` component
+attached. This is a component that allows Unity to handle the physical
+simulation of the object, including movement, forces, and collisions.
+
+## 3. **The Role of `OnCollisionEnter2D`**
+
+The method `OnCollisionEnter2D` is a special Unity callback method that is
+automatically called when the object with the attached script collides with
+another object. Unity uses its physics engine to detect when two colliders make
+contact, and it triggers this method. Here's a breakdown of how it works:
+
+- **Collision Detection**: Every frame, Unity checks for collisions between
+  colliders attached to game objects. If a collision is detected, it calculates
+  the details of the collision, such as the objects involved, their positions,
+  and the forces involved.
+- **Calling `OnCollisionEnter2D`**: When a collision occurs, Unity
+  automatically calls `OnCollisionEnter2D` on the script attached to the
+  `GameObject` that has a `Collider2D` (in this case, the `player` object). The
+  `Collision2D` parameter (`coll`) that is passed into the method contains
+  information about the other object involved in the collision, such as the
+  collider that was hit.
+
+## 4. **What Happens in Your Code**
+
+- The `OnCollisionEnter2D` method is triggered whenever the player object
+  collides with another collider (like the ground).
+- Inside `OnCollisionEnter2D`, you are checking if the collider that the player
+  collided with is the "ground" (using `coll.collider.name == "ground"`). If this
+  is true, the `isOnGround` flag is set to `true`, indicating that the player is
+  on the ground. Otherwise, `isOnGround` is set to `false`.
+
+## 5. **The Jumping Logic**
+
+- The `Jump()` method is called when the spacebar (`KeyCode.Space`) is pressed,
+  and the player is confirmed to be on the ground (`isOnGround` is `true`).
+- Inside `Jump()`, the player's Rigidbody2D component is used to apply a force
+  upwards (`AddForce(new Vector2(0, 400.0f))`). This force simulates a jump.
+  After the jump, `isOnGround` is set to `false`, preventing the player from
+  jumping again until they land.
+
+## 6. **How Unity Knows When to Call `OnCollisionEnter2D`**
+
+Unity calls the `OnCollisionEnter2D` method automatically during the physics
+simulation, when:
+
+- The player’s collider (attached to the player) comes into contact with
+  another collider (attached to the ground).
+- The collision is detected by the physics engine.
+- Unity triggers the `OnCollisionEnter2D` method and passes in a `Collision2D`
+  object, which contains data about the other collider involved (e.g., the
+  ground).
+
+In summary:
+
+- **Unity detects the collision** between two objects based on their colliders.
+- When the player object collides with the ground, the `OnCollisionEnter2D`
+  method is called.
+- You check the collider's name to see if it’s the ground and update the
+  `isOnGround` flag.
+- When the player presses space and is on the ground, the `Jump()` method is
+  invoked to apply a force and simulate the jump.
+
+This interaction is all driven by Unity’s physics system, which automatically
+handles collision detection and triggers the appropriate callbacks.
+
+# Build Settings
+
+Unity's **Build Settings** are crucial for specifying which scenes will be
+included when you build your game. The Build Settings manage the configuration
+of the game's build, determining things like the scenes to include, the
+platform you're building for, and other project settings. Here's a breakdown of
+how the Build Settings work and whether you need to update them for every new
+scene:
+
+## How Build Settings Work:
+
+1. **Scenes in Build:**
+
+   - In Unity, each scene you create is not automatically included in your
+     final build.
+   - The Build Settings window allows you to add or remove scenes from the list
+     of scenes that will be included when you build the game.
+   - The **Scenes In Build** section shows all the scenes that will be included
+     in your game. These are listed with their file paths and checkboxes next to
+     them to indicate whether they will be part of the build.
+
+2. **Adding Scenes:**
+
+   - When you create a new scene, it won’t be added to the build automatically.
+     You’ll need to manually add it to the Build Settings.
+   - To do this, go to `File > Build Settings...` and then click the "Add Open
+     Scenes" button to add the currently open scene to the list. You can also
+     drag and drop scene files directly into the "Scenes In Build" list.
+
+3. **Scene Order:**
+
+   - The order of scenes in the list matters, as the first scene listed is
+     typically your game’s starting scene (i.e., the scene that will be loaded
+     first when the game runs).
+   - You can change the order by selecting a scene in the list and using the up
+     or down arrows to reorder them.
+
+4. **Platform Configuration:**
+
+   - The Build Settings window also allows you to choose the platform you are
+     building for (PC, iOS, Android, WebGL, etc.). Each platform may have
+     different requirements, such as different settings or optimizations, so be
+     sure to check your settings based on the platform you're targeting.
+
+## Do You Need to Update the Build Settings for Every New Scene?
+
+Yes, you need to update the Build Settings whenever you add a new scene that
+you want to include in your build.
+
+- **When you create a new scene**, it won’t be automatically included in the
+  Build Settings.
+- If you want that scene to be part of the final build, you must add it
+  manually to the **Scenes In Build** section of the Build Settings.
+- If the scene is not in the Build Settings, it won’t be accessible in the
+  game, even though you can still navigate to it in the editor.
+
+## To Summarize:
+
+- **New Scene**: Add it manually to the Build Settings (via "Add Open Scenes"
+  or drag-and-drop).
+- **Build Settings**: You need to manually update the Build Settings for each
+  new scene you want to include in your game build.
+- **Order**: Make sure the order of the scenes reflects the desired flow of
+  your game, especially the first scene that gets loaded.
+
+By keeping the Build Settings updated, you ensure that all necessary scenes are
+compiled into the build and that the game runs as intended.

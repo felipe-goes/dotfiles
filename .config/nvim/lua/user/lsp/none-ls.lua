@@ -6,6 +6,18 @@ if not status_ok then
   return
 end
 
+-- Set up diagnostic configuration
+vim.diagnostic.config({
+  virtual_text = true, -- Enable virtual text
+  signs = true, -- Enable diagnostic signs in the gutter
+  underline = true, -- Enable underlining
+  update_in_insert = true, -- Update diagnostics while in insert mode
+  float = {
+    border = "rounded", -- Set border to rounded (can be 'single', 'double', 'rounded', 'solid', 'none')
+    source = "always", -- Show the source of the diagnostic message (optional)
+  },
+})
+
 -- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/formatting
 local formatting = null_ls.builtins.formatting
 -- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/diagnostics
@@ -43,7 +55,7 @@ null_ls.setup({
     -- html
     diagnostics.markuplint,
     -- lua
-    diagnostics.selene,
+    -- diagnostics.selene,
     -- python
     require("none-ls.diagnostics.flake8"),
     -- typescript, javascript

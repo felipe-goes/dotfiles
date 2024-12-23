@@ -29,7 +29,6 @@ local plugins = {
   },
   "nvim-treesitter/nvim-treesitter-context",
   "nvim-tree/nvim-web-devicons",
-  "stevearc/dressing.nvim",
   {
     "ziontee113/icon-picker.nvim",
     config = function()
@@ -124,7 +123,13 @@ local plugins = {
     version = "*", -- Use for stability; omit to use `main` branch for the latest features
     event = "VeryLazy",
   },
-  { "echasnovski/mini.nvim", version = false },
+  {
+    "windwp/nvim-autopairs",
+    event = "InsertEnter",
+    config = true,
+    -- use opts = {} for passing setup options
+    -- this is equivalent to setup({}) function
+  },
   {
     "karb94/neoscroll.nvim",
     config = function()

@@ -199,6 +199,7 @@ which_key.add({
   -- Debugger
   -- See more in keymaps.lua
   { "<leader>d", group = "Debugger" },
+  { "<leader>dp", "<cmd>DapContinue<cr>", desc = "Play" },
   {
     "<leader>da",
     function()
@@ -213,6 +214,9 @@ which_key.add({
     end,
     desc = "Run to Cursor",
   },
+  { "<leader>di", "<cmd>DapStepInto<cr>", desc = "Step Into" },
+  { "<leader>do", "<cmd>DapStepOver<cr>", desc = "Step Over" },
+  { "<leader>dO", "<cmd>DapStepOut<cr>", desc = "Step Out" },
   {
     "<leader>de",
     function()

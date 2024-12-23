@@ -14,9 +14,10 @@ vim.opt.rtp:prepend(lazypath)
 local plugins = {
   -- Run in background
   {
-    "scottmckendry/cyberdream.nvim",
+    "folke/tokyonight.nvim",
     lazy = false,
     priority = 1000,
+    opts = {},
   },
   "Civitasv/cmake-tools.nvim",
   "nvim-lua/popup.nvim", -- An implementation of the Popup API from vim in Neovim

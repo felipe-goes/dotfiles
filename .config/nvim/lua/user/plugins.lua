@@ -215,6 +215,12 @@ local plugins = {
   { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
   "nvim-telescope/telescope-media-files.nvim",
   "nvim-telescope/telescope-ui-select.nvim",
+  {
+    "andrew-george/telescope-themes",
+    config = function()
+      require("telescope").load_extension("themes")
+    end,
+  },
 
   -- Comment
   {

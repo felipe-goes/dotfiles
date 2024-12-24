@@ -22,7 +22,6 @@ local plugins = {
   "Civitasv/cmake-tools.nvim",
   "nvim-lua/popup.nvim", -- An implementation of the Popup API from vim in Neovim
   "nvim-lua/plenary.nvim", -- Useful lua functions used by lots of plugins
-  "ryanoasis/vim-devicons",
   {
     "nvim-treesitter/nvim-treesitter",
     cmd = "TSUpdate",
@@ -35,7 +34,6 @@ local plugins = {
       require("icon-picker").setup({ disable_legacy_commands = true })
     end,
   },
-  "moll/vim-bbye",
   {
     "nvim-lualine/lualine.nvim",
     dependencies = { "nvim-tree/nvim-web-devicons" },
@@ -52,9 +50,7 @@ local plugins = {
       vim.o.timeoutlen = 300
     end,
   },
-  "farmergreg/vim-lastplace",
   "norcalli/nvim-colorizer.lua",
-  "nelstrom/vim-visual-star-search",
   -- TODO: Check for better solutions for csv files
   "chrisbra/csv.vim",
   {
@@ -95,8 +91,6 @@ local plugins = {
       },
     },
   },
-  "ray-x/guihua.lua",
-  "rcarriga/nvim-notify",
   {
     "folke/noice.nvim",
     event = "VeryLazy",
@@ -240,7 +234,6 @@ local plugins = {
 
   -- Git
   "lewis6991/gitsigns.nvim",
-  "sindrets/diffview.nvim",
   {
     "NeogitOrg/neogit",
     dependencies = {
@@ -249,14 +242,6 @@ local plugins = {
       "nvim-telescope/telescope.nvim",
     },
     config = true,
-  },
-
-  -- Test
-  {
-    "vim-test/vim-test",
-    dependencies = {
-      "preservim/vimux",
-    },
   },
 
   -- Dap

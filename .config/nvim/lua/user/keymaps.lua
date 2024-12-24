@@ -80,8 +80,8 @@ keymap("n", "<leader>h", "<cmd>nohlsearch<cr>", opts)
 -- Save and Exit
 keymap("n", "<leader>w", "<cmd>w<cr>", opts)
 keymap("n", "<leader>W", "<cmd>wa<cr>", opts)
-keymap("n", "<leader>q", "<cmd>Bdelete!<cr>", opts)
-keymap("n", "<leader>Q", "<cmd>q<cr>", opts)
+keymap("n", "<leader>q", "<cmd>q<cr>", opts)
+keymap("n", "<leader>Q", "<cmd>q!<cr>", opts)
 
 -- Plugins
 -- Gitsigns

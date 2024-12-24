@@ -24,6 +24,7 @@ vim.notify = notify
 require("user.colorscheme") -- always on top
 require("user.indentline") -- always before options
 require("user.options")
+require("user.lastplace")
 require("user.autopairs")
 require("user.surround")
 require("user.devicons")
@@ -42,7 +43,6 @@ require("user.neogit")
 require("user.diffview")
 require("user.oil")
 require("user.lualine")
-require("user.vim-test")
 require("user.go")
 require("user.todo")
 require("user.noice")

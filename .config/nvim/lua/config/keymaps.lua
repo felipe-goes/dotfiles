@@ -3,10 +3,10 @@ local opts = { noremap = true, silent = true }
 -- Shorten function name
 local keymap = vim.api.nvim_set_keymap
 
---Remap space as leader key
-keymap("", "<Space>", "<Nop>", opts)
-vim.g.mapleader = " "
-vim.g.maplocalleader = " "
+--Neovim reload configuration
+keymap("n", "<leader>r", "<cmd>source %<cr>", opts)
+keymap("n", "<leader>x", "<cmd>.lua<cr>", opts)
+keymap("v", "<leader>x", "<cmd>lua<cr>", opts)
 
 -- Modes
 --   normal_mode = "n",
@@ -83,27 +83,12 @@ keymap("n", "<leader>W", "<cmd>wa<cr>", opts)
 keymap("n", "<leader>q", "<cmd>q<cr>", opts)
 keymap("n", "<leader>Q", "<cmd>q!<cr>", opts)
 
+vim.keymap.set("n", "<bs>", ":edit #<cr>", { silent = true })
+
 -- Plugins
 -- Gitsigns
 vim.keymap.set("n", "[g", "<cmd>lua require'gitsigns'.prev_hunk()<cr>")
 vim.keymap.set("n", "]g", "<cmd>lua require'gitsigns'.next_hunk()<cr>")
-
--- Harpoon
-local status_ok, harpoon = pcall(require, "harpoon")
-if not status_ok then
-  vim.notify("Missing harpoon: keymaps.lua")
-  return
-end
-vim.keymap.set("n", "<m-y>", function() harpoon:list():select(1) end)
-vim.keymap.set("n", "<m-u>", function() harpoon:list():select(2) end)
-vim.keymap.set("n", "<m-i>", function() harpoon:list():select(3) end)
-vim.keymap.set("n", "<m-o>", function() harpoon:list():select(4) end)
-
--- toggle previous & next buffers stored within harpoon list
-vim.keymap.set("n", "H", function() harpoon:list():prev() end)
-vim.keymap.set("n", "L", function() harpoon:list():next() end)
-
-harpoon:setup()
 
 -- Lion
 vim.cmd("let g:lion_squeeze_spaces = 1") -- Remove as many spaces as possible when aligning
@@ -116,6 +101,3 @@ vim.keymap.set("n", "<C-A-k>", function() require'dap'.step_out() end)
 vim.keymap.set("n", "<C-A-j>", function() require'dap'.step_into() end)
 vim.keymap.set("n", "<C-A-l>", function() require'dap'.step_over() end)
 vim.keymap.set("n", "<C-A-h>", function() require'dap'.continue() end)
-
--- follow-md-links
-vim.keymap.set("n", "<bs>", ":edit #<cr>", { silent = true })

@@ -13,39 +13,10 @@
 -- Great source of plugins for Neovim
 -- https://github.com/rockerBOO/awesome-neovim#file-explorer
 
-require("user.plugins")
-local status_ok, notify = pcall(require, "notify")
-if not status_ok then
-  vim.notify("Missing notify: init.lua")
-  return
-end
-vim.notify = notify
+require("config.lazy")
+require("config.options")
+require("config.lastplace")
+require("config.keymaps")
+require("config.autocommands")
 
-require("user.colorscheme") -- always on top
-require("user.indentline") -- always before options
-require("user.options")
-require("user.lastplace")
-require("user.autopairs")
-require("user.surround")
-require("user.devicons")
-require("user.colorizer")
-require("user.completions")
-require("user.ufo")
-require("user.lsp")
-require("user.dap")
-require("user.cmake")
-require("user.telescope")
-require("user.treesitter")
-require("user.context")
-require("user.comment")
-require("user.gitsigns")
-require("user.neogit")
-require("user.diffview")
-require("user.oil")
-require("user.lualine")
-require("user.go")
-require("user.todo")
-require("user.noice")
-require("user.keymaps")
-require("user.whichkey")
-require("user.autocommands")
+vim.notify = require("notify")

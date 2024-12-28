@@ -66,8 +66,8 @@ return {
         mode = "n",
       },
       { "<leader>fh", "<cmd>Telescope find_files hidden=true<cr>", desc = "Hidden Files" },
-      { "<leader>fb", "<cmd>Telescope buffers<cr>", desc = "Buffers" },
-      { "<leader>ft", "<cmd>TodoTelescope<cr>", desc = "Todo" },
+      { "<leader>fb", "<cmd>Telescope buffers theme=ivy<cr>", desc = "Buffers" },
+      { "<leader>ft", "<cmd>TodoTelescope theme=ivy<cr>", desc = "Todo" },
 
       -- Git
       { "<leader>g", group = "Git" },
@@ -124,12 +124,11 @@ return {
 
       -- Search
       { "<leader>s", group = "Search" },
-      { "<leader>sc", "<cmd>Telescope commands<cr>", desc = "Commands" },
-      { "<leader>sm", "<cmd>Telescope media_files<cr>", desc = "Image Preview" },
-      { "<leader>sh", "<cmd>Telescope help_tags<cr>", desc = "Find Help" },
-      { "<leader>sR", "<cmd>Telescope oldfiles<cr>", desc = "Open Recent File" },
-      { "<leader>sr", "<cmd>Telescope registers<cr>", desc = "Registers" },
-      { "<leader>sk", "<cmd>Telescope keymaps<cr>", desc = "Keymaps" },
+      { "<leader>sc", "<cmd>Telescope commands theme=ivy<cr>", desc = "Commands" },
+      { "<leader>sh", "<cmd>Telescope help_tags theme=ivy<cr>", desc = "Find Help" },
+      { "<leader>sr", "<cmd>Telescope registers theme=ivy<cr>", desc = "Registers" },
+      { "<leader>sk", "<cmd>Telescope keymaps theme=ivy<cr>", desc = "Keymaps" },
+      { "<leader>sR", "<cmd>Telescope oldfiles theme=ivy<cr>", desc = "Open Recent File" },
 
       -- SGDK
       { "<leader>S", group = "SGDK", icon = { icon = "󰊖", color = "purple" } },

@@ -48,9 +48,14 @@ local live_multigrep = function(opts)
     :find()
 end
 
+local CallTelescope = function()
+  local theme = require("telescope.themes").get_ivy({})
+  live_multigrep(theme)
+end
+
 M.setup = function()
   require("which-key").add({
-    { "<leader>fp", live_multigrep, desc = "Text" },
+    { "<leader>fp", CallTelescope, desc = "Text" },
   })
 end
 

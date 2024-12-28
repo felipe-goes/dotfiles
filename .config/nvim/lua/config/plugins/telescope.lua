@@ -29,8 +29,8 @@ return {
         defaults = {
           file_sorter = sorters.get_fzy_sorter,
 
-          prompt_prefix = " 󰁔 ",
-          selection_caret = " ",
+          prompt_prefix = "   ",
+          selection_caret = " 󰁔 ",
           path_display = { "table" },
           color_devicons = true,
 
@@ -90,8 +90,8 @@ return {
               ["H"] = actions.move_to_top,
               ["M"] = actions.move_to_middle,
               ["L"] = actions.move_to_bottom,
-              ["t"] = add_to_trouble,
-              ["T"] = open_with_trouble,
+              ["t"] = open_with_trouble,
+              ["T"] = add_to_trouble,
 
               ["<Down>"] = actions.move_selection_next,
               ["<Up>"] = actions.move_selection_previous,
@@ -109,6 +109,9 @@ return {
           },
         },
         pickers = {
+          find_files = {
+            theme = "ivy",
+          },
           -- Default configuration for builtin pickers goes here:
           -- picker_name = {
           --   picker_config_key = value,
@@ -118,12 +121,6 @@ return {
           -- builtin picker
         },
         extensions = {
-          media_files = {
-            -- filetypes whitelist
-            -- defaults to {"png", "jpg", "mp4", "webm", "pdf"}
-            filetypes = { "png", "webp", "jpg", "jpeg" },
-            find_cmd = "rg", -- find command (defaults to `fd`)
-          },
           fzf = {},
           ["ui-select"] = {
             themes.get_dropdown({
@@ -154,16 +151,13 @@ return {
 
       telescope.load_extension("fzf")
       telescope.load_extension("dap")
-      telescope.load_extension("media_files")
       -- To get ui-select loaded and working with telescope, you need to call
       -- load_extension, somewhere after setup function:
       telescope.load_extension("ui-select")
       require("config.multigrep").setup()
-
-    end
+    end,
   },
   { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
-  "nvim-telescope/telescope-media-files.nvim",
   "nvim-telescope/telescope-ui-select.nvim",
   {
     "andrew-george/telescope-themes",

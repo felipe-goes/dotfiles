@@ -48,7 +48,7 @@ local options = {
 
 vim.cmd("set shortmess+=c")
 vim.cmd("set colorcolumn=80")
-vim.cmd("set signcolumn=yes:2") -- always show the sign column, otherwise it would shift the text each time
+vim.cmd("set signcolumn=yes:1") -- always show the sign column, otherwise it would shift the text each time
 vim.cmd("set wildmode=longest:full,full")
 vim.cmd("let g:loaded_ruby_provider = 0")
 vim.cmd("let g:loaded_node_provider = 0")

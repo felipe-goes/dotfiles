@@ -88,7 +88,16 @@ return {
       -- LSP
       { "<leader>l", group = "LSP", icon = { icon = "", color = "green" } },
       { "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<cr>", desc = "Code Action" },
-      { "<leader>lf", "<cmd>lua vim.lsp.buf.format({ async = true })<cr>", desc = "Format" },
+      {
+        "<leader>lf",
+        function()
+          vim.lsp.buf.format({ async = true })
+          vim.defer_fn(function()
+            vim.diagnostic.show()
+          end, 250) -- Delay the diagnostic refresh slightly to ensure it happens after formatting
+        end,
+        desc = "Format",
+      },
       { "<leader>lr", "<cmd>lua vim.lsp.buf.rename()<cr>", desc = "Rename" },
       { "<leader>lt", "<cmd>Trouble lsp_type_definitions<cr>", desc = "Type Definition" },
       { "<leader>li", "<cmd>LspInfo<cr>", desc = "Info" },
@@ -209,7 +218,7 @@ return {
       function()
         require("which-key").show({ global = false })
       end,
-      desc = "Buffer Local Keymaps (which-key)"
+      desc = "Buffer Local Keymaps (which-key)",
     },
   },
 }

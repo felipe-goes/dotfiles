@@ -4,19 +4,19 @@
 
 1. Adicionar a linha abaixo ao .bashrc.
 
-```
+```bash
 alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 ```
 
 2. Agora clone o repositório.
 
-```
+```bash
 git clone --bare <git-repo-url> $HOME/.dotfiles
 ```
 
 3. Faça o checkout dos arquivos do repositório.
 
-```
+```bash
 config checkout
 ```
 
@@ -39,7 +39,7 @@ novamente.
 
 5. Defina a flag `showUntrackedFiles` para `no` neste repositório.
 
-```
+```bash
 config config --local status.showUntrackedFiles no
 ```
 
@@ -47,7 +47,7 @@ config config --local status.showUntrackedFiles no
 
 Rode o comando:
 
-```
+```bash
 cd "$HOME/.install-packages/" && sudo bash apt.sh && bash nix-setup.sh && bash repos.sh && sudo bash move.sh"
 ```
 
@@ -66,7 +66,7 @@ https://www.liberiangeek.net/2024/04/install-mono-on-ubuntu-24-04/
 Adicionar a flag `--tac`, como no trecho de código abaixo, no arquivo
 `scripts/sessionsx.sh`.
 
-```
+```bash
   if [[ "$FZF_BUILTIN_TMUX" == "on" ]]; then
     fzf_size_arg="--tmux --tac"
   else

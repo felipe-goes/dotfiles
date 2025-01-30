@@ -15,5 +15,4 @@ with import <nixpkgs> {}; [
 	vhs
 	ansible
 	jq
-	ollama
 ]

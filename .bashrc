@@ -193,6 +193,7 @@ export PATH="/opt/exercism:$PATH"
 export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 
 source /opt/fzf-git.sh/fzf-git.sh
+source "$HOME"/.bash_aliases
 eval "$(tmuxifier init -)"
 eval "$(zoxide init --cmd cd bash)"
 eval "$(starship init bash)"

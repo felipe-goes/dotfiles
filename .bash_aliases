@@ -50,3 +50,85 @@ function note {
 		echo ""
 	} >>"$HOME"/drafts.txt
 }
+
+function avrekey {
+	old_password_file="$1"
+	new_password_file="$2"
+	vault_file="$3"
+
+	if [[ "^$old_password_file$" =~ "help" ]]; then
+		echo "Re-key already encrypted vault file with a new password file"
+		echo ">> avrekey \$old_password_file \$new_password_file \$vault_file"
+	else
+		ansible-vault rekey --vault-password-file "$old_password_file" --new-vault-password-file "$new_password_file" "$vault_file"
+	fi
+}
+
+function avread {
+	password_file="$1"
+	vault_file="$2"
+
+	if [[ "^$password_file$" =~ "help" ]]; then
+		echo "View an encrypted file, using a password file to decrypt"
+		echo ">> avread \$password_file \$vault_file"
+
+		echo ""
+		echo "or"
+		echo ""
+
+		echo "View an encrypted file, using a password prompt to decrypt"
+		echo ">> avread \$vault_file"
+	elif [[ "^$vault_file$" =~ "" ]]; then
+		vault_file="$1"
+		ansible-vault view --vault-password-file "$vault_file"
+	else
+		ansible-vault view --vault-password-file "$password_file" "$vault_file"
+	fi
+}
+
+function avcreate {
+	password_file="$1"
+	vault_file="$2"
+
+	if [[ "^$password_file$" =~ "help" ]]; then
+		echo "Create a new encrypted vault file using a vault key file to encrypt it"
+		echo ">> avcreate \$password_file \$vault_file"
+
+		echo ""
+		echo "or"
+		echo ""
+
+		echo "Create a new encrypted vault file with a prompt for a password"
+		echo ">> avcreate \$vault_file"
+	elif [[ "^$vault_file$" =~ "" ]]; then
+		vault_file="$1"
+		ansible-vault create --vault-password-file "$vault_file"
+	else
+		ansible-vault create --vault-password-file "$password_file" "$vault_file"
+	fi
+
+}
+
+function avencrypt {
+	password_file="$1"
+	vault_file="$2"
+
+	if [[ "^$password_file$" =~ "help" ]]; then
+		echo "Encrypt an existing file using a password file"
+		echo ">> avencrypt \$password_file \$vault_file"
+
+		echo ""
+		echo "or"
+		echo ""
+
+		echo "Encrypt an existing file using an optional password file"
+		echo ">> avencrypt \$password_file \$vault_file"
+	elif [[ "^$vault_file$" =~ "" ]]; then
+		vault_file="$1"
+		ansible-vault encrypt --vault-password-file "$vault_file"
+	else
+		ansible-vault encrypt --vault-password-file "$password_file" "$vault_file"
+	fi
+
+}
+

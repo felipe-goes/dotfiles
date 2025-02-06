@@ -83,7 +83,7 @@ elif [[ "^$option$" =~ "exercism" ]]; then
 
 # ollama
 elif [[ "^$option$" =~ "ollama" ]]; then
-	tmux neww -n "ollama" bash -c "ollama run llama3"
+	tmux neww -n "ollama" bash -c "ollama run deepseek-r1"
 
 # handle other cases
 else

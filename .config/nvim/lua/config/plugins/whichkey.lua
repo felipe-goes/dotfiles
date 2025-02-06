@@ -199,7 +199,7 @@ return {
         desc = "Hover",
       },
       { "<leader>dd", "<cmd>DapToggleBreakpoint<cr>", desc = "Toggle Breakpoint" },
-      { "<leader>dq", "<cmd>DapTerminate<cr>", desc = "Close" },
+      { "<leader>dq", "<cmd>DapTerminate<cr>", desc = "Terminate" },
       {
         "<leader>dt",
         function()

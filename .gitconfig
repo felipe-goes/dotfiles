@@ -21,7 +21,7 @@
 	co = checkout
 	cp = cherry-pick
 	ds = diff --staged
-	lf = log --graph --decorate -p --name-only
+	lf = log --graph --decorate -p --name-status
 	od = push origin --delete
 	pr = pull rebase
 	rs = restore --staged

@@ -90,8 +90,8 @@ return {
               ["H"] = actions.move_to_top,
               ["M"] = actions.move_to_middle,
               ["L"] = actions.move_to_bottom,
-              ["t"] = open_with_trouble,
-              ["T"] = add_to_trouble,
+              ["q"] = open_with_trouble,
+              ["t"] = add_to_trouble,
 
               ["<Down>"] = actions.move_selection_next,
               ["<Up>"] = actions.move_selection_previous,

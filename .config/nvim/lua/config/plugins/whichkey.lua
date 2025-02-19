@@ -37,7 +37,7 @@ return {
       -- Do not have a group
       {
         "<leader>m",
-        "<cmd>Glow<cr>",
+        "<cmd>PresentStart<cr>",
         desc = "Markdown Preview",
         icon = {
           icon = "󰍔",

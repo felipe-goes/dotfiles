@@ -4,16 +4,6 @@ return {
   "tommcdo/vim-lion",
   "chrisbra/csv.vim",
   {
-    "ellisonleao/glow.nvim",
-    cmd = "Glow",
-    config = function()
-      require("glow").setup({
-        border = "rounded", -- floating window border config
-        style = "dark", -- filled automatically with your current editor background, you can override using glow json style
-      })
-    end,
-  },
-  {
     "ziontee113/icon-picker.nvim",
     config = function()
       require("icon-picker").setup({ disable_legacy_commands = true })

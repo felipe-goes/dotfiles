@@ -5,6 +5,8 @@ awk
 chmod
 chown
 cmake
+cpack
+ctest
 cut
 docker
 docker-compose

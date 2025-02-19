@@ -1,0 +1,12 @@
+#!/usr/bin/bash
+
+project_name=$1
+
+cp "$HOME"/Templates/cmake-template.zip .
+unzip cmake-template.zip >/dev/null
+
+if [ -n "$project_name" ]; then
+  mv cmake-template "$project_name"
+fi
+
+rm cmake-template.zip

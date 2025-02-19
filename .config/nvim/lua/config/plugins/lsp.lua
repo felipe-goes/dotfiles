@@ -203,8 +203,6 @@ return {
   "tamago324/nlsp-settings.nvim", -- language server settings defined in json
   "nvimtools/none-ls-extras.nvim",
   "gbprod/none-ls-shellcheck.nvim",
-  "gbprod/none-ls-shellcheck.nvim",
-  "Civitasv/cmake-tools.nvim",
   {
     "folke/lazydev.nvim",
     ft = "lua", -- only load on lua files

@@ -2,7 +2,7 @@
 alias c='clear'
 alias s='source $HOME/.bashrc'
 alias fd='fdfind'
-alias imgcat='wezterm imgcat --position 0,5 --no-move-cursor'
+alias imgcat='wezterm imgcat --position 0,5 --no-move-cursor --max-pixels 1280000'
 alias al="alias | cut -d ' ' -f 2- | fzf --tmux --reverse"
 alias ual='unalias $(alias | cut -d " " -f 2- | fzf --tmux --reverse | cut -d "=" -f -1)'
 alias eg=tldr
@@ -13,6 +13,7 @@ alias lt='eza --color=always --long --tree --level=2 --git --no-filesize --icons
 alias v='temp=$(fd --type f --hidden --exclude .git | fzf --tmux 75%,75% --reverse --preview="bat --color=always {}") && test "$temp" != "" && nvim "$temp"'
 alias cdf='cd $(fd --type d --hidden --exclude .git | fzf --tmux 75%,75% --reverse)'
 alias vi=nvim
+alias vid='nvim -d'
 alias df=duf
 alias ds='sudo systemctl start docker'
 alias pyserver='python -m http.server 8080'
@@ -30,6 +31,7 @@ alias spotify='ncspot'
 alias rename='rename.ul'
 alias grep='grep -i'
 alias chrome='google-chrome-stable'
+alias xargs="sed 's/\x1b\[[0-9;]*m//g' | xargs"
 
 function trim {
 	awk '{\$1=\$1;print}'
@@ -131,4 +133,3 @@ function avencrypt {
 	fi
 
 }
-

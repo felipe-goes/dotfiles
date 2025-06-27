@@ -5,6 +5,9 @@ set -e
 apt update
 apt upgrade
 
+# tmux dependencies
+apt install libevent-dev ncurses-dev build-essential bison pkg-config
+
 apt install git git-extras zip unzip jq
 apt install imagemagick
 apt install gcc fd-find duf

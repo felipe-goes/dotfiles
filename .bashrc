@@ -192,6 +192,7 @@ export PATH="$HOME/go/bin:$PATH"
 export PATH="/usr/local/go/bin:$PATH"
 export PATH="/opt/cmake-3.31.6-linux-x86_64/bin:$PATH"
 export PATH="/opt/nvim/bin:$PATH"
+export PATH="/opt/tmux:$PATH"
 # export PATH="/opt/exercism:$PATH"
 
 export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"

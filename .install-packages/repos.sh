@@ -25,6 +25,7 @@ mkdir -p ~/dev/go/
 cd ~/dev/go/
 git clone git@github.com:felipe-goes/querystack.git
 cd querystack && go build . && mv querystack "$HOME/go/bin/"
+cd "$HOME"
 
 # mdmagic
 cd ~/dev/go/
@@ -38,5 +39,11 @@ cd "$HOME"
 git clone git@github.com:conventional-changelog/commitlint.git
 # procura alguma configuração padrão no site para adicionar ao repo e altera o
 # arquivo `commitlint.config.js` de `exports default` -> `module.exports = `
+
+# tmux
+git clone git@github.com:tmux/tmux.git
+cd tmux
+sh autogen.sh
+./configure && make
 
 cd "$currentFolder"

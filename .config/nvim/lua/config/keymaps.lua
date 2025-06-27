@@ -85,6 +85,9 @@ keymap("n", "<leader>Q", "<cmd>q!<cr>", opts)
 
 vim.keymap.set("n", "<bs>", ":edit #<cr>", { silent = true })
 
+-- Remove trailing white spaces
+vim.keymap.set("n", "<leader>tr", "<cmd>%s/\\s\\+$//<cr><cmd>nohlsearch<cr>", { silent = true })
+
 -- Plugins
 -- Gitsigns
 vim.keymap.set("n", "[g", "<cmd>lua require'gitsigns'.prev_hunk()<cr>")
@@ -96,8 +99,31 @@ vim.cmd("let g:lion_squeeze_spaces = 1") -- Remove as many spaces as possible wh
 -- Dap Debugger
 keymap("n", "<leader>dH", ":lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>", opts)
 keymap("n", "<leader>dr", ":lua require'dap'.repl.toggle({}, 'vsplit')<CR><C-w>l", opts)
-vim.keymap.set("n", "<leader>d?", function() local widgets=require'dap.ui.widgets';widgets.centered_float(widgets.scopes) end)
-vim.keymap.set("n", "<C-A-k>", function() require'dap'.step_out() end)
-vim.keymap.set("n", "<C-A-j>", function() require'dap'.step_into() end)
-vim.keymap.set("n", "<C-A-l>", function() require'dap'.step_over() end)
-vim.keymap.set("n", "<C-A-h>", function() require'dap'.continue() end)
+vim.keymap.set("n", "<leader>d?", function()
+  local widgets = require("dap.ui.widgets")
+  widgets.centered_float(widgets.scopes)
+end)
+vim.keymap.set("n", "<C-A-k>", function()
+  require("dap").step_out()
+end)
+vim.keymap.set("n", "<C-A-j>", function()
+  require("dap").step_into()
+end)
+vim.keymap.set("n", "<C-A-l>", function()
+  require("dap").step_over()
+end)
+vim.keymap.set("n", "<C-A-h>", function()
+  require("dap").continue()
+end)
+
+-- Custom Calc
+-- request neovim v0.10+ for vim.ui.input
+-- and dressing.nvim for float window.
+vim.keymap.set("i", "calc.", function()
+  vim.ui.input({ prompt = "󰃬 Calculator: " }, function(input)
+    local calc = load("return " .. (input or ""))()
+    if calc then
+      vim.api.nvim_feedkeys(tostring(calc), "i", true)
+    end
+  end)
+end)

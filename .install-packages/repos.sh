@@ -30,11 +30,11 @@ cd querystack && go build . && mv querystack "$HOME/go/bin/"
 cd ~/dev/go/
 git clone git@github.com:felipe-goes/mdmagic.git
 cd mdmagic && go build . && mv mdmagic "$HOME/go/bin/"
+cd "$HOME"
 
 # conventional-changelog/commitlint
 # clona na pasta /opt
 # dentro da pasta /opt/commitlint roda: yarn && yarn run build
-cd "$HOME"
 git clone git@github.com:conventional-changelog/commitlint.git
 # procura alguma configuração padrão no site para adicionar ao repo e altera o
 # arquivo `commitlint.config.js` de `exports default` -> `module.exports = `

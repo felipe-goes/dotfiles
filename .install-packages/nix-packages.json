@@ -1,0 +1,31 @@
+{
+  "install": ["ueberzugpp", "xh"],
+  "apt": ["docker", "docker-compose"],
+  "installed": [
+    "ansible-core",
+    "duf",
+    "ripgrep",
+    "deno",
+    "go",
+    "tmux",
+    "unzip",
+    "zip",
+    "git",
+    "git-extras",
+    "tldr",
+    "fzf",
+    "bat",
+    "jq",
+    "zoxide",
+    "lua5.2-luarocks",
+    "glow",
+    "gum",
+    "vhs",
+    "difftastic",
+    "eza",
+    "starship",
+    "neovim",
+    "neovim-remote",
+    "cmake"
+  ]
+}

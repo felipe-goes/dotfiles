@@ -128,7 +128,7 @@ key=$(
 export OPEN_WEATHER_API_KEY="$key"
 export PVSNESLIB_HOME=/mnt/c/pvsneslib/
 export GDK=/opt/SGDK
-export EDITOR=/home/felipe/.nix-profile/bin/nvim
+export EDITOR=/opt/nvim/bin
 export GOPATH="$HOME/go"
 
 # WSL
@@ -185,10 +185,14 @@ export PATH="$HOME/.scripts/cpp:$PATH"
 export PATH="$HOME/.scripts/compressgames:$PATH"
 export PATH="$HOME/.scripts/autoconfig:$PATH"
 export PATH="$HOME/.scripts/videos:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.tmuxifier/bin:$PATH"
-export PATH="$HOME/go/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
-export PATH="/opt/exercism:$PATH"
+export PATH="$HOME/go/bin:$PATH"
+export PATH="/usr/local/go/bin:$PATH"
+export PATH="/opt/cmake-3.31.6-linux-x86_64/bin:$PATH"
+export PATH="/opt/nvim/bin:$PATH"
+# export PATH="/opt/exercism:$PATH"
 
 export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 
@@ -197,7 +201,7 @@ source "$HOME"/.bash_aliases
 eval "$(tmuxifier init -)"
 eval "$(zoxide init --cmd cd bash)"
 eval "$(starship init bash)"
-eval "$(fzf --bash)"
+# eval "$(fzf --bash)"
 . <(chatgpt --set-completions bash)
 
 if [ -z "$TMUX" ]; then
@@ -207,3 +211,12 @@ if [ -z "$TMUX" ]; then
 		tmux attach -t main
 	fi
 fi
+
+. "$HOME/.cargo/env"
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+. "$HOME/.deno/env"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

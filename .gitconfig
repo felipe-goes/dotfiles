@@ -5,6 +5,8 @@
 	defaultBranch = main
 [core]
 	editor = nvim
+	autocrlf = input
+	fileMode = false
 [merge]
 	conflictstyle = diff3
 [diff]

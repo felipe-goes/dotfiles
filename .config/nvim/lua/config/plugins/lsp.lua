@@ -98,42 +98,40 @@ return {
     end,
   },
   {
-    "williamboman/mason.nvim", -- simple to use language server installer
-    config = function()
-      require("mason").setup({
-        ui = {
-          icons = {
-            server_installed = "✓",
-            server_pending = "➜",
-            server_uninstalled = "✗",
+    "mason-org/mason-lspconfig.nvim",
+    opts = {
+      ensure_installed = {
+        "bashls",
+        "clangd",
+        "cmake",
+        "cssls",
+        "dockerls",
+        "docker_compose_language_service",
+        "gopls",
+        "html",
+        "jsonls",
+        "lua_ls",
+        "markdown_oxide",
+        "powershell_es",
+        "pyright",
+      },
+      automatic_installation = true,
+    },
+    dependencies = {
+      {
+        "mason-org/mason.nvim",
+        opts = {
+          ui = {
+            icons = {
+              server_installed = "✓",
+              server_pending = "➜",
+              server_uninstalled = "✗",
+            },
           },
         },
-      })
-    end,
-  },
-  {
-    "williamboman/mason-lspconfig.nvim",
-    config = function()
-      require("mason-lspconfig").setup({
-        ensure_installed = {
-          "bashls",
-          "clangd",
-          "cmake",
-          "cssls",
-          "dockerls",
-          "docker_compose_language_service",
-          "gopls",
-          "html",
-          "jsonls",
-          "lua_ls",
-          "markdown_oxide",
-          "matlab_ls",
-          "powershell_es",
-          "pyright",
-        },
-        automatic_installation = true,
-      })
-    end,
+      },
+      "neovim/nvim-lspconfig",
+    },
   },
   {
     "nvimtools/none-ls.nvim",
@@ -142,13 +140,13 @@ return {
 
       -- Set up diagnostic configuration
       vim.diagnostic.config({
-        virtual_text = true, -- Enable virtual text
-        signs = true, -- Enable diagnostic signs in the gutter
-        underline = true, -- Enable underlining
+        virtual_text = true,     -- Enable virtual text
+        signs = true,            -- Enable diagnostic signs in the gutter
+        underline = true,        -- Enable underlining
         update_in_insert = true, -- Update diagnostics while in insert mode
         float = {
-          border = "rounded", -- Set border to rounded (can be 'single', 'double', 'rounded', 'solid', 'none')
-          source = "always", -- Show the source of the diagnostic message (optional)
+          border = "rounded",    -- Set border to rounded (can be 'single', 'double', 'rounded', 'solid', 'none')
+          source = "always",     -- Show the source of the diagnostic message (optional)
         },
       })
 
@@ -199,7 +197,7 @@ return {
         },
       })
     end,
-  }, -- for formatters and linters
+  },                              -- for formatters and linters
   "tamago324/nlsp-settings.nvim", -- language server settings defined in json
   "nvimtools/none-ls-extras.nvim",
   "gbprod/none-ls-shellcheck.nvim",
@@ -259,8 +257,8 @@ return {
           folded = "◉",
           unfolded = "○",
 
-          outer_node = "", -- '╰○',
-          bracket_left = "", -- ⟪',
+          outer_node = "",    -- '╰○',
+          bracket_left = "",  -- ⟪',
           bracket_right = "", -- '⟫',
         },
         syntax_icons = {

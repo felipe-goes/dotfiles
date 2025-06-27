@@ -15,12 +15,12 @@ return {
     which_key.add({
       -- opts
       {
-        mode = "n",     -- NORMAL mode
+        mode = "n", -- NORMAL mode
         prefix = "<leader>",
-        buffer = nil,   -- Global mappings. Specify a buffer number for buffer local mappings
-        silent = true,  -- use `silent` when creating keymaps
+        buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
+        silent = true, -- use `silent` when creating keymaps
         noremap = true, -- use `noremap` when creating keymaps
-        nowait = true,  -- use `nowait` when creating keymaps
+        nowait = true, -- use `nowait` when creating keymaps
       },
 
       -- Hidden
@@ -53,11 +53,11 @@ return {
           color = "blue",
         },
       },
-      { "<leader>n",  "<cmd>Noice dismiss<cr>",        desc = "Noice dismiss" },
+      { "<leader>n", "<cmd>Noice dismiss<cr>", desc = "Noice dismiss" },
 
       -- Telescope Find
-      { "<leader>f",  group = "Telescope Find" },
-      { "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "Files",        mode = "n" },
+      { "<leader>f", group = "Telescope Find" },
+      { "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "Files", mode = "n" },
       -- "<leader>fp" was implemented in multigrep.lua file
       {
         "<leader>fn",
@@ -98,10 +98,10 @@ return {
         end,
         desc = "Format",
       },
-      { "<leader>lr", "<cmd>lua vim.lsp.buf.rename()<cr>",       desc = "Rename" },
-      { "<leader>lt", "<cmd>Trouble lsp_type_definitions<cr>",   desc = "Type Definition" },
-      { "<leader>li", "<cmd>LspInfo<cr>",                        desc = "Info" },
-      { "<leader>lI", "<cmd>Mason<cr>",                          desc = "Install" },
+      { "<leader>lr", "<cmd>lua vim.lsp.buf.rename()<cr>", desc = "Rename" },
+      { "<leader>lt", "<cmd>Trouble lsp_type_definitions<cr>", desc = "Type Definition" },
+      { "<leader>li", "<cmd>LspInfo<cr>", desc = "Info" },
+      { "<leader>lI", "<cmd>Mason<cr>", desc = "Install" },
       { "<leader>ls", "<cmd>Telescope lsp_document_symbols<cr>", desc = "Document Symbols" },
       {
         "<leader>lS",
@@ -160,8 +160,8 @@ return {
         desc = "CMake gDebug",
       },
       { "<leader>cr", "<cmd>!cmake --build build/release<cr>", desc = "CMake bRelease" },
-      { "<leader>cd", "<cmd>!cmake --build build/debug<cr>",   desc = "CMake bDebug" },
-      { "<leader>cc", "<cmd>!rm -rf build<cr>",                desc = "CMake Clean" },
+      { "<leader>cd", "<cmd>!cmake --build build/debug<cr>", desc = "CMake bDebug" },
+      { "<leader>cc", "<cmd>!rm -rf build/debug && rm -rf build/release<cr>", desc = "CMake Clean" },
       {
         "<leader>ct",
         "<cmd>!cmake --build build/release/ --target help | tail -n +13 | awk '{print $2}'<cr>",
@@ -200,7 +200,7 @@ return {
       },
       { "<leader>di", "<cmd>DapStepInto<cr>", desc = "Step Into" },
       { "<leader>do", "<cmd>DapStepOver<cr>", desc = "Step Over" },
-      { "<leader>dO", "<cmd>DapStepOut<cr>",  desc = "Step Out" },
+      { "<leader>dO", "<cmd>DapStepOut<cr>", desc = "Step Out" },
       {
         "<leader>de",
         function()
@@ -217,7 +217,7 @@ return {
         desc = "Hover",
       },
       { "<leader>dd", "<cmd>DapToggleBreakpoint<cr>", desc = "Toggle Breakpoint" },
-      { "<leader>dq", "<cmd>DapTerminate<cr>",        desc = "Terminate" },
+      { "<leader>dq", "<cmd>DapTerminate<cr>", desc = "Terminate" },
       {
         "<leader>dt",
         function()
@@ -225,9 +225,9 @@ return {
         end,
         desc = "Toggle Debugger Interface",
       },
-      { "<leader>df", ":Telescope dap frames<CR>",          desc = "Telescope Frames" },
+      { "<leader>df", ":Telescope dap frames<CR>", desc = "Telescope Frames" },
       { "<leader>dB", ":Telescope dap list_breakpoint<CR>", desc = "Telescope List Breakpoints" },
-      { "<leader>dC", ":Telescope dap commands<CR>",        desc = "Telescope Debugger Commands" },
+      { "<leader>dC", ":Telescope dap commands<CR>", desc = "Telescope Debugger Commands" },
     })
   end,
   keys = {

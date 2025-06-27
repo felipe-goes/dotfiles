@@ -37,10 +37,6 @@ return {
     end
   },
   {
-    "numToStr/Comment.nvim",
-    lazy = false,
-  }, -- Easily comment stuff
-  {
     "JoosepAlviste/nvim-ts-context-commentstring",
     config = function()
       vim.g.skip_ts_context_commentstring_module = true

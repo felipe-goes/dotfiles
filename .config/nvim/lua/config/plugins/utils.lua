@@ -10,12 +10,6 @@ return {
     end,
   },
   {
-    "karb94/neoscroll.nvim",
-    config = function()
-      require("neoscroll").setup({})
-    end,
-  },
-  {
     "windwp/nvim-autopairs",
     event = "InsertEnter",
     config = true,
@@ -582,7 +576,7 @@ return {
           -- event is always "notify" and kind can be any log level as a string
           -- The default routes will forward notifications to nvim-notify
           -- Benefit of using Noice for this is the routing and consistent history view
-          enabled = true,
+          enabled = false,
           view = "notify",
         },
         lsp = {
@@ -761,6 +755,53 @@ return {
           require("flash").toggle()
         end,
         desc = "Toggle Flash Search",
+      },
+    },
+  },
+  {
+    "MeanderingProgrammer/render-markdown.nvim",
+    -- dependencies = { "nvim-treesitter/nvim-treesitter", "echasnovski/mini.nvim" }, -- if you use the mini.nvim suite
+    -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.icons' }, -- if you use standalone mini plugins
+    dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" }, -- if you prefer nvim-web-devicons
+    ---@module 'render-markdown'
+    ---@type render.md.UserConfig
+    opts = {
+      completions = { lsp = { enabled = true } },
+    },
+  },
+  {
+    "folke/snacks.nvim",
+    priority = 1000,
+    lazy = false,
+    ---@type snacks.Config
+    opts = {
+      -- your configuration comes here
+      -- or leave it empty to use the default settings
+      -- refer to the configuration section below
+      ---@class snacks.animate.Config
+      ---@field easing? snacks.animate.easing|snacks.animate.easing.Fn
+      animate = {
+        ---@type snacks.animate.Duration|number
+        duration = 20, -- ms per step
+        easing = "linear",
+        fps = 60, -- frames per second. Global setting for all animations
+      },
+      bigfile = { enabled = true },
+      input = { enabled = true },
+      dashboard = { enabled = true },
+      explorer = { enabled = false }, -- using oil.nvim instead
+      indent = { enabled = true }, -- replaced indent-blankline.nvim
+      notifier = { enabled = true, timeout = 3000 },
+      picker = { enabled = false }, -- using Telescope instead
+      quickfile = { enabled = true },
+      scope = { enabled = true },
+      scroll = { enabled = true }, -- replaced neoscroll
+      statuscolumn = { enabled = true },
+      words = { enabled = true },
+      styles = {
+        notification = {
+          wo = { wrap = true }, -- Wrap notifications
+        },
       },
     },
   },

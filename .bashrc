@@ -196,6 +196,7 @@ export PATH="/opt/tmux:$PATH"
 # export PATH="/opt/exercism:$PATH"
 
 export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
+# export OLLAMA_HOST=127.0.0.1:11434
 
 source /opt/fzf-git.sh/fzf-git.sh
 source "$HOME"/.bash_aliases
@@ -219,5 +220,5 @@ fi
 . "$HOME/.deno/env"
 
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"                   # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion

@@ -14,6 +14,7 @@ apt install gcc fd-find duf
 apt install luarocks cargo composer php pip
 apt install playerctl when taskwarrior btop yt-dlp
 apt install pandoc texlive-latex-base texlive-fonts-recommended texlive-fonts-extra
+apt install wl-clipboard
 
 # .deb packages
 # https://github.com/sharkdp/bat?tab=readme-ov-file#installation

@@ -36,16 +36,17 @@ git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 # NodeJS
 # Download and install nvm:
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
-
 # in lieu of restarting the shell
 \. "$HOME/.nvm/nvm.sh"
-
 # Download and install Node.js:
 nvm install 22
-
 # Verify the Node.js version:
-node -v # Should print "v22.17.0".
+node -v     # Should print "v22.17.0".
 nvm current # Should print "v22.17.0".
-
 # Verify npm version:
 npm -v # Should print "10.9.2".
+
+# wezterm. then you can install with sudo apt install wezterm
+curl -fsSL https://apt.fury.io/wez/gpg.key | sudo gpg --yes --dearmor -o /usr/share/keyrings/wezterm-fury.gpg
+echo 'deb [signed-by=/usr/share/keyrings/wezterm-fury.gpg] https://apt.fury.io/wez/ * *' | sudo tee /etc/apt/sources.list.d/wezterm.list
+sudo chmod 644 /usr/share/keyrings/wezterm-fury.gpg

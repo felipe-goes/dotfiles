@@ -219,3 +219,44 @@ Summarize:
   a development dependency present in `devDependencies`, we use `chore`. In other
   hand, for update/addition of dependencies that are common to the project, and
   there is a real and direct impact to the system, we use `build`.
+
+# How to configure git for a repository that will be used for both a developer using linux and other using windows
+
+```bash
+git config --global user.name "Your Name"
+git config --global user.email "your.email@example.com"
+```
+
+```bash
+# Linux
+git config --global core.autocrlf input
+```
+
+```bash
+# Windows
+git config --global core.autocrlf true
+```
+
+```bash
+# .gitattributes
+# Set default behavior for all files
+* text=auto
+
+# Ensure specific files always have LF endings
+*.sh text eol=lf
+
+# Force CRLF for certain file types (e.g., Windows-specific)
+*.bat text eol=crlf
+
+# Binary files (don’t convert)
+*.png binary
+*.jpg binary
+```
+
+This ensures that files like `.sh` scripts will always use _LF_ line endings,
+while `.bat` files will use _CRLF_. The `* text=auto` setting ensures that text
+files are normalized across platforms.
+
+```bash
+git config --global core.fileMode false
+```

@@ -22,6 +22,7 @@ gum
 ln
 mods
 nix-env
+ollama
 pacman
 pandoc
 rename

@@ -2,17 +2,48 @@ return {
   {
     "nvim-treesitter/nvim-treesitter",
     cmd = "TSUpdate",
-    config = function ()
+    config = function()
       require("nvim-treesitter.configs").setup({
         auto_install = true,
-        ensure_installed = {},
-        -- ensure_installed = { "arduino", "asm", "awk", "bash", "c", "cpp", "c_sharp",
-        --   "cmake", "css", "csv", "dart", "diff", "dockerfile", "gitcommit", "git_config",
-        --   "git_rebase", "gitattributes", "gitignore", "go", "graphql", "html", "http",
-        --   "java", "javascript", "json", "json5", "kotlin", "lua", "luadoc", "make",
-        --   "markdown", "matlab", "perl", "php", "printf", "python", "r", "regex", "ruby",
-        --   "rust", "sql", "swift", "typescript", "xml", "yaml"
-        --   -- "nginx", "powershell", "ssh",
+        ensure_installed = {
+          "bash",
+          "c",
+          "cpp",
+          "cmake",
+          "css",
+          "csv",
+          "diff",
+          "gitcommit",
+          "git_config",
+          "git_rebase",
+          "gitattributes",
+          "gitignore",
+          "go",
+          "html",
+          "http",
+          "javascript",
+          "json",
+          "json5",
+          "lua",
+          "luadoc",
+          "make",
+          "markdown",
+          "markdown_inline",
+          "python",
+          "regex",
+          "rust",
+          "xml",
+          "yaml",
+          "powershell",
+        },
+        -- ensure_installed = { "arduino", "asm", "awk", "bash", "c", "cpp",
+        -- "c_sharp", "cmake", "css", "csv", "dart", "diff", "dockerfile",
+        -- "gitcommit", "git_config", "git_rebase", "gitattributes",
+        -- "gitignore", "go", "graphql", "html", "http", "java", "javascript",
+        -- "json", "json5", "kotlin", "lua", "luadoc", "make", "markdown",
+        -- "markdown_inline", "matlab", "perl", "php", "printf", "python", "r",
+        -- "regex", "ruby", "rust", "sql", "swift", "typescript", "xml",
+        -- "yaml", "nginx", "powershell",
         -- }, -- one of "all", "maintained" (parsers with maintainers), or list of languages
         sync_install = false, -- install languages synchronously (only applied to `ensure_installed`)
         ignore_install = {}, -- List of parsers to ignore installing
@@ -34,7 +65,7 @@ return {
         },
         indent = { enable = false, disable = { "yaml" } },
       })
-    end
+    end,
   },
   {
     "JoosepAlviste/nvim-ts-context-commentstring",
@@ -45,7 +76,7 @@ return {
   {
     "folke/todo-comments.nvim",
     dependencies = { "nvim-lua/plenary.nvim" },
-    config = function ()
+    config = function()
       require("todo-comments").setup({
         signs = true, -- show icons in the signs column
         sign_priority = 8, -- sign priority
@@ -110,6 +141,6 @@ return {
           -- pattern = [[\b(KEYWORDS)\b]], -- match without the extra colon. You'll likely get false positives
         },
       })
-    end
+    end,
   },
 }

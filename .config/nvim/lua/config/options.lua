@@ -43,7 +43,7 @@ local options = {
 	confirm = true,
 	exrc = true,
 	shell = "/usr/bin/bash",
-	laststatus = 3 -- for staline. 2 for local and 3 for global status line
+	laststatus = 3 -- avante: views can only be fully collapsed with the global statusline. 2 for local and 3 for global status line
 }
 
 vim.cmd("set shortmess+=c")

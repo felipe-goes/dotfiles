@@ -18,5 +18,3 @@ require("config.options")
 require("config.lastplace")
 require("config.keymaps")
 require("config.autocommands")
-
-vim.notify = require("notify")

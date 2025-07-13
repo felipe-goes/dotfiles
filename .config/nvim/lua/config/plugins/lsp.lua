@@ -140,14 +140,26 @@ return {
 
       -- Set up diagnostic configuration
       vim.diagnostic.config({
-        virtual_text = true,     -- Enable virtual text
-        signs = true,            -- Enable diagnostic signs in the gutter
-        underline = true,        -- Enable underlining
+        underline = true, -- Enable underlining
+        virtual_text = true, -- Enable virtual text
         update_in_insert = true, -- Update diagnostics while in insert mode
-        float = {
-          border = "rounded",    -- Set border to rounded (can be 'single', 'double', 'rounded', 'solid', 'none')
-          source = "always",     -- Show the source of the diagnostic message (optional)
+        severity_sort = true,
+        signs = {
+          text = {
+            [vim.diagnostic.severity.ERROR] = " ",
+            [vim.diagnostic.severity.WARN] = " ",
+            [vim.diagnostic.severity.HINT] = " ",
+            [vim.diagnostic.severity.INFO] = " ",
+          },
         },
+        float = {
+          border = "rounded", -- Set border to rounded (can be 'single', 'double', 'rounded', 'solid', 'none')
+          source = "always", -- Show the source of the diagnostic message (optional)
+        },
+      })
+
+      vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+        virtual_text = false,
       })
 
       -- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/formatting
@@ -197,7 +209,7 @@ return {
         },
       })
     end,
-  },                              -- for formatters and linters
+  }, -- for formatters and linters
   "tamago324/nlsp-settings.nvim", -- language server settings defined in json
   "nvimtools/none-ls-extras.nvim",
   "gbprod/none-ls-shellcheck.nvim",
@@ -257,8 +269,8 @@ return {
           folded = "◉",
           unfolded = "○",
 
-          outer_node = "",    -- '╰○',
-          bracket_left = "",  -- ⟪',
+          outer_node = "", -- '╰○',
+          bracket_left = "", -- ⟪',
           bracket_right = "", -- '⟫',
         },
         syntax_icons = {

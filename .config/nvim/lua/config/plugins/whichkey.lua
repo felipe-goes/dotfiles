@@ -144,17 +144,17 @@ return {
       { "<leader>c", group = "C/C++", icon = { icon = "󰙲", color = "blue" } },
       {
         "<leader>cR",
-        "<cmd>!cmake -B build/release -DCMAKE_BUILD_TYPE=Release && cp -f build/release/compile_commands.json .<cr>",
+        "<cmd>!cmake -B build/release -DCMAKE_BUILD_TYPE=Release && cp -f build/release/compile_commands.json . && cp -rf assets/ build/release/<cr>",
         desc = "CMake gRelease",
       },
       {
         "<leader>cD",
-        "<cmd>!cmake -B build/debug -DCMAKE_BUILD_TYPE=Debug && cp -f build/debug/compile_commands.json .<cr>",
+        "<cmd>!cmake -B build/debug -DCMAKE_BUILD_TYPE=Debug && cp -f build/debug/compile_commands.json . && cp -rf assets/ build/release/<cr>",
         desc = "CMake gDebug",
       },
-      { "<leader>cr", "<cmd>!cmake --build build/release<cr>",                desc = "CMake bRelease" },
-      { "<leader>cd", "<cmd>!cmake --build build/debug<cr>",                  desc = "CMake bDebug" },
-      { "<leader>cc", "<cmd>!rm -rf build/debug && rm -rf build/release<cr>", desc = "CMake Clean" },
+      { "<leader>cr", "<cmd>make build/release<cr><cmd>Trouble qflist<cr>",   desc = "CMake bRelease" },
+      { "<leader>cd", "<cmd>make build/debug<cr><cmd>Trouble qflist<cr>",     desc = "CMake bDebug" },
+      { "<leader>cC", "<cmd>!rm -rf build/debug && rm -rf build/release<cr>", desc = "CMake Clean" },
       {
         "<leader>ct",
         "<cmd>!cmake --build build/release/ --target help | tail -n +13 | awk '{print $2}'<cr>",
@@ -169,8 +169,9 @@ return {
       -- Trouble
       { "<leader>t", group = "Trouble", icon = { icon = "󱖫", color = "yellow" } },
       { "<leader>td", "<cmd>Trouble diagnostics toggle<cr>", desc = "LSP Diagnostics" },
-      { "<leader>tt", "<cmd>Trouble lsp_type_definitions toggle<cr>", desc = "LSP Type Definitions" },
+      { "<leader>tq", "<cmd>Trouble qflist<cr>", desc = "Quickfix List" },
       { "<leader>ts", "<cmd>Trouble symbols toggle focus=true<cr>", desc = "LSP Symbols" },
+      { "<leader>tt", "<cmd>Trouble lsp_type_definitions toggle<cr>", desc = "LSP Type Definitions" },
       { "<leader>tT", "<cmd>Trouble todo toggle<cr>", desc = "Todo" },
 
       -- Debugger

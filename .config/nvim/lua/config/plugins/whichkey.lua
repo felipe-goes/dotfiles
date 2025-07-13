@@ -15,12 +15,12 @@ return {
     which_key.add({
       -- opts
       {
-        mode = "n",     -- NORMAL mode
+        mode = "n", -- NORMAL mode
         prefix = "<leader>",
-        buffer = nil,   -- Global mappings. Specify a buffer number for buffer local mappings
-        silent = true,  -- use `silent` when creating keymaps
+        buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
+        silent = true, -- use `silent` when creating keymaps
         noremap = true, -- use `noremap` when creating keymaps
-        nowait = true,  -- use `nowait` when creating keymaps
+        nowait = true, -- use `nowait` when creating keymaps
       },
 
       -- Hidden
@@ -36,7 +36,7 @@ return {
 
       -- Do not have a group
       {
-        "<leader>p",
+        "<leader>e",
         "<cmd>Oil --float<cr>",
         desc = "Explorer",
         icon = {
@@ -48,35 +48,57 @@ return {
       -- Avante
       { "<leader>a", group = "Avante", icon = { icon = "󰧑", color = "blue" } },
 
-      -- Telescope Find
-      { "<leader>f", group = "Telescope Find" },
-      { "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "Files", mode = "n" },
-      -- "<leader>fp" was implemented in multigrep.lua file
+      -- Find
+      { "<leader>f", group = "Find" },
+      { "<leader>ff", "<cmd>lua Snacks.picker.files()<cr>", desc = "Files" },
+      { "<leader>fr", "<cmd>lua Snacks.picker.recent()<cr>", desc = "Recent Files" },
+      { "<leader>fp", "<cmd>lua Snacks.picker.grep()<cr>", desc = "Grep" },
       {
-        "<leader>fn",
-        "<cmd>lua require'telescope.builtin'.find_files { cwd = vim.fn.stdpath('config') }<cr>",
-        desc = "Neovim Files",
-        mode = "n",
+        "<leader>fu",
+        function()
+          Snacks.picker.buffers({
+            win = {
+              input = {
+                keys = {
+                  ["d"] = "bufdelete",
+                },
+              },
+              list = { keys = { ["d"] = "bufdelete" } },
+            },
+          })
+        end,
+        desc = "Buffers",
       },
-      { "<leader>fh", "<cmd>Telescope find_files hidden=true<cr>", desc = "Hidden Files" },
-      { "<leader>fb", "<cmd>Telescope buffers theme=ivy<cr>", desc = "Buffers" },
-      { "<leader>ft", "<cmd>TodoTelescope theme=ivy<cr>", desc = "Todo" },
+      { "<leader>fd", "<cmd>lua Snacks.picker.diagnostics()<cr>", desc = "Diagnostics" },
+      { "<leader>ft", "<cmd>lua Snacks.picker.todo_comments()<cr>", desc = "Todo" },
 
       -- Git
       { "<leader>g", group = "Git" },
       { "<leader>gi", "<cmd>Neogit<cr>", desc = "Neogit Interface" },
-      { "<leader>gj", "<cmd>lua require'gitsigns'.next_hunk()<cr>", desc = "Next Hunk = ]g" },
-      { "<leader>gk", "<cmd>lua require'gitsigns'.prev_hunk()<cr>", desc = "Prev Hunk = [g" },
-      { "<leader>gb", "<cmd>lua require'gitsigns'.blame_line()<cr>", desc = "Blame" },
-      { "<leader>gp", "<cmd>lua require'gitsigns'.preview_hunk()<cr>", desc = "Preview Hunk" },
-      { "<leader>gr", "<cmd>lua require'gitsigns'.reset_hunk()<cr>", desc = "Reset Hunk" },
-      { "<leader>gR", "<cmd>lua require'gitsigns'.reset_buffer()<cr>", desc = "Reset Buffer" },
-      { "<leader>gs", "<cmd>lua require'gitsigns'.stage_hunk()<cr>", desc = "Stage Hunk" },
-      { "<leader>gu", "<cmd>lua require'gitsigns'.undo_stage_hunk()<cr>", desc = "Undo Stage Hunk" },
-      { "<leader>gd", "<cmd>lua require'gitsigns'.diffthis() HEAD<cr>", desc = "Diff File" },
-      { "<leader>gq", "<cmd>DiffviewClose<cr>", desc = "Diff Close" },
-      { "<leader>gt", "<cmd>DiffviewToggleFiles<cr>", desc = "Diff Toggle" },
-      { "<leader>gf", "<cmd>DiffviewFileHistory %<cr>", desc = "Current File History" },
+      {
+        "<leader>gl",
+        function()
+          Snacks.picker.git_log({
+            finder = "git_log",
+            format = "git_log",
+            preview = "git_show",
+            confirm = "git_checkout",
+            layout = "vertical",
+          })
+        end,
+        desc = "Git Log",
+      },
+      { "<leader>gd", "<cmd>lua Snacks.picker.git_diff()<cr>", desc = "Diff File" },
+      { "<leader>gD", "<cmd>Gitsigns diffthis<cr>", desc = "Diff File" },
+      { "<leader>gj", "<cmd>Gitsigns next_hunk<cr>", desc = "Next Hunk = ]g" },
+      { "<leader>gk", "<cmd>Gitsigns prev_hunk<cr>", desc = "Prev Hunk = [g" },
+      { "<leader>gb", "<cmd>Gitsigns blame_line<cr>", desc = "Blame" },
+      { "<leader>gh", "<cmd>Gitsigns preview_hunk<cr>", desc = "Preview Hunk" },
+      { "<leader>gr", "<cmd>Gitsigns reset_hunk<cr>", desc = "Reset Hunk" },
+      { "<leader>gR", "<cmd>Gitsigns reset_buffer<cr>", desc = "Reset Buffer" },
+      { "<leader>gs", "<cmd>Gitsigns stage_hunk<cr>", desc = "Stage Hunk" },
+      { "<leader>gS", "<cmd>lua Snacks.picker.git_status()<cr>", desc = "Status" },
+      { "<leader>gu", "<cmd>Gitsigns undo_stage_hunk<cr>", desc = "Undo Stage Hunk" },
 
       -- LSP
       { "<leader>l", group = "LSP", icon = { icon = "", color = "green" } },
@@ -91,16 +113,12 @@ return {
         end,
         desc = "Format",
       },
-      { "<leader>lr", "<cmd>lua vim.lsp.buf.rename()<cr>",       desc = "Rename" },
-      { "<leader>lt", "<cmd>Trouble lsp_type_definitions<cr>",   desc = "Type Definition" },
-      { "<leader>li", "<cmd>LspInfo<cr>",                        desc = "Info" },
-      { "<leader>lI", "<cmd>Mason<cr>",                          desc = "Install" },
-      { "<leader>ls", "<cmd>Telescope lsp_document_symbols<cr>", desc = "Document Symbols" },
-      {
-        "<leader>lS",
-        "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>",
-        desc = "Workspace Symbols",
-      },
+      { "<leader>lr", "<cmd>lua vim.lsp.buf.rename()<cr>", desc = "Rename" },
+      { "<leader>lt", "<cmd>Trouble lsp_type_definitions<cr>", desc = "Type Definition" },
+      { "<leader>li", "<cmd>LspInfo<cr>", desc = "Info" },
+      { "<leader>lI", "<cmd>Mason<cr>", desc = "Install" },
+      { "<leader>ls", "<cmd>lua Snacks.picker.lsp_symbols()<cr>", desc = "Symbols" },
+      { "<leader>lS", "<cmd>lua Snacks.picker.lsp_workspace_symbols()<cr>", desc = "Workspace Symbols" },
 
       -- LSP Diagnostics
       { "<leader>ld", group = "LSP Diagnostics" },
@@ -124,13 +142,22 @@ return {
       { "<leader>if", "<cmd>IconPickerNormal alt_font<cr>", desc = "Pick Alt Font" },
       { "<leader>ih", "<cmd>IconPickerNormal html_colors<cr>", desc = "Pick HTML Colors" },
 
-      -- Search
-      { "<leader>s", group = "Search" },
-      { "<leader>sc", "<cmd>Telescope commands theme=ivy<cr>", desc = "Commands" },
-      { "<leader>sh", "<cmd>Telescope help_tags theme=ivy<cr>", desc = "Find Help" },
-      { "<leader>sr", "<cmd>Telescope registers theme=ivy<cr>", desc = "Registers" },
-      { "<leader>sk", "<cmd>Telescope keymaps theme=ivy<cr>", desc = "Keymaps" },
-      { "<leader>sR", "<cmd>Telescope oldfiles theme=ivy<cr>", desc = "Open Recent File" },
+      -- Snacks Picker
+      { "<leader>p", group = "Snacks Picker", icon = { icon = "󰢷", color = "orange" } },
+      { "<leader>pp", "<cmd>lua Snacks.picker()<cr>", desc = "Pickers List" },
+      { "<leader>pc", "<cmd>lua Snacks.picker.commands()<cr>", desc = "Commands" },
+      { "<leader>ph", "<cmd>lua Snacks.picker.help()<cr>", desc = "Help" },
+      { "<leader>pr", "<cmd>lua Snacks.picker.registers()<cr>", desc = "Registers" },
+      {
+        "<leader>pk",
+        function()
+          Snacks.picker.keymaps({
+            layout = "vertical",
+          })
+        end,
+        desc = "Keymaps",
+      },
+      { "<leader>pn", "<cmd>lua Snacks.picker.notifications()<cr>", desc = "Notifications" },
 
       -- SGDK
       { "<leader>S", group = "SGDK", icon = { icon = "󰊖", color = "purple" } },
@@ -152,8 +179,8 @@ return {
         "<cmd>!cmake -B build/debug -DCMAKE_BUILD_TYPE=Debug && cp -f build/debug/compile_commands.json . && cp -rf assets/ build/release/<cr>",
         desc = "CMake gDebug",
       },
-      { "<leader>cr", "<cmd>make build/release<cr><cmd>Trouble qflist<cr>",   desc = "CMake bRelease" },
-      { "<leader>cd", "<cmd>make build/debug<cr><cmd>Trouble qflist<cr>",     desc = "CMake bDebug" },
+      { "<leader>cr", "<cmd>make build/release<cr><cmd>Trouble qflist<cr>", desc = "CMake bRelease" },
+      { "<leader>cd", "<cmd>make build/debug<cr><cmd>Trouble qflist<cr>", desc = "CMake bDebug" },
       { "<leader>cC", "<cmd>!rm -rf build/debug && rm -rf build/release<cr>", desc = "CMake Clean" },
       {
         "<leader>ct",
@@ -194,7 +221,7 @@ return {
       },
       { "<leader>di", "<cmd>DapStepInto<cr>", desc = "Step Into" },
       { "<leader>do", "<cmd>DapStepOver<cr>", desc = "Step Over" },
-      { "<leader>dO", "<cmd>DapStepOut<cr>",  desc = "Step Out" },
+      { "<leader>dO", "<cmd>DapStepOut<cr>", desc = "Step Out" },
       {
         "<leader>de",
         function()
@@ -211,7 +238,7 @@ return {
         desc = "Hover",
       },
       { "<leader>dd", "<cmd>DapToggleBreakpoint<cr>", desc = "Toggle Breakpoint" },
-      { "<leader>dq", "<cmd>DapTerminate<cr>",        desc = "Terminate" },
+      { "<leader>dq", "<cmd>DapTerminate<cr>", desc = "Terminate" },
       {
         "<leader>dt",
         function()
@@ -219,9 +246,9 @@ return {
         end,
         desc = "Toggle Debugger Interface",
       },
-      { "<leader>df", ":Telescope dap frames<CR>",          desc = "Telescope Frames" },
-      { "<leader>dB", ":Telescope dap list_breakpoint<CR>", desc = "Telescope List Breakpoints" },
-      { "<leader>dC", ":Telescope dap commands<CR>",        desc = "Telescope Debugger Commands" },
+      -- { "<leader>df", ":Telescope dap frames<CR>",          desc = "Telescope Frames" },
+      -- { "<leader>dB", ":Telescope dap list_breakpoint<CR>", desc = "Telescope List Breakpoints" },
+      -- { "<leader>dC", ":Telescope dap commands<CR>",        desc = "Telescope Debugger Commands" },
     })
   end,
   keys = {

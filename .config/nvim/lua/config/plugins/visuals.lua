@@ -1,41 +1,5 @@
 return {
   {
-    "folke/snacks.nvim",
-    priority = 1000,
-    lazy = false,
-    ---@type snacks.Config
-    opts = {
-      -- your configuration comes here
-      -- or leave it empty to use the default settings
-      -- refer to the configuration section below
-      ---@class snacks.animate.Config
-      ---@field easing? snacks.animate.easing|snacks.animate.easing.Fn
-      animate = {
-        ---@type snacks.animate.Duration|number
-        duration = 20, -- ms per step
-        easing = "linear",
-        fps = 60, -- frames per second. Global setting for all animations
-      },
-      bigfile = { enabled = true },
-      input = { enabled = true },
-      dashboard = { enabled = true },
-      explorer = { enabled = false }, -- using oil.nvim instead
-      indent = { enabled = true }, -- replaced indent-blankline.nvim
-      notifier = { enabled = true, timeout = 3000 },
-      picker = { enabled = false }, -- using Telescope instead
-      quickfile = { enabled = true },
-      scope = { enabled = true },
-      scroll = { enabled = true }, -- replaced neoscroll
-      statuscolumn = { enabled = true },
-      words = { enabled = true },
-      styles = {
-        notification = {
-          wo = { wrap = true }, -- Wrap notifications
-        },
-      },
-    },
-  },
-  {
     "MeanderingProgrammer/render-markdown.nvim",
     -- dependencies = { "nvim-treesitter/nvim-treesitter", "echasnovski/mini.nvim" }, -- if you use the mini.nvim suite
     -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.icons' }, -- if you use standalone mini plugins
@@ -351,7 +315,7 @@ return {
           },
         },
         sections = {
-          lualine_a = { "mode" },
+          lualine_a = {},
           lualine_b = { "branch", "diff", "diagnostics" },
           lualine_c = {
             {
@@ -378,10 +342,10 @@ return {
               maxcount = 999,
               timeout = 500,
             },
-            {
-              symbols.get,
-              cond = symbols.has,
-            },
+            -- {
+            --   symbols.get,
+            --   cond = symbols.has,
+            -- },
           },
           lualine_x = { "encoding", "fileformat", "filetype" },
           lualine_y = { "progress" },

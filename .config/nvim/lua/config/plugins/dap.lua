@@ -180,7 +180,7 @@ return {
   },
   "rcarriga/nvim-dap-ui",
   "nvim-neotest/nvim-nio",
-  "nvim-telescope/telescope-dap.nvim",
+  -- "nvim-telescope/telescope-dap.nvim",
   -- Debuggers
   "leoluz/nvim-dap-go",
 }

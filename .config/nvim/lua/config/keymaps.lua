@@ -21,15 +21,9 @@ keymap("v", "<leader>x", "<cmd>lua<cr>", opts)
 keymap("n", "Q", "@q", opts)
 keymap("x", "Q", ":norm @q<cr>", opts)
 
--- Resize with arrows
-keymap("n", "<C-Up>", ":resize +5<CR>", opts)
-keymap("n", "<C-Down>", ":resize -5<CR>", opts)
-keymap("n", "<C-Left>", ":vertical resize -5<CR>", opts)
-keymap("n", "<C-Right>", ":vertical resize +5<CR>", opts)
-
 -- Insert --
--- Press jj fast to enter
-keymap("i", "jj", "<ESC>", opts)
+-- Press jk fast to enter
+keymap("i", "jk", "<ESC>", opts)
 
 -- Visual --
 -- Stay in indent mode
@@ -126,4 +120,9 @@ vim.keymap.set("i", "calc.", function()
       vim.api.nvim_feedkeys(tostring(calc), "i", true)
     end
   end)
+end)
+
+-- Git
+vim.keymap.set("n", "<C-b>", function()
+  Snacks.picker.git_branches({ layout = "select" })
 end)

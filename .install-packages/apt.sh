@@ -12,7 +12,7 @@ apt install git git-extras zip unzip jq
 apt install imagemagick
 apt install gcc fd-find duf
 apt install luarocks cargo composer php pip
-apt install playerctl when taskwarrior btop yt-dlp
+apt install playerctl when taskwarrior btop yt-dlp ffmpeg
 apt install pandoc texlive-latex-base texlive-fonts-recommended texlive-fonts-extra
 apt install wl-clipboard
 

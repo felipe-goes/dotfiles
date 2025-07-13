@@ -1,16 +1,6 @@
 return {
   {
     "yetone/avante.nvim",
-    -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
-    -- ⚠️ must add this setting! ! !
-    -- build = function()
-    --   -- conditionally use the correct build system for the current OS
-    --   if vim.fn.has("win32") == 1 then
-    --     return "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false"
-    --   else
-    --     return "make"
-    --   end
-    -- end,
     build = "make",
     event = "VeryLazy",
     -- false: this will pull always the latest change
@@ -18,27 +8,20 @@ return {
     ---@module 'avante'
     ---@type avante.Config
     opts = {
-      -- add any opts here
-      -- for example
       provider = "openai",
       providers = {
         -- ollama = {
         --   endpoint = "127.0.0.1:11434",
         --   model = "deepseek-coder:6.7b-instruct-q4_K_M",
         -- },
-        claude = {
-          endpoint = "https://api.anthropic.com",
-          model = "claude-sonnet-4-20250514",
-          timeout = 30000, -- Timeout in milliseconds
-          extra_request_body = {
-            temperature = 0.75,
-            max_tokens = 20480,
-          },
-        },
         openai = {
           endpoint = "https://api.openai.com/v1",
-          model = "gpt-4o-mini", -- your desired model (or use gpt-4o, etc.)
-          timeout = 30000,       -- Timeout in milliseconds, increase this for reasoning models
+          model = "gpt-4.1-nano", -- Cheaper to better -> (gpt-4o-mini, gpt-4.1-mini, gpt-4.1)
+          timeout = 30000,        -- Timeout in milliseconds, increase this for reasoning models
+          -- rag_search, python, git_diff, git_commit, glob, search_keyword,
+          -- read_file_toplevel_symbols, read_file, create_file, move_path,
+          -- copy_path, delete_path, create_dir, bash, web_search, fetch
+          -- disable_tools = { "replace_in_file" },
           extra_request_body = {
             temperature = 0,
             -- max_completion_tokens = 8192, -- Increase this to include reasoning tokens (for reasoning models)

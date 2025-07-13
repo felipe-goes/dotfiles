@@ -201,18 +201,9 @@ export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 source /opt/fzf-git.sh/fzf-git.sh
 source "$HOME"/.bash_aliases
 eval "$(tmuxifier init -)"
-eval "$(zoxide init --cmd cd bash)"
 eval "$(starship init bash)"
 # eval "$(fzf --bash)"
 . <(chatgpt --set-completions bash)
-
-if [ -z "$TMUX" ]; then
-	# Check if no tmux sessions are running
-	if ! tmux has-session -t main 2>/dev/null; then
-		tmux new-session -d -s main
-		tmux attach -t main
-	fi
-fi
 
 . "$HOME/.cargo/env"
 
@@ -222,3 +213,5 @@ fi
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"                   # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
+
+eval "$(zoxide init --cmd cd bash)"

@@ -1,6 +1,7 @@
 #!/bin/bash
 alias c='clear'
 alias s='source $HOME/.bashrc'
+alias tm='tmuxifier s main'
 alias fd='fdfind'
 alias imgcat='wezterm imgcat --position 0,5 --no-move-cursor --max-pixels 1280000'
 alias al="alias | cut -d ' ' -f 2- | fzf --tmux --reverse"

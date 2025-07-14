@@ -60,6 +60,27 @@ vim.api.nvim_create_user_command("Run", function()
   vim.cmd("split | terminal " .. exec)
 end, {})
 
+-- Optional: Re-apply config when command line mode is entered
+vim.api.nvim_create_autocmd({ "CmdlineEnter", "InsertLeave", "BufEnter", "ModeChanged" }, {
+  callback = function()
+    vim.diagnostic.config({
+      virtual_text = false,
+      signs = {
+        text = {
+          [vim.diagnostic.severity.ERROR] = " ",
+          [vim.diagnostic.severity.WARN] = " ",
+          [vim.diagnostic.severity.HINT] = " ",
+          [vim.diagnostic.severity.INFO] = " ",
+        },
+      },
+    })
+    vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+      virtual_text = false,
+    })
+  end,
+  desc = "Ensure virtual_text stays off",
+})
+
 -- Autoformat
 -- augroup _lsp
 --   autocmd!

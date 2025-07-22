@@ -33,6 +33,16 @@ return {
     end,
   },
   {
+    "benomahony/oil-git.nvim",
+    dependencies = { "stevearc/oil.nvim" },
+    -- No opts or config needed! Works automatically
+  },
+  {
+    "JezerM/oil-lsp-diagnostics.nvim",
+    dependencies = { "stevearc/oil.nvim" },
+    opts = {},
+  },
+  {
     "stevearc/oil.nvim",
     ---@module 'oil'
     ---@type oil.SetupOpts
@@ -335,21 +345,11 @@ return {
     end,
   },
   {
-    "benomahony/oil-git.nvim",
-    dependencies = { "stevearc/oil.nvim" },
-    -- No opts or config needed! Works automatically
-  },
-  {
-    "JezerM/oil-lsp-diagnostics.nvim",
-    dependencies = { "stevearc/oil.nvim" },
-    opts = {},
-  },
-  {
     "kevinhwang91/nvim-ufo",
     dependencies = "kevinhwang91/promise-async",
     config = function()
       vim.o.foldcolumn = "1" -- '0' is not bad
-      vim.o.foldlevel = 99   -- Using ufo provider need a large value, feel free to decrease the value
+      vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
       vim.o.foldlevelstart = 99
       vim.o.foldenable = true
 
@@ -442,9 +442,5 @@ return {
         },
       },
     },
-  },
-  {
-    "sphamba/smear-cursor.nvim",
-    opts = {},
   },
 }

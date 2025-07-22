@@ -1,61 +1,58 @@
 return {
   {
     "neovim/nvim-lspconfig",
-    config = function()
+    dependencies = { "saghen/blink.cmp" },
+
+    -- example using `opts` for defining servers
+    opts = {
+      servers = {
+        lua_ls = {},
+        bashls = {},
+        clangd = {},
+        cmake = {},
+        cssls = {},
+        dockerls = {},
+        docker_compose_language_service = {},
+        gopls = {},
+        html = {},
+        jsonls = {},
+        markdown_oxide = {},
+        matlab_ls = {},
+        omnisharp = {},
+        powershell_es = {},
+        pyright = {},
+        ts_ls = {},
+      },
+    },
+    config = function(_, opts)
       local lspconfig = require("lspconfig")
-      local clangd_capabilities = vim.lsp.protocol.make_client_capabilities()
-      local capabilities = require("cmp_nvim_lsp").default_capabilities()
+      for server, config in pairs(opts.servers) do
+        -- passing config.capabilities to blink.cmp merges with the capabilities in your
+        -- `opts[server].capabilities, if you've defined it
+        config.capabilities = require("blink.cmp").get_lsp_capabilities(config.capabilities)
+        lspconfig[server].setup(config)
+      end
 
-      clangd_capabilities.offsetEncoding = { "utf-16" }
+      local default_capabilities = vim.lsp.protocol.make_client_capabilities()
+      local capabilities = require("blink.cmp").get_lsp_capabilities(default_capabilities)
+      local lspconfig = require("lspconfig")
 
-      lspconfig.bashls.setup({
-        capabilities = capabilities,
-      })
-      lspconfig.clangd.setup({
-        capabilities = clangd_capabilities,
-      })
-      lspconfig.cmake.setup({
-        capabilities = capabilities,
-      })
-      lspconfig.cssls.setup({
-        capabilities = capabilities,
-      })
-      lspconfig.dockerls.setup({
-        capabilities = capabilities,
-      })
-      lspconfig.docker_compose_language_service.setup({
-        capabilities = capabilities,
-      })
-      lspconfig.gopls.setup({
-        capabilities = capabilities,
-      })
-      lspconfig.html.setup({
-        capabilities = capabilities,
-      })
-      lspconfig.jsonls.setup({
-        capabilities = capabilities,
-      })
-      lspconfig.lua_ls.setup({
-        capabilities = capabilities,
-      })
-      lspconfig.markdown_oxide.setup({
-        capabilities = capabilities,
-      })
-      lspconfig.matlab_ls.setup({
-        capabilities = capabilities,
-      })
-      lspconfig.omnisharp.setup({
-        capabilities = capabilities,
-      })
-      lspconfig.powershell_es.setup({
-        capabilities = capabilities,
-      })
-      lspconfig.pyright.setup({
-        capabilities = capabilities,
-      })
-      lspconfig.ts_ls.setup({
-        capabilities = capabilities,
-      })
+      lspconfig["lua_ls"].setup({ capabilities = capabilities })
+      lspconfig["bashls"].setup({ capabilities = capabilities })
+      lspconfig["clangd"].setup({ capabilities = capabilities })
+      lspconfig["cmake"].setup({ capabilities = capabilities })
+      lspconfig["cssls"].setup({ capabilities = capabilities })
+      lspconfig["dockerls"].setup({ capabilities = capabilities })
+      lspconfig["docker_compose_language_service"].setup({ capabilities = capabilities })
+      lspconfig["gopls"].setup({ capabilities = capabilities })
+      lspconfig["html"].setup({ capabilities = capabilities })
+      lspconfig["jsonls"].setup({ capabilities = capabilities })
+      lspconfig["markdown_oxide"].setup({ capabilities = capabilities })
+      lspconfig["matlab_ls"].setup({ capabilities = capabilities })
+      lspconfig["omnisharp"].setup({ capabilities = capabilities })
+      lspconfig["powershell_es"].setup({ capabilities = capabilities })
+      lspconfig["pyright"].setup({ capabilities = capabilities })
+      lspconfig["ts_ls"].setup({ capabilities = capabilities })
 
       -- Global mappings.
       -- See `:help vim.diagnostic.*` for documentation on any of the below functions
@@ -98,69 +95,9 @@ return {
     end,
   },
   {
-    "mason-org/mason-lspconfig.nvim",
-    opts = {
-      ensure_installed = {
-        "bashls",
-        "clangd",
-        "cmake",
-        "cssls",
-        "dockerls",
-        "docker_compose_language_service",
-        "gopls",
-        "html",
-        "jsonls",
-        "lua_ls",
-        "markdown_oxide",
-        "powershell_es",
-        "pyright",
-      },
-      automatic_installation = true,
-    },
-    dependencies = {
-      {
-        "mason-org/mason.nvim",
-        opts = {
-          ui = {
-            icons = {
-              server_installed = "✓",
-              server_pending = "➜",
-              server_uninstalled = "✗",
-            },
-          },
-        },
-      },
-      "neovim/nvim-lspconfig",
-    },
-  },
-  {
     "nvimtools/none-ls.nvim",
     config = function()
       null_ls = require("null-ls")
-
-      -- Set up diagnostic configuration
-      vim.diagnostic.config({
-        underline = false,        -- Enable underlining
-        virtual_text = false,     -- Enable virtual text
-        update_in_insert = false, -- Update diagnostics while in insert mode
-        severity_sort = true,
-        signs = {
-          text = {
-            [vim.diagnostic.severity.ERROR] = " ",
-            [vim.diagnostic.severity.WARN] = " ",
-            [vim.diagnostic.severity.HINT] = " ",
-            [vim.diagnostic.severity.INFO] = " ",
-          },
-        },
-        float = {
-          border = "rounded", -- Set border to rounded (can be 'single', 'double', 'rounded', 'solid', 'none')
-          source = "always",  -- Show the source of the diagnostic message (optional)
-        },
-      })
-
-      vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-        virtual_text = false,
-      })
 
       -- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/formatting
       local formatting = null_ls.builtins.formatting
@@ -209,8 +146,8 @@ return {
         },
       })
     end,
-  },                              -- for formatters and linters
-  "tamago324/nlsp-settings.nvim", -- language server settings defined in json
+  }, -- for formatters and linters
+  -- "tamago324/nlsp-settings.nvim", -- language server settings defined in json
   "nvimtools/none-ls-extras.nvim",
   "gbprod/none-ls-shellcheck.nvim",
   {
@@ -269,8 +206,8 @@ return {
           folded = "◉",
           unfolded = "○",
 
-          outer_node = "",    -- '╰○',
-          bracket_left = "",  -- ⟪',
+          outer_node = "", -- '╰○',
+          bracket_left = "", -- ⟪',
           bracket_right = "", -- '⟫',
         },
         syntax_icons = {

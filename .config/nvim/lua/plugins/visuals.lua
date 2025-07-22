@@ -21,16 +21,16 @@ return {
       require("noice").setup({
         -- you can enable a preset for easier configuration
         presets = {
-          bottom_search = false, -- use a classic bottom cmdline for search
-          command_palette = true, -- position the cmdline and popupmenu together
+          bottom_search = false,        -- use a classic bottom cmdline for search
+          command_palette = true,       -- position the cmdline and popupmenu together
           long_message_to_split = true, -- long messages will be sent to a split
-          inc_rename = false, -- enables an input dialog for inc-rename.nvim
-          lsp_doc_border = true, -- add a border to hover docs and signature help
+          inc_rename = false,           -- enables an input dialog for inc-rename.nvim
+          lsp_doc_border = true,        -- add a border to hover docs and signature help
         },
         cmdline = {
-          enabled = true, -- enables the Noice cmdline UI
+          enabled = true,         -- enables the Noice cmdline UI
           view = "cmdline_popup", -- view for rendering the cmdline. Change to `cmdline` to get a classic cmdline at the bottom
-          opts = {}, -- global options for the cmdline. See section on views
+          opts = {},              -- global options for the cmdline. See section on views
           ---@type table<string, CmdlineFormat>
           format = {
             -- conceal: (default=true) This will hide the text in the cmdline that matches the pattern.
@@ -51,16 +51,16 @@ return {
         messages = {
           -- NOTE: If you enable messages, then the cmdline is enabled automatically.
           -- This is a current Neovim limitation.
-          enabled = true, -- enables the Noice messages UI
-          view = "notify", -- default view for messages
-          view_error = "notify", -- view for errors
-          view_warn = "notify", -- view for warnings
+          enabled = true,            -- enables the Noice messages UI
+          view = "notify",           -- default view for messages
+          view_error = "notify",     -- view for errors
+          view_warn = "notify",      -- view for warnings
           view_history = "messages", -- view for :messages
-          view_search = false, -- view for search count messages. Set to `false` to disable
+          view_search = false,       -- view for search count messages. Set to `false` to disable
         },
         popupmenu = {
-          enabled = true, -- enables the Noice popupmenu UI
-          ---@type 'nui'|'cmp'
+          enabled = true,  -- enables the Noice popupmenu UI
+          ---@type 'nui'--|'cmp'
           backend = "nui", -- backend to use to show regular cmdline completions
           ---@type NoicePopupmenuItemKind|false
           -- Icons for completion item kinds (see defaults at noice.config.icons.kinds)
@@ -86,7 +86,7 @@ return {
                 { error = true },
                 { warning = true },
                 { event = "msg_show", kind = { "" } },
-                { event = "lsp", kind = "message" },
+                { event = "lsp",      kind = "message" },
               },
             },
           },
@@ -100,7 +100,7 @@ return {
                 { error = true },
                 { warning = true },
                 { event = "msg_show", kind = { "" } },
-                { event = "lsp", kind = "message" },
+                { event = "lsp",      kind = "message" },
               },
             },
             filter_opts = { count = 1 },
@@ -147,14 +147,14 @@ return {
             -- override the lsp markdown formatter with Noice
             ["vim.lsp.util.stylize_markdown"] = true,
             -- override cmp documentation with Noice (needs the other options to work)
-            ["cmp.entry.get_documentation"] = true,
+            --["cmp.entry.get_documentation"] = true,
           },
           hover = {
             enabled = true,
             silent = false, -- set to true to not show a message if hover is not available
-            view = nil, -- when nil, use defaults from documentation
+            view = nil,     -- when nil, use defaults from documentation
             ---@type NoiceViewOptions
-            opts = {}, -- merged with defaults from documentation
+            opts = {},      -- merged with defaults from documentation
           },
           signature = {
             enabled = true,
@@ -162,11 +162,11 @@ return {
               enabled = true,
               trigger = true, -- Automatically show signature help when typing a trigger character from the LSP
               luasnip = true, -- Will open signature help when jumping to Luasnip insert nodes
-              throttle = 50, -- Debounce lsp signature help request by 50ms
+              throttle = 50,  -- Debounce lsp signature help request by 50ms
             },
-            view = nil, -- when nil, use defaults from documentation
+            view = nil,       -- when nil, use defaults from documentation
             ---@type NoiceViewOptions
-            opts = {}, -- merged with defaults from documentation
+            opts = {},        -- merged with defaults from documentation
           },
           message = {
             -- Messages shown by lsp servers
@@ -189,7 +189,7 @@ return {
         },
         markdown = {
           hover = {
-            ["|(%S-)|"] = vim.cmd.help, -- vim help links
+            ["|(%S-)|"] = vim.cmd.help,                       -- vim help links
             ["%[.-%]%((%S-)%)"] = require("noice.util").open, -- markdown links
           },
           highlights = {
@@ -208,7 +208,8 @@ return {
           -- noice tries to move out of the way of existing floating windows.
           enabled = true, -- you can disable this behaviour here
           -- add any filetypes here, that shouldn't trigger smart move.
-          excluded_filetypes = { "cmp_menu", "cmp_docs", "notify" },
+          -- excluded_filetypes = { "cmp_menu", "cmp_docs", "notify" },
+          excluded_filetypes = { "notify" },
         },
         throttle = 1000 / 30, -- how frequently does Noice need to check for ui updates? This has no effect when in blocking mode.
         ---@type NoiceConfigViews
@@ -316,13 +317,14 @@ return {
         },
         sections = {
           lualine_a = {},
-          lualine_b = { "branch", "diff", "diagnostics" },
+          -- lualine_b = { "branch", "diff", "diagnostics" },
+          lualine_b = { "diagnostics" },
           lualine_c = {
             {
               "filename",
-              file_status = true, -- Displays file status (readonly status, modified status)
+              file_status = true,     -- Displays file status (readonly status, modified status)
               newfile_status = false, -- Display new file status (new file means no write after created)
-              path = 1, -- 0: Just the filename
+              path = 1,               -- 0: Just the filename
               -- 1: Relative path
               -- 2: Absolute path
               -- 3: Absolute path, with tilde as the home directory
@@ -371,166 +373,166 @@ return {
     config = function()
       require("colorizer").setup()
     end,
-  },
-  {
-    "rachartier/tiny-inline-diagnostic.nvim",
-    event = "VeryLazy", -- Or `LspAttach`
-    priority = 1000, -- needs to be loaded in first
-    config = function()
-      require("tiny-inline-diagnostic").setup({
-        -- Style preset for diagnostic messages
-        -- Available options:
-        -- "modern", "classic", "minimal", "powerline",
-        -- "ghost", "simple", "nonerdfont", "amongus"
-        preset = "modern",
+    {
+      "rachartier/tiny-inline-diagnostic.nvim",
+      event = "LspAttach", -- Or `LspAttach`
+      priority = 1000,    -- needs to be loaded in first
+      config = function()
+        require("tiny-inline-diagnostic").setup({
+          -- Style preset for diagnostic messages
+          -- Available options:
+          -- "modern", "classic", "minimal", "powerline",
+          -- "ghost", "simple", "nonerdfont", "amongus"
+          preset = "modern",
 
-        signs = {
-          left = "",
-          right = "",
-          diag = "●",
-          arrow = "    ",
-          up_arrow = "    ",
-          vertical = " │",
-          vertical_end = " └",
-        },
-        blend = {
-          factor = 0.22,
-        },
-
-        transparent_bg = false, -- Set the background of the diagnostic to transparent
-        transparent_cursorline = false, -- Set the background of the cursorline to transparent (only one the first diagnostic)
-
-        hi = {
-          error = "DiagnosticError", -- Highlight group for error messages
-          warn = "DiagnosticWarn", -- Highlight group for warning messages
-          info = "DiagnosticInfo", -- Highlight group for informational messages
-          hint = "DiagnosticHint", -- Highlight group for hint or suggestion messages
-          arrow = "NonText", -- Highlight group for diagnostic arrows
-
-          -- Background color for diagnostics
-          -- Can be a highlight group or a hexadecimal color (#RRGGBB)
-          background = "CursorLine",
-
-          -- Color blending option for the diagnostic background
-          -- Use "None" or a hexadecimal color (#RRGGBB) to blend with another color
-          mixing_color = "None",
-        },
-
-        options = {
-          -- Display the source of the diagnostic (e.g., basedpyright, vsserver, lua_ls etc.)
-          show_source = {
-            enabled = false,
-            if_many = false,
+          signs = {
+            left = "",
+            right = "",
+            diag = "●",
+            arrow = "    ",
+            up_arrow = "    ",
+            vertical = " │",
+            vertical_end = " └",
+          },
+          blend = {
+            factor = 0.22,
           },
 
-          -- Use icons defined in the diagnostic configuration
-          use_icons_from_diagnostic = false,
+          transparent_bg = false,         -- Set the background of the diagnostic to transparent
+          transparent_cursorline = false, -- Set the background of the cursorline to transparent (only one the first diagnostic)
 
-          -- Set the arrow icon to the same color as the first diagnostic severity
-          set_arrow_to_diag_color = false,
+          hi = {
+            error = "DiagnosticError", -- Highlight group for error messages
+            warn = "DiagnosticWarn",   -- Highlight group for warning messages
+            info = "DiagnosticInfo",   -- Highlight group for informational messages
+            hint = "DiagnosticHint",   -- Highlight group for hint or suggestion messages
+            arrow = "NonText",         -- Highlight group for diagnostic arrows
 
-          -- Add messages to diagnostics when multiline diagnostics are enabled
-          -- If set to false, only signs will be displayed
-          add_messages = true,
+            -- Background color for diagnostics
+            -- Can be a highlight group or a hexadecimal color (#RRGGBB)
+            background = "None",
 
-          -- Time (in milliseconds) to throttle updates while moving the cursor
-          -- Increase this value for better performance if your computer is slow
-          -- or set to 0 for immediate updates and better visual
-          throttle = 20,
-
-          -- Minimum message length before wrapping to a new line
-          softwrap = 30,
-
-          -- Configuration for multiline diagnostics
-          -- Can either be a boolean or a table with the following options:
-          --  multilines = {
-          --      enabled = false,
-          --      always_show = false,
-          -- }
-          -- If it set as true, it will enable the feature with this options:
-          --  multilines = {
-          --      enabled = true,
-          --      always_show = false,
-          -- }
-          multilines = {
-            -- Enable multiline diagnostic messages
-            enabled = false,
-
-            -- Always show messages on all lines for multiline diagnostics
-            always_show = false,
-
-            -- Trim whitespaces from the start/end of each line
-            trim_whitespaces = false,
-
-            -- Replace tabs with spaces in multiline diagnostics
-            tabstop = 4,
+            -- Color blending option for the diagnostic background
+            -- Use "None" or a hexadecimal color (#RRGGBB) to blend with another color
+            mixing_color = "None",
           },
 
-          -- Display all diagnostic messages on the cursor line
-          show_all_diags_on_cursorline = false,
+          options = {
+            -- Display the source of the diagnostic (e.g., basedpyright, vsserver, lua_ls etc.)
+            show_source = {
+              enabled = false,
+              if_many = false,
+            },
 
-          -- Enable diagnostics in Insert mode
-          -- If enabled, it is better to set the `throttle` option to 0 to avoid visual artifacts
-          enable_on_insert = false,
+            -- Use icons defined in the diagnostic configuration
+            use_icons_from_diagnostic = false,
 
-          -- Enable diagnostics in Select mode (e.g when auto inserting with Blink)
-          enable_on_select = false,
+            -- Set the arrow icon to the same color as the first diagnostic severity
+            set_arrow_to_diag_color = false,
 
-          overflow = {
-            -- Manage how diagnostic messages handle overflow
-            -- Options:
-            -- "wrap" - Split long messages into multiple lines
-            -- "none" - Do not truncate messages
-            -- "oneline" - Keep the message on a single line, even if it's long
-            mode = "wrap",
+            -- Add messages to diagnostics when multiline diagnostics are enabled
+            -- If set to false, only signs will be displayed
+            add_messages = true,
 
-            -- Trigger wrapping to occur this many characters earlier when mode == "wrap".
-            -- Increase this value appropriately if you notice that the last few characters
-            -- of wrapped diagnostics are sometimes obscured.
-            padding = 0,
+            -- Time (in milliseconds) to throttle updates while moving the cursor
+            -- Increase this value for better performance if your computer is slow
+            -- or set to 0 for immediate updates and better visual
+            throttle = 20,
+
+            -- Minimum message length before wrapping to a new line
+            softwrap = 30,
+
+            -- Configuration for multiline diagnostics
+            -- Can either be a boolean or a table with the following options:
+            --  multilines = {
+            --      enabled = false,
+            --      always_show = false,
+            -- }
+            -- If it set as true, it will enable the feature with this options:
+            --  multilines = {
+            --      enabled = true,
+            --      always_show = false,
+            -- }
+            multilines = {
+              -- Enable multiline diagnostic messages
+              enabled = false,
+
+              -- Always show messages on all lines for multiline diagnostics
+              always_show = false,
+
+              -- Trim whitespaces from the start/end of each line
+              trim_whitespaces = false,
+
+              -- Replace tabs with spaces in multiline diagnostics
+              tabstop = 4,
+            },
+
+            -- Display all diagnostic messages on the cursor line
+            show_all_diags_on_cursorline = false,
+
+            -- Enable diagnostics in Insert mode
+            -- If enabled, it is better to set the `throttle` option to 0 to avoid visual artifacts
+            enable_on_insert = false,
+
+            -- Enable diagnostics in Select mode (e.g when auto inserting with Blink)
+            enable_on_select = false,
+
+            overflow = {
+              -- Manage how diagnostic messages handle overflow
+              -- Options:
+              -- "wrap" - Split long messages into multiple lines
+              -- "none" - Do not truncate messages
+              -- "oneline" - Keep the message on a single line, even if it's long
+              mode = "wrap",
+
+              -- Trigger wrapping to occur this many characters earlier when mode == "wrap".
+              -- Increase this value appropriately if you notice that the last few characters
+              -- of wrapped diagnostics are sometimes obscured.
+              padding = 0,
+            },
+
+            -- Configuration for breaking long messages into separate lines
+            break_line = {
+              -- Enable the feature to break messages after a specific length
+              enabled = false,
+
+              -- Number of characters after which to break the line
+              after = 30,
+            },
+
+            -- Custom format function for diagnostic messages
+            -- Example:
+            -- format = function(diagnostic)
+            --     return diagnostic.message .. " [" .. diagnostic.source .. "]"
+            -- end
+            format = nil,
+
+            virt_texts = {
+              -- Priority for virtual text display
+              priority = 2048,
+            },
+
+            -- Filter diagnostics by severity
+            -- Available severities:
+            -- vim.diagnostic.severity.ERROR
+            -- vim.diagnostic.severity.WARN
+            -- vim.diagnostic.severity.INFO
+            -- vim.diagnostic.severity.HINT
+            severity = {
+              vim.diagnostic.severity.ERROR,
+              vim.diagnostic.severity.WARN,
+              vim.diagnostic.severity.INFO,
+              vim.diagnostic.severity.HINT,
+            },
+
+            -- Events to attach diagnostics to buffers
+            -- You should not change this unless the plugin does not work with your configuration
+            overwrite_events = nil,
           },
-
-          -- Configuration for breaking long messages into separate lines
-          break_line = {
-            -- Enable the feature to break messages after a specific length
-            enabled = false,
-
-            -- Number of characters after which to break the line
-            after = 30,
-          },
-
-          -- Custom format function for diagnostic messages
-          -- Example:
-          -- format = function(diagnostic)
-          --     return diagnostic.message .. " [" .. diagnostic.source .. "]"
-          -- end
-          format = nil,
-
-          virt_texts = {
-            -- Priority for virtual text display
-            priority = 2048,
-          },
-
-          -- Filter diagnostics by severity
-          -- Available severities:
-          -- vim.diagnostic.severity.ERROR
-          -- vim.diagnostic.severity.WARN
-          -- vim.diagnostic.severity.INFO
-          -- vim.diagnostic.severity.HINT
-          severity = {
-            vim.diagnostic.severity.ERROR,
-            vim.diagnostic.severity.WARN,
-            vim.diagnostic.severity.INFO,
-            vim.diagnostic.severity.HINT,
-          },
-
-          -- Events to attach diagnostics to buffers
-          -- You should not change this unless the plugin does not work with your configuration
-          overwrite_events = nil,
-        },
-        disabled_ft = {}, -- List of filetypes to disable the plugin
-      })
-      vim.diagnostic.config({ virtual_text = false }) -- Only if needed in your configuration, if you already have native LSP diagnostics
-    end,
+          disabled_ft = {},                             -- List of filetypes to disable the plugin
+        })
+        vim.diagnostic.config({ virtual_text = false }) -- Only if needed in your configuration, if you already have native LSP diagnostics
+      end,
+    },
   },
 }

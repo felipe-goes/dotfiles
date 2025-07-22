@@ -88,28 +88,33 @@ return {
         end,
         desc = "Git Log",
       },
-      { "<leader>gd", "<cmd>lua Snacks.picker.git_diff()<cr>", desc = "Diff File" },
-      { "<leader>gD", "<cmd>Gitsigns diffthis<cr>", desc = "Diff File" },
+      { "<leader>gc", "<cmd>lua Snacks.picker.git_branches()<cr>", desc = "Checkout" },
+      { "<leader>gd", "<cmd>Gitsigns diffthis<cr>", desc = "Diff Line" },
+      { "<leader>gD", "<cmd>lua Snacks.picker.git_diff()<cr>", desc = "Diff Project" },
       { "<leader>gj", "<cmd>Gitsigns next_hunk<cr>", desc = "Next Hunk = ]g" },
       { "<leader>gk", "<cmd>Gitsigns prev_hunk<cr>", desc = "Prev Hunk = [g" },
       { "<leader>gb", "<cmd>Gitsigns blame_line<cr>", desc = "Blame" },
       { "<leader>gh", "<cmd>Gitsigns preview_hunk<cr>", desc = "Preview Hunk" },
       { "<leader>gr", "<cmd>Gitsigns reset_hunk<cr>", desc = "Reset Hunk" },
+      { "<leader>gr", "<cmd>'<,'>Gitsigns reset_hunk<cr>", desc = "Reset Hunk", mode = "v" },
       { "<leader>gR", "<cmd>Gitsigns reset_buffer<cr>", desc = "Reset Buffer" },
-      { "<leader>gs", "<cmd>Gitsigns stage_hunk<cr>", desc = "Stage Hunk" },
-      { "<leader>gS", "<cmd>lua Snacks.picker.git_status()<cr>", desc = "Status" },
+      { "<leader>gs", "<cmd>lua Snacks.picker.git_status()<cr>", desc = "Status" },
+      { "<leader>gS", "<cmd>Gitsigns stage_hunk<cr>", desc = "Stage Hunk" },
+      { "<leader>gs", "<cmd>'<,'>Gitsigns stage_hunk<cr>", desc = "Stage Hunk", mode = "v" },
       { "<leader>gu", "<cmd>Gitsigns undo_stage_hunk<cr>", desc = "Undo Stage Hunk" },
+      { "<leader>gs", "<cmd>'<,'>Gitsigns undo_stage_hunk<cr>", desc = "Undo Stage Hunk", mode = "v" },
 
       -- LSP
       { "<leader>l", group = "LSP", icon = { icon = "", color = "green" } },
       { "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<cr>", desc = "Code Action" },
+      { "<leader>lA", "<cmd>lua vim.lsp.codelens.run()<cr>", desc = "CodeLens Action" },
       {
         "<leader>lf",
         function()
           vim.lsp.buf.format({ async = true })
           vim.defer_fn(function()
             vim.diagnostic.show()
-          end, 250) -- Delay the diagnostic refresh slightly to ensure it happens after formatting
+          end, 250)
         end,
         desc = "Format",
       },
@@ -119,17 +124,13 @@ return {
       { "<leader>lI", "<cmd>Mason<cr>", desc = "Install" },
       { "<leader>ls", "<cmd>lua Snacks.picker.lsp_symbols()<cr>", desc = "Symbols" },
       { "<leader>lS", "<cmd>lua Snacks.picker.lsp_workspace_symbols()<cr>", desc = "Workspace Symbols" },
-
-      -- LSP Diagnostics
-      { "<leader>ld", group = "LSP Diagnostics" },
-      { "<leader>ldd", "<cmd>lua vim.diagnostic.open_float()<cr>", desc = "Hover" },
-      { "<leader>ldl", "<cmd>lua vim.lsp.codelens.run()<cr>", desc = "CodeLens Action" },
-      { "<leader>ldj", "<cmd>lua vim.diagnostic.goto_next()<cr>", desc = "Next = ]d" },
-      { "<leader>ldk", "<cmd>lua vim.diagnostic.goto_prev()<CR>", desc = "Prev = [d]" },
+      { "<leader>ld", "<cmd>lua Snacks.picker.diagnostics_buffer()<cr>", desc = "Diagnostics" },
+      { "<leader>lD", "<cmd>lua vim.diagnostic.open_float()<cr>", desc = "Hover" },
 
       -- LSP Workspace
       { "<leader>lw", group = "LSP Workspace" },
       { "<leader>lwa", "<cmd>lua vim.lsp.buf.add_workspace_folder()<cr>", desc = "Add Workspace Folder" },
+      { "<leader>lwd", "<cmd>lua Snacks.picker.diagnostics()<cr>", desc = "Workspace Diagnostics" },
       { "<leader>lwr", "<cmd>lua vim.lsp.buf.remove_workspace_folder()<cr>", desc = "Remove Workspace Folder" },
       { "<leader>lwl", "<cmd>lua vim.lsp.buf.list_workspace_folders()<cr>", desc = "List Workspace Folders" },
 
@@ -171,25 +172,25 @@ return {
       { "<leader>c", group = "C/C++", icon = { icon = "󰙲", color = "blue" } },
       {
         "<leader>cR",
-        "<cmd>!cmake -B build/release -DCMAKE_BUILD_TYPE=Release && cp -f build/release/compile_commands.json . && cp -rf assets/ build/release/<cr>",
-        desc = "CMake gRelease",
+        "<cmd>!cmake -B ./build/release -DCMAKE_BUILD_TYPE=Release && cp -f ./build/release/compile_commands.json . && cp -rf assets/ ./build/release/<cr>",
+        desc = "CMake Release",
       },
       {
         "<leader>cD",
-        "<cmd>!cmake -B build/debug -DCMAKE_BUILD_TYPE=Debug && cp -f build/debug/compile_commands.json . && cp -rf assets/ build/release/<cr>",
-        desc = "CMake gDebug",
+        "<cmd>!cmake -B ./build/debug -DCMAKE_BUILD_TYPE=Debug && cp -f ./build/debug/compile_commands.json . && cp -rf assets/ ./build/release/<cr>",
+        desc = "CMake Debug",
       },
-      { "<leader>cr", "<cmd>make build/release<cr><cmd>Trouble qflist<cr>", desc = "CMake bRelease" },
-      { "<leader>cd", "<cmd>make build/debug<cr><cmd>Trouble qflist<cr>", desc = "CMake bDebug" },
-      { "<leader>cC", "<cmd>!rm -rf build/debug && rm -rf build/release<cr>", desc = "CMake Clean" },
+      { "<leader>cr", "<cmd>make ./build/release<cr><cmd>Trouble qflist<cr>", desc = "Build Release" },
+      { "<leader>cd", "<cmd>make ./build/debug<cr><cmd>Trouble qflist<cr>", desc = "Build Debug" },
+      { "<leader>cC", "<cmd>!rm -rf ./build<cr>", desc = "CMake Clean" },
       {
         "<leader>ct",
-        "<cmd>!cmake --build build/release/ --target help | tail -n +13 | awk '{print $2}'<cr>",
+        "<cmd>!cmake --build ./build/release/ --target help | tail -n +13 | awk '{print $2}'<cr>",
         desc = "CMake Targets",
       },
       {
         "<leader>cT",
-        "<cmd>!cmake --build build/release/ --target help | tail -n +13 | awk '{print $2}' | grep Test<cr>",
+        "<cmd>!cmake --build ./build/release/ --target help | tail -n +13 | awk '{print $2}' | grep Test<cr>",
         desc = "CMake Test Targets",
       },
 

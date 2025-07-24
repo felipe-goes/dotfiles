@@ -22,7 +22,7 @@ alias fcol="tr -s ' ' | cut -d ' ' -f9-"
 alias gf='gum filter'
 alias commitlint='/opt/commitlint/node_modules/.bin/commitlint'
 alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
-alias pandoc="pandoc -V geometry:margin=2cm -o"
+alias pandoc="pandoc -V geometry:margin=1cm -o"
 alias update='sudo apt update && sudo apt upgrade'
 alias nix-uninstall='nix-env -e'
 alias nix-update='nix-env -u'

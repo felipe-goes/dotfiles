@@ -2,7 +2,6 @@ return {
   "nvim-lua/plenary.nvim", -- Useful lua functions used by lots of plugins
   "christoomey/vim-tmux-navigator",
   "tommcdo/vim-lion",
-  "chrisbra/csv.vim",
   {
     "ziontee113/icon-picker.nvim",
     config = function()
@@ -31,16 +30,6 @@ return {
         -- Configuration here, or leave empty to use defaults
       })
     end,
-  },
-  {
-    "benomahony/oil-git.nvim",
-    dependencies = { "stevearc/oil.nvim" },
-    -- No opts or config needed! Works automatically
-  },
-  {
-    "JezerM/oil-lsp-diagnostics.nvim",
-    dependencies = { "stevearc/oil.nvim" },
-    opts = {},
   },
   {
     "stevearc/oil.nvim",

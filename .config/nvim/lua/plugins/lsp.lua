@@ -1,27 +1,63 @@
 return {
   {
+    "mason-org/mason.nvim",
+    opts = {
+      ui = {
+        icons = {
+          package_installed = "󰄬",
+          package_pending = "➜",
+          package_uninstalled = "✗",
+        },
+      },
+    },
+  },
+  {
+    "mason-org/mason-lspconfig.nvim",
+    opts = {
+      ensure_installed = {
+        "basedpyright",
+        "bashls",
+        "clangd",
+        "cmake",
+        "cssls",
+        "gopls",
+        "html",
+        "jsonls",
+        "lemminx",
+        "lua_ls",
+        "marksman",
+        "powershell_es",
+        "vtsls",
+        "yamlls",
+      },
+      automatic_installation = true,
+    },
+    dependencies = {
+      "mason-org/mason.nvim",
+      "neovim/nvim-lspconfig",
+    },
+  },
+  {
     "neovim/nvim-lspconfig",
     dependencies = { "saghen/blink.cmp" },
 
     -- example using `opts` for defining servers
     opts = {
       servers = {
-        lua_ls = {},
+        basedpyright = {},
         bashls = {},
         clangd = {},
         cmake = {},
         cssls = {},
-        dockerls = {},
-        docker_compose_language_service = {},
         gopls = {},
         html = {},
         jsonls = {},
-        markdown_oxide = {},
-        matlab_ls = {},
-        omnisharp = {},
+        lemminx = {},
+        lua_ls = {},
+        marksman = {},
         powershell_es = {},
-        pyright = {},
-        ts_ls = {},
+        vtsls = {},
+        yamlls = {},
       },
     },
     config = function(_, opts)
@@ -35,24 +71,76 @@ return {
 
       local default_capabilities = vim.lsp.protocol.make_client_capabilities()
       local capabilities = require("blink.cmp").get_lsp_capabilities(default_capabilities)
-      local lspconfig = require("lspconfig")
 
-      lspconfig["lua_ls"].setup({ capabilities = capabilities })
       lspconfig["bashls"].setup({ capabilities = capabilities })
-      lspconfig["clangd"].setup({ capabilities = capabilities })
+      lspconfig["clangd"].setup({
+        capabilities = capabilities,
+        cmd = { "clangd", "--background-index" },
+        root_dir = require("lspconfig.util").root_pattern("compile_commands.json", ".git"),
+      })
       lspconfig["cmake"].setup({ capabilities = capabilities })
       lspconfig["cssls"].setup({ capabilities = capabilities })
-      lspconfig["dockerls"].setup({ capabilities = capabilities })
-      lspconfig["docker_compose_language_service"].setup({ capabilities = capabilities })
       lspconfig["gopls"].setup({ capabilities = capabilities })
       lspconfig["html"].setup({ capabilities = capabilities })
-      lspconfig["jsonls"].setup({ capabilities = capabilities })
-      lspconfig["markdown_oxide"].setup({ capabilities = capabilities })
-      lspconfig["matlab_ls"].setup({ capabilities = capabilities })
-      lspconfig["omnisharp"].setup({ capabilities = capabilities })
+      lspconfig["jsonls"].setup({
+        capabilities = capabilities,
+        settings = {
+          json = {
+            schemas = {
+              {
+                description = "tsconfig",
+                fileMatch = { "tsconfig.json", "tsconfig.*.json" },
+                url = "https://json.schemastore.org/tsconfig.json",
+              },
+              {
+                description = "prettier",
+                fileMatch = { ".prettierrc", ".prettierrc.json" },
+                url = "https://json.schemastore.org/prettierrc",
+              },
+            },
+            validate = { enable = true },
+          },
+        },
+      })
+      lspconfig["lemminx"].setup({ capabilities = capabilities })
+      lspconfig["lua_ls"].setup({
+        capabilities = capabilities,
+        settings = {
+          Lua = {
+            runtime = {
+              version = "LuaJIT", -- ou Lua 5.1, 5.4, etc.
+              path = vim.split(package.path, ";"),
+            },
+            diagnostics = {
+              globals = { "vim" }, -- evita erro "undefined global 'vim'"
+            },
+            workspace = {
+              library = vim.api.nvim_get_runtime_file("", true),
+              checkThirdParty = false, -- evita prompts sobre luarocks
+            },
+            telemetry = { enable = false },
+          },
+        },
+      })
+      lspconfig["marksman"].setup({ capabilities = capabilities })
       lspconfig["powershell_es"].setup({ capabilities = capabilities })
-      lspconfig["pyright"].setup({ capabilities = capabilities })
-      lspconfig["ts_ls"].setup({ capabilities = capabilities })
+      lspconfig["basedpyright"].setup({ capabilities = capabilities })
+      lspconfig["vtsls"].setup({ capabilities = capabilities })
+      lspconfig["yamlls"].setup({
+        capabilities = capabilities,
+        settings = {
+          yaml = {
+            schemas = {
+              ["https://json.schemastore.org/github-action.json"] = "/.github/workflows/*",
+              ["https://json.schemastore.org/gitlab-ci.json"] = "/.gitlab-ci.yml",
+              ["https://json.schemastore.org/circleciconfig"] = "/.circleci/config.yml",
+            },
+            validate = true,
+            hover = true,
+            completion = true,
+          },
+        },
+      })
 
       -- Global mappings.
       -- See `:help vim.diagnostic.*` for documentation on any of the below functions

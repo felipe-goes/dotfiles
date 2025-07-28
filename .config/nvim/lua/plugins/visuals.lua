@@ -3,12 +3,28 @@ return {
     "MeanderingProgrammer/render-markdown.nvim",
     -- dependencies = { "nvim-treesitter/nvim-treesitter", "echasnovski/mini.nvim" }, -- if you use the mini.nvim suite
     -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.icons' }, -- if you use standalone mini plugins
-    dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" }, -- if you prefer nvim-web-devicons
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter",
+      "nvim-tree/nvim-web-devicons",
+    }, -- if you prefer nvim-web-devicons
     ---@module 'render-markdown'
     ---@type render.md.UserConfig
     opts = {
       completions = { lsp = { enabled = true } },
       latex = { enabled = false },
+    },
+  },
+  {
+    "j-hui/fidget.nvim",
+    opts = {
+      notification = {
+        window = {
+          winblend = 0,
+        },
+      },
+      progress = {
+        poll_rate = 0.1,
+      },
     },
   },
   {
@@ -39,8 +55,18 @@ return {
             -- icon_hl_group: optional hl_group for the icon
             -- title: set to anything or empty string to hide
             cmdline = { pattern = "^:", icon = "", lang = "vim" },
-            search_down = { kind = "search", pattern = "^/", icon = " ", lang = "regex" },
-            search_up = { kind = "search", pattern = "^%?", icon = " ", lang = "regex" },
+            search_down = {
+              kind = "search",
+              pattern = "^/",
+              icon = " ",
+              lang = "regex",
+            },
+            search_up = {
+              kind = "search",
+              pattern = "^%?",
+              icon = " ",
+              lang = "regex",
+            },
             filter = { pattern = "^:%s*!", icon = "$", lang = "bash" },
             lua = {
               pattern = { "^:%s*lua%s+", "^:%s*lua%s*=%s*", "^:%s*=%s*" },
@@ -243,7 +269,10 @@ return {
               padding = { 0, 1 },
             },
             win_options = {
-              winhighlight = { Normal = "Normal", FloatBorder = "DiagnosticInfo" },
+              winhighlight = {
+                Normal = "Normal",
+                FloatBorder = "DiagnosticInfo",
+              },
             },
           },
         },

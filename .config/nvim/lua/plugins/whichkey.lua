@@ -45,12 +45,20 @@ return {
       },
 
       -- Avante
-      { "<leader>a", group = "Avante", icon = { icon = "󰧑", color = "blue" } },
+      {
+        "<leader>a",
+        group = "Avante",
+        icon = { icon = "󰧑", color = "blue" },
+      },
 
       -- Find
       { "<leader>f", group = "Find" },
       { "<leader>ff", "<cmd>lua Snacks.picker.files()<cr>", desc = "Files" },
-      { "<leader>fr", "<cmd>lua Snacks.picker.recent()<cr>", desc = "Recent Files" },
+      {
+        "<leader>fr",
+        "<cmd>lua Snacks.picker.recent()<cr>",
+        desc = "Recent Files",
+      },
       { "<leader>fp", "<cmd>lua Snacks.picker.grep()<cr>", desc = "Grep" },
       {
         "<leader>fu",
@@ -68,8 +76,16 @@ return {
         end,
         desc = "Buffers",
       },
-      { "<leader>fd", "<cmd>lua Snacks.picker.diagnostics()<cr>", desc = "Diagnostics" },
-      { "<leader>ft", "<cmd>lua Snacks.picker.todo_comments()<cr>", desc = "Todo" },
+      {
+        "<leader>fd",
+        "<cmd>lua Snacks.picker.diagnostics()<cr>",
+        desc = "Diagnostics",
+      },
+      {
+        "<leader>ft",
+        "<cmd>lua Snacks.picker.todo_comments()<cr>",
+        desc = "Todo",
+      },
 
       -- Git
       { "<leader>g", group = "Git" },
@@ -87,26 +103,65 @@ return {
         end,
         desc = "Git Log",
       },
-      { "<leader>gc", "<cmd>lua Snacks.picker.git_branches()<cr>", desc = "Checkout" },
+      {
+        "<leader>gc",
+        "<cmd>lua Snacks.picker.git_branches()<cr>",
+        desc = "Checkout",
+      },
       { "<leader>gd", "<cmd>Gitsigns diffthis<cr>", desc = "Diff Line" },
-      { "<leader>gD", "<cmd>lua Snacks.picker.git_diff()<cr>", desc = "Diff Project" },
+      {
+        "<leader>gD",
+        "<cmd>lua Snacks.picker.git_diff()<cr>",
+        desc = "Diff Project",
+      },
       { "<leader>gj", "<cmd>Gitsigns next_hunk<cr>", desc = "Next Hunk = ]g" },
       { "<leader>gk", "<cmd>Gitsigns prev_hunk<cr>", desc = "Prev Hunk = [g" },
       { "<leader>gb", "<cmd>Gitsigns blame_line<cr>", desc = "Blame" },
       { "<leader>gh", "<cmd>Gitsigns preview_hunk<cr>", desc = "Preview Hunk" },
       { "<leader>gr", "<cmd>Gitsigns reset_hunk<cr>", desc = "Reset Hunk" },
-      { "<leader>gr", "<cmd>'<,'>Gitsigns reset_hunk<cr>", desc = "Reset Hunk", mode = "v" },
+      {
+        "<leader>gr",
+        "<cmd>'<,'>Gitsigns reset_hunk<cr>",
+        desc = "Reset Hunk",
+        mode = "v",
+      },
       { "<leader>gR", "<cmd>Gitsigns reset_buffer<cr>", desc = "Reset Buffer" },
-      { "<leader>gs", "<cmd>lua Snacks.picker.git_status()<cr>", desc = "Status" },
+      {
+        "<leader>gs",
+        "<cmd>lua Snacks.picker.git_status()<cr>",
+        desc = "Status",
+      },
       { "<leader>gS", "<cmd>Gitsigns stage_hunk<cr>", desc = "Stage Hunk" },
-      { "<leader>gs", "<cmd>'<,'>Gitsigns stage_hunk<cr>", desc = "Stage Hunk", mode = "v" },
-      { "<leader>gu", "<cmd>Gitsigns undo_stage_hunk<cr>", desc = "Undo Stage Hunk" },
-      { "<leader>gs", "<cmd>'<,'>Gitsigns undo_stage_hunk<cr>", desc = "Undo Stage Hunk", mode = "v" },
+      {
+        "<leader>gs",
+        "<cmd>'<,'>Gitsigns stage_hunk<cr>",
+        desc = "Stage Hunk",
+        mode = "v",
+      },
+      {
+        "<leader>gu",
+        "<cmd>Gitsigns undo_stage_hunk<cr>",
+        desc = "Undo Stage Hunk",
+      },
+      {
+        "<leader>gs",
+        "<cmd>'<,'>Gitsigns undo_stage_hunk<cr>",
+        desc = "Undo Stage Hunk",
+        mode = "v",
+      },
 
       -- LSP
       { "<leader>l", group = "LSP", icon = { icon = "", color = "green" } },
-      { "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<cr>", desc = "Code Action" },
-      { "<leader>lA", "<cmd>lua vim.lsp.codelens.run()<cr>", desc = "CodeLens Action" },
+      {
+        "<leader>la",
+        "<cmd>lua vim.lsp.buf.code_action()<cr>",
+        desc = "Code Action",
+      },
+      {
+        "<leader>lA",
+        "<cmd>lua vim.lsp.codelens.run()<cr>",
+        desc = "CodeLens Action",
+      },
       {
         "<leader>lf",
         function()
@@ -121,36 +176,104 @@ return {
         mode = { "n", "v" },
       },
       { "<leader>lr", "<cmd>lua vim.lsp.buf.rename()<cr>", desc = "Rename" },
-      { "<leader>lt", "<cmd>Trouble lsp_type_definitions<cr>", desc = "Type Definition" },
+      {
+        "<leader>lt",
+        "<cmd>Trouble lsp_type_definitions<cr>",
+        desc = "Type Definition",
+      },
       { "<leader>li", "<cmd>LspInfo<cr>", desc = "Info" },
       { "<leader>lI", "<cmd>Mason<cr>", desc = "Install" },
-      { "<leader>ls", "<cmd>lua Snacks.picker.lsp_symbols()<cr>", desc = "Symbols" },
-      { "<leader>lS", "<cmd>lua Snacks.picker.lsp_workspace_symbols()<cr>", desc = "Workspace Symbols" },
-      { "<leader>ld", "<cmd>lua Snacks.picker.diagnostics_buffer()<cr>", desc = "Diagnostics" },
-      { "<leader>lD", "<cmd>lua vim.diagnostic.open_float()<cr>", desc = "Hover" },
+      {
+        "<leader>ls",
+        "<cmd>lua Snacks.picker.lsp_symbols()<cr>",
+        desc = "Symbols",
+      },
+      {
+        "<leader>lS",
+        "<cmd>lua Snacks.picker.lsp_workspace_symbols()<cr>",
+        desc = "Workspace Symbols",
+      },
+      {
+        "<leader>ld",
+        "<cmd>lua Snacks.picker.diagnostics_buffer()<cr>",
+        desc = "Diagnostics",
+      },
+      {
+        "<leader>lD",
+        "<cmd>lua vim.diagnostic.open_float()<cr>",
+        desc = "Hover",
+      },
 
       -- LSP Workspace
       { "<leader>lw", group = "LSP Workspace" },
-      { "<leader>lwa", "<cmd>lua vim.lsp.buf.add_workspace_folder()<cr>", desc = "Add Workspace Folder" },
-      { "<leader>lwd", "<cmd>lua Snacks.picker.diagnostics()<cr>", desc = "Workspace Diagnostics" },
-      { "<leader>lwr", "<cmd>lua vim.lsp.buf.remove_workspace_folder()<cr>", desc = "Remove Workspace Folder" },
-      { "<leader>lwl", "<cmd>lua vim.lsp.buf.list_workspace_folders()<cr>", desc = "List Workspace Folders" },
+      {
+        "<leader>lwa",
+        "<cmd>lua vim.lsp.buf.add_workspace_folder()<cr>",
+        desc = "Add Workspace Folder",
+      },
+      {
+        "<leader>lwd",
+        "<cmd>lua Snacks.picker.diagnostics()<cr>",
+        desc = "Workspace Diagnostics",
+      },
+      {
+        "<leader>lwr",
+        "<cmd>lua vim.lsp.buf.remove_workspace_folder()<cr>",
+        desc = "Remove Workspace Folder",
+      },
+      {
+        "<leader>lwl",
+        "<cmd>lua vim.lsp.buf.list_workspace_folders()<cr>",
+        desc = "List Workspace Folders",
+      },
 
       -- Icon Picker
-      { "<leader>i", group = "Icon Picker", icon = { icon = "", color = "yellow" } },
+      {
+        "<leader>i",
+        group = "Icon Picker",
+        icon = { icon = "", color = "yellow" },
+      },
       { "<leader>ia", "<cmd>IconPickerNormal<cr>", desc = "Pick Icons" },
-      { "<leader>in", "<cmd>IconPickerNormal nerd_font nerd_font_v3<cr>", desc = "Pick Nerd Font" },
+      {
+        "<leader>in",
+        "<cmd>IconPickerNormal nerd_font nerd_font_v3<cr>",
+        desc = "Pick Nerd Font",
+      },
       { "<leader>ie", "<cmd>IconPickerNormal emoji<cr>", desc = "Pick Emoji" },
-      { "<leader>is", "<cmd>IconPickerNormal symbols<cr>", desc = "Pick Symbol" },
-      { "<leader>if", "<cmd>IconPickerNormal alt_font<cr>", desc = "Pick Alt Font" },
-      { "<leader>ih", "<cmd>IconPickerNormal html_colors<cr>", desc = "Pick HTML Colors" },
+      {
+        "<leader>is",
+        "<cmd>IconPickerNormal symbols<cr>",
+        desc = "Pick Symbol",
+      },
+      {
+        "<leader>if",
+        "<cmd>IconPickerNormal alt_font<cr>",
+        desc = "Pick Alt Font",
+      },
+      {
+        "<leader>ih",
+        "<cmd>IconPickerNormal html_colors<cr>",
+        desc = "Pick HTML Colors",
+      },
 
       -- Snacks Picker
-      { "<leader>p", group = "Snacks Picker", icon = { icon = "󰢷", color = "orange" } },
+      {
+        "<leader>p",
+        group = "Snacks Picker",
+        icon = { icon = "󰢷", color = "orange" },
+      },
       { "<leader>pp", "<cmd>lua Snacks.picker()<cr>", desc = "Pickers List" },
-      { "<leader>pc", "<cmd>lua Snacks.picker.commands()<cr>", desc = "Commands" },
+      {
+        "<leader>pc",
+        "<cmd>lua Snacks.picker.commands()<cr>",
+        desc = "Commands",
+      },
       { "<leader>ph", "<cmd>lua Snacks.picker.help()<cr>", desc = "Help" },
-      { "<leader>pr", "<cmd>lua Snacks.picker.registers()<cr>", desc = "Registers" },
+      {
+        "<leader>pr",
+        "<cmd>lua Snacks.picker.registers()<cr>",
+        desc = "Registers",
+      },
       {
         "<leader>pk",
         function()
@@ -160,48 +283,165 @@ return {
         end,
         desc = "Keymaps",
       },
-      { "<leader>pn", "<cmd>lua Snacks.picker.notifications()<cr>", desc = "Notifications" },
+      {
+        "<leader>pn",
+        "<cmd>lua Snacks.picker.notifications()<cr>",
+        desc = "Notifications",
+      },
 
       -- SGDK
-      { "<leader>S", group = "SGDK", icon = { icon = "󰊖", color = "purple" } },
+      {
+        "<leader>S",
+        group = "SGDK",
+        icon = { icon = "󰊖", color = "purple" },
+      },
       { "<leader>Sb", "<cmd>!sgdk build<cr>", desc = "Build SGDK Project" },
-      { "<leader>Se", "<cmd>!sgdk blastem<cr>", desc = "Build and Run Blastem" },
-      { "<leader>Sh", "<cmd>!sgdk bizhawk<cr>", desc = "Build and Run Bizhawk" },
+      {
+        "<leader>Se",
+        "<cmd>!sgdk blastem<cr>",
+        desc = "Build and Run Blastem",
+      },
+      {
+        "<leader>Sh",
+        "<cmd>!sgdk bizhawk<cr>",
+        desc = "Build and Run Bizhawk",
+      },
       { "<leader>Sc", "<cmd>!sgdk clean<cr>", desc = "Clean SGDK Project" },
-      { "<leader>SC", "<cmd>!sgdk cmake<cr>", desc = "Generate compile_commands.json" },
+      {
+        "<leader>SC",
+        "<cmd>!sgdk cmake<cr>",
+        desc = "Generate compile_commands.json",
+      },
 
       -- C/C++
-      { "<leader>c", group = "C/C++", icon = { icon = "󰙲", color = "blue" } },
       {
-        "<leader>cR",
-        "<cmd>!cmake -B ./build/release -DCMAKE_BUILD_TYPE=Release && cp -f ./build/release/compile_commands.json . && cp -rf assets/ ./build/release/<cr>",
-        desc = "CMake Release",
+        "<leader>c",
+        group = "C/C++",
+        icon = { icon = "󰙲", color = "blue" },
       },
       {
-        "<leader>cD",
-        "<cmd>!cmake -B ./build/debug -DCMAKE_BUILD_TYPE=Debug && cp -f ./build/debug/compile_commands.json . && cp -rf assets/ ./build/release/<cr>",
-        desc = "CMake Debug",
+        "<leader>cc",
+        function()
+          -- CMake Config
+          local release_fidget = {
+            title = "CMake Release",
+            message = "Running CMake...",
+            percentage = nil,
+            lsp_client = { name = "CMake Release" },
+          }
+          local release_command = {
+            "cmake",
+            "-DCMAKE_BUILD_TYPE=Release",
+            "-S",
+            ".",
+            "-B",
+            "./build/release",
+          }
+
+          local debug_fidget = {
+            title = "CMake Debug",
+            message = "Running CMake...",
+            percentage = nil,
+            lsp_client = { name = "CMake Debug" },
+          }
+          local debug_command = {
+            "cmake",
+            "-DCMAKE_BUILD_TYPE=Debug",
+            "-S",
+            ".",
+            "-B",
+            "./build/debug",
+          }
+
+          CMakeConfig(release_fidget, release_command, "./build/release")
+          CMakeConfig(debug_fidget, debug_command, "./build/debug")
+        end,
+        desc = "CMake Config",
       },
-      { "<leader>cr", "<cmd>make ./build/release<cr><cmd>Trouble qflist<cr>", desc = "Build Release" },
-      { "<leader>cd", "<cmd>make ./build/debug<cr><cmd>Trouble qflist<cr>", desc = "Build Debug" },
-      { "<leader>cC", "<cmd>!rm -rf ./build<cr>", desc = "CMake Clean" },
       {
-        "<leader>ct",
-        "<cmd>!cmake --build ./build/release/ --target help | tail -n +13 | awk '{print $2}'<cr>",
-        desc = "CMake Targets",
+        "<leader>cr",
+        function()
+          local build_fidget = {
+            title = "Build Release",
+            message = "Running Build...",
+            percentage = nil,
+            lsp_client = { name = "Build" },
+          }
+          local build_path = "./build/release"
+
+          CMakeBuild(build_fidget, build_path)
+        end,
+        desc = "Build Release",
       },
       {
-        "<leader>cT",
-        "<cmd>!cmake --build ./build/release/ --target help | tail -n +13 | awk '{print $2}' | grep Test<cr>",
-        desc = "CMake Test Targets",
+        "<leader>cd",
+        function()
+          local build_fidget = {
+            title = "Build Debug",
+            message = "Running Build...",
+            percentage = nil,
+            lsp_client = { name = "Build" },
+          }
+          local build_path = "./build/debug"
+
+          CMakeBuild(build_fidget, build_path)
+        end,
+        desc = "Build Debug",
+      },
+      {
+        "<leader>cm",
+        function()
+          local build_path = "./build/release"
+          CMakeBuildMake(build_path)
+        end,
+        desc = "Build with qflist",
+      },
+      {
+        "<leader>cC",
+        function()
+          local release_fidget = {
+            title = "Clean Release",
+            message = "Cleaning...",
+            percentage = nil,
+            lsp_client = { name = "Clean" },
+          }
+          local debug_fidget = {
+            title = "Clean Debug",
+            message = "Cleaning...",
+            percentage = nil,
+            lsp_client = { name = "Clean" },
+          }
+          local release_path = "./build/release"
+          local debug_path = "./build/debug"
+
+          CMakeClean(release_fidget, release_path)
+          CMakeClean(debug_fidget, debug_path)
+        end,
+        desc = "Clean",
       },
 
       -- Trouble
-      { "<leader>t", group = "Trouble", icon = { icon = "󱖫", color = "yellow" } },
-      { "<leader>td", "<cmd>Trouble diagnostics toggle<cr>", desc = "LSP Diagnostics" },
+      {
+        "<leader>t",
+        group = "Trouble",
+        icon = { icon = "󱖫", color = "yellow" },
+      },
+      {
+        "<leader>td",
+        "<cmd>Trouble diagnostics toggle<cr>",
+        desc = "LSP Diagnostics",
+      },
       { "<leader>tq", "<cmd>Trouble qflist<cr>", desc = "Quickfix List" },
-      { "<leader>ts", "<cmd>Trouble symbols toggle focus=true<cr>", desc = "LSP Symbols" },
-      { "<leader>tt", "<cmd>Trouble lsp_type_definitions toggle<cr>", desc = "LSP Type Definitions" },
+      {
+        "<leader>ts",
+        "<cmd>Trouble symbols toggle focus=true<cr>",
+        desc = "LSP Symbols",
+      },
+      {
+        "<leader>tt",
+        "<cmd>Trouble lsp_type_definitions toggle<cr>",
+        desc = "LSP Type Definitions",
+      },
       { "<leader>tT", "<cmd>Trouble todo toggle<cr>", desc = "Todo" },
 
       -- Debugger
@@ -240,7 +480,11 @@ return {
         end,
         desc = "Hover",
       },
-      { "<leader>dd", "<cmd>DapToggleBreakpoint<cr>", desc = "Toggle Breakpoint" },
+      {
+        "<leader>dd",
+        "<cmd>DapToggleBreakpoint<cr>",
+        desc = "Toggle Breakpoint",
+      },
       { "<leader>dq", "<cmd>DapTerminate<cr>", desc = "Terminate" },
       {
         "<leader>dt",

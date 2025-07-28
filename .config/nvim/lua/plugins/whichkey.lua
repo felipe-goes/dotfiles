@@ -327,7 +327,7 @@ return {
             title = "CMake Release",
             message = "Running CMake...",
             percentage = nil,
-            lsp_client = { name = "CMake Release" },
+            lsp_client = { name = "Release" },
           }
           local release_command = {
             "cmake",
@@ -342,7 +342,7 @@ return {
             title = "CMake Debug",
             message = "Running CMake...",
             percentage = nil,
-            lsp_client = { name = "CMake Debug" },
+            lsp_client = { name = "Debug" },
           }
           local debug_command = {
             "cmake",
@@ -365,7 +365,7 @@ return {
             title = "Build Release",
             message = "Running Build...",
             percentage = nil,
-            lsp_client = { name = "Build" },
+            lsp_client = { name = "Building" },
           }
           local build_path = "./build/release"
 
@@ -380,7 +380,7 @@ return {
             title = "Build Debug",
             message = "Running Build...",
             percentage = nil,
-            lsp_client = { name = "Build" },
+            lsp_client = { name = "Building" },
           }
           local build_path = "./build/debug"
 

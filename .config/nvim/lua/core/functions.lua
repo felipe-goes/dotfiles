@@ -1,7 +1,6 @@
 local fidget = require("fidget")
 local util = vim.system or vim.loop.spawn -- compatibility between versions
 
--- CMake
 local compile_commands =
   { "cp", "-f", "./build/release/compile_commands.json", "." }
 
@@ -44,63 +43,26 @@ function CMakeConfig(fidget_config, config_command, extras)
   local notify = fidget.progress.handle.create(fidget_config)
   local copy = { "cp", "-rf", "./assets", extras }
 
-  run_step(
-    config_command,
-    next_step(
-      compile_commands,
+  if string.find(extras, "release") then
+    run_step(
+      config_command,
+      next_step(
+        compile_commands,
+        next_step(copy, function()
+          notify:finish({ message = "Config Complete!" })
+        end)
+      ),
+      notify
+    )
+  else
+    run_step(
+      config_command,
       next_step(copy, function()
         notify:finish({ message = "Config Complete!" })
-      end)
-    ),
-    notify
-  )
-
-  -- Run CMake Config
-  -- util(command, {
-  --   text = true,
-  --   stdout = function(_, data)
-  --     if data then
-  --       notify:report({ message = "CMake: " .. data })
-  --     end
-  --   end,
-  --   stderr = function(_, data)
-  --     if data then
-  --       notify:report({ message = "Error: " .. data })
-  --     end
-  --   end,
-  -- }, function()
-  --   -- Copy compile_commands
-  --   util(compile_commands, {
-  --     text = true,
-  --     stdout = function(_, data)
-  --       if data then
-  --         notify:report({ message = "copy compile_commands: " .. data })
-  --       end
-  --     end,
-  --     stderr = function(_, data)
-  --       if data then
-  --         notify:report({ message = "Error: " .. data })
-  --       end
-  --     end,
-  --   }, function()
-  --     -- Copy assets
-  --     util(extras, {
-  --       text = true,
-  --       stdout = function(_, data)
-  --         if data then
-  --           notify:report({ message = "copy extras: " .. data })
-  --         end
-  --       end,
-  --       stderr = function(_, data)
-  --         if data then
-  --           notify:report({ message = "Error: " .. data })
-  --         end
-  --       end,
-  --     }, function()
-  --       notify:finish({ message = "CMake Config Complete!" })
-  --     end)
-  --   end)
-  -- end)
+      end),
+      notify
+    )
+  end
 end
 
 -- Build CMake Project

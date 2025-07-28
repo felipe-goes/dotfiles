@@ -115,16 +115,6 @@ if ! shopt -oq posix; then
 	fi
 fi
 
-# Exports
-key=$(
-	ansible-vault view --vault-password-file="$HOME"/password.txt "$HOME"/secure-vault.json |
-		jq ".openai.key" | sed s/\"// | sed s/\"//
-)
-export OPENAI_API_KEY="$key"
-key=$(
-	ansible-vault view --vault-password-file="$HOME"/password.txt "$HOME"/secure-vault.json |
-		jq ".weather.key" | sed s/\"// | sed s/\"//
-)
 export OPEN_WEATHER_API_KEY="$key"
 export PVSNESLIB_HOME=/mnt/c/pvsneslib/
 export GDK=/opt/SGDK
@@ -209,6 +199,17 @@ eval "$(starship init bash)"
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 . "$HOME/.deno/env"
+
+# Exports
+key=$(
+	ansible-vault view --vault-password-file="$HOME"/password.txt "$HOME"/secure-vault.json |
+		jq ".openai.key" | sed s/\"// | sed s/\"//
+)
+export OPENAI_API_KEY="$key"
+key=$(
+	ansible-vault view --vault-password-file="$HOME"/password.txt "$HOME"/secure-vault.json |
+		jq ".weather.key" | sed s/\"// | sed s/\"//
+)
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"                   # This loads nvm

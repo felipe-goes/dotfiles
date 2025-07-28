@@ -21,6 +21,7 @@ return {
         python = { "ruff" },
         yaml = { "yamllint" },
         javascript = { "eslint_d" },
+        rust = {},
         typesript = { "eslint_d" },
         javascriptreact = { "eslint_d" },
         typesriptreact = { "eslint_d" },
@@ -33,12 +34,17 @@ return {
       -- end)
 
       local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })
-      vim.api.nvim_create_autocmd({ "LspAttach", "BufEnter", "BufWritePost", "InsertLeave" }, {
+      vim.api.nvim_create_autocmd({
+        "LspAttach",
+        "BufEnter",
+        "BufWritePost",
+        "InsertLeave",
+      }, {
         group = lint_augroup,
         callback = function()
           lint.try_lint()
         end,
       })
-    end
-  }
+    end,
+  },
 }

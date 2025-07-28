@@ -82,6 +82,7 @@ return {
         },
       }
       dap.configurations.c = dap.configurations.cpp
+      dap.configurations.rust = dap.configurations.cpp
 
       -- C#
       dap.adapters.coreclr = {

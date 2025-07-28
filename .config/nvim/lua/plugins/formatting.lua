@@ -16,6 +16,7 @@ return {
           lua = { "stylua" },
           markdown = { "mdformat" },
           python = { "isort", "black" },
+          rust = { "rustfmt" },
           yaml = { "prettierd", "prettier", stop_after_first = true },
           javascript = { "prettierd", "prettier", stop_after_first = true },
           typesript = { "prettierd", "prettier", stop_after_first = true },

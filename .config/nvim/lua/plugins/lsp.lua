@@ -4,9 +4,9 @@ return {
     opts = {
       ui = {
         icons = {
-          package_installed = "󰄬",
-          package_pending = "➜",
-          package_uninstalled = "✗",
+          package_installed = "",
+          package_pending = "",
+          package_uninstalled = "",
         },
       },
     },
@@ -27,10 +27,14 @@ return {
         "lua_ls",
         "marksman",
         "powershell_es",
+        "rust_analyzer",
         "vtsls",
         "yamlls",
       },
       automatic_installation = true,
+      automatic_enable = {
+        exclude = { "rust_analyzer" },
+      },
     },
     dependencies = {
       "mason-org/mason.nvim",
@@ -56,6 +60,7 @@ return {
         lua_ls = {},
         marksman = {},
         powershell_es = {},
+        rust_analyzer = {},
         vtsls = {},
         yamlls = {},
       },
@@ -72,17 +77,17 @@ return {
       local default_capabilities = vim.lsp.protocol.make_client_capabilities()
       local capabilities = require("blink.cmp").get_lsp_capabilities(default_capabilities)
 
-      lspconfig["bashls"].setup({ capabilities = capabilities })
-      lspconfig["clangd"].setup({
+      lspconfig.bashls.setup({ capabilities = capabilities })
+      lspconfig.clangd.setup({
         capabilities = capabilities,
         cmd = { "clangd", "--background-index" },
         root_dir = require("lspconfig.util").root_pattern("compile_commands.json", ".git"),
       })
-      lspconfig["cmake"].setup({ capabilities = capabilities })
-      lspconfig["cssls"].setup({ capabilities = capabilities })
-      lspconfig["gopls"].setup({ capabilities = capabilities })
-      lspconfig["html"].setup({ capabilities = capabilities })
-      lspconfig["jsonls"].setup({
+      lspconfig.cmake.setup({ capabilities = capabilities })
+      lspconfig.cssls.setup({ capabilities = capabilities })
+      lspconfig.gopls.setup({ capabilities = capabilities })
+      lspconfig.html.setup({ capabilities = capabilities })
+      lspconfig.jsonls.setup({
         capabilities = capabilities,
         settings = {
           json = {
@@ -102,9 +107,8 @@ return {
           },
         },
       })
-      lspconfig["lemminx"].setup({ capabilities = capabilities })
-      lspconfig["lua_ls"].setup({
-        capabilities = capabilities,
+      lspconfig.lemminx.setup({ capabilities = capabilities })
+      lspconfig.lua_ls.setup({
         settings = {
           Lua = {
             runtime = {
@@ -121,12 +125,30 @@ return {
             telemetry = { enable = false },
           },
         },
+        capabilities = capabilities,
       })
-      lspconfig["marksman"].setup({ capabilities = capabilities })
-      lspconfig["powershell_es"].setup({ capabilities = capabilities })
-      lspconfig["basedpyright"].setup({ capabilities = capabilities })
-      lspconfig["vtsls"].setup({ capabilities = capabilities })
-      lspconfig["yamlls"].setup({
+      lspconfig.marksman.setup({ capabilities = capabilities })
+      lspconfig.powershell_es.setup({ capabilities = capabilities })
+      lspconfig.rust_analyzer.setup({
+        settings = {
+          rust_analyzer = {
+            check = {
+              command = "clippy", -- usa clippy em vez do check padrão
+              extraArgs = { "--no-deps" }, -- evita checar dependências desnecessárias
+            },
+            diagnostics = {
+              enable = true, -- ativa apenas os diagnostics do rust-analyzer
+              experimental = {
+                enable = false, -- desativa possíveis duplicações futuras
+              },
+            },
+          },
+        },
+        capabilities = capabilities,
+      })
+      lspconfig.basedpyright.setup({ capabilities = capabilities })
+      lspconfig.vtsls.setup({ capabilities = capabilities })
+      lspconfig.yamlls.setup({
         capabilities = capabilities,
         settings = {
           yaml = {

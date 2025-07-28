@@ -1,3 +1,6 @@
+vim.g.mapleader = " "
+vim.g.maplocalleader = "\\"
+
 -- :help options
 local options = {
   backup = false,                          -- creates a backup file
@@ -18,7 +21,7 @@ local options = {
   -- splitright = true,                   -- force all vertical splits to go to the right of current window
   swapfile = false,     -- creates a swapfile
   termguicolors = true, -- set term gui colors (most terminals support this)
-  timeoutlen = 300,     -- time to wait for a mapped sequence to complete (in milliseconds)
+  timeoutlen = 200,     -- time to wait for a mapped sequence to complete (in milliseconds)
   undofile = true,      -- enable persistent undo
   updatetime = 300,     -- faster completion (4000ms default)
   redrawtime = 10000,   -- allow more time for loading syntax on large files

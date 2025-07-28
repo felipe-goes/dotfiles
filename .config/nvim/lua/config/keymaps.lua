@@ -113,7 +113,7 @@ end)
 -- Custom Calc
 -- request neovim v0.10+ for vim.ui.input
 -- and dressing.nvim for float window.
-vim.keymap.set("i", "calc.", function()
+vim.keymap.set("i", "calc ", function()
   vim.ui.input({ prompt = "󰃬 Calculator: " }, function(input)
     local calc = load("return " .. (input or ""))()
     if calc then

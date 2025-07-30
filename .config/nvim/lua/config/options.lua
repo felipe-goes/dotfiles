@@ -48,7 +48,7 @@ local options = {
   exrc = true,
   shell = "/usr/bin/bash",
   laststatus = 3,        -- avante: views can only be fully collapsed with the global statusline. 2 for local and 3 for global status line
-  winborder = "rounded", -- Set the default border for all floating windows
+  winborder = "none",    -- Set the default border for all floating windows
   inccommand = "split"   -- Preview substitutions
 }
 

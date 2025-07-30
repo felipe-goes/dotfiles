@@ -14,12 +14,22 @@ vim.api.nvim_create_autocmd("BufReadPost", {
   end,
 })
 
+-- Load project-specific Neovim configuration from .nvim.lua when entering a
+-- buffer in the current directory
 vim.api.nvim_create_autocmd("BufEnter", {
   callback = function()
     local project_config = vim.fn.getcwd() .. "/.nvim.lua"
     if vim.fn.filereadable(project_config) == 1 then
       dofile(project_config)
     end
+  end,
+})
+
+-- Make help open in a vertical split
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "help",
+  callback = function()
+    vim.cmd("wincmd L | vert resize 90")
   end,
 })
 
@@ -40,19 +50,22 @@ vim.api.nvim_create_user_command("Run", function()
 end, {})
 
 -- Re-apply diagnostics config when command line mode is entered
-vim.api.nvim_create_autocmd({ "CmdlineEnter", "InsertLeave", "BufEnter", "ModeChanged" }, {
-  callback = function()
-    vim.diagnostic.config({
-      virtual_text = false,
-      signs = {
-        text = {
-          [vim.diagnostic.severity.ERROR] = " ",
-          [vim.diagnostic.severity.WARN] = " ",
-          [vim.diagnostic.severity.HINT] = " ",
-          [vim.diagnostic.severity.INFO] = " ",
+vim.api.nvim_create_autocmd(
+  { "CmdlineEnter", "InsertLeave", "BufEnter", "ModeChanged" },
+  {
+    callback = function()
+      vim.diagnostic.config({
+        virtual_text = false,
+        signs = {
+          text = {
+            [vim.diagnostic.severity.ERROR] = " ",
+            [vim.diagnostic.severity.WARN] = " ",
+            [vim.diagnostic.severity.HINT] = " ",
+            [vim.diagnostic.severity.INFO] = " ",
+          },
         },
-      },
-    })
-  end,
-  desc = "Ensure virtual_text stays off",
-})
+      })
+    end,
+    desc = "Ensure virtual_text stays off",
+  }
+)

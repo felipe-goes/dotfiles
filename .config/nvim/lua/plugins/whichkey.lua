@@ -44,47 +44,18 @@ return {
         },
       },
 
-      -- Avante
+      -- AI
       {
         "<leader>a",
-        group = "Avante",
-        icon = { icon = "󰧑", color = "blue" },
-      },
-
-      -- Find
-      { "<leader>f", group = "Find" },
-      { "<leader>ff", "<cmd>lua Snacks.picker.files()<cr>", desc = "Files" },
-      {
-        "<leader>fr",
-        "<cmd>lua Snacks.picker.recent()<cr>",
-        desc = "Recent Files",
-      },
-      { "<leader>fp", "<cmd>lua Snacks.picker.grep()<cr>", desc = "Grep" },
-      {
-        "<leader>fu",
-        function()
-          Snacks.picker.buffers({
-            win = {
-              input = {
-                keys = {
-                  ["d"] = "bufdelete",
-                },
-              },
-              list = { keys = { ["d"] = "bufdelete" } },
-            },
-          })
-        end,
-        desc = "Buffers",
+        "<cmd>CodeCompanionChat Toggle<cr>",
+        desc = "AI Chat",
+        mode = { "n", "v" },
       },
       {
-        "<leader>fd",
-        "<cmd>lua Snacks.picker.diagnostics()<cr>",
-        desc = "Diagnostics",
-      },
-      {
-        "<leader>ft",
-        "<cmd>lua Snacks.picker.todo_comments()<cr>",
-        desc = "Todo",
+        "<leader>A",
+        "<cmd>CodeCompanionActions<cr>",
+        desc = "AI Actions",
+        mode = { "n", "v" },
       },
 
       -- Git
@@ -178,7 +149,7 @@ return {
       { "<leader>lr", "<cmd>lua vim.lsp.buf.rename()<cr>", desc = "Rename" },
       {
         "<leader>lt",
-        "<cmd>Trouble lsp_type_definitions<cr>",
+        "<cmd>lua vim.lsp.buf.lsp_type_definitions()<cr>",
         desc = "Type Definition",
       },
       { "<leader>li", "<cmd>LspInfo<cr>", desc = "Info" },
@@ -203,28 +174,32 @@ return {
         "<cmd>lua vim.diagnostic.open_float()<cr>",
         desc = "Hover",
       },
+      {
+        "<leader>lk",
+        "<cmd>lua vim.lsp.buf.signature_help()<cr>",
+        desc = "Signature Help",
+      },
 
-      -- LSP Workspace
-      { "<leader>lw", group = "LSP Workspace" },
+      -- Workspace
       {
-        "<leader>lwa",
+        "<leader>w",
+        group = "Workspace",
+        icon = { icon = "󱁿", color = "green" },
+      },
+      {
+        "<leader>wa",
         "<cmd>lua vim.lsp.buf.add_workspace_folder()<cr>",
-        desc = "Add Workspace Folder",
+        desc = "Add Folder",
       },
       {
-        "<leader>lwd",
-        "<cmd>lua Snacks.picker.diagnostics()<cr>",
-        desc = "Workspace Diagnostics",
-      },
-      {
-        "<leader>lwr",
+        "<leader>wr",
         "<cmd>lua vim.lsp.buf.remove_workspace_folder()<cr>",
-        desc = "Remove Workspace Folder",
+        desc = "Remove Folder",
       },
       {
-        "<leader>lwl",
-        "<cmd>lua vim.lsp.buf.list_workspace_folders()<cr>",
-        desc = "List Workspace Folders",
+        "<leader>wl",
+        "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<cr>",
+        desc = "List Folders",
       },
 
       -- Icon Picker
@@ -262,7 +237,25 @@ return {
         group = "Snacks Picker",
         icon = { icon = "󰢷", color = "orange" },
       },
-      { "<leader>pp", "<cmd>lua Snacks.picker()<cr>", desc = "Pickers List" },
+      { "<leader>pf", "<cmd>lua Snacks.picker.files()<cr>", desc = "Files" },
+      { "<leader>pg", "<cmd>lua Snacks.picker.grep()<cr>", desc = "Grep" },
+      { "<leader>pl", "<cmd>lua Snacks.picker()<cr>", desc = "List" },
+      {
+        "<leader>pb",
+        function()
+          Snacks.picker.buffers({
+            win = {
+              input = {
+                keys = {
+                  ["d"] = "bufdelete",
+                },
+              },
+              list = { keys = { ["d"] = "bufdelete" } },
+            },
+          })
+        end,
+        desc = "Buffers",
+      },
       {
         "<leader>pc",
         "<cmd>lua Snacks.picker.commands()<cr>",
@@ -287,6 +280,11 @@ return {
         "<leader>pn",
         "<cmd>lua Snacks.picker.notifications()<cr>",
         desc = "Notifications",
+      },
+      {
+        "<leader>pt",
+        "<cmd>lua Snacks.picker.todo_comments()<cr>",
+        desc = "Todo",
       },
 
       -- SGDK
@@ -498,13 +496,5 @@ return {
       -- { "<leader>dC", ":Telescope dap commands<CR>",        desc = "Telescope Debugger Commands" },
     })
   end,
-  keys = {
-    {
-      "<leader>?",
-      function()
-        require("which-key").show({ global = false })
-      end,
-      desc = "Buffer Local Keymaps (which-key)",
-    },
-  },
+  keys = {},
 }

@@ -70,18 +70,23 @@ return {
       for server, config in pairs(opts.servers) do
         -- passing config.capabilities to blink.cmp merges with the capabilities in your
         -- `opts[server].capabilities, if you've defined it
-        config.capabilities = require("blink.cmp").get_lsp_capabilities(config.capabilities)
+        config.capabilities =
+          require("blink.cmp").get_lsp_capabilities(config.capabilities)
         lspconfig[server].setup(config)
       end
 
       local default_capabilities = vim.lsp.protocol.make_client_capabilities()
-      local capabilities = require("blink.cmp").get_lsp_capabilities(default_capabilities)
+      local capabilities =
+        require("blink.cmp").get_lsp_capabilities(default_capabilities)
 
       lspconfig.bashls.setup({ capabilities = capabilities })
       lspconfig.clangd.setup({
         capabilities = capabilities,
         cmd = { "clangd", "--background-index" },
-        root_dir = require("lspconfig.util").root_pattern("compile_commands.json", ".git"),
+        root_dir = require("lspconfig.util").root_pattern(
+          "compile_commands.json",
+          ".git"
+        ),
       })
       lspconfig.cmake.setup({ capabilities = capabilities })
       lspconfig.cssls.setup({ capabilities = capabilities })
@@ -166,8 +171,6 @@ return {
 
       -- Global mappings.
       -- See `:help vim.diagnostic.*` for documentation on any of the below functions
-      -- vim.keymap.set("n", "<space>e", vim.diagnostic.open_float) -- check whichkey
-      -- vim.keymap.set("n", "<space>q", vim.diagnostic.setloclist) -- check whichkey
       vim.keymap.set("n", "[d", vim.diagnostic.goto_prev)
       vim.keymap.set("n", "]d", vim.diagnostic.goto_next)
 
@@ -182,24 +185,26 @@ return {
           -- Buffer local mappings.
           -- See `:help vim.lsp.*` for documentation on any of the below functions
           local opts = { buffer = ev.buf }
-          vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
-          vim.keymap.set("n", "gd", "<cmd>Trouble lsp_definitions<cr>", opts) -- vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
-          vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
-          vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
-          vim.keymap.set("n", "gr", "<cmd>Trouble lsp_references<cr>", opts) -- vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
-          -- The commands below need to be reassigned if you want to use
-          -- vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, opts)
-          -- vim.keymap.set("n", "<space>wa", vim.lsp.buf.add_workspace_folder, opts) -- check whichkey
-          -- vim.keymap.set("n", "<space>wr", vim.lsp.buf.remove_workspace_folder, opts) -- check whichkey
-          -- vim.keymap.set("n", "<space>wl", function()
-          --   print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-          -- end, opts)
-          -- vim.keymap.set("n", "<space>D", vim.lsp.buf.type_definition, opts) -- check whichkey
-          -- vim.keymap.set("n", "<space>rn", vim.lsp.buf.rename, opts) -- check whichkey
-          -- vim.keymap.set({ "n", "v" }, "<space>ca", vim.lsp.buf.code_action, opts) -- check whichkey
-          -- vim.keymap.set('n', '<space>f', function()
-          --   vim.lsp.buf.format { async = true } -- check whichkey
-          -- end, opts)
+          vim.keymap.set(
+            "n",
+            "gD",
+            "<cmd>lua vim.lsp.buf.declaration()<cr>",
+            opts
+          )
+          vim.keymap.set(
+            "n",
+            "gd",
+            "<cmd>lua vim.lsp.buf.definition()<cr>",
+            opts
+          )
+          vim.keymap.set("n", "K", "<cmd>lua vim.lsp.buf.hover()<cr>", opts)
+          vim.keymap.set(
+            "n",
+            "gi",
+            "<cmd>lua vim.lsp.buf.implementation()<cr>",
+            opts
+          )
+          vim.keymap.set("n", "gr", "<cmd>Trouble lsp_references<cr>", opts)
         end,
       })
     end,

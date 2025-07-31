@@ -29,12 +29,15 @@ ollama
 pacman
 pandoc
 rename
+rustdoc
+rustup
 sed
 skate
 ssh
 task
-tr
 tmux
+tr
+tree
 unzip
 vhs
 watch
